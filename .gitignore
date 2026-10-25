@@ -1,0 +1,59 @@
+# ==========================================
+# BD Solar Energy — Root Git Ignore
+# ==========================================
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==========================================
+# Frontend (React / Vite)
+# ==========================================
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+frontend/*.local
+
+# Root node_modules (if any)
+node_modules/
+dist/
+
+# ==========================================
+# Backend (Python / Django)
+# ==========================================
+backend/venv/
+backend/.venv/
+backend/env/
+backend/.env
+backend/*.sqlite3
+backend/db.sqlite3
+backend/media/
+backend/staticfiles/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor files
+.vscode/*
+!.vscode/extensions.json
+.idea/

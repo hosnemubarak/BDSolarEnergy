@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="brkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="dinCase" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#brkBg)"/>
+
+  <!-- DIN Rail in Background -->
+  <rect x="80" y="270" width="440" height="60" fill="#94A3B8" stroke="#64748B" stroke-width="2"/>
+  <rect x="80" y="285" width="440" height="30" fill="#CBD5E1"/>
+
+  <!-- MCB Module 1 (Left Pole) -->
+  <g transform="translate(190, 110)">
+    <rect width="110" height="380" rx="8" fill="url(#dinCase)" stroke="#CBD5E1" stroke-width="2" filter="drop-shadow(0 20px 25px rgba(0,0,0,0.5))"/>
+    <!-- Terminal Screws -->
+    <circle cx="55" cy="35" r="14" fill="#64748B"/><line x1="45" y1="35" x2="65" y2="35" stroke="#E2E8F0" stroke-width="3"/>
+    <circle cx="55" cy="345" r="14" fill="#64748B"/><line x1="45" y1="345" x2="65" y2="345" stroke="#E2E8F0" stroke-width="3"/>
+    
+    <!-- VisiTrip Window -->
+    <rect x="40" y="90" width="30" height="16" rx="3" fill="#22C55E"/>
+    
+    <!-- Brand & Specs -->
+    <text x="55" y="135" fill="#0F172A" font-family="system-ui, sans-serif" font-size="11" font-weight="900" text-anchor="middle">SCHNEIDER</text>
+    <text x="55" y="150" fill="#6D28D9" font-family="system-ui, sans-serif" font-size="13" font-weight="900" text-anchor="middle">C32</text>
+    <text x="55" y="165" fill="#64748B" font-family="monospace" font-size="9" text-anchor="middle">6000A 415V</text>
+
+    <!-- Toggle Lever -->
+    <rect x="35" y="190" width="40" height="60" rx="6" fill="#DC2626" stroke="#991B1B" stroke-width="2"/>
+    <rect x="42" y="200" width="26" height="20" rx="3" fill="#EF4444"/>
+    <text x="55" y="240" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">ON</text>
+  </g>
+
+  <!-- MCB Module 2 (Right Pole) -->
+  <g transform="translate(300, 110)">
+    <rect width="110" height="380" rx="8" fill="url(#dinCase)" stroke="#CBD5E1" stroke-width="2" filter="drop-shadow(0 20px 25px rgba(0,0,0,0.5))"/>
+    <circle cx="55" cy="35" r="14" fill="#64748B"/><line x1="45" y1="35" x2="65" y2="35" stroke="#E2E8F0" stroke-width="3"/>
+    <circle cx="55" cy="345" r="14" fill="#64748B"/><line x1="45" y1="345" x2="65" y2="345" stroke="#E2E8F0" stroke-width="3"/>
+
+    <rect x="40" y="90" width="30" height="16" rx="3" fill="#22C55E"/>
+    <text x="55" y="135" fill="#0F172A" font-family="system-ui, sans-serif" font-size="11" font-weight="900" text-anchor="middle">Acti9 iC60N</text>
+    <text x="55" y="150" fill="#6D28D9" font-family="system-ui, sans-serif" font-size="13" font-weight="900" text-anchor="middle">2-POLE</text>
+    <text x="55" y="165" fill="#64748B" font-family="monospace" font-size="9" text-anchor="middle">IEC 60898-1</text>
+
+    <rect x="35" y="190" width="40" height="60" rx="6" fill="#DC2626" stroke="#991B1B" stroke-width="2"/>
+    <rect x="42" y="200" width="26" height="20" rx="3" fill="#EF4444"/>
+    <text x="55" y="240" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">ON</text>
+  </g>
+
+  <!-- Mechanical Bridge connecting both levers -->
+  <rect x="245" y="210" width="110" height="16" rx="4" fill="#B91C1C"/>
+</svg>

@@ -1,0 +1,2162 @@
+{
+  "categories": [
+    {
+      "id": "solar-panels",
+      "name": "Solar Panels",
+      "slug": "solar-panels",
+      "description": "High-efficiency monocrystalline, bifacial, and TOPCon tier-1 solar photovoltaic panels.",
+      "iconName": "Sun",
+      "productCount": 8,
+      "featuredImage": "/images/solar-panel.svg",
+      "subcategories": [
+        {
+          "id": "mono-panels",
+          "name": "Monocrystalline Solar Panels",
+          "slug": "monocrystalline-panels",
+          "parentId": "solar-panels",
+          "productCount": 4
+        },
+        {
+          "id": "bifacial-panels",
+          "name": "Bifacial Solar Panels",
+          "slug": "bifacial-panels",
+          "parentId": "solar-panels",
+          "productCount": 3
+        },
+        {
+          "id": "flexible-panels",
+          "name": "Flexible & Portable Panels",
+          "slug": "flexible-panels",
+          "parentId": "solar-panels",
+          "productCount": 1
+        }
+      ]
+    },
+    {
+      "id": "solar-inverters",
+      "name": "Solar Inverters",
+      "slug": "solar-inverters",
+      "description": "Pure sine-wave on-grid, off-grid, and intelligent hybrid solar inverters with MPPT tracking.",
+      "iconName": "Zap",
+      "productCount": 7,
+      "featuredImage": "/images/solar-inverter.svg",
+      "subcategories": [
+        {
+          "id": "hybrid-inverters",
+          "name": "Hybrid Inverters",
+          "slug": "hybrid-inverters",
+          "parentId": "solar-inverters",
+          "productCount": 3
+        },
+        {
+          "id": "on-grid-inverters",
+          "name": "On-Grid Inverters",
+          "slug": "on-grid-inverters",
+          "parentId": "solar-inverters",
+          "productCount": 2
+        },
+        {
+          "id": "off-grid-inverters",
+          "name": "Off-Grid Inverters",
+          "slug": "off-grid-inverters",
+          "parentId": "solar-inverters",
+          "productCount": 2
+        }
+      ]
+    },
+    {
+      "id": "solar-batteries",
+      "name": "Solar Batteries & Storage",
+      "slug": "solar-batteries",
+      "description": "Deep-cycle LiFePO4 lithium batteries and heavy-duty tubular gel batteries for solar energy storage.",
+      "iconName": "BatteryCharging",
+      "productCount": 6,
+      "featuredImage": "/images/solar-battery.svg",
+      "subcategories": [
+        {
+          "id": "lithium-batteries",
+          "name": "Lithium-Ion (LiFePO4) Batteries",
+          "slug": "lithium-batteries",
+          "parentId": "solar-batteries",
+          "productCount": 3
+        },
+        {
+          "id": "lead-acid-tubular",
+          "name": "Lead-Acid Tubular Batteries",
+          "slug": "tubular-batteries",
+          "parentId": "solar-batteries",
+          "productCount": 2
+        },
+        {
+          "id": "gel-batteries",
+          "name": "Deep Cycle Gel Batteries",
+          "slug": "gel-batteries",
+          "parentId": "solar-batteries",
+          "productCount": 1
+        }
+      ]
+    },
+    {
+      "id": "solar-charge-controllers",
+      "name": "Solar Charge Controllers",
+      "slug": "solar-charge-controllers",
+      "description": "Ultra-fast MPPT and reliable PWM solar charge controllers with smart Bluetooth monitoring.",
+      "iconName": "Cpu",
+      "productCount": 4,
+      "featuredImage": "/images/solar-inverter.svg",
+      "subcategories": [
+        {
+          "id": "mppt-controllers",
+          "name": "MPPT Charge Controllers",
+          "slug": "mppt-controllers",
+          "parentId": "solar-charge-controllers",
+          "productCount": 3
+        },
+        {
+          "id": "pwm-controllers",
+          "name": "PWM Charge Controllers",
+          "slug": "pwm-controllers",
+          "parentId": "solar-charge-controllers",
+          "productCount": 1
+        }
+      ]
+    },
+    {
+      "id": "wires-cables",
+      "name": "Wires and Cables",
+      "slug": "wires-cables",
+      "description": "Certified 99.99% pure copper domestic wiring, heavy industrial cables, and UV-resistant Solar DC cables.",
+      "iconName": "Cable",
+      "productCount": 8,
+      "featuredImage": "/images/solar-cable.svg",
+      "subcategories": [
+        {
+          "id": "solar-dc-cables",
+          "name": "Solar DC Cables (4mm² & 6mm²)",
+          "slug": "solar-dc-cables",
+          "parentId": "wires-cables",
+          "productCount": 3
+        },
+        {
+          "id": "house-wiring-cables",
+          "name": "House Wiring FR Copper Cables",
+          "slug": "house-wiring",
+          "parentId": "wires-cables",
+          "productCount": 3
+        },
+        {
+          "id": "armoured-cables",
+          "name": "Underground Armoured Cables",
+          "slug": "armoured-cables",
+          "parentId": "wires-cables",
+          "productCount": 2
+        }
+      ]
+    },
+    {
+      "id": "electrical-protection",
+      "name": "Electrical Protection & Distribution",
+      "slug": "electrical-protection",
+      "description": "MCB, MCCB, RCCB, Surge Protection Devices (SPD), Changeover switches, and heavy-duty distribution boards.",
+      "iconName": "ShieldCheck",
+      "productCount": 7,
+      "featuredImage": "/images/circuit-breaker.svg",
+      "subcategories": [
+        {
+          "id": "mcb-breakers",
+          "name": "MCB Miniature Circuit Breakers",
+          "slug": "mcb-breakers",
+          "parentId": "electrical-protection",
+          "productCount": 3
+        },
+        {
+          "id": "mccb-breakers",
+          "name": "MCCB Moulded Case Breakers",
+          "slug": "mccb-breakers",
+          "parentId": "electrical-protection",
+          "productCount": 2
+        },
+        {
+          "id": "spd-protection",
+          "name": "DC & AC Surge Protection (SPD)",
+          "slug": "surge-protection",
+          "parentId": "electrical-protection",
+          "productCount": 2
+        }
+      ]
+    },
+    {
+      "id": "switches-sockets-lighting",
+      "name": "Switches, Sockets & Lighting",
+      "slug": "switches-sockets-lighting",
+      "description": "Designer modular switches, universal sockets, industrial LED floodlights, and energy-saving fixtures.",
+      "iconName": "ToggleLeft",
+      "productCount": 5,
+      "featuredImage": "/images/led-lighting.svg",
+      "subcategories": [
+        {
+          "id": "modular-switches",
+          "name": "Modular Switches & Sockets",
+          "slug": "modular-switches",
+          "parentId": "switches-sockets-lighting",
+          "productCount": 2
+        },
+        {
+          "id": "led-lighting",
+          "name": "Industrial & Outdoor LED Floodlights",
+          "slug": "led-lighting",
+          "parentId": "switches-sockets-lighting",
+          "productCount": 3
+        }
+      ]
+    },
+    {
+      "id": "electrical-installation-tools",
+      "name": "Installation Tools & Accessories",
+      "slug": "electrical-installation-tools",
+      "description": "True-RMS clamp meters, digital multimeters, MC4 crimping tool kits, earthing copper rods, and junction boxes.",
+      "iconName": "Wrench",
+      "productCount": 5,
+      "featuredImage": "/images/electrical-tools.svg",
+      "subcategories": [
+        {
+          "id": "electrical-testers",
+          "name": "Multimeters & Clamp Meters",
+          "slug": "multimeters-testers",
+          "parentId": "electrical-installation-tools",
+          "productCount": 2
+        },
+        {
+          "id": "crimpers-cutters",
+          "name": "Solar MC4 Crimpers & Cutters",
+          "slug": "crimpers-tools",
+          "parentId": "electrical-installation-tools",
+          "productCount": 2
+        },
+        {
+          "id": "earthing-accessories",
+          "name": "Earthing Rods & Lightning Arrester",
+          "slug": "earthing-accessories",
+          "parentId": "electrical-installation-tools",
+          "productCount": 1
+        }
+      ]
+    },
+    {
+      "id": "solar-complete-kits",
+      "name": "Complete Solar Packages",
+      "slug": "solar-complete-kits",
+      "description": "Pre-engineered turnkey residential, commercial, and off-grid solar packages with full warranty and installation support.",
+      "iconName": "PackageCheck",
+      "productCount": 4,
+      "featuredImage": "/images/solar-package.svg",
+      "subcategories": [
+        {
+          "id": "residential-kits",
+          "name": "Residential Solar Systems",
+          "slug": "residential-solar-kits",
+          "parentId": "solar-complete-kits",
+          "productCount": 2
+        },
+        {
+          "id": "commercial-kits",
+          "name": "Commercial & Factory Solar Kits",
+          "slug": "commercial-solar-kits",
+          "parentId": "solar-complete-kits",
+          "productCount": 1
+        },
+        {
+          "id": "rural-offgrid-kits",
+          "name": "Rural Off-Grid Solar Kits",
+          "slug": "rural-offgrid-kits",
+          "parentId": "solar-complete-kits",
+          "productCount": 1
+        }
+      ]
+    },
+    {
+      "id": "power-backup-accessories",
+      "name": "Power Backup & Stabilizers",
+      "slug": "power-backup-accessories",
+      "description": "Online UPS, automatic voltage stabilizers, heavy-duty battery interconnect cables, and solar monitoring gateways.",
+      "iconName": "ShieldAlert",
+      "productCount": 4,
+      "featuredImage": "/images/solar-inverter.svg",
+      "subcategories": [
+        {
+          "id": "ups-systems",
+          "name": "Industrial & Home UPS",
+          "slug": "ups-systems",
+          "parentId": "power-backup-accessories",
+          "productCount": 2
+        },
+        {
+          "id": "voltage-stabilizers",
+          "name": "Automatic Voltage Stabilizers",
+          "slug": "voltage-stabilizers",
+          "parentId": "power-backup-accessories",
+          "productCount": 2
+        }
+      ]
+    }
+  ],
+  "brands": [
+    {
+      "id": "trina-solar",
+      "name": "Trina Solar",
+      "slug": "trina-solar",
+      "country": "Tier 1 Global",
+      "isPopular": true,
+      "description": "World-leading provider of smart PV and energy storage solutions."
+    },
+    {
+      "id": "jinko-solar",
+      "name": "Jinko Solar",
+      "slug": "jinko-solar",
+      "country": "Tier 1 Global",
+      "isPopular": true,
+      "description": "One of the largest and most innovative solar module manufacturers in the world."
+    },
+    {
+      "id": "longi-solar",
+      "name": "LONGi Solar",
+      "slug": "longi-solar",
+      "country": "Tier 1 Global",
+      "isPopular": true,
+      "description": "Global leader in monocrystalline silicon PV technology."
+    },
+    {
+      "id": "ja-solar",
+      "name": "JA Solar",
+      "slug": "ja-solar",
+      "country": "Tier 1 Global",
+      "isPopular": false,
+      "description": "High-performance solar PV products covering cells, modules, and PV power stations."
+    },
+    {
+      "id": "growatt",
+      "name": "Growatt",
+      "slug": "growatt",
+      "country": "Global",
+      "isPopular": true,
+      "description": "Global leader in smart energy solutions, residential and commercial inverters."
+    },
+    {
+      "id": "deye",
+      "name": "Deye",
+      "slug": "deye",
+      "country": "Global",
+      "isPopular": true,
+      "description": "Specialized in hybrid solar inverters and energy storage systems."
+    },
+    {
+      "id": "huawei",
+      "name": "Huawei FusionSolar",
+      "slug": "huawei",
+      "country": "Global",
+      "isPopular": true,
+      "description": "Smart string solar inverters with digital AI protection."
+    },
+    {
+      "id": "felicity",
+      "name": "Felicity Solar",
+      "slug": "felicity-solar",
+      "country": "Global",
+      "isPopular": true,
+      "description": "Manufacturer of LiFePO4 batteries, inverters, and integrated energy solutions."
+    },
+    {
+      "id": "pylontech",
+      "name": "Pylontech",
+      "slug": "pylontech",
+      "country": "Global",
+      "isPopular": true,
+      "description": "Pioneer for lithium iron phosphate storage batteries and rack systems."
+    },
+    {
+      "id": "victron",
+      "name": "Victron Energy",
+      "slug": "victron-energy",
+      "country": "Netherlands",
+      "isPopular": true,
+      "description": "Premium European power solutions, SmartSolar MPPT controllers, and multi-plus inverters."
+    },
+    {
+      "id": "epever",
+      "name": "EPEVER",
+      "slug": "epever",
+      "country": "Global",
+      "isPopular": false,
+      "description": "Affordable, precision MPPT and PWM solar charge controllers."
+    },
+    {
+      "id": "brb-cables",
+      "name": "BRB Cable Industries",
+      "slug": "brb-cables",
+      "country": "Bangladesh",
+      "isPopular": true,
+      "description": "Leading manufacturer of premium cables and conductors in Bangladesh."
+    },
+    {
+      "id": "bbs-cables",
+      "name": "BBS Cables Ltd",
+      "slug": "bbs-cables",
+      "country": "Bangladesh",
+      "isPopular": true,
+      "description": "Certified flame retardant domestic and industrial electrical power cables."
+    },
+    {
+      "id": "schneider",
+      "name": "Schneider Electric",
+      "slug": "schneider-electric",
+      "country": "France",
+      "isPopular": true,
+      "description": "Global specialist in energy management, automation, and circuit breakers."
+    },
+    {
+      "id": "abb",
+      "name": "ABB",
+      "slug": "abb",
+      "country": "Switzerland",
+      "isPopular": true,
+      "description": "Pioneering technology leader in electrification products and MCCBs."
+    },
+    {
+      "id": "chint",
+      "name": "Chint Electric",
+      "slug": "chint-electric",
+      "country": "Global",
+      "isPopular": true,
+      "description": "Leading smart energy solutions and industrial electrical distribution."
+    },
+    {
+      "id": "superstar",
+      "name": "Super Star Group (SSG)",
+      "slug": "super-star",
+      "country": "Bangladesh",
+      "isPopular": true,
+      "description": "Household name in Bangladesh for switches, sockets, and LED lighting."
+    },
+    {
+      "id": "philips",
+      "name": "Philips Lighting",
+      "slug": "philips",
+      "country": "Global",
+      "isPopular": true,
+      "description": "High-lumen LED floodlights, panels, and energy-saving lighting fixtures."
+    },
+    {
+      "id": "fluke",
+      "name": "Fluke Corporation",
+      "slug": "fluke",
+      "country": "USA",
+      "isPopular": true,
+      "description": "The world leader in professional electronic test tools and True-RMS meters."
+    },
+    {
+      "id": "total-tools",
+      "name": "TOTAL Tools",
+      "slug": "total-tools",
+      "country": "Global",
+      "isPopular": false,
+      "description": "High quality industrial electrical tools and MC4 crimpers."
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-sp-01",
+      "name": "Trina Solar Vertex S+ 585W Dual Glass Bifacial Solar Panel",
+      "slug": "trina-solar-vertex-s-plus-585w-bifacial",
+      "description": "The Trina Solar Vertex S+ 585W delivers up to 22.3% module efficiency utilizing high-density N-type TOPCon bifacial technology. Built with 2.0mm dual heat-strengthened glass for harsh tropical climates, maximum resistance against PID, micro-cracks, and salt mist corrosion in Bangladesh.",
+      "shortDescription": "585W N-Type TOPCon Dual-Glass Bifacial Module with 30-Year Performance Warranty.",
+      "price": 18500,
+      "originalPrice": 20200,
+      "currency": "BDT",
+      "image": "/images/solar-panel.svg",
+      "gallery": [
+        "/images/solar-panel.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-panels",
+      "subcategoryId": "bifacial-panels",
+      "brand": "Trina Solar",
+      "sku": "TS-TSM-NEG19RC.20-585",
+      "stock": 45,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 38,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER",
+        "HOT"
+      ],
+      "installationSupportAvailable": true,
+      "compatibilityNotes": "Compatible with standard MC4 connectors and all 1000V/1500V string & hybrid inverters.",
+      "highlights": [
+        "N-Type i-TOPCon Cell Technology",
+        "Up to 30% additional backside energy yield",
+        "Anti-reflective dual glass construction",
+        "30-year linear power warranty"
+      ],
+      "specifications": {
+        "ratedPowerW": 585,
+        "cellType": "Bifacial Mono",
+        "moduleEfficiency": "22.3%",
+        "maxVoltageVmp": 39.4,
+        "maxCurrentImp": 14.85,
+        "openCircuitVoltageVoc": 47.6,
+        "shortCircuitCurrentIsc": 15.75,
+        "dimensionsMm": "2278 x 1134 x 30 mm",
+        "weightKg": 32.2,
+        "warrantyYears": 25,
+        "origin": "Imported (Tier 1)",
+        "certification": [
+          "IEC 61215",
+          "IEC 61730",
+          "CE",
+          "ISO 9001"
+        ]
+      }
+    },
+    {
+      "id": "prod-sp-02",
+      "name": "Jinko Solar Tiger Neo N-Type 550W Monocrystalline Half-Cut Panel",
+      "slug": "jinko-solar-tiger-neo-550w-mono-half-cut",
+      "description": "Jinko Tiger Neo 550W utilizes innovative SMBB half-cell configuration with N-type TOPCon wafers. Features lower temperature coefficient (-0.30%/°C), enabling superior output in hot Bangladeshi summer conditions.",
+      "shortDescription": "550W High-Efficiency Half-Cut Mono Panel for rooftop residential & commercial setups.",
+      "price": 16800,
+      "originalPrice": 18000,
+      "currency": "BDT",
+      "image": "/images/solar-panel.svg",
+      "gallery": [
+        "/images/solar-panel.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-panels",
+      "subcategoryId": "mono-panels",
+      "brand": "Jinko Solar",
+      "sku": "JKM550N-72HL4-V",
+      "stock": 60,
+      "inStock": true,
+      "rating": 4.8,
+      "reviewCount": 29,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER"
+      ],
+      "installationSupportAvailable": true,
+      "compatibilityNotes": "Pairs seamlessly with 48V off-grid inverters (via MPPT) and on-grid three-phase inverters.",
+      "highlights": [
+        "SMBB Technology with better light trapping",
+        "PID Resistance guaranteed via cell process",
+        "Optimized for hot climate operation",
+        "High snow/wind mechanical load certified"
+      ],
+      "specifications": {
+        "ratedPowerW": 550,
+        "cellType": "TOPCon",
+        "moduleEfficiency": "21.5%",
+        "maxVoltageVmp": 41.58,
+        "maxCurrentImp": 13.23,
+        "openCircuitVoltageVoc": 50.28,
+        "shortCircuitCurrentIsc": 13.98,
+        "dimensionsMm": "2278 x 1134 x 35 mm",
+        "weightKg": 28,
+        "warrantyYears": 25,
+        "origin": "Imported (Tier 1)",
+        "certification": [
+          "IEC 61215",
+          "TUV Rheinland",
+          "CE"
+        ]
+      }
+    },
+    {
+      "id": "prod-sp-03",
+      "name": "LONGi Solar Hi-MO 6 Explorer 570W All-Black Monocrystalline Panel",
+      "slug": "longi-solar-himo-6-explorer-570w",
+      "description": "LONGi Hi-MO 6 Explorer 570W featuring HPBC back-contact cell structure. Elegant frontal appearance without grid lines, maximizing aesthetic appeal on modern residential villas and commercial headquarters.",
+      "shortDescription": "570W HPBC aesthetic high-yield panel with front busbar-free design.",
+      "price": 17900,
+      "originalPrice": 19500,
+      "currency": "BDT",
+      "image": "/images/solar-panel.svg",
+      "gallery": [
+        "/images/solar-panel.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-panels",
+      "subcategoryId": "mono-panels",
+      "brand": "LONGi Solar",
+      "sku": "LR5-72HTH-570M",
+      "stock": 35,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 22,
+      "isFeatured": false,
+      "isNewArrival": true,
+      "isOnSale": true,
+      "badges": [
+        "NEW"
+      ],
+      "installationSupportAvailable": true,
+      "compatibilityNotes": "Recommended for rooftop systems with limited roof area requiring maximum wattage density.",
+      "highlights": [
+        "Next-Gen HPBC Cell Architecture",
+        "Exceptional performance under partial shading",
+        "Heavy-duty anodized aluminium frame"
+      ],
+      "specifications": {
+        "ratedPowerW": 570,
+        "cellType": "Half-Cut",
+        "moduleEfficiency": "22.1%",
+        "maxVoltageVmp": 44.06,
+        "maxCurrentImp": 12.94,
+        "openCircuitVoltageVoc": 52.16,
+        "shortCircuitCurrentIsc": 13.78,
+        "dimensionsMm": "2278 x 1134 x 35 mm",
+        "weightKg": 27.5,
+        "warrantyYears": 25,
+        "origin": "Tier 1 Global",
+        "certification": [
+          "IEC 61215",
+          "IEC 61730",
+          "UL 61730"
+        ]
+      }
+    },
+    {
+      "id": "prod-sp-04",
+      "name": "JA Solar DeepBlue 4.0 Pro 560W Bifacial Dual-Glass Module",
+      "slug": "ja-solar-deepblue-560w-bifacial",
+      "description": "JA Solar DeepBlue 4.0 Pro 560W combines 16BB Bycium+ cell technology with low degradation rates. High energy yield under cloudy and diffused light environments common during monsoon seasons in Bangladesh.",
+      "shortDescription": "560W 16BB Bifacial N-Type Module for industrial rooftops and solar farms.",
+      "price": 17200,
+      "originalPrice": 18500,
+      "currency": "BDT",
+      "image": "/images/solar-panel.svg",
+      "gallery": [
+        "/images/solar-panel.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-panels",
+      "subcategoryId": "bifacial-panels",
+      "brand": "JA Solar",
+      "sku": "JAM72D40-560/GB",
+      "stock": 28,
+      "inStock": true,
+      "rating": 4.7,
+      "reviewCount": 16,
+      "isFeatured": false,
+      "isNewArrival": false,
+      "isOnSale": false,
+      "installationSupportAvailable": true,
+      "highlights": [
+        "Bycium+ N-Type cells",
+        "IP68 rated junction box with bypass diodes",
+        "30-year linear performance warranty"
+      ],
+      "specifications": {
+        "ratedPowerW": 560,
+        "cellType": "Bifacial Mono",
+        "moduleEfficiency": "21.7%",
+        "maxVoltageVmp": 42.15,
+        "maxCurrentImp": 13.29,
+        "openCircuitVoltageVoc": 50.65,
+        "shortCircuitCurrentIsc": 14.12,
+        "dimensionsMm": "2278 x 1134 x 30 mm",
+        "weightKg": 31.8,
+        "warrantyYears": 25,
+        "origin": "Tier 1 Global"
+      }
+    },
+    {
+      "id": "prod-inv-01",
+      "name": "Growatt SPH 6000TL BL-UP 6kW Single-Phase Hybrid Solar Inverter",
+      "slug": "growatt-sph-6000tl-hybrid-inverter",
+      "description": "Growatt SPH6000TL BL-UP is an intelligent 6kW hybrid inverter ideal for residential grid-tied systems with battery backup. Dual MPPT trackers allow PV strings from two roof orientations. Seamless 10ms UPS switchover guarantees uninterrupted power during Dhaka load-shedding.",
+      "shortDescription": "6kW Hybrid Single-Phase Inverter with Dual MPPT and EPS Load Backup.",
+      "price": 145000,
+      "originalPrice": 155000,
+      "currency": "BDT",
+      "image": "/images/solar-inverter.svg",
+      "gallery": [
+        "/images/solar-inverter.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-inverters",
+      "subcategoryId": "hybrid-inverters",
+      "brand": "Growatt",
+      "sku": "GW-SPH-6000-BL-UP",
+      "stock": 12,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 31,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER",
+        "HOT"
+      ],
+      "installationSupportAvailable": true,
+      "compatibilityNotes": "Supports 48V Lithium (LiFePO4) and Lead-Acid battery banks. Direct plug-and-play with Pylontech US3000C/US5000.",
+      "highlights": [
+        "Dual independent MPPT trackers",
+        "Sub-10ms UPS grade transfer time",
+        "WiFi / ShinePhone app remote monitoring",
+        "Net-metering compliant with IP65 weatherproofing"
+      ],
+      "specifications": {
+        "ratedOutputKva": 6,
+        "inverterType": "Hybrid",
+        "phase": "Single Phase",
+        "mpptCount": 2,
+        "batteryVoltageV": 48,
+        "pureSineWave": true,
+        "warrantyYears": 5,
+        "weightKg": 28,
+        "certification": [
+          "CE",
+          "VDE-AR-N 4105",
+          "IEC 62109"
+        ]
+      }
+    },
+    {
+      "id": "prod-inv-02",
+      "name": "Deye SUN-8K-SG01LP1-EU 8kW Low Voltage Hybrid Inverter",
+      "slug": "deye-sun-8k-hybrid-inverter",
+      "description": "Deye 8kW Single Phase Low Voltage Hybrid Inverter is engineered for heavy residential loads including dual 1.5-ton inverter air conditioners. Features colorful touch LCD, generator auto-start connectivity, and ability to parallel up to 16 units for massive power scaling.",
+      "shortDescription": "8kW Low Voltage 48V Hybrid Inverter with Touchscreen LCD & Generator Support.",
+      "price": 185000,
+      "originalPrice": 198000,
+      "currency": "BDT",
+      "image": "/images/solar-inverter.svg",
+      "gallery": [
+        "/images/solar-inverter.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-inverters",
+      "subcategoryId": "hybrid-inverters",
+      "brand": "Deye",
+      "sku": "DEYE-SUN-8K-SG01LP1",
+      "stock": 8,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 19,
+      "isFeatured": true,
+      "isNewArrival": false,
+      "isOnSale": true,
+      "badges": [
+        "HOT"
+      ],
+      "installationSupportAvailable": true,
+      "compatibilityNotes": "Compatible with all 48V LiFePO4 batteries with CAN/RS485 communication protocols.",
+      "highlights": [
+        "Max charging/discharging current 190A",
+        "Colorful interactive LCD touchscreen display",
+        "Smart load output and peak-shaving functionality",
+        "Supports energy storage from diesel generators"
+      ],
+      "specifications": {
+        "ratedOutputKva": 8,
+        "inverterType": "Hybrid",
+        "phase": "Single Phase",
+        "mpptCount": 2,
+        "batteryVoltageV": 48,
+        "pureSineWave": true,
+        "warrantyYears": 5,
+        "weightKg": 32,
+        "certification": [
+          "IEC 62109",
+          "EN 50549",
+          "CE"
+        ]
+      }
+    },
+    {
+      "id": "prod-inv-03",
+      "name": "Huawei SUN2000-10KTL-M1 10kW Three-Phase On-Grid Inverter",
+      "slug": "huawei-sun2000-10ktl-three-phase-inverter",
+      "description": "Huawei SUN2000-10KTL-M1 is a flagship commercial & large residential three-phase grid-tied inverter. Employs AI-powered Arc Fault Circuit Interrupter (AFCI) safety and integrated PID recovery. 98.6% maximum European efficiency ensures peak energy capture.",
+      "shortDescription": "10kW Three-Phase Grid-Tied Inverter with AI Arc-Fault Protection.",
+      "price": 215000,
+      "originalPrice": 230000,
+      "currency": "BDT",
+      "image": "/images/solar-inverter.svg",
+      "gallery": [
+        "/images/solar-inverter.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-inverters",
+      "subcategoryId": "on-grid-inverters",
+      "brand": "Huawei FusionSolar",
+      "sku": "HUA-SUN2000-10KTL-M1",
+      "stock": 6,
+      "inStock": true,
+      "rating": 4.8,
+      "reviewCount": 14,
+      "isFeatured": true,
+      "isNewArrival": true,
+      "isOnSale": false,
+      "badges": [
+        "NEW"
+      ],
+      "installationSupportAvailable": true,
+      "compatibilityNotes": "Intended for three-phase commercial buildings or net-metering residential connections.",
+      "highlights": [
+        "AI powered arc fault detection (AFCI)",
+        "Natural cooling technology for whisper-quiet operation",
+        "Dual MPPT with 98.6% peak efficiency",
+        "FusionSolar cloud monitoring portal included"
+      ],
+      "specifications": {
+        "ratedOutputKva": 10,
+        "inverterType": "On-Grid",
+        "phase": "Three Phase",
+        "mpptCount": 2,
+        "pureSineWave": true,
+        "warrantyYears": 5,
+        "weightKg": 17,
+        "certification": [
+          "IEC 62109-1",
+          "IEC 62109-2",
+          "VDE 0126-1-1"
+        ]
+      }
+    },
+    {
+      "id": "prod-inv-04",
+      "name": "Felicity Solar IVEM5048 5kVA 48V Off-Grid Solar Inverter with 120A MPPT",
+      "slug": "felicity-solar-ivem5048-5kva-offgrid-inverter",
+      "description": "Designed for rural homes and businesses where the national power grid is unstable or unavailable. Felicity IVEM5048 handles up to 6000W of solar panel arrays with high PV input voltage up to 500VDC.",
+      "shortDescription": "5kVA 48V Pure Sine Wave Off-Grid Inverter with built-in 120A MPPT Solar Charger.",
+      "price": 78000,
+      "originalPrice": 85000,
+      "currency": "BDT",
+      "image": "/images/solar-inverter.svg",
+      "gallery": [
+        "/images/solar-inverter.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-inverters",
+      "subcategoryId": "off-grid-inverters",
+      "brand": "Felicity Solar",
+      "sku": "FL-IVEM-5048-120A",
+      "stock": 18,
+      "inStock": true,
+      "rating": 4.7,
+      "reviewCount": 26,
+      "isFeatured": false,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER"
+      ],
+      "installationSupportAvailable": true,
+      "compatibilityNotes": "Works with both 48V Lithium and 4x12V lead-acid deep cycle batteries in series.",
+      "highlights": [
+        "Pure sine wave output with surge power 10000VA",
+        "Built-in 120A MPPT solar charge controller",
+        "Wide PV input voltage range: 120V - 450V DC",
+        "Configurable AC/Solar input priority via LCD"
+      ],
+      "specifications": {
+        "ratedOutputKva": 5,
+        "inverterType": "Off-Grid",
+        "phase": "Single Phase",
+        "mpptCount": 1,
+        "batteryVoltageV": 48,
+        "pureSineWave": true,
+        "warrantyYears": 2,
+        "weightKg": 12.5
+      }
+    },
+    {
+      "id": "prod-bat-01",
+      "name": "Pylontech US5000 4.8kWh 48V LiFePO4 Lithium Battery Module",
+      "slug": "pylontech-us5000-48v-lifepo4-battery",
+      "description": "Pylontech US5000 is the gold standard for residential solar energy storage. Boasting 4.8kWh nominal capacity at 48V, intelligent internal Battery Management System (BMS), and over 6,000 cycles at 95% Depth of Discharge (DoD). Rack mountable and parallelable up to 16 units without external hub.",
+      "shortDescription": "4.8kWh 48V Lithium Iron Phosphate Battery with 6000+ Cycles and 95% DoD.",
+      "price": 165000,
+      "originalPrice": 178000,
+      "currency": "BDT",
+      "image": "/images/solar-battery.svg",
+      "gallery": [
+        "/images/solar-battery.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-batteries",
+      "subcategoryId": "lithium-batteries",
+      "brand": "Pylontech",
+      "sku": "PYLON-US5000-48V",
+      "stock": 14,
+      "inStock": true,
+      "rating": 5,
+      "reviewCount": 42,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER",
+        "HOT"
+      ],
+      "installationSupportAvailable": true,
+      "compatibilityNotes": "Certified plug-and-play communication with Growatt, Deye, Victron, and GoodWe inverters.",
+      "highlights": [
+        "6000 cycles @ 25°C with 95% DoD",
+        "Modular 19-inch rack-mount form factor",
+        "Self-designed BMS protects against over-charge & high temps",
+        "10-year factory performance warranty"
+      ],
+      "specifications": {
+        "batteryChemistry": "LiFePO4 (Lithium Iron)",
+        "nominalVoltageV": 48,
+        "capacityAh": 100,
+        "usableEnergyKwh": 4.56,
+        "cycleLife": "6000+ Cycles @ 95% DoD",
+        "dodPercentage": 95,
+        "weightKg": 39,
+        "dimensionsMm": "442 x 420 x 161 mm",
+        "warrantyYears": 10,
+        "certification": [
+          "TUV",
+          "CE",
+          "UN38.3",
+          "UL1973"
+        ]
+      }
+    },
+    {
+      "id": "prod-bat-02",
+      "name": "Felicity Solar LPBF48200-H 10kWh 48V 200Ah Wall-Mount LiFePO4 Battery",
+      "slug": "felicity-solar-10kwh-wall-mount-battery",
+      "description": "High-capacity 10kWh lithium storage bank housed in an elegant wall-mounted white enclosure with LED battery gauge. Engineered for long-duration backup for whole-house solar installations in Bangladesh.",
+      "shortDescription": "10kWh 48V 200Ah Wall-Mount LiFePO4 Energy Storage with Integrated Breaker.",
+      "price": 295000,
+      "originalPrice": 320000,
+      "currency": "BDT",
+      "image": "/images/solar-battery.svg",
+      "gallery": [
+        "/images/solar-battery.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-batteries",
+      "subcategoryId": "lithium-batteries",
+      "brand": "Felicity Solar",
+      "sku": "FL-LPBF48200-H-10KWH",
+      "stock": 7,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 18,
+      "isFeatured": true,
+      "isNewArrival": true,
+      "isOnSale": true,
+      "badges": [
+        "NEW"
+      ],
+      "installationSupportAvailable": true,
+      "compatibilityNotes": "Seamless CAN/RS485 auto-handshake with Felicity, Growatt, and Deye hybrid inverters.",
+      "highlights": [
+        "Huge 10.24kWh usable energy capacity",
+        "Built-in DC 125A safety isolator breaker",
+        "Sleek wall-hanging design saves floor footprint",
+        "6000 cycle lifespan at 80% discharge depth"
+      ],
+      "specifications": {
+        "batteryChemistry": "LiFePO4 (Lithium Iron)",
+        "nominalVoltageV": 51.2,
+        "capacityAh": 200,
+        "usableEnergyKwh": 10.24,
+        "cycleLife": "6000 Cycles",
+        "dodPercentage": 90,
+        "weightKg": 85,
+        "warrantyYears": 5
+      }
+    },
+    {
+      "id": "prod-bat-03",
+      "name": "Rahimafrooz Solar Tubular Deep Cycle Battery 12V 200Ah",
+      "slug": "rahimafrooz-solar-tubular-12v-200ah-battery",
+      "description": "Rahimafrooz heavy-duty solar tubular plate battery designed specifically for tropical operating temperatures and erratic charging schedules. Thick spine cast lead-antimony alloy plates deliver extended cycle life under continuous deep discharge.",
+      "shortDescription": "12V 200Ah Heavy Duty Solar Deep Cycle Tubular Battery with Ceramic Vent Plugs.",
+      "price": 26500,
+      "originalPrice": 28000,
+      "currency": "BDT",
+      "image": "/images/solar-battery.svg",
+      "gallery": [
+        "/images/solar-battery.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-batteries",
+      "subcategoryId": "lead-acid-tubular",
+      "brand": "Rahimafrooz",
+      "sku": "RAHIM-STB-200-12V",
+      "stock": 50,
+      "inStock": true,
+      "rating": 4.7,
+      "reviewCount": 54,
+      "isFeatured": false,
+      "isBestSeller": true,
+      "isOnSale": false,
+      "badges": [
+        "BESTSELLER"
+      ],
+      "installationSupportAvailable": true,
+      "highlights": [
+        "Specially designed tubular positive plates",
+        "Low water loss micro-porous separators",
+        "Ceramic flame arrestor vent plugs",
+        "Proven brand reliability across Bangladesh"
+      ],
+      "specifications": {
+        "batteryChemistry": "Lead Acid Tubular",
+        "nominalVoltageV": 12,
+        "capacityAh": 200,
+        "cycleLife": "1200+ Cycles @ 80% DoD",
+        "dodPercentage": 80,
+        "weightKg": 62,
+        "warrantyYears": 3,
+        "origin": "Bangladesh (BSTI Certified)"
+      }
+    },
+    {
+      "id": "prod-cc-01",
+      "name": "Victron Energy SmartSolar MPPT 150/70-Tr Charge Controller with Bluetooth",
+      "slug": "victron-smartsolar-mppt-150-70-bluetooth",
+      "description": "Ultra-fast Maximum Power Point Tracking (MPPT) optimizes solar harvest by up to 30% compared to PWM controllers and up to 10% compared to slower MPPT controllers. Built-in Bluetooth Smart allows instant monitoring and programming via smartphones.",
+      "shortDescription": "150V 70A Premium European MPPT Controller with wireless Bluetooth app telemetry.",
+      "price": 49500,
+      "originalPrice": 54000,
+      "currency": "BDT",
+      "image": "/images/solar-inverter.svg",
+      "gallery": [
+        "/images/solar-inverter.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-charge-controllers",
+      "subcategoryId": "mppt-controllers",
+      "brand": "Victron Energy",
+      "sku": "SCC115070210",
+      "stock": 15,
+      "inStock": true,
+      "rating": 5,
+      "reviewCount": 19,
+      "isFeatured": true,
+      "isNewArrival": false,
+      "isOnSale": true,
+      "badges": [
+        "HOT"
+      ],
+      "installationSupportAvailable": true,
+      "highlights": [
+        "Ultra-fast MPPT tracking in changing cloud cover",
+        "Integrated Bluetooth Smart for VictronConnect app",
+        "Full battery life algorithm for lead-acid & LiFePO4",
+        "5-year European manufacturer warranty"
+      ],
+      "specifications": {
+        "controllerType": "MPPT",
+        "maxPvInputVoltage": 150,
+        "ratedChargeCurrentA": 70,
+        "warrantyYears": 5,
+        "weightKg": 3,
+        "origin": "Netherlands",
+        "certification": [
+          "EN/IEC 62109-1",
+          "CE"
+        ]
+      }
+    },
+    {
+      "id": "prod-cc-02",
+      "name": "EPEVER Tracer 4210AN 40A MPPT Solar Charge Controller with LCD",
+      "slug": "epever-tracer-4210an-40a-mppt",
+      "description": "Popular and dependable 40A MPPT controller from EPEVER supporting 12V and 24V battery systems with up to 100V PV open-circuit input. Backlit LCD screen displays real-time solar wattage, battery volts, and daily energy yield.",
+      "shortDescription": "40A MPPT 100V PV Solar Regulator for 12V/24V Battery Banks with Backlit LCD.",
+      "price": 11500,
+      "originalPrice": 13000,
+      "currency": "BDT",
+      "image": "/images/solar-inverter.svg",
+      "gallery": [
+        "/images/solar-inverter.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-charge-controllers",
+      "subcategoryId": "mppt-controllers",
+      "brand": "EPEVER",
+      "sku": "EPEVER-TRACER-4210AN",
+      "stock": 32,
+      "inStock": true,
+      "rating": 4.8,
+      "reviewCount": 47,
+      "isFeatured": false,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER"
+      ],
+      "installationSupportAvailable": false,
+      "highlights": [
+        "99.5% tracking efficiency with multiphase buck conversion",
+        "Supports Sealed, Gel, Flooded, and Lithium batteries",
+        "RS485 communication port for remote display or PC connect"
+      ],
+      "specifications": {
+        "controllerType": "MPPT",
+        "maxPvInputVoltage": 100,
+        "ratedChargeCurrentA": 40,
+        "warrantyYears": 2,
+        "weightKg": 1.65
+      }
+    },
+    {
+      "id": "prod-cb-01",
+      "name": "BRB Solar DC Cable 6mm² Tinned Copper Double Insulated (100 Meter Coil)",
+      "slug": "brb-solar-dc-cable-6mm-tinned-copper-100m",
+      "description": "Genuine BRB Solar DC Photovoltaic single-core cable designed specifically for connecting solar arrays to inverters. Manufactured with Class 5 tinned electrolytic copper strands, cross-linked halogen-free polyolefin (XLPO) dual insulation. UV-resistant, flame retardant, ozone and acid resistant.",
+      "shortDescription": "6mm² Tinned Copper XLPO Double Insulated 1500V DC Solar Cable (100M Drum).",
+      "price": 14500,
+      "originalPrice": 16000,
+      "currency": "BDT",
+      "image": "/images/solar-cable.svg",
+      "gallery": [
+        "/images/solar-cable.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "wires-cables",
+      "subcategoryId": "solar-dc-cables",
+      "brand": "BRB Cable Industries",
+      "sku": "BRB-PV-6MM2-100M-RED",
+      "stock": 40,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 35,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER"
+      ],
+      "installationSupportAvailable": false,
+      "highlights": [
+        "Class 5 high-purity tinned electrolytic copper",
+        "UV, water, and ozone resistant for outdoor rooftop exposure",
+        "Rated 1.5kV DC voltage grade (25-year lifespan)",
+        "TUV 2PfG 1169 & EN 50618 certified"
+      ],
+      "specifications": {
+        "cableType": "Solar DC PV",
+        "conductorMaterial": "Copper (Cu)",
+        "crossSectionMm2": "6.0 mm²",
+        "voltageGrade": "1500V DC",
+        "coilLengthM": 100,
+        "warrantyYears": 10,
+        "origin": "Bangladesh (BRB Quality Standard)",
+        "certification": [
+          "EN 50618",
+          "TUV Rheinland",
+          "BSTI"
+        ]
+      }
+    },
+    {
+      "id": "prod-cb-02",
+      "name": "BRB Solar DC Cable 4mm² Tinned Copper (100 Meter Coil)",
+      "slug": "brb-solar-dc-cable-4mm-tinned-copper-100m",
+      "description": "Standard 4mm² tinned copper dual-jacket solar PV cable for small to mid-sized residential solar strings. Minimizes voltage drops over 15–30 meter rooftop runs.",
+      "shortDescription": "4mm² Tinned Copper Solar Cable 1500V DC Red/Black (100M Coil).",
+      "price": 11200,
+      "originalPrice": 12500,
+      "currency": "BDT",
+      "image": "/images/solar-cable.svg",
+      "gallery": [
+        "/images/solar-cable.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "wires-cables",
+      "subcategoryId": "solar-dc-cables",
+      "brand": "BRB Cable Industries",
+      "sku": "BRB-PV-4MM2-100M-BLK",
+      "stock": 55,
+      "inStock": true,
+      "rating": 4.8,
+      "reviewCount": 28,
+      "isFeatured": false,
+      "isBestSeller": true,
+      "isOnSale": false,
+      "highlights": [
+        "Halogen-free compound",
+        "1500V DC operating voltage",
+        "Extreme weather temperature range -40°C to +90°C"
+      ],
+      "specifications": {
+        "cableType": "Solar DC PV",
+        "conductorMaterial": "Copper (Cu)",
+        "crossSectionMm2": "4.0 mm²",
+        "voltageGrade": "1500V DC",
+        "coilLengthM": 100,
+        "warrantyYears": 10,
+        "origin": "Bangladesh"
+      }
+    },
+    {
+      "id": "prod-cb-03",
+      "name": "BBS Cables FR-PVC Insulated Single Core 2.5rm House Wiring Wire (100M)",
+      "slug": "bbs-cables-fr-pvc-2-5rm-house-wire-100m",
+      "description": "BBS Cables Flame Retardant (FR) single-core 2.5rm (equivalent 2.5mm²) copper wire. Engineered for residential conduit wiring, sub-distribution circuits, and AC power socket feeds. 99.99% pure annealed copper conductor.",
+      "shortDescription": "2.5rm Flame Retardant Pure Copper Domestic Conduit Wire (100M Coil).",
+      "price": 6850,
+      "originalPrice": 7400,
+      "currency": "BDT",
+      "image": "/images/solar-cable.svg",
+      "gallery": [
+        "/images/solar-cable.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "wires-cables",
+      "subcategoryId": "house-wiring-cables",
+      "brand": "BBS Cables Ltd",
+      "sku": "BBS-FR-BYA-2.5RM-100M",
+      "stock": 80,
+      "inStock": true,
+      "rating": 4.8,
+      "reviewCount": 41,
+      "isFeatured": false,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER"
+      ],
+      "highlights": [
+        "Self-extinguishing Flame Retardant PVC",
+        "99.99% EC grade pure copper",
+        "BSTI BDS 901 standard compliant"
+      ],
+      "specifications": {
+        "cableType": "Flexible House Wire",
+        "conductorMaterial": "Copper (Cu)",
+        "crossSectionMm2": "2.5 mm² (2.5rm)",
+        "voltageGrade": "450/750V AC",
+        "coilLengthM": 100,
+        "origin": "Bangladesh (BSTI Certified)"
+      }
+    },
+    {
+      "id": "prod-cb-04",
+      "name": "BRB 4-Core 16mm² XLPE Insulated Underground Armoured Cable (Per Meter)",
+      "slug": "brb-4-core-16mm-armoured-cable-per-meter",
+      "description": "Heavy duty 4-core 16mm² multi-strand copper cable with galvanized steel wire armour (SWA) and weather-proof extruded outer sheath. Specially engineered for underground inverter-to-main-panel connections and commercial feeder lines.",
+      "shortDescription": "4-Core 16mm² Galvanized Steel Wire Armoured Copper Cable for Underground Power Transmission.",
+      "price": 920,
+      "currency": "BDT",
+      "image": "/images/solar-cable.svg",
+      "gallery": [
+        "/images/solar-cable.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "wires-cables",
+      "subcategoryId": "armoured-cables",
+      "brand": "BRB Cable Industries",
+      "sku": "BRB-SWA-4C-16MM-MTR",
+      "stock": 450,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 15,
+      "isFeatured": false,
+      "highlights": [
+        "Galvanized steel wire armouring protects against rodent and impact damage",
+        "1000V rated XLPE insulation"
+      ],
+      "specifications": {
+        "cableType": "Armoured",
+        "conductorMaterial": "Copper (Cu)",
+        "crossSectionMm2": "16.0 mm² x 4 Core",
+        "voltageGrade": "600/1000V",
+        "origin": "Bangladesh"
+      }
+    },
+    {
+      "id": "prod-prot-01",
+      "name": "Schneider Electric Acti9 iC60N 32A Double Pole (2P) MCB Circuit Breaker",
+      "slug": "schneider-acti9-ic60n-32a-2p-mcb",
+      "description": "Schneider Electric Acti9 iC60N miniature circuit breaker delivers unmatched circuit protection against short-circuit and overload faults in electrical installations. Rated 32A, C-curve tripping, 6kA breaking capacity at 415V AC. Features VisiTrip for instant visual fault tripping indication.",
+      "shortDescription": "32A 2-Pole C-Curve 6kA Miniature Circuit Breaker with VisiTrip and VisiSafe.",
+      "price": 1850,
+      "originalPrice": 2100,
+      "currency": "BDT",
+      "image": "/images/circuit-breaker.svg",
+      "gallery": [
+        "/images/circuit-breaker.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "electrical-protection",
+      "subcategoryId": "mcb-breakers",
+      "brand": "Schneider Electric",
+      "sku": "SCH-A9F74232-2P-32A",
+      "stock": 65,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 52,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER"
+      ],
+      "installationSupportAvailable": false,
+      "highlights": [
+        "VisiTrip indicator reveals faulty outgoing circuit at a glance",
+        "VisiSafe provides guaranteed downstream isolation",
+        "6000A breaking capacity according to IEC/EN 60898-1",
+        "Long mechanical endurance up to 20,000 cycles"
+      ],
+      "specifications": {
+        "deviceType": "MCB",
+        "ratedCurrentA": 32,
+        "poles": "2P",
+        "breakingCapacityKa": 6,
+        "tripCurve": "C",
+        "warrantyYears": 2,
+        "origin": "Schneider France / Global",
+        "certification": [
+          "IEC/EN 60898-1",
+          "IEC/EN 60947-2"
+        ]
+      }
+    },
+    {
+      "id": "prod-prot-02",
+      "name": "Schneider Electric Acti9 iC60N 63A 4-Pole (4P) Three-Phase MCB",
+      "slug": "schneider-acti9-63a-4p-mcb",
+      "description": "High-current four-pole 63A miniature circuit breaker for three-phase + neutral incoming solar lines, industrial distribution panels, and commercial generators.",
+      "shortDescription": "63A 4-Pole Three-Phase Industrial Circuit Breaker 6kA C-Curve.",
+      "price": 4200,
+      "originalPrice": 4600,
+      "currency": "BDT",
+      "image": "/images/circuit-breaker.svg",
+      "gallery": [
+        "/images/circuit-breaker.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "electrical-protection",
+      "subcategoryId": "mcb-breakers",
+      "brand": "Schneider Electric",
+      "sku": "SCH-A9F74463-4P-63A",
+      "stock": 30,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 23,
+      "isFeatured": false,
+      "isOnSale": true,
+      "highlights": [
+        "4-Pole comprehensive phase & neutral isolation",
+        "High electrical durability"
+      ],
+      "specifications": {
+        "deviceType": "MCB",
+        "ratedCurrentA": 63,
+        "poles": "4P",
+        "breakingCapacityKa": 6,
+        "tripCurve": "C",
+        "origin": "Schneider Electric"
+      }
+    },
+    {
+      "id": "prod-prot-03",
+      "name": "ABB Formula A1N 125A 3-Pole (3P) MCCB Moulded Case Circuit Breaker",
+      "slug": "abb-formula-a1n-125a-3p-mccb",
+      "description": "ABB Formula A1N 125A 3P MCCB provides robust fixed thermal-magnetic protection up to 125A with 18kA breaking capacity at 415V AC. Ideal for main solar combiner distribution boards and heavy factory circuits.",
+      "shortDescription": "125A 3-Pole 18kA Moulded Case Circuit Breaker for Commercial Main Switchboards.",
+      "price": 13500,
+      "originalPrice": 14800,
+      "currency": "BDT",
+      "image": "/images/circuit-breaker.svg",
+      "gallery": [
+        "/images/circuit-breaker.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "electrical-protection",
+      "subcategoryId": "mccb-breakers",
+      "brand": "ABB",
+      "sku": "ABB-1SDA066708R1-125A",
+      "stock": 14,
+      "inStock": true,
+      "rating": 5,
+      "reviewCount": 17,
+      "isFeatured": true,
+      "isNewArrival": false,
+      "isOnSale": false,
+      "highlights": [
+        "18kA breaking capacity for heavy fault clearing",
+        "Compact dimensions save panel space",
+        "Thermal-magnetic release TMF"
+      ],
+      "specifications": {
+        "deviceType": "MCCB",
+        "ratedCurrentA": 125,
+        "poles": "3P",
+        "breakingCapacityKa": 18,
+        "warrantyYears": 2,
+        "origin": "ABB Italy / Global"
+      }
+    },
+    {
+      "id": "prod-prot-04",
+      "name": "Chint 1000V DC 2-Pole Surge Protection Device (SPD) for Solar Strings",
+      "slug": "chint-1000v-dc-2p-surge-protection-spd",
+      "description": "Chint Type 2 (Class II) DC Surge Protective Device designed specifically to safeguard solar panel strings, inverters, and charge controllers from lightning-induced voltage surges. Pluggable cartridge design allows replacement without de-wiring.",
+      "shortDescription": "1000V DC 2-Pole Lightning & Surge Arrester (20kA/40kA) with Status Window.",
+      "price": 2800,
+      "originalPrice": 3200,
+      "currency": "BDT",
+      "image": "/images/circuit-breaker.svg",
+      "gallery": [
+        "/images/circuit-breaker.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "electrical-protection",
+      "subcategoryId": "spd-protection",
+      "brand": "Chint Electric",
+      "sku": "CHINT-NU6-II-1000VDC-2P",
+      "stock": 45,
+      "inStock": true,
+      "rating": 4.8,
+      "reviewCount": 33,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER"
+      ],
+      "highlights": [
+        "Visual green/red health status indicator window",
+        "Maximum discharge current Imax 40kA",
+        "High-energy MOV metal oxide varistor technology",
+        "Essential for outdoor solar array compliance"
+      ],
+      "specifications": {
+        "deviceType": "SPD (Surge)",
+        "poles": "2P",
+        "warrantyYears": 2,
+        "origin": "Chint Global",
+        "certification": [
+          "IEC 61643-31",
+          "CE"
+        ]
+      }
+    },
+    {
+      "id": "prod-prot-05",
+      "name": "Automatic Transfer Switch (ATS) 4-Pole 63A Dual Power Generator Changeover",
+      "slug": "automatic-transfer-switch-ats-63a-4p",
+      "description": "Smart DIN-rail mounted 63A 4-Pole Dual Power Automatic Transfer Switch. Automatically switches from solar/grid power to generator power within 0.05 seconds when primary power fails, protecting sensitive home electronics and refrigeration.",
+      "shortDescription": "63A 4-Pole Dual Power Auto Transfer Switch with Manual & Automatic Mode.",
+      "price": 4950,
+      "originalPrice": 5600,
+      "currency": "BDT",
+      "image": "/images/circuit-breaker.svg",
+      "gallery": [
+        "/images/circuit-breaker.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "electrical-protection",
+      "subcategoryId": "mcb-breakers",
+      "brand": "Chint Electric",
+      "sku": "CHINT-ATS-4P-63A-220V",
+      "stock": 22,
+      "inStock": true,
+      "rating": 4.7,
+      "reviewCount": 19,
+      "isFeatured": false,
+      "isOnSale": true,
+      "highlights": [
+        "Ultra-fast millisecond transfer without power interruption",
+        "Manual override toggle lever",
+        "Silver alloy contacts for zero arcing"
+      ],
+      "specifications": {
+        "deviceType": "ATS",
+        "ratedCurrentA": 63,
+        "poles": "4P",
+        "warrantyYears": 2
+      }
+    },
+    {
+      "id": "prod-sw-01",
+      "name": "MK Electric Dimensions 13A Universal Switched Socket with Dual USB-C & USB-A",
+      "slug": "mk-electric-13a-universal-socket-usb-c",
+      "description": "MK Electric premium British architectural modular switch series. Combines a universal international multi-pin socket with integrated 20W USB Type-C PD fast charging and Type-A port. Child-proof internal shutter mechanism.",
+      "shortDescription": "13A Universal Socket with 20W USB-C & USB-A Fast Charger and Safety Shutter.",
+      "price": 1950,
+      "originalPrice": 2250,
+      "currency": "BDT",
+      "image": "/images/led-lighting.svg",
+      "gallery": [
+        "/images/led-lighting.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "switches-sockets-lighting",
+      "subcategoryId": "modular-switches",
+      "brand": "MK Electric",
+      "sku": "MK-DIM-UNIV-USB-WH",
+      "stock": 70,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 44,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER"
+      ],
+      "highlights": [
+        "Dual USB fast charging (PD Type-C + QuickCharge 3.0)",
+        "High-grade fire-retardant polycarbonate housing",
+        "Child-safe 3-pin safety shutter design"
+      ],
+      "specifications": {
+        "gangs": 1,
+        "warrantyYears": 5,
+        "origin": "UK / Global",
+        "certification": [
+          "BS 1363-2",
+          "IEC 60884-1",
+          "BSTI"
+        ]
+      }
+    },
+    {
+      "id": "prod-sw-02",
+      "name": "Philips LED Outdoor Floodlight 100W IP66 Waterproof Daylight 6500K",
+      "slug": "philips-led-floodlight-100w-ip66-6500k",
+      "description": "Philips high-power 100W LED floodlight producing 10,000 lumens of crisp 6500K cool daylight. Die-cast aluminium casing with tempered glass and IP66 marine-grade weatherproofing. High surge resistance up to 4kV makes it ideal for solar battery powered outdoor perimeter security.",
+      "shortDescription": "100W 10,000 Lumens IP66 Waterproof Commercial Floodlight with 4kV Surge Protection.",
+      "price": 4600,
+      "originalPrice": 5100,
+      "currency": "BDT",
+      "image": "/images/led-lighting.svg",
+      "gallery": [
+        "/images/led-lighting.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "switches-sockets-lighting",
+      "subcategoryId": "led-lighting",
+      "brand": "Philips Lighting",
+      "sku": "PHIL-BVP150-LED100-CW",
+      "stock": 35,
+      "inStock": true,
+      "rating": 4.8,
+      "reviewCount": 30,
+      "isFeatured": true,
+      "isNewArrival": false,
+      "isOnSale": true,
+      "badges": [
+        "HOT"
+      ],
+      "highlights": [
+        "10,000 Lumens output with 100 lm/W high efficacy",
+        "IP66 waterproof & IK07 impact resistant",
+        "50,000 hours continuous LED lifespan"
+      ],
+      "specifications": {
+        "lampType": "Floodlight",
+        "colorTempK": "6500K Daylight",
+        "lumenOutput": 10000,
+        "warrantyYears": 2,
+        "origin": "Philips Global"
+      }
+    },
+    {
+      "id": "prod-sw-03",
+      "name": "Super Star Deco 4-Gang 1-Way Modular Piano Switch with Gold Trim",
+      "slug": "super-star-deco-4-gang-piano-switch-gold",
+      "description": "Super Star Deco luxury series piano switch with flame-retardant silver contact points and stylish hairline champagne gold border. Smooth click action rated for 100,000 operations.",
+      "shortDescription": "4-Gang 1-Way Luxury Modular Switch Plate with Anti-Oxidation Silver Contacts.",
+      "price": 850,
+      "originalPrice": 950,
+      "currency": "BDT",
+      "image": "/images/led-lighting.svg",
+      "gallery": [
+        "/images/led-lighting.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "switches-sockets-lighting",
+      "subcategoryId": "modular-switches",
+      "brand": "Super Star Group (SSG)",
+      "sku": "SSG-DECO-4G-GLD",
+      "stock": 90,
+      "inStock": true,
+      "rating": 4.7,
+      "reviewCount": 38,
+      "isFeatured": false,
+      "isOnSale": false,
+      "specifications": {
+        "gangs": 4,
+        "warrantyYears": 5,
+        "origin": "Bangladesh"
+      }
+    },
+    {
+      "id": "prod-tool-01",
+      "name": "Fluke 376 FC True-RMS AC/DC Clamp Meter with iFlex Flexible Probe",
+      "slug": "fluke-376-fc-true-rms-clamp-meter",
+      "description": "Fluke 376 FC True-RMS Clamp Meter offers advanced troubleshooting performance. The iFlex flexible current probe expands the measurement range to 2500A AC while providing ultimate measurement flexibility in tight solar inverter wiring conduits. Measures DC current up to 1000A with Fluke Connect wireless logging.",
+      "shortDescription": "1000A AC/DC True-RMS Clamp Meter with Fluke Connect and 2500A iFlex Probe.",
+      "price": 68000,
+      "originalPrice": 72000,
+      "currency": "BDT",
+      "image": "/images/electrical-tools.svg",
+      "gallery": [
+        "/images/electrical-tools.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "electrical-installation-tools",
+      "subcategoryId": "electrical-testers",
+      "brand": "Fluke Corporation",
+      "sku": "FLUKE-376-FC",
+      "stock": 6,
+      "inStock": true,
+      "rating": 5,
+      "reviewCount": 21,
+      "isFeatured": true,
+      "isNewArrival": false,
+      "isOnSale": false,
+      "badges": [
+        "HOT"
+      ],
+      "highlights": [
+        "True-RMS AC/DC voltage and current measurements",
+        "Wireless telemetry via Fluke Connect app",
+        "CAT IV 600V, CAT III 1000V safety rating",
+        "Integrated VFD low-pass filter for noisy inverter outputs"
+      ],
+      "specifications": {
+        "warrantyYears": 3,
+        "origin": "USA / Fluke Corp",
+        "certification": [
+          "CAT IV 600V",
+          "CAT III 1000V",
+          "CE"
+        ]
+      }
+    },
+    {
+      "id": "prod-tool-02",
+      "name": "Professional Solar PV Tool Kit with MC4 Crimper, Stripper, and Spanners",
+      "slug": "professional-solar-pv-mc4-crimping-tool-kit",
+      "description": "Complete heavy-duty solar installation kit. Includes ratchet crimping tool for 2.5/4/6mm² solar DC cables, precision wire stripper, cable cutter, and dual MC4 connector disconnect spanners inside an impact-resistant EVA zippered case.",
+      "shortDescription": "Complete Solar Cable Crimper Kit for 2.5mm² / 4mm² / 6mm² MC4 Connectors.",
+      "price": 4200,
+      "originalPrice": 4800,
+      "currency": "BDT",
+      "image": "/images/electrical-tools.svg",
+      "gallery": [
+        "/images/electrical-tools.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "electrical-installation-tools",
+      "subcategoryId": "crimpers-cutters",
+      "brand": "TOTAL Tools",
+      "sku": "TOT-PV-CRIMP-KIT-4PCS",
+      "stock": 35,
+      "inStock": true,
+      "rating": 4.8,
+      "reviewCount": 46,
+      "isFeatured": false,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER"
+      ],
+      "highlights": [
+        "High-precision ratchet mechanism for gas-tight crimps",
+        "Ergonomic TPR anti-slip grips",
+        "Compatible with all standard MC4 connectors"
+      ],
+      "specifications": {
+        "warrantyYears": 1,
+        "weightKg": 1.4
+      }
+    },
+    {
+      "id": "prod-tool-03",
+      "name": "Pure Copper Earth Rod 5/8 Inch 10 Feet with Brass Clamp",
+      "slug": "pure-copper-earth-rod-10ft-with-clamp",
+      "description": "Solid 99.9% electrolytic copper bonded earthing electrode rod for electrical system grounding, solar panel frame earthing, and lightning protection. Comes with heavy brass grounding cable clamp.",
+      "shortDescription": "5/8\" x 10ft Solid Copper Earthing Ground Rod with Heavy Brass Terminal Clamp.",
+      "price": 3600,
+      "originalPrice": 4000,
+      "currency": "BDT",
+      "image": "/images/electrical-tools.svg",
+      "gallery": [
+        "/images/electrical-tools.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "electrical-installation-tools",
+      "subcategoryId": "earthing-accessories",
+      "brand": "BRB Cable Industries",
+      "sku": "ER-CU-58-10FT-CLP",
+      "stock": 50,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 27,
+      "isFeatured": false,
+      "isOnSale": true,
+      "specifications": {
+        "dimensionsMm": "Length: 3000 mm (10 ft) x 16 mm diameter",
+        "weightKg": 4.8,
+        "origin": "Bangladesh"
+      }
+    },
+    {
+      "id": "prod-pkg-01",
+      "name": "3.5kW Urban Home Hybrid Solar Package with 4.8kWh Lithium Battery",
+      "slug": "3-5kw-urban-home-hybrid-solar-package",
+      "description": "Complete turnkey residential hybrid solar system engineered for 3 to 4-bedroom apartments and villas in Dhaka, Chittagong, and Sylhet. Powers 1 inverter AC (1.5 ton), 1 refrigerator, 6 ceiling fans, LED lights, WiFi, and TV seamlessly through load shedding with zero interruption.",
+      "shortDescription": "3.5kWp Solar Array + 5kW Hybrid Inverter + 4.8kWh LiFePO4 Lithium Storage.",
+      "price": 385000,
+      "originalPrice": 420000,
+      "currency": "BDT",
+      "image": "/images/solar-package.svg",
+      "gallery": [
+        "/images/solar-package.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-complete-kits",
+      "subcategoryId": "residential-kits",
+      "brand": "Growatt",
+      "sku": "PKG-RES-HYBRID-3.5KW",
+      "stock": 10,
+      "inStock": true,
+      "rating": 5,
+      "reviewCount": 34,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isOnSale": true,
+      "badges": [
+        "BESTSELLER",
+        "HOT"
+      ],
+      "installationSupportAvailable": true,
+      "highlights": [
+        "6x 585W Trina Vertex Bifacial Panels (3510W Total)",
+        "1x Growatt 5kW Hybrid Inverter with WiFi app",
+        "1x Pylontech US5000 4.8kWh LiFePO4 Lithium Battery",
+        "Complete anodized aluminium roof mounting structure & DC protection",
+        "Professional installation & net-metering assistance in Bangladesh"
+      ],
+      "specifications": {
+        "ratedPowerW": 3510,
+        "ratedOutputKva": 5,
+        "usableEnergyKwh": 4.8,
+        "warrantyYears": 10
+      }
+    },
+    {
+      "id": "prod-pkg-02",
+      "name": "5.5kW High-Capacity Villa Hybrid Solar System with 10kWh Battery Storage",
+      "slug": "5-5kw-villa-hybrid-solar-package",
+      "description": "Heavy residential hybrid solar system designed to operate two inverter air conditioners concurrently along with complete household appliances. Includes Deye 6kW hybrid inverter and Felicity 10kWh wall-mount battery.",
+      "shortDescription": "5.5kWp Bifacial Array + Deye 6kW Inverter + 10kWh Lithium Storage System.",
+      "price": 595000,
+      "originalPrice": 650000,
+      "currency": "BDT",
+      "image": "/images/solar-package.svg",
+      "gallery": [
+        "/images/solar-package.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-complete-kits",
+      "subcategoryId": "residential-kits",
+      "brand": "Deye",
+      "sku": "PKG-VILLA-HYBRID-5.5KW",
+      "stock": 5,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 18,
+      "isFeatured": true,
+      "isNewArrival": true,
+      "isOnSale": true,
+      "badges": [
+        "NEW"
+      ],
+      "installationSupportAvailable": true,
+      "highlights": [
+        "10x Jinko 550W N-Type TOPCon Panels (5500Wp)",
+        "1x Deye 6kW Hybrid Inverter with touchscreen",
+        "1x Felicity 10.24kWh Wall-Mount LiFePO4 Battery",
+        "Generates approx 22-26 kWh of green electricity daily"
+      ],
+      "specifications": {
+        "ratedPowerW": 5500,
+        "ratedOutputKva": 6,
+        "usableEnergyKwh": 10.24,
+        "warrantyYears": 10
+      }
+    },
+    {
+      "id": "prod-pkg-03",
+      "name": "10kW Commercial Factory On-Grid Net-Metering Solar Package",
+      "slug": "10kw-commercial-on-grid-solar-package",
+      "description": "Designed for corporate offices, textile factories, and commercial showrooms. Slashes peak utility electricity bills through government-approved net metering. Features Huawei 10kW three-phase inverter.",
+      "shortDescription": "10kWp Three-Phase Grid-Tied System with AI Arc Fault Protection and Net-Metering.",
+      "price": 680000,
+      "originalPrice": 740000,
+      "currency": "BDT",
+      "image": "/images/solar-package.svg",
+      "gallery": [
+        "/images/solar-package.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-complete-kits",
+      "subcategoryId": "commercial-kits",
+      "brand": "Huawei FusionSolar",
+      "sku": "PKG-COMM-ONGRID-10KW",
+      "stock": 4,
+      "inStock": true,
+      "rating": 4.9,
+      "reviewCount": 12,
+      "isFeatured": true,
+      "isNewArrival": false,
+      "isOnSale": true,
+      "installationSupportAvailable": true,
+      "highlights": [
+        "18x Trina Solar 585W Bifacial Panels (10,530Wp)",
+        "1x Huawei SUN2000-10KTL-M1 Three-Phase Inverter",
+        "Estimated monthly savings: ৳25,000 – ৳32,000 on DESCO/DPDC bills",
+        "Full compliance with Bangladesh SREDA Net-Metering guidelines"
+      ],
+      "specifications": {
+        "ratedPowerW": 10530,
+        "ratedOutputKva": 10,
+        "warrantyYears": 10
+      }
+    },
+    {
+      "id": "prod-pkg-04",
+      "name": "1.5kW Rural Off-Grid Solar Package with Tubular Battery Backup",
+      "slug": "1-5kw-rural-off-grid-solar-package",
+      "description": "Economical and robust off-grid solar setup for rural homes, agricultural sheds, and village shops where no grid power is available. Powers 4 fans, lights, television, and mobile charging 24 hours a day.",
+      "shortDescription": "1.5kWp Off-Grid Solar Kit with 2.5kVA Pure Sine Wave Inverter and 200Ah Tubular Battery.",
+      "price": 135000,
+      "originalPrice": 148000,
+      "currency": "BDT",
+      "image": "/images/solar-package.svg",
+      "gallery": [
+        "/images/solar-package.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "solar-complete-kits",
+      "subcategoryId": "rural-offgrid-kits",
+      "brand": "Felicity Solar",
+      "sku": "PKG-RURAL-OFFGRID-1.5KW",
+      "stock": 15,
+      "inStock": true,
+      "rating": 4.8,
+      "reviewCount": 29,
+      "isFeatured": false,
+      "isOnSale": true,
+      "highlights": [
+        "3x Jinko 550W Panels (1650Wp)",
+        "1x 2.5kVA 24V Pure Sine Wave Inverter with 60A MPPT",
+        "2x Rahimafrooz 200Ah 12V Tubular Batteries (24V Bank)",
+        "All connecting cables & mounting brackets included"
+      ],
+      "specifications": {
+        "ratedPowerW": 1650,
+        "ratedOutputKva": 2.5,
+        "usableEnergyKwh": 4.8,
+        "warrantyYears": 3
+      }
+    },
+    {
+      "id": "prod-bk-01",
+      "name": "Microtek Smart Hybrid 2475 2kVA Pure Sine Wave Home UPS Inverter",
+      "slug": "microtek-smart-hybrid-2475-2kva-ups",
+      "description": "Microtek Smart Hybrid 2475 is a micro-controller based 2kVA 24V Pure Sine Wave UPS inverter that runs sensitive IT equipment and motors silently. Dual charging modes for tubular and flat plate batteries.",
+      "shortDescription": "2kVA 24V Pure Sine Wave Heavy-Duty Home UPS with Smart Fast Battery Charger.",
+      "price": 24500,
+      "originalPrice": 27000,
+      "currency": "BDT",
+      "image": "/images/solar-inverter.svg",
+      "gallery": [
+        "/images/solar-inverter.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "power-backup-accessories",
+      "subcategoryId": "ups-systems",
+      "brand": "Microtek",
+      "sku": "MIC-HYB-2475-2KVA",
+      "stock": 25,
+      "inStock": true,
+      "rating": 4.7,
+      "reviewCount": 31,
+      "isFeatured": false,
+      "isOnSale": true,
+      "specifications": {
+        "ratedOutputKva": 2,
+        "batteryVoltageV": 24,
+        "pureSineWave": true,
+        "warrantyYears": 2
+      }
+    },
+    {
+      "id": "prod-bk-02",
+      "name": "Automatic Voltage Stabilizer 5kVA 130V-260V with Digital Display for Air Conditioners",
+      "slug": "automatic-voltage-stabilizer-5kva-ac",
+      "description": "High-speed relay-type automatic voltage regulator (AVR) designed for 1.5-ton and 2.0-ton air conditioners in regions suffering from severe voltage fluctuation (down to 130V). Includes digital input/output voltage display and high-voltage cut-off protection.",
+      "shortDescription": "5kVA Automatic Servo/Relay Voltage Stabilizer with Time Delay & Low Voltage Boost.",
+      "price": 10500,
+      "originalPrice": 12000,
+      "currency": "BDT",
+      "image": "/images/solar-inverter.svg",
+      "gallery": [
+        "/images/solar-inverter.svg",
+        "/images/solar-package.svg"
+      ],
+      "categoryId": "power-backup-accessories",
+      "subcategoryId": "voltage-stabilizers",
+      "brand": "Super Star Group (SSG)",
+      "sku": "SSG-AVR-5KVA-DIGITAL",
+      "stock": 30,
+      "inStock": true,
+      "rating": 4.8,
+      "reviewCount": 22,
+      "isFeatured": false,
+      "isOnSale": true,
+      "specifications": {
+        "ratedOutputKva": 5,
+        "warrantyYears": 2
+      }
+    }
+  ],
+  "solarPackages": [
+    {
+      "id": "pkg-1",
+      "title": "1.5kW Urban Apartment Backup Package",
+      "slug": "1-5kw-urban-apartment-backup-package",
+      "tagline": "Silent, clean, diesel-free backup for city apartments & flats.",
+      "systemType": "Apartment Backup",
+      "dailyGenerationEstimateKwh": 6.5,
+      "price": 165000,
+      "originalPrice": 180000,
+      "savingsMonthlyEstimateBdt": 2400,
+      "warrantySummary": "25-yr Solar Panel warranty, 5-yr Inverter, 3-yr Battery",
+      "idealFor": "3-4 Room Apartments, Clinics, Small Offices",
+      "image": "/images/solar-package.svg",
+      "installationIncluded": true,
+      "netMeteringEligible": false,
+      "specifications": {
+        "totalSolarCapacityWp": 1650,
+        "inverterCapacityKva": 2.5,
+        "batteryStorageKwh": 4.8,
+        "roofSpaceRequiredSqFt": 90
+      },
+      "features": [
+        "Powers 4 fans, 8 LED lights, 1 TV, WiFi router & refrigerator backup",
+        "Dual 550W Jinko Tier-1 Mono Solar Modules",
+        "Growatt / Felicity Sine Wave Inverter with MPPT",
+        "2x 200Ah deep cycle tubular battery bank",
+        "Zero diesel fumes, zero noise, instant automatic switchover"
+      ],
+      "items": [
+        {
+          "productId": "prod-sp-02",
+          "productName": "Jinko Solar 550W Half-Cut Panel",
+          "quantity": 3,
+          "category": "Solar Panels",
+          "specsSummary": "1650Wp Total"
+        },
+        {
+          "productId": "prod-bk-01",
+          "productName": "Pure Sine Wave 2.5kVA Hybrid Inverter",
+          "quantity": 1,
+          "category": "Inverters",
+          "specsSummary": "2.5kVA 24V with 60A MPPT"
+        },
+        {
+          "productId": "prod-bat-03",
+          "productName": "Rahimafrooz 200Ah 12V Deep Cycle Battery",
+          "quantity": 2,
+          "category": "Batteries",
+          "specsSummary": "24V 200Ah (4.8kWh bank)"
+        },
+        {
+          "productId": "prod-cb-02",
+          "productName": "BRB Solar 4mm² DC Cable + MC4 Kits",
+          "quantity": 1,
+          "category": "Accessories",
+          "specsSummary": "30m + DC Disconnect"
+        }
+      ]
+    },
+    {
+      "id": "pkg-2",
+      "title": "3.5kW Residential Hybrid Solar Package",
+      "slug": "3-5kw-residential-hybrid-solar-package",
+      "tagline": "Runs 1.5-ton Inverter AC, Fridge & Home Loads Day and Night.",
+      "systemType": "Residential Hybrid",
+      "dailyGenerationEstimateKwh": 15,
+      "price": 385000,
+      "originalPrice": 420000,
+      "savingsMonthlyEstimateBdt": 5800,
+      "warrantySummary": "25-yr Panels, 5-yr Growatt Inverter, 10-yr Pylontech Battery",
+      "idealFor": "Duplex Villas, Modern Residences, Medium Businesses",
+      "image": "/images/solar-panel.svg",
+      "installationIncluded": true,
+      "netMeteringEligible": true,
+      "specifications": {
+        "totalSolarCapacityWp": 3510,
+        "inverterCapacityKva": 5,
+        "batteryStorageKwh": 4.8,
+        "roofSpaceRequiredSqFt": 180
+      },
+      "features": [
+        "Powers 1.5 Ton Inverter AC, Refrigerator, Microwave, Water Pump & full lighting",
+        "6x Trina Solar 585W Bifacial TOPCon Modules",
+        "Growatt SPH 5000 Hybrid Inverter with WiFi Telemetry",
+        "Pylontech US5000 4.8kWh LiFePO4 Lithium Battery (6000 cycles)",
+        "Net-metering ready for DESCO/DPDC/BREB utility bill export"
+      ],
+      "items": [
+        {
+          "productId": "prod-sp-01",
+          "productName": "Trina Solar Vertex S+ 585W Bifacial",
+          "quantity": 6,
+          "category": "Solar Panels",
+          "specsSummary": "3510Wp Total Array"
+        },
+        {
+          "productId": "prod-inv-01",
+          "productName": "Growatt SPH 5000TL Hybrid Inverter",
+          "quantity": 1,
+          "category": "Inverters",
+          "specsSummary": "5kW Dual MPPT 48V"
+        },
+        {
+          "productId": "prod-bat-01",
+          "productName": "Pylontech US5000 4.8kWh Lithium Battery",
+          "quantity": 1,
+          "category": "Batteries",
+          "specsSummary": "48V 100Ah 6000 Cycles"
+        },
+        {
+          "productId": "prod-prot-04",
+          "productName": "Chint DC SPD & Schneider MCB Protection Box",
+          "quantity": 1,
+          "category": "Protection",
+          "specsSummary": "IP65 Weatherproof DB"
+        }
+      ]
+    },
+    {
+      "id": "pkg-3",
+      "title": "5.5kW Villa Hybrid Solar System with 10kWh Battery",
+      "slug": "5-5kw-villa-hybrid-solar-package",
+      "tagline": "Total energy independence with 2x Inverter AC capability.",
+      "systemType": "Residential Hybrid",
+      "dailyGenerationEstimateKwh": 24,
+      "price": 595000,
+      "originalPrice": 650000,
+      "savingsMonthlyEstimateBdt": 9500,
+      "warrantySummary": "25-yr Panels, 5-yr Deye Inverter, 5-yr Felicity Battery",
+      "idealFor": "Large Villas, Multi-story Residences, IT Offices",
+      "image": "/images/solar-battery.svg",
+      "installationIncluded": true,
+      "netMeteringEligible": true,
+      "specifications": {
+        "totalSolarCapacityWp": 5500,
+        "inverterCapacityKva": 6,
+        "batteryStorageKwh": 10.24,
+        "roofSpaceRequiredSqFt": 280
+      },
+      "features": [
+        "Powers 2 Inverter ACs (1.5 Ton each), Multiple Refrigerators, Washing Machine",
+        "10x Jinko Tiger Neo 550W TOPCon Modules",
+        "Deye 6kW Hybrid Inverter with interactive touchscreen",
+        "Felicity 10.24kWh Wall-Mount LiFePO4 Battery Bank",
+        "Generator synchronization input & Smart Load shedding control"
+      ],
+      "items": [
+        {
+          "productId": "prod-sp-02",
+          "productName": "Jinko Solar 550W TOPCon Panels",
+          "quantity": 10,
+          "category": "Solar Panels",
+          "specsSummary": "5500Wp Total Array"
+        },
+        {
+          "productId": "prod-inv-02",
+          "productName": "Deye 6kW Low Voltage Hybrid Inverter",
+          "quantity": 1,
+          "category": "Inverters",
+          "specsSummary": "6kW Single Phase 48V"
+        },
+        {
+          "productId": "prod-bat-02",
+          "productName": "Felicity 10kWh Wall-Mount LiFePO4",
+          "quantity": 1,
+          "category": "Batteries",
+          "specsSummary": "51.2V 200Ah 10.24kWh"
+        }
+      ]
+    },
+    {
+      "id": "pkg-4",
+      "title": "10kW Commercial Factory On-Grid Solar Package",
+      "slug": "10kw-commercial-on-grid-solar-package",
+      "tagline": "High ROI Net-Metering solution for Factories, Mills & Showrooms.",
+      "systemType": "Commercial On-Grid",
+      "dailyGenerationEstimateKwh": 44,
+      "price": 680000,
+      "originalPrice": 740000,
+      "savingsMonthlyEstimateBdt": 28000,
+      "warrantySummary": "25-yr Panels, 5-yr Huawei Inverter, 10-yr Mounting Structure",
+      "idealFor": "Garments, Mills, Commercial Buildings, Hospitals",
+      "image": "/images/solar-inverter.svg",
+      "installationIncluded": true,
+      "netMeteringEligible": true,
+      "specifications": {
+        "totalSolarCapacityWp": 10530,
+        "inverterCapacityKva": 10,
+        "roofSpaceRequiredSqFt": 520
+      },
+      "features": [
+        "High Return on Investment (ROI in 3.5 – 4.2 years)",
+        "18x Trina 585W Bifacial Modules with 30-year yield guarantee",
+        "Huawei SUN2000 10kW Three-Phase Inverter with AI safety",
+        "Compliant with Bangladesh National Building Code & SREDA guidelines",
+        "Real-time cloud monitoring & generation analytics dashboard"
+      ],
+      "items": [
+        {
+          "productId": "prod-sp-01",
+          "productName": "Trina Solar Vertex S+ 585W Bifacial",
+          "quantity": 18,
+          "category": "Solar Panels",
+          "specsSummary": "10.53kWp Array"
+        },
+        {
+          "productId": "prod-inv-03",
+          "productName": "Huawei SUN2000-10KTL-M1 Three-Phase",
+          "quantity": 1,
+          "category": "Inverters",
+          "specsSummary": "10kW Three-Phase"
+        },
+        {
+          "productId": "prod-prot-03",
+          "productName": "ABB 125A 3P MCCB Combiner Switchboard",
+          "quantity": 1,
+          "category": "Protection",
+          "specsSummary": "Commercial grade distribution"
+        }
+      ]
+    }
+  ]
+}

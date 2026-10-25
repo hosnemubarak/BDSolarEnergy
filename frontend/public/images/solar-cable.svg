@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cableBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181B"/>
+      <stop offset="100%" stop-color="#09090B"/>
+    </linearGradient>
+    <radialGradient id="coilRed" cx="50%" cy="50%" r="50%">
+      <stop offset="40%" stop-color="#DC2626"/>
+      <stop offset="90%" stop-color="#991B1B"/>
+      <stop offset="100%" stop-color="#450A0A"/>
+    </radialGradient>
+    <radialGradient id="coilBlack" cx="50%" cy="50%" r="50%">
+      <stop offset="40%" stop-color="#3F3F46"/>
+      <stop offset="90%" stop-color="#18181B"/>
+      <stop offset="100%" stop-color="#09090B"/>
+    </radialGradient>
+    <linearGradient id="copperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#cableBg)"/>
+
+  <!-- Left Cable Coil (Red Solar DC Cable) -->
+  <g transform="translate(160, 260)">
+    <ellipse cx="0" cy="0" rx="120" ry="80" fill="url(#coilRed)" filter="drop-shadow(0 20px 20px rgba(0,0,0,0.7))"/>
+    <ellipse cx="0" cy="0" rx="60" ry="40" fill="#18181B"/>
+    <ellipse cx="0" cy="-10" rx="110" ry="70" fill="none" stroke="#EF4444" stroke-width="5" opacity="0.7"/>
+    <ellipse cx="0" cy="-20" rx="100" ry="60" fill="none" stroke="#F87171" stroke-width="4" opacity="0.6"/>
+  </g>
+
+  <!-- Right Cable Coil (Black Solar DC Cable) -->
+  <g transform="translate(360, 310)">
+    <ellipse cx="0" cy="0" rx="130" ry="90" fill="url(#coilBlack)" stroke="#52525B" stroke-width="2" filter="drop-shadow(0 20px 20px rgba(0,0,0,0.7))"/>
+    <ellipse cx="0" cy="0" rx="65" ry="45" fill="#09090B"/>
+    <ellipse cx="0" cy="-10" rx="120" ry="80" fill="none" stroke="#71717A" stroke-width="5" opacity="0.6"/>
+    <ellipse cx="0" cy="-20" rx="110" ry="70" fill="none" stroke="#A1A1AA" stroke-width="4" opacity="0.5"/>
+  </g>
+
+  <!-- Stripped Cable End showing Pure Tinned Copper Strands -->
+  <g transform="translate(260, 100)">
+    <!-- Red Outer Jacket -->
+    <path d="M 0 100 L 80 40 L 110 55 L 30 115 Z" fill="#DC2626"/>
+    <!-- White Inner XLPO Insulation -->
+    <path d="M 80 40 L 110 18 L 125 26 L 95 48 Z" fill="#F8FAFC"/>
+    <!-- Exposed Pure Electrolytic Copper Strands -->
+    <path d="M 110 18 L 140 -5 L 152 4 L 122 27 Z" fill="url(#copperGrad)"/>
+    <line x1="113" y1="16" x2="143" y2="-7" stroke="#FEF08A" stroke-width="1.5"/>
+    <line x1="117" y1="20" x2="147" y2="-3" stroke="#FEF08A" stroke-width="1.5"/>
+  </g>
+
+  <!-- Brand Label Ribbon -->
+  <g transform="translate(150, 470)">
+    <rect width="300" height="50" rx="12" fill="#6D28D9" stroke="#A78BFA" stroke-width="2"/>
+    <text x="150" y="24" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="13" font-weight="900" text-anchor="middle">BRB SOLAR DC PV CABLE</text>
+    <text x="150" y="40" fill="#FDE047" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">6.0mm² 1500V DC | 100% PURE COPPER</text>
+  </g>
+</svg>

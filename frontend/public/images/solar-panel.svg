@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1035"/>
+      <stop offset="50%" stop-color="#2D1254"/>
+      <stop offset="100%" stop-color="#0F081D"/>
+    </linearGradient>
+    <linearGradient id="panelFrame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D1D5DB"/>
+      <stop offset="50%" stop-color="#9CA3AF"/>
+      <stop offset="100%" stop-color="#6B7280"/>
+    </linearGradient>
+    <linearGradient id="cellGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="40%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#0A1128"/>
+    </linearGradient>
+    <linearGradient id="sunSheen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.4"/>
+      <stop offset="30%" stop-color="#3B82F6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="600" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Grid Accent -->
+  <g opacity="0.08" stroke="#A78BFA" stroke-width="1">
+    <line x1="0" y1="100" x2="600" y2="100"/>
+    <line x1="0" y1="200" x2="600" y2="200"/>
+    <line x1="0" y1="300" x2="600" y2="300"/>
+    <line x1="0" y1="400" x2="600" y2="400"/>
+    <line x1="0" y1="500" x2="600" y2="500"/>
+    <line x1="100" y1="0" x2="100" y2="600"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="300" y1="0" x2="300" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="500" y1="0" x2="500" y2="600"/>
+  </g>
+
+  <!-- Solar Panel Assembly -->
+  <!-- Outer Aluminum Frame -->
+  <rect x="130" y="60" width="340" height="480" rx="8" fill="url(#panelFrame)" stroke="#E5E7EB" stroke-width="3" filter="drop-shadow(0 20px 25px rgba(0,0,0,0.6))"/>
+  <rect x="142" y="72" width="316" height="456" rx="4" fill="#030712"/>
+
+  <!-- Solar Cells Matrix (6 columns x 10 rows) -->
+  <g fill="url(#cellGrad)" stroke="#38BDF8" stroke-width="0.8" opacity="0.95">
+    <!-- Row 1 -->
+    <rect x="148" y="78" width="48" height="40" rx="2"/><rect x="200" y="78" width="48" height="40" rx="2"/><rect x="252" y="78" width="48" height="40" rx="2"/><rect x="304" y="78" width="48" height="40" rx="2"/><rect x="356" y="78" width="48" height="40" rx="2"/><rect x="408" y="78" width="48" height="40" rx="2"/>
+    <!-- Row 2 -->
+    <rect x="148" y="122" width="48" height="40" rx="2"/><rect x="200" y="122" width="48" height="40" rx="2"/><rect x="252" y="122" width="48" height="40" rx="2"/><rect x="304" y="122" width="48" height="40" rx="2"/><rect x="356" y="122" width="48" height="40" rx="2"/><rect x="408" y="122" width="48" height="40" rx="2"/>
+    <!-- Row 3 -->
+    <rect x="148" y="166" width="48" height="40" rx="2"/><rect x="200" y="166" width="48" height="40" rx="2"/><rect x="252" y="166" width="48" height="40" rx="2"/><rect x="304" y="166" width="48" height="40" rx="2"/><rect x="356" y="166" width="48" height="40" rx="2"/><rect x="408" y="166" width="48" height="40" rx="2"/>
+    <!-- Row 4 -->
+    <rect x="148" y="210" width="48" height="40" rx="2"/><rect x="200" y="210" width="48" height="40" rx="2"/><rect x="252" y="210" width="48" height="40" rx="2"/><rect x="304" y="210" width="48" height="40" rx="2"/><rect x="356" y="210" width="48" height="40" rx="2"/><rect x="408" y="210" width="48" height="40" rx="2"/>
+    <!-- Center Gap (Half-cut architecture) -->
+    <line x1="144" y1="256" x2="456" y2="256" stroke="#FFFFFF" stroke-width="2" opacity="0.6"/>
+    <!-- Row 5 -->
+    <rect x="148" y="262" width="48" height="40" rx="2"/><rect x="200" y="262" width="48" height="40" rx="2"/><rect x="252" y="262" width="48" height="40" rx="2"/><rect x="304" y="262" width="48" height="40" rx="2"/><rect x="356" y="262" width="48" height="40" rx="2"/><rect x="408" y="262" width="48" height="40" rx="2"/>
+    <!-- Row 6 -->
+    <rect x="148" y="306" width="48" height="40" rx="2"/><rect x="200" y="306" width="48" height="40" rx="2"/><rect x="252" y="306" width="48" height="40" rx="2"/><rect x="304" y="306" width="48" height="40" rx="2"/><rect x="356" y="306" width="48" height="40" rx="2"/><rect x="408" y="306" width="48" height="40" rx="2"/>
+    <!-- Row 7 -->
+    <rect x="148" y="350" width="48" height="40" rx="2"/><rect x="200" y="350" width="48" height="40" rx="2"/><rect x="252" y="350" width="48" height="40" rx="2"/><rect x="304" y="350" width="48" height="40" rx="2"/><rect x="356" y="350" width="48" height="40" rx="2"/><rect x="408" y="350" width="48" height="40" rx="2"/>
+    <!-- Row 8 -->
+    <rect x="148" y="394" width="48" height="40" rx="2"/><rect x="200" y="394" width="48" height="40" rx="2"/><rect x="252" y="394" width="48" height="40" rx="2"/><rect x="304" y="394" width="48" height="40" rx="2"/><rect x="356" y="394" width="48" height="40" rx="2"/><rect x="408" y="394" width="48" height="40" rx="2"/>
+    <!-- Row 9 -->
+    <rect x="148" y="438" width="48" height="40" rx="2"/><rect x="200" y="438" width="48" height="40" rx="2"/><rect x="252" y="438" width="48" height="40" rx="2"/><rect x="304" y="438" width="48" height="40" rx="2"/><rect x="356" y="438" width="48" height="40" rx="2"/><rect x="408" y="438" width="48" height="40" rx="2"/>
+    <!-- Row 10 -->
+    <rect x="148" y="482" width="48" height="40" rx="2"/><rect x="200" y="482" width="48" height="40" rx="2"/><rect x="252" y="482" width="48" height="40" rx="2"/><rect x="304" y="482" width="48" height="40" rx="2"/><rect x="356" y="482" width="48" height="40" rx="2"/><rect x="408" y="482" width="48" height="40" rx="2"/>
+  </g>
+
+  <!-- Multi-busbar lines across cells -->
+  <g stroke="#93C5FD" stroke-width="0.75" opacity="0.6">
+    <line x1="172" y1="78" x2="172" y2="522"/><line x1="224" y1="78" x2="224" y2="522"/>
+    <line x1="276" y1="78" x2="276" y2="522"/><line x1="328" y1="78" x2="328" y2="522"/>
+    <line x1="380" y1="78" x2="380" y2="522"/><line x1="432" y1="78" x2="432" y2="522"/>
+  </g>
+
+  <!-- Diagonal Glass Sheen Reflection -->
+  <polygon points="142,72 260,72 142,280" fill="url(#sunSheen)"/>
+
+  <!-- Badge Overlay -->
+  <g transform="translate(150, 485)">
+    <rect width="130" height="26" rx="6" fill="#6D28D9" fill-opacity="0.95"/>
+    <text x="65" y="17" fill="#FDE047" font-family="system-ui, sans-serif" font-size="11" font-weight="900" text-anchor="middle" letter-spacing="0.5">585W BIFACIAL</text>
+  </g>
+</svg>
