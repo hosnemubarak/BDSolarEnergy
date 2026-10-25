@@ -86,7 +86,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (!validation.valid) {
       return {
         success: false,
-        message: `Maximum available demo stock is ${item.product.stock} units.`,
+        message: `Maximum available stock is ${item.product.stock} units.`,
       };
     }
 

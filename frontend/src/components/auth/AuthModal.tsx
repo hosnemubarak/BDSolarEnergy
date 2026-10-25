@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, User, Phone, Mail, Lock, Eye, EyeOff, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { X, User, Phone, Mail, Lock, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 
@@ -10,9 +10,9 @@ export const AuthModal: React.FC = () => {
   const [mode, setMode] = useState<'login' | 'register'>('login');
   const [showPassword, setShowPassword] = useState(false);
 
-  // Form states
-  const [loginIdentifier, setLoginIdentifier] = useState('tanvir.engineer@bdsolar.demo');
-  const [loginPassword, setLoginPassword] = useState('demo123456');
+  // Form states (empty by default for real user credentials)
+  const [loginIdentifier, setLoginIdentifier] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
 
   const [regName, setRegName] = useState('');
   const [regPhone, setRegPhone] = useState('');
@@ -25,8 +25,8 @@ export const AuthModal: React.FC = () => {
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!loginIdentifier.trim()) {
-      showToast('Please enter your email or phone number.', 'error');
+    if (!loginIdentifier.trim() || !loginPassword) {
+      showToast('Please enter your email/phone and password.', 'error');
       return;
     }
     setIsLoading(true);
@@ -34,6 +34,8 @@ export const AuthModal: React.FC = () => {
     setIsLoading(false);
     if (res.success) {
       showToast('Welcome back to BD Solar Energy!', 'success');
+      setLoginIdentifier('');
+      setLoginPassword('');
     } else {
       showToast(res.error || 'Login failed.', 'error');
     }
@@ -41,8 +43,8 @@ export const AuthModal: React.FC = () => {
 
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!regName.trim() || !regPhone.trim()) {
-      showToast('Name and phone number are required.', 'error');
+    if (!regName.trim() || !regPhone.trim() || !regPassword) {
+      showToast('Name, phone number, and password are required.', 'error');
       return;
     }
     setIsLoading(true);
@@ -50,16 +52,13 @@ export const AuthModal: React.FC = () => {
     setIsLoading(false);
     if (res.success) {
       showToast('Account registered successfully! You are now logged in.', 'success');
+      setRegName('');
+      setRegEmail('');
+      setRegPhone('');
+      setRegPassword('');
     } else {
       showToast(res.error || 'Registration failed.', 'error');
     }
-  };
-
-  const handleQuickDemoLogin = async () => {
-    setIsLoading(true);
-    await login('tanvir.engineer@bdsolar.demo', 'demo123456');
-    setIsLoading(false);
-    showToast('Logged in as demo customer: Md. Tanvir Hossain', 'success');
   };
 
   return (
@@ -90,30 +89,15 @@ export const AuthModal: React.FC = () => {
               {mode === 'login' ? 'Customer Sign In' : 'Create Customer Account'}
             </h3>
             <p className="text-xs text-gray-500 mt-1">
-              Access your order history, saved solar designs, and faster checkout
+              Access your order history, delivery addresses, and fast checkout
             </p>
-          </div>
-
-          {/* Quick 1-Click Demo Login Banner */}
-          <div className="mb-5 p-3 bg-purple-50 rounded-xl border border-purple-200 flex items-center justify-between">
-            <div className="text-xs">
-              <span className="font-bold text-purple-950 block">Testing Demo Mode</span>
-              <span className="text-purple-700 text-[11px]">Instant 1-click test login</span>
-            </div>
-            <button
-              type="button"
-              onClick={handleQuickDemoLogin}
-              className="px-3 py-1.5 bg-[#6D28D9] hover:bg-[#5B21B6] text-white text-xs font-bold rounded-lg transition-colors shadow-xs"
-            >
-              Demo Sign In
-            </button>
           </div>
 
           {/* Mode Switcher Tabs */}
           <div className="flex border-b border-gray-200 mb-5">
             <button
               onClick={() => setMode('login')}
-              className={`flex-1 py-2 text-xs font-bold text-center border-b-2 transition-colors ${
+              className={`flex-1 py-2.5 text-xs font-bold text-center border-b-2 transition-colors ${
                 mode === 'login'
                   ? 'border-[#6D28D9] text-[#6D28D9]'
                   : 'border-transparent text-gray-400 hover:text-gray-700'
@@ -123,7 +107,7 @@ export const AuthModal: React.FC = () => {
             </button>
             <button
               onClick={() => setMode('register')}
-              className={`flex-1 py-2 text-xs font-bold text-center border-b-2 transition-colors ${
+              className={`flex-1 py-2.5 text-xs font-bold text-center border-b-2 transition-colors ${
                 mode === 'register'
                   ? 'border-[#6D28D9] text-[#6D28D9]'
                   : 'border-transparent text-gray-400 hover:text-gray-700'
@@ -138,7 +122,7 @@ export const AuthModal: React.FC = () => {
             <form onSubmit={handleLoginSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1">
-                  Email Address or Mobile (+880...)
+                  Email, Mobile (+880...), or Username
                 </label>
                 <div className="relative">
                   <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -147,7 +131,7 @@ export const AuthModal: React.FC = () => {
                     required
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
-                    placeholder="e.g. 01712345678 or user@example.com"
+                    placeholder="e.g. 01712345678, user@example.com, or username"
                     className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#6D28D9] focus:bg-white"
                   />
                 </div>
@@ -156,9 +140,6 @@ export const AuthModal: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between mb-1">
                   <label className="text-xs font-semibold text-gray-700">Password</label>
-                  <span className="text-[11px] text-purple-700 hover:underline cursor-pointer">
-                    Forgot?
-                  </span>
                 </div>
                 <div className="relative">
                   <Lock className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -185,7 +166,7 @@ export const AuthModal: React.FC = () => {
                 disabled={isLoading}
                 className="w-full py-3 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-purple-600/20 active:scale-98 disabled:opacity-50"
               >
-                {isLoading ? 'Signing In...' : 'Sign In to Account'}
+                {isLoading ? 'Signing In...' : 'Sign In with JWT'}
               </button>
             </form>
           ) : (
@@ -225,7 +206,7 @@ export const AuthModal: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1">
-                  Email (Optional)
+                  Email Address (Optional)
                 </label>
                 <div className="relative">
                   <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -248,7 +229,7 @@ export const AuthModal: React.FC = () => {
                     required
                     value={regPassword}
                     onChange={(e) => setRegPassword(e.target.value)}
-                    placeholder="Create a password"
+                    placeholder="Create a password (min 8 chars)"
                     className="w-full pl-9 pr-10 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#6D28D9] focus:bg-white"
                   />
                   <button
@@ -273,7 +254,7 @@ export const AuthModal: React.FC = () => {
 
           <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-center gap-2 text-[11px] text-gray-400">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Secure 256-Bit SSL Demo Authentication</span>
+            <span>Secure 256-Bit SSL Encrypted JWT Authentication</span>
           </div>
         </div>
       </div>

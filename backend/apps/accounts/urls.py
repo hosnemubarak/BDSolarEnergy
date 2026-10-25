@@ -5,6 +5,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenBlacklistView,
 )
+from .serializers import CustomTokenObtainPairSerializer
 from .views import (
     RegisterView,
     MeView,
@@ -17,7 +18,7 @@ router.register(r'addresses', CustomerAddressViewSet, basename='customer-address
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='auth-register'),
-    path('login/', TokenObtainPairView.as_view(), name='auth-login'),
+    path('login/', TokenObtainPairView.as_view(serializer_class=CustomTokenObtainPairSerializer), name='auth-login'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token-refresh'),
     path('logout/', TokenBlacklistView.as_view(), name='auth-logout'),
     path('me/', MeView.as_view(), name='auth-me'),

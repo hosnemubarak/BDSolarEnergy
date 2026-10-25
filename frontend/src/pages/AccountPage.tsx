@@ -401,7 +401,7 @@ export const AccountPage: React.FC = () => {
                   />
                 </div>
                 <div className="pt-2 text-[11px] text-gray-400">
-                  Customer account credentials saved in demo local storage.
+                  Customer session secured via JWT authentication.
                 </div>
               </div>
             </div>

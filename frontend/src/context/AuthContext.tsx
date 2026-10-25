@@ -1,15 +1,16 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { UserProfile, CustomerAddress } from '../types';
 import { authService } from '../services/authService';
 
 interface AuthContextType {
   user: UserProfile | null;
   isAuthenticated: boolean;
-  login: (emailOrPhone: string, password?: string) => Promise<{ success: boolean; error?: string }>;
+  isLoading: boolean;
+  login: (emailOrPhoneOrUsername: string, password?: string) => Promise<{ success: boolean; error?: string }>;
   register: (name: string, email: string, phone: string, password?: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => void;
-  updateProfile: (updated: Partial<UserProfile>) => void;
-  saveAddress: (address: CustomerAddress) => void;
+  updateProfile: (updated: Partial<UserProfile>) => Promise<void>;
+  saveAddress: (address: CustomerAddress) => Promise<void>;
   isAuthModalOpen: boolean;
   setIsAuthModalOpen: (open: boolean) => void;
 }
@@ -18,10 +19,48 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<UserProfile | null>(() => authService.getCurrentUser());
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
-  const login = async (emailOrPhone: string, password?: string) => {
-    const res = await authService.login(emailOrPhone, password);
+  useEffect(() => {
+    let mounted = true;
+
+    async function initAuth() {
+      if (authService.isAuthenticated()) {
+        try {
+          const profile = await authService.fetchProfile();
+          if (mounted) {
+            setUser(profile);
+          }
+        } catch {
+          if (mounted) {
+            authService.logout();
+            setUser(null);
+          }
+        }
+      }
+      if (mounted) {
+        setIsLoading(false);
+      }
+    }
+
+    initAuth();
+
+    const handleExpired = () => {
+      authService.logout();
+      setUser(null);
+    };
+
+    window.addEventListener('bdsolar:auth-expired', handleExpired);
+
+    return () => {
+      mounted = false;
+      window.removeEventListener('bdsolar:auth-expired', handleExpired);
+    };
+  }, []);
+
+  const login = async (emailOrPhoneOrUsername: string, password?: string) => {
+    const res = await authService.login(emailOrPhoneOrUsername, password);
     if (res.success && res.user) {
       setUser(res.user);
       setIsAuthModalOpen(false);
@@ -45,28 +84,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(null);
   };
 
-  const updateProfile = (updated: Partial<UserProfile>) => {
-    const fresh = authService.updateProfile(updated);
-    if (fresh) setUser(fresh);
+  const updateProfile = async (updated: Partial<UserProfile>) => {
+    try {
+      const fresh = await authService.updateProfile(updated);
+      setUser(fresh);
+    } catch (err) {
+      console.error('Failed to update profile', err);
+      throw err;
+    }
   };
 
-  const saveAddress = (address: CustomerAddress) => {
-    if (!user) return;
-    const existing = user.savedAddresses || [];
-    const updated = [address, ...existing.filter((a) => a.phone !== address.phone || a.fullAddress !== address.fullAddress)];
-    const newUser = {
-      ...user,
-      defaultAddress: address.isDefault ? address : user.defaultAddress || address,
-      savedAddresses: updated,
-    };
-    updateProfile(newUser);
+  const saveAddress = async (address: CustomerAddress) => {
+    try {
+      await authService.saveAddress(address);
+      const fresh = await authService.fetchProfile();
+      setUser(fresh);
+    } catch (err) {
+      console.error('Failed to save address', err);
+      throw err;
+    }
   };
 
   return (
     <AuthContext.Provider
       value={{
         user,
-        isAuthenticated: !!user,
+        isAuthenticated: !!user && authService.isAuthenticated(),
+        isLoading,
         login,
         register,
         logout,

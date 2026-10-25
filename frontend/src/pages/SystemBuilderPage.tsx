@@ -457,7 +457,7 @@ export const SystemBuilderPage: React.FC = () => {
 
             {/* Notice */}
             <p className="text-[11px] text-gray-400 text-center leading-tight">
-              *All solar configurations are demo examples until an engineer performs an on-site rooftop azimuth and tilt survey.
+              *All solar configurations are engineering estimates until verified by an on-site rooftop azimuth and tilt survey.
             </p>
           </div>
         </div>

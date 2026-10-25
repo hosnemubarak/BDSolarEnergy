@@ -39,17 +39,17 @@ export const CheckoutPage: React.FC = () => {
   const navigate = useNavigate();
 
   // Form Fields
-  const [fullName, setFullName] = useState(user?.name || 'Md. Tanvir Hossain');
-  const [phone, setPhone] = useState(user?.phone || '+880 1712-345678');
-  const [email, setEmail] = useState(user?.email || 'tanvir.engineer@bdsolar.demo');
+  const [fullName, setFullName] = useState(user?.name || '');
+  const [phone, setPhone] = useState(user?.phone || '');
+  const [email, setEmail] = useState(user?.email || '');
   const [division, setDivision] = useState(user?.defaultAddress?.division || 'Dhaka');
   const [district, setDistrict] = useState(user?.defaultAddress?.district || 'Dhaka');
-  const [thanaArea, setThanaArea] = useState(user?.defaultAddress?.thanaArea || 'Dhanmondi, Road 27');
-  const [fullAddress, setFullAddress] = useState(user?.defaultAddress?.fullAddress || 'House 42, Flat 5B, Road 27, Dhanmondi, Dhaka');
-  const [postalCode, setPostalCode] = useState(user?.defaultAddress?.postalCode || '1209');
+  const [thanaArea, setThanaArea] = useState(user?.defaultAddress?.thanaArea || '');
+  const [fullAddress, setFullAddress] = useState(user?.defaultAddress?.fullAddress || '');
+  const [postalCode, setPostalCode] = useState(user?.defaultAddress?.postalCode || '');
   
   const [paymentMethod, setPaymentMethod] = useState<'COD' | 'BKASH' | 'NAGAD' | 'BANK_TRANSFER'>('COD');
-  const [bkashTrxId, setBkashTrxId] = useState('8M4N9K21L');
+  const [bkashTrxId, setBkashTrxId] = useState('');
   const [orderNotes, setOrderNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -475,13 +475,13 @@ export const CheckoutPage: React.FC = () => {
                 ) : (
                   <>
                     <Lock className="w-4 h-4" />
-                    <span>Confirm & Place Demo Order</span>
+                    <span>Confirm & Place Order</span>
                   </>
                 )}
               </button>
 
               <div className="text-[11px] text-gray-400 text-center leading-tight">
-                By clicking Confirm, you simulate placing a solar equipment demo order.
+                By clicking Confirm, your order will be placed with our warehouse for delivery verification.
               </div>
             </div>
           </div>
