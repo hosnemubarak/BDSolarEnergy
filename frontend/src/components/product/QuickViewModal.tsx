@@ -16,6 +16,7 @@ import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useToast } from '../../context/ToastContext';
 import { RatingStars } from '../common/RatingStars';
+import { formatBDT } from '../../utils/currency';
 
 export const QuickViewModal: React.FC = () => {
   const { activeProduct, closeQuickView } = useQuickView();
@@ -67,11 +68,12 @@ export const QuickViewModal: React.FC = () => {
 
       {/* Modal Dialog */}
       <div className="min-h-screen px-4 text-center flex items-center justify-center p-4">
-        <div className="relative bg-white rounded-2xl max-w-3xl w-full p-5 sm:p-7 text-left shadow-2xl z-10 overflow-hidden transform transition-all border border-green-100">
+        <div className="relative bg-white rounded-xl max-w-3xl w-full p-5 sm:p-7 text-left shadow-2xl z-10 overflow-hidden transform transition-all border border-gray-200">
           {/* Close button */}
           <button
             onClick={closeQuickView}
             className="absolute top-4 right-4 p-1.5 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors z-20"
+            aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
@@ -132,7 +134,7 @@ export const QuickViewModal: React.FC = () => {
                 <div className="flex items-center gap-2 text-xs font-semibold text-green-700 uppercase tracking-wider mb-1">
                   <span>{activeProduct.brand}</span>
                   <span>•</span>
-                  <span className="text-gray-400 font-mono text-[11px]">{activeProduct.sku}</span>
+                  <span className="text-gray-400 font-mono text-xs">{activeProduct.sku}</span>
                 </div>
 
                 <h3 className="text-base sm:text-lg font-bold text-gray-900 leading-snug">
@@ -148,13 +150,13 @@ export const QuickViewModal: React.FC = () => {
                 </div>
 
                 {/* Price */}
-                <div className="mt-4 p-3 bg-[#F0FDF4] rounded-xl border border-green-100 flex items-baseline gap-3">
-                  <span className="text-2xl font-black text-[#16A34A]">
-                    ৳{activeProduct.price.toLocaleString('en-BD')}
+                <div className="mt-4 p-3 bg-[#F0FDF4] rounded-lg border border-green-100 flex items-baseline gap-3">
+                  <span className="text-2xl font-bold text-[#16A34A]">
+                    {formatBDT(activeProduct.price)}
                   </span>
                   {activeProduct.originalPrice && (
                     <span className="text-sm text-gray-400 line-through">
-                      ৳{activeProduct.originalPrice.toLocaleString('en-BD')}
+                      {formatBDT(activeProduct.originalPrice)}
                     </span>
                   )}
                 </div>

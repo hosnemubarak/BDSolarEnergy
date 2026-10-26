@@ -120,12 +120,12 @@ export const ShopPage: React.FC = () => {
       />
 
       {/* Header Title & Summary Banner */}
-      <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
             {currentCategory ? currentCategory.name : 'All Solar & Electrical Equipment'}
           </h1>
-          <p className="text-xs text-gray-500 mt-1 max-w-2xl">
+          <p className="text-xs sm:text-sm text-gray-500 mt-1 max-w-2xl">
             {currentCategory
               ? currentCategory.description
               : 'Browse our complete catalog of certified solar panels, hybrid inverters, lithium batteries, wires, cables, and circuit breakers.'}
@@ -145,29 +145,29 @@ export const ShopPage: React.FC = () => {
 
         {/* Product Count & Mobile Filter Trigger */}
         <div className="flex items-center gap-3 shrink-0">
-          <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg">
+          <span className="text-xs sm:text-sm font-semibold text-gray-600 bg-gray-100 px-3 py-1.5 rounded-lg">
             {products.length} Products Found
           </span>
 
           <button
             onClick={() => setIsMobileFilterOpen(true)}
-            className="md:hidden flex items-center gap-2 px-3 py-1.5 bg-[#15803D] text-white rounded-lg text-xs font-bold shadow-sm"
+            className="md:hidden flex items-center gap-2 px-3.5 py-2 bg-[#16A34A] hover:bg-[#15803D] text-white rounded-lg text-xs sm:text-sm font-semibold shadow-xs min-h-[38px]"
           >
-            <Filter className="w-3.5 h-3.5" />
+            <Filter className="w-4 h-4" />
             <span>Filters ({activeFilterCount})</span>
           </button>
         </div>
       </div>
 
       {/* Control Bar: Sorting & Grid/List Toggle */}
-      <div className="flex items-center justify-between gap-4 bg-white p-3 rounded-xl border border-gray-200 text-xs text-gray-600 shadow-xs">
+      <div className="flex items-center justify-between gap-4 bg-white p-3 rounded-xl border border-gray-200 text-xs sm:text-sm text-gray-700 shadow-xs">
         <div className="flex items-center gap-2">
-          <ArrowUpDown className="w-3.5 h-3.5 text-gray-400" />
+          <ArrowUpDown className="w-4 h-4 text-gray-400" />
           <span className="font-semibold text-gray-700">Sort by:</span>
           <select
             value={filters.sortBy || 'popularity'}
             onChange={handleSortChange}
-            className="bg-gray-50 border border-gray-200 rounded-lg px-2.5 py-1 text-xs text-gray-800 font-medium focus:outline-none focus:border-[#15803D] cursor-pointer"
+            className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 text-xs sm:text-sm text-gray-800 font-medium focus:outline-none focus:border-[#16A34A] cursor-pointer"
           >
             <option value="popularity">Most Popular / Best Selling</option>
             <option value="newest">Newest Arrivals</option>
@@ -276,21 +276,21 @@ export const ShopPage: React.FC = () => {
             </div>
           ) : (
             /* Empty State */
-            <div className="bg-white rounded-2xl border border-gray-200 p-10 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-green-50 text-green-700 flex items-center justify-center mx-auto">
+            <div className="bg-white rounded-xl border border-gray-200 p-8 sm:p-12 text-center space-y-4">
+              <div className="w-16 h-16 rounded-full bg-green-50 text-[#16A34A] flex items-center justify-center mx-auto">
                 <PackageOpen className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900">
                 No matching solar or electrical equipment found
               </h3>
-              <p className="text-xs text-gray-500 max-w-md mx-auto">
+              <p className="text-xs sm:text-sm text-gray-500 max-w-md mx-auto">
                 We couldn't find any products matching your specific filters. Try widening your price range or resetting selected brands.
               </p>
               <button
                 onClick={handleResetFilters}
-                className="px-5 py-2.5 bg-[#16A34A] hover:bg-[#15803D] text-white text-xs font-bold rounded-xl transition-colors inline-flex items-center gap-1.5 shadow-sm"
+                className="px-5 py-2.5 bg-[#16A34A] hover:bg-[#15803D] text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors inline-flex items-center gap-2 shadow-xs min-h-[40px]"
               >
-                <RotateCcw className="w-3.5 h-3.5" />
+                <RotateCcw className="w-4 h-4" />
                 <span>Reset All Filters</span>
               </button>
             </div>

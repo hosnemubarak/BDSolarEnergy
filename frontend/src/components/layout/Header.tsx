@@ -14,6 +14,7 @@ import { SearchBar } from './SearchBar';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useAuth } from '../../context/AuthContext';
+import { formatBDT } from '../../utils/currency';
 
 interface HeaderProps {
   onOpenMobileMenu: () => void;
@@ -119,21 +120,21 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
           {/* Shopping Cart Button */}
           <button
             onClick={openCart}
-            className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-95"
+            className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-95 min-h-[40px]"
             aria-label="View shopping cart"
           >
             <div className="relative">
               <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               {totalCount > 0 && (
-                <span className="absolute -top-2 -right-2 min-w-4 h-4 px-1 rounded-full bg-amber-400 text-gray-950 text-[10px] font-extrabold flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-amber-400 text-gray-950 text-[11px] font-bold flex items-center justify-center leading-none">
                   {totalCount}
                 </span>
               )}
             </div>
-            <div className="hidden sm:flex flex-col text-left leading-none">
-              <span className="text-[10px] text-green-100 font-normal">Cart</span>
-              <span className="font-bold text-white text-xs mt-0.5">
-                ৳{subtotal > 0 ? subtotal.toLocaleString('en-BD') : '0'}
+            <div className="hidden sm:flex flex-col text-left leading-tight">
+              <span className="text-[11px] text-green-100 font-normal">Cart</span>
+              <span className="font-bold text-white text-xs sm:text-sm">
+                {formatBDT(subtotal)}
               </span>
             </div>
           </button>

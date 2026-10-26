@@ -53,10 +53,10 @@ export const FaqPage: React.FC = () => {
       <Breadcrumbs items={[{ label: 'Frequently Asked Questions' }]} />
 
       <div className="text-center space-y-2">
-        <span className="text-xs font-bold text-[#16A34A] uppercase tracking-wider">
+        <span className="text-xs font-semibold text-[#16A34A] uppercase tracking-wider">
           Solar Knowledge Base
         </span>
-        <h1 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
           Frequently Asked Questions
         </h1>
         <p className="text-xs sm:text-sm text-gray-500 max-w-xl mx-auto">
@@ -64,17 +64,17 @@ export const FaqPage: React.FC = () => {
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-4">
         {FAQ_DATA.map((faq, idx) => {
           const isOpen = openIndex === idx;
           return (
             <div
               key={idx}
-              className="border border-gray-200 rounded-xl overflow-hidden transition-colors"
+              className="border border-gray-200 rounded-lg overflow-hidden transition-colors"
             >
               <button
                 onClick={() => toggle(idx)}
-                className="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-gray-900 hover:text-[#16A34A] bg-gray-50/50 hover:bg-green-50/40 flex items-center justify-between gap-4 transition-colors"
+                className="w-full p-4 sm:p-5 text-left font-semibold text-xs sm:text-sm text-gray-900 hover:text-[#16A34A] bg-gray-50/50 hover:bg-green-50/40 flex items-center justify-between gap-4 transition-colors cursor-pointer"
               >
                 <span>{faq.question}</span>
                 {isOpen ? (

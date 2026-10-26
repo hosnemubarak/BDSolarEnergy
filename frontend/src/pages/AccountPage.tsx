@@ -18,6 +18,7 @@ import { useAuth } from '../context/AuthContext';
 import { orderService } from '../services/orderService';
 import { Order, CustomerAddress } from '../types';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { formatBDT } from '../utils/currency';
 
 export const AccountPage: React.FC = () => {
   const { user, logout, setIsAuthModalOpen, saveAddress } = useAuth();
@@ -176,17 +177,17 @@ export const AccountPage: React.FC = () => {
         </div>
 
         {/* Right Content Area (8 cols) */}
-        <div className="lg:col-span-8 bg-white rounded-3xl border border-gray-200 p-6 sm:p-8 shadow-xs">
+        <div className="lg:col-span-8 bg-white rounded-xl border border-gray-200 p-5 sm:p-8 shadow-xs">
           
           {/* TAB 1: ORDERS */}
           {activeTab === 'orders' && (
             <div className="space-y-5">
-              <h3 className="font-extrabold text-base text-gray-900">
+              <h3 className="font-bold text-base text-gray-900">
                 Order History & Live Status
               </h3>
 
               {orders.length === 0 ? (
-                <div className="text-center py-10 text-gray-500 text-xs">
+                <div className="text-center py-10 text-gray-500 text-xs sm:text-sm">
                   No orders found. When you purchase solar panels or equipment, they will appear here.
                 </div>
               ) : (
@@ -194,19 +195,19 @@ export const AccountPage: React.FC = () => {
                   {orders.map((ord) => (
                     <div
                       key={ord.id}
-                      className="p-5 rounded-2xl border border-gray-200 hover:border-green-200 transition-colors space-y-3"
+                      className="p-4 sm:p-5 rounded-xl border border-gray-200 hover:border-green-200 transition-colors space-y-3"
                     >
-                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 pb-3 text-xs">
+                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 pb-3 text-xs sm:text-sm">
                         <div>
-                          <span className="font-black text-gray-900 text-sm">#{ord.orderNumber}</span>
-                          <span className="text-gray-400 text-[11px] block">
+                          <span className="font-bold text-gray-900 text-sm sm:text-base">#{ord.orderNumber}</span>
+                          <span className="text-gray-500 text-xs block">
                             Placed on {new Date(ord.createdAt).toLocaleDateString('en-GB')}
                           </span>
                         </div>
 
                         <div className="flex items-center gap-2">
                           <span
-                            className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                            className={`px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider ${
                               ord.status === 'DELIVERED'
                                 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                                 : ord.status === 'SHIPPED'
@@ -218,7 +219,7 @@ export const AccountPage: React.FC = () => {
                           </span>
                           <Link
                             to={`/order-confirmation/${ord.orderNumber}`}
-                            className="text-[#16A34A] hover:text-[#15803D] font-bold text-xs transition-colors"
+                            className="text-[#16A34A] hover:text-[#15803D] font-semibold text-xs sm:text-sm transition-colors"
                           >
                             View Invoice &rarr;
                           </Link>
@@ -228,12 +229,12 @@ export const AccountPage: React.FC = () => {
                       {/* Item Snippets */}
                       <div className="space-y-2">
                         {ord.items.map((it, i) => (
-                          <div key={i} className="flex items-center justify-between text-xs">
+                          <div key={i} className="flex items-center justify-between text-xs sm:text-sm">
                             <div className="flex items-center gap-2.5">
                               <img
                                 src={it.image}
                                 alt={it.name}
-                                className="w-8 h-8 rounded object-cover border border-gray-200"
+                                className="w-9 h-9 rounded-md object-cover border border-gray-200 shrink-0"
                                 onError={(e) => {
                                    const target = e.target as HTMLImageElement;
                                    target.onerror = null;
@@ -243,21 +244,21 @@ export const AccountPage: React.FC = () => {
                               <span className="text-gray-800 line-clamp-1">{it.name}</span>
                               <span className="text-gray-400">x{it.quantity}</span>
                             </div>
-                            <span className="font-bold text-[#16A34A]">
-                              ৳{it.subtotal.toLocaleString('en-BD')}
+                            <span className="font-semibold text-[#16A34A]">
+                              {formatBDT(it.subtotal)}
                             </span>
                           </div>
                         ))}
                       </div>
 
                       {/* Footer Total & Courier Tracking */}
-                      <div className="pt-2 border-t border-gray-100 flex flex-wrap items-center justify-between gap-2 text-xs">
+                      <div className="pt-2 border-t border-gray-100 flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
                         <div className="text-gray-500 flex items-center gap-1.5">
-                          <Truck className="w-3.5 h-3.5 text-[#16A34A]" />
+                          <Truck className="w-4 h-4 text-[#16A34A]" />
                           <span>Courier: {ord.courierName} ({ord.trackingNumber})</span>
                         </div>
-                        <div className="font-black text-sm text-gray-900">
-                          Total: <span className="text-[#16A34A]">৳{ord.total.toLocaleString('en-BD')}</span>
+                        <div className="font-bold text-sm sm:text-base text-gray-900">
+                          Total: <span className="text-[#16A34A]">{formatBDT(ord.total)}</span>
                         </div>
                       </div>
                     </div>

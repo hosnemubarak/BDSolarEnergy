@@ -25,6 +25,7 @@ import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { RatingStars } from '../components/common/RatingStars';
 import { Badge } from '../components/common/Badge';
 import { ProductCard } from '../components/product/ProductCard';
+import { formatBDT } from '../utils/currency';
 
 export const ProductDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -124,11 +125,11 @@ export const ProductDetailPage: React.FC = () => {
       />
 
       {/* Main Product Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white p-5 sm:p-8 rounded-3xl border border-gray-200 shadow-xs">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white p-5 sm:p-8 rounded-xl border border-gray-200 shadow-xs">
         
         {/* Left Column: Image Gallery (5 cols) */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="aspect-square bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 relative group">
+          <div className="aspect-square bg-gray-50 rounded-xl overflow-hidden border border-gray-200 relative group">
             <img
               src={selectedImage || product.image}
               alt={product.name}
@@ -141,7 +142,7 @@ export const ProductDetailPage: React.FC = () => {
             />
             {product.originalPrice && product.originalPrice > product.price && (
               <span className="absolute top-4 left-4 px-2.5 py-1 bg-rose-600 text-white font-bold text-xs rounded-lg shadow-sm">
-                Save ৳{(product.originalPrice - product.price).toLocaleString('en-BD')}
+                Save {formatBDT(product.originalPrice - product.price)}
               </span>
             )}
           </div>
@@ -210,7 +211,7 @@ export const ProductDetailPage: React.FC = () => {
             </div>
 
             {/* Product Title */}
-            <h1 className="text-xl sm:text-2xl font-black text-gray-900 mt-2 leading-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 leading-tight">
               {product.name}
             </h1>
 
@@ -219,32 +220,32 @@ export const ProductDetailPage: React.FC = () => {
               <RatingStars rating={product.rating} reviewCount={product.reviewCount} size={15} />
               <div className="flex items-center gap-2 text-xs">
                 <span className="text-emerald-700 font-semibold flex items-center gap-1 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   <span>In Stock ({product.stock} units)</span>
                 </span>
               </div>
             </div>
 
             {/* Price Box */}
-            <div className="mt-4 p-4 bg-[#F0FDF4] rounded-2xl border border-green-100 flex items-baseline justify-between flex-wrap gap-3">
+            <div className="mt-4 p-4 bg-[#F0FDF4] rounded-xl border border-green-100 flex items-baseline justify-between flex-wrap gap-3">
               <div>
-                <span className="text-3xl font-black text-[#16A34A]">
-                  ৳{product.price.toLocaleString('en-BD')}
+                <span className="text-2xl sm:text-3xl font-bold text-[#16A34A]">
+                  {formatBDT(product.price)}
                 </span>
                 {product.originalPrice && (
-                  <span className="ml-3 text-sm text-gray-400 line-through">
-                    ৳{product.originalPrice.toLocaleString('en-BD')}
+                  <span className="ml-3 text-sm sm:text-base text-gray-400 line-through">
+                    {formatBDT(product.originalPrice)}
                   </span>
                 )}
-                <div className="text-[11px] text-gray-500 mt-0.5">
-                  VAT & Import duty included. Free shipping for orders above ৳50,000.
+                <div className="text-xs text-gray-500 mt-1">
+                  VAT & Import duty included. Free delivery for orders above {formatBDT(50000)}.
                 </div>
               </div>
 
               {specs.warrantyYears && (
                 <div className="text-right">
-                  <span className="px-3 py-1 bg-white text-green-900 text-xs font-bold rounded-lg border border-green-200 shadow-xs inline-flex items-center gap-1">
-                    <ShieldCheck className="w-4 h-4 text-[#15803D]" />
+                  <span className="px-3 py-1 bg-white text-green-900 text-xs font-semibold rounded-lg border border-green-200 shadow-xs inline-flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-[#16A34A]" />
                     <span>{specs.warrantyYears} Years Warranty</span>
                   </span>
                 </div>
@@ -270,20 +271,22 @@ export const ProductDetailPage: React.FC = () => {
           </div>
 
           {/* Quantity & CTA Buttons */}
-          <div className="space-y-3 pt-4 border-t border-gray-100">
+          <div className="space-y-4 pt-4 border-t border-gray-100">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               {/* Stepper */}
-              <div className="flex items-center justify-between border border-gray-300 rounded-xl bg-gray-50 px-2 py-1 shrink-0">
+              <div className="flex items-center justify-between border border-gray-300 rounded-lg bg-gray-50 px-2 py-1 shrink-0 h-11">
                 <button
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  className="p-2 hover:bg-gray-200 text-gray-600 rounded-lg transition-colors"
+                  className="p-2 hover:bg-gray-200 text-gray-600 rounded-md transition-colors"
+                  aria-label="Decrease quantity"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
                 <span className="px-4 text-sm font-bold text-gray-800">{quantity}</span>
                 <button
                   onClick={() => setQuantity((q) => Math.min(product.stock, q + 1))}
-                  className="p-2 hover:bg-gray-200 text-gray-600 rounded-lg transition-colors"
+                  className="p-2 hover:bg-gray-200 text-gray-600 rounded-md transition-colors"
+                  aria-label="Increase quantity"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
@@ -292,7 +295,7 @@ export const ProductDetailPage: React.FC = () => {
               {/* Add to Cart */}
               <button
                 onClick={handleAddToCart}
-                className="flex-1 py-3 px-6 bg-slate-100 hover:bg-slate-200 text-gray-900 font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 border border-gray-200 active:scale-98"
+                className="flex-1 h-11 px-6 bg-slate-100 hover:bg-slate-200 text-gray-900 font-semibold text-sm rounded-lg transition-all flex items-center justify-center gap-2 border border-gray-200 active:scale-98"
               >
                 <ShoppingCart className="w-4 h-4 text-[#16A34A]" />
                 <span>Add to Cart</span>
@@ -301,7 +304,7 @@ export const ProductDetailPage: React.FC = () => {
               {/* Buy Now */}
               <button
                 onClick={handleBuyNow}
-                className="flex-1 py-3 px-6 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 active:scale-98"
+                className="flex-1 h-11 px-6 bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-sm rounded-lg transition-all shadow-xs flex items-center justify-center gap-2 active:scale-98"
               >
                 <span>Buy Now</span>
                 <ArrowRight className="w-4 h-4" />
@@ -309,13 +312,13 @@ export const ProductDetailPage: React.FC = () => {
             </div>
 
             {/* Delivery & Assurance Strip */}
-            <div className="grid grid-cols-2 gap-3 text-xs text-gray-500 pt-2">
+            <div className="grid grid-cols-2 gap-3 text-xs sm:text-sm text-gray-500 pt-2">
               <div className="flex items-center gap-2">
-                <Truck className="w-4 h-4 text-green-700" />
-                <span>Fast delivery across Bangladesh</span>
+                <Truck className="w-4 h-4 text-[#16A34A]" />
+                <span>Fast nationwide delivery</span>
               </div>
               <div className="flex items-center gap-2">
-                <RotateCcw className="w-4 h-4 text-green-700" />
+                <RotateCcw className="w-4 h-4 text-[#16A34A]" />
                 <span>7-day return policy for defects</span>
               </div>
             </div>
@@ -324,7 +327,7 @@ export const ProductDetailPage: React.FC = () => {
       </div>
 
       {/* Tabs Section: Specifications, Description, Compatibility, Warranty */}
-      <div className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-6">
         <div className="flex border-b border-gray-200 gap-4 sm:gap-8 overflow-x-auto">
           {[
             { id: 'specs', label: 'Technical Specifications' },
@@ -335,10 +338,10 @@ export const ProductDetailPage: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`pb-3 text-xs sm:text-sm font-bold transition-colors whitespace-nowrap border-b-2 ${
+              className={`pb-3 text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap border-b-2 ${
                 activeTab === tab.id
-                  ? 'border-[#15803D] text-[#15803D]'
-                  : 'border-transparent text-gray-400 hover:text-gray-700'
+                  ? 'border-[#16A34A] text-[#16A34A]'
+                  : 'border-transparent text-gray-500 hover:text-gray-900'
               }`}
             >
               {tab.label}
@@ -349,11 +352,11 @@ export const ProductDetailPage: React.FC = () => {
         {/* TAB 1: SPECS TABLE */}
         {activeTab === 'specs' && (
           <div className="space-y-4">
-            <h3 className="font-bold text-base text-gray-900">
+            <h3 className="font-bold text-base sm:text-lg text-gray-900">
               Verified Technical Specifications
             </h3>
             <div className="overflow-x-auto">
-              <table className="w-full text-xs text-left border border-gray-200 rounded-xl overflow-hidden">
+              <table className="w-full text-xs sm:text-sm text-left border border-gray-200 rounded-xl overflow-hidden">
                 <tbody className="divide-y divide-gray-100">
                   {/* General */}
                   <tr className="bg-gray-50 font-semibold text-gray-700">
@@ -596,37 +599,38 @@ export const ProductDetailPage: React.FC = () => {
       {/* Mobile Sticky Purchase Bar */}
       <div className="fixed bottom-14 left-0 right-0 z-30 sm:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 py-2.5 flex items-center justify-between gap-3 shadow-lg">
         <div>
-          <span className="text-[10px] text-gray-500 block">Total Price</span>
-          <span className="text-base font-black text-gray-900">
-            ৳{(product.price * quantity).toLocaleString('en-BD')}
+          <span className="text-xs text-gray-500 block">Total Price</span>
+          <span className="text-base sm:text-lg font-bold text-gray-900">
+            {formatBDT(product.price * quantity)}
           </span>
         </div>
 
         <div className="flex items-center gap-2">
           {/* Stepper */}
-          <div className="flex items-center border border-gray-300 rounded-lg bg-gray-50 px-1.5 py-0.5">
+          <div className="flex items-center border border-gray-300 rounded-lg bg-gray-50 px-2 py-1 h-10">
             <button
               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
               className="p-1 text-gray-600 hover:text-gray-900"
               aria-label="Decrease quantity"
             >
-              <Minus className="w-3.5 h-3.5" />
+              <Minus className="w-4 h-4" />
             </button>
-            <span className="px-2 text-xs font-bold text-gray-800">{quantity}</span>
+            <span className="px-2.5 text-xs font-bold text-gray-800">{quantity}</span>
             <button
               onClick={() => setQuantity((q) => Math.min(product.stock, q + 1))}
               className="p-1 text-gray-600 hover:text-gray-900"
               aria-label="Increase quantity"
             >
-              <Plus className="w-3.5 h-3.5" />
+              <Plus className="w-4 h-4" />
             </button>
           </div>
 
           <button
             onClick={handleAddToCart}
-            className="px-4 py-2 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs rounded-lg transition-colors flex items-center gap-1.5 shadow-xs active:scale-95"
+            className="px-4 h-10 bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-xs sm:text-sm rounded-lg transition-colors flex items-center gap-1.5 shadow-xs active:scale-95"
+            aria-label="Add to cart"
           >
-            <ShoppingCart className="w-3.5 h-3.5" />
+            <ShoppingCart className="w-4 h-4" />
             <span>Add</span>
           </button>
         </div>

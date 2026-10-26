@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
             </div>
             <div>
               <h5 className="font-bold text-gray-900 text-xs sm:text-sm">Tier 1 Solar Brands</h5>
-              <p className="text-[11px] text-gray-500">Trina, Jinko, Growatt & Deye</p>
+              <p className="text-xs text-gray-500">Trina, Jinko, Growatt & Deye</p>
             </div>
           </div>
 
@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
             </div>
             <div>
               <h5 className="font-bold text-gray-900 text-xs sm:text-sm">BSTI & IEC Certified</h5>
-              <p className="text-[11px] text-gray-500">100% genuine equipment</p>
+              <p className="text-xs text-gray-500">100% genuine equipment</p>
             </div>
           </div>
 
@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
             </div>
             <div>
               <h5 className="font-bold text-gray-900 text-xs sm:text-sm">Expert Sizing Support</h5>
-              <p className="text-[11px] text-gray-500">Engineered rooftop calculations</p>
+              <p className="text-xs text-gray-500">Engineered rooftop calculations</p>
             </div>
           </div>
 
@@ -68,7 +68,7 @@ export const Footer: React.FC = () => {
             </div>
             <div>
               <h5 className="font-bold text-gray-900 text-xs sm:text-sm">Nationwide Delivery</h5>
-              <p className="text-[11px] text-gray-500">Fast courier across 64 districts</p>
+              <p className="text-xs text-gray-500">Fast courier across 64 districts</p>
             </div>
           </div>
         </div>
@@ -208,21 +208,21 @@ export const Footer: React.FC = () => {
             </ul>
 
             <form onSubmit={handleSubscribe} className="pt-2 space-y-1.5">
-              <span className="text-[11px] font-semibold text-gray-700 block">Newsletter:</span>
+              <span className="text-xs font-semibold text-gray-700 block">Newsletter:</span>
               <div className="flex">
                 <input
                   type="email"
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Your email address"
-                  className="w-full px-2.5 py-1.5 bg-white border border-gray-200 rounded-l-lg text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#16A34A]"
+                  className="w-full px-3 py-2 bg-white border border-gray-200 rounded-l-lg text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#16A34A]"
                 />
                 <button
                   type="submit"
-                  className="px-3 bg-[#16A34A] hover:bg-[#15803D] text-white rounded-r-lg transition-colors flex items-center justify-center shrink-0"
+                  className="px-3.5 bg-[#16A34A] hover:bg-[#15803D] text-white rounded-r-lg transition-colors flex items-center justify-center shrink-0"
                   aria-label="Subscribe"
                 >
-                  <Send className="w-3.5 h-3.5" />
+                  <Send className="w-4 h-4" />
                 </button>
               </div>
             </form>
@@ -236,7 +236,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Accepted Payment Methods */}
-          <div className="flex items-center gap-1.5 flex-wrap justify-center text-[11px]">
+          <div className="flex items-center gap-1.5 flex-wrap justify-center text-xs">
             <span className="text-gray-400 mr-1">Payments:</span>
             <span className="px-2 py-0.5 bg-white border border-gray-200 rounded font-semibold text-pink-600">
               bKash

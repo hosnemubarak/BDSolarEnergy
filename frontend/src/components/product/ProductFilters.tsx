@@ -63,14 +63,14 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-5 space-y-6 shadow-xs">
+    <div className="bg-white rounded-xl border border-gray-200 p-5 space-y-6 shadow-xs">
       {/* Filter Header & Reset */}
       <div className="flex items-center justify-between pb-3 border-b border-gray-100">
         <div className="flex items-center gap-2 font-bold text-gray-900 text-sm">
           <Filter className="w-4 h-4 text-[#15803D]" />
           <span>Filters</span>
           {activeCount > 0 && (
-            <span className="w-5 h-5 rounded-full bg-[#15803D] text-white text-[10px] flex items-center justify-center font-bold">
+            <span className="w-5 h-5 rounded-full bg-[#15803D] text-white text-xs flex items-center justify-center font-bold">
               {activeCount}
             </span>
           )}
@@ -80,7 +80,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
             onClick={onReset}
             className="text-xs text-green-700 hover:text-green-900 font-semibold flex items-center gap-1"
           >
-            <RotateCcw className="w-3 h-3" />
+            <RotateCcw className="w-3.5 h-3.5" />
             <span>Reset</span>
           </button>
         )}
@@ -95,7 +95,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
           <button
             type="button"
             onClick={() => handleCategorySelect(undefined)}
-            className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-colors flex items-center justify-between ${
+            className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-between ${
               !filters.category
                 ? 'bg-[#F0FDF4] text-[#16A34A] font-bold border border-green-200'
                 : 'text-gray-600 hover:bg-gray-100'
@@ -112,14 +112,14 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 key={cat.id || cat.slug}
                 type="button"
                 onClick={() => handleCategorySelect(catIdentifier)}
-                className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-colors flex items-center justify-between ${
+                className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-between ${
                   isSelected
                     ? 'bg-[#F0FDF4] text-[#16A34A] font-bold border border-green-200'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
                 <span className="truncate">{cat.name}</span>
-                <span className="text-[10px] text-gray-400">({cat.productCount})</span>
+                <span className="text-xs text-gray-400">({cat.productCount})</span>
               </button>
             );
           })}
@@ -183,9 +183,9 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 minPrice: e.target.value ? Number(e.target.value) : undefined,
               })
             }
-            className="w-1/2 px-2.5 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#16A34A] focus:bg-white"
+            className="w-1/2 px-3 py-2 text-xs sm:text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#16A34A] focus:bg-white"
           />
-          <span className="text-gray-400 text-xs">-</span>
+          <span className="text-gray-400 text-xs sm:text-sm">-</span>
           <input
             type="number"
             placeholder="Max ৳"
@@ -196,7 +196,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 maxPrice: e.target.value ? Number(e.target.value) : undefined,
               })
             }
-            className="w-1/2 px-2.5 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#16A34A] focus:bg-white"
+            className="w-1/2 px-3 py-2 text-xs sm:text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#16A34A] focus:bg-white"
           />
         </div>
       </div>
@@ -206,19 +206,19 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
         <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
           Brands
         </h4>
-        <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1">
+        <div className="max-h-48 overflow-y-auto space-y-2 pr-1">
           {brands.map((b) => {
             const isChecked = filters.brand?.includes(b.name) || filters.brand?.includes(b.slug);
             return (
               <label
                 key={b.id || b.slug}
-                className="flex items-center gap-2 text-xs text-gray-700 hover:text-green-950 cursor-pointer select-none"
+                className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-700 hover:text-green-950 cursor-pointer select-none"
               >
                 <input
                   type="checkbox"
                   checked={!!isChecked}
                   onChange={() => handleBrandToggle(b.name)}
-                  className="rounded text-[#16A34A] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
+                  className="rounded text-[#16A34A] focus:ring-green-400 border-gray-300 w-4 h-4 cursor-pointer"
                 />
                 <span className="truncate">{b.name}</span>
               </label>

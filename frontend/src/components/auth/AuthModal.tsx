@@ -71,11 +71,11 @@ export const AuthModal: React.FC = () => {
 
       {/* Modal Dialog */}
       <div className="min-h-screen px-4 flex items-center justify-center p-4">
-        <div className="relative bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 text-left shadow-2xl z-10 overflow-hidden border border-green-100">
+        <div className="relative bg-white rounded-xl max-w-md w-full p-6 sm:p-8 text-left shadow-2xl z-10 overflow-hidden border border-gray-200">
           {/* Close button */}
           <button
             onClick={() => setIsAuthModalOpen(false)}
-            className="absolute top-4 right-4 p-1.5 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors"
+            className="absolute top-4 right-4 p-1.5 rounded-lg bg-gray-100 text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -85,11 +85,11 @@ export const AuthModal: React.FC = () => {
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#F0FDF4] text-[#16A34A] mb-3 border border-green-200">
               <User className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-extrabold text-gray-900">
-              {mode === 'login' ? 'Customer Sign In' : 'Create Customer Account'}
+            <h3 className="text-xl font-bold text-gray-900">
+              {mode === 'login' ? 'Sign In to Your Account' : 'Create Customer Account'}
             </h3>
             <p className="text-xs text-gray-500 mt-1">
-              Access your order history, delivery addresses, and fast checkout
+              Access your order history, delivery addresses, and checkout
             </p>
           </div>
 
@@ -97,7 +97,7 @@ export const AuthModal: React.FC = () => {
           <div className="flex border-b border-gray-200 mb-5">
             <button
               onClick={() => setMode('login')}
-              className={`flex-1 py-2.5 text-xs font-bold text-center border-b-2 transition-colors ${
+              className={`flex-1 py-2.5 text-xs sm:text-sm font-semibold text-center border-b-2 transition-colors ${
                 mode === 'login'
                   ? 'border-[#16A34A] text-[#16A34A]'
                   : 'border-transparent text-gray-400 hover:text-gray-700'
@@ -107,7 +107,7 @@ export const AuthModal: React.FC = () => {
             </button>
             <button
               onClick={() => setMode('register')}
-              className={`flex-1 py-2.5 text-xs font-bold text-center border-b-2 transition-colors ${
+              className={`flex-1 py-2.5 text-xs sm:text-sm font-semibold text-center border-b-2 transition-colors ${
                 mode === 'register'
                   ? 'border-[#16A34A] text-[#16A34A]'
                   : 'border-transparent text-gray-400 hover:text-gray-700'
@@ -121,40 +121,40 @@ export const AuthModal: React.FC = () => {
           {mode === 'login' ? (
             <form onSubmit={handleLoginSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">
+                <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
                   Email, Mobile (+880...), or Username
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
                     required
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
-                    placeholder="e.g. 01712345678, user@example.com, or username"
-                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
+                    placeholder="e.g. 01712345678 or user@example.com"
+                    className="w-full h-11 pl-10 pr-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="text-xs font-semibold text-gray-700">Password</label>
+                  <label className="text-xs sm:text-sm font-semibold text-gray-700">Password</label>
                 </div>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <Lock className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     required
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-9 pr-10 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
+                    className="w-full h-11 pl-10 pr-10 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="p-1.5 text-gray-400 hover:text-gray-600 absolute right-2 top-1/2 -translate-y-1/2"
+                    className="p-1.5 text-gray-400 hover:text-gray-600 absolute right-2.5 top-1/2 -translate-y-1/2"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -164,78 +164,78 @@ export const AuthModal: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm active:scale-98 disabled:opacity-50"
+                className="w-full h-11 bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-sm rounded-lg transition-all shadow-sm active:scale-98 disabled:opacity-50 cursor-pointer"
               >
-                {isLoading ? 'Signing In...' : 'Sign In with JWT'}
+                {isLoading ? 'Signing In...' : 'Sign In'}
               </button>
             </form>
           ) : (
             /* Register Form */
             <form onSubmit={handleRegisterSubmit} className="space-y-3.5">
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Full Name</label>
+                <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Full Name</label>
                 <div className="relative">
-                  <User className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
                     required
                     value={regName}
                     onChange={(e) => setRegName(e.target.value)}
                     placeholder="Md. Rafiqul Islam"
-                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
+                    className="w-full h-11 pl-10 pr-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">
+                <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
                   Mobile Number (BD)
                 </label>
                 <div className="relative">
-                  <Phone className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <Phone className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="tel"
                     required
                     value={regPhone}
                     onChange={(e) => setRegPhone(e.target.value)}
                     placeholder="+880 17XX-XXXXXX"
-                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
+                    className="w-full h-11 pl-10 pr-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">
+                <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
                   Email Address (Optional)
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="email"
                     value={regEmail}
                     onChange={(e) => setRegEmail(e.target.value)}
                     placeholder="rafiq@example.com"
-                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
+                    className="w-full h-11 pl-10 pr-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Password</label>
+                <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Password</label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <Lock className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     required
                     value={regPassword}
                     onChange={(e) => setRegPassword(e.target.value)}
                     placeholder="Create a password (min 8 chars)"
-                    className="w-full pl-9 pr-10 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
+                    className="w-full h-11 pl-10 pr-10 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="p-1.5 text-gray-400 hover:text-gray-600 absolute right-2 top-1/2 -translate-y-1/2"
+                    className="p-1.5 text-gray-400 hover:text-gray-600 absolute right-2.5 top-1/2 -translate-y-1/2"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -245,7 +245,7 @@ export const AuthModal: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm active:scale-98 disabled:opacity-50 mt-2"
+                className="w-full h-11 bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-sm rounded-lg transition-all shadow-sm active:scale-98 disabled:opacity-50 mt-2 cursor-pointer"
               >
                 {isLoading ? 'Creating Account...' : 'Complete Registration'}
               </button>

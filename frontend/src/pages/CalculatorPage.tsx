@@ -12,6 +12,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { formatBDT } from '../utils/currency';
 
 export const CalculatorPage: React.FC = () => {
   const [monthlyBillBdt, setMonthlyBillBdt] = useState<number>(6500);
@@ -81,19 +82,19 @@ export const CalculatorPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         {/* Left: Input Controls (6 cols) */}
-        <div className="lg:col-span-6 bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-6">
-          <h3 className="font-extrabold text-base text-gray-900 border-b border-gray-100 pb-3">
+        <div className="lg:col-span-6 bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-6">
+          <h3 className="font-bold text-base text-gray-900 border-b border-gray-100 pb-3">
             Enter Your Household or Facility Usage
           </h3>
 
           {/* Monthly Bill Slider & Input */}
           <div className="space-y-2">
-            <div className="flex justify-between items-center text-xs">
-              <label className="font-bold text-gray-800">
+            <div className="flex justify-between items-center text-xs sm:text-sm">
+              <label className="font-semibold text-gray-800">
                 Average Monthly Electricity Bill (BDT)
               </label>
-              <span className="text-base font-black text-[#16A34A]">
-                ৳{monthlyBillBdt.toLocaleString('en-BD')}
+              <span className="text-base sm:text-lg font-bold text-[#16A34A]">
+                {formatBDT(monthlyBillBdt)}
               </span>
             </div>
             <input
@@ -105,16 +106,16 @@ export const CalculatorPage: React.FC = () => {
               onChange={(e) => setMonthlyBillBdt(Number(e.target.value))}
               className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#16A34A]"
             />
-            <div className="flex justify-between text-[11px] text-gray-400">
-              <span>৳2,000 / mo</span>
-              <span>Approx. {monthlyKwhConsumed} kWh units / month</span>
-              <span>৳50,000 / mo</span>
+            <div className="flex justify-between text-xs text-gray-500">
+              <span>{formatBDT(2000)} / mo</span>
+              <span>Approx. {monthlyKwhConsumed} kWh units / mo</span>
+              <span>{formatBDT(50000)} / mo</span>
             </div>
           </div>
 
           {/* Desired Bill Reduction */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold text-gray-800">
+            <label className="block text-xs sm:text-sm font-semibold text-gray-800">
               Target Electricity Bill Offset
             </label>
             <div className="grid grid-cols-3 gap-3">
@@ -123,14 +124,14 @@ export const CalculatorPage: React.FC = () => {
                   key={pct}
                   type="button"
                   onClick={() => setBillReductionPercent(pct)}
-                  className={`py-3 rounded-2xl border-2 text-xs font-bold transition-all text-center ${
+                  className={`py-2.5 sm:py-3 rounded-lg border-2 text-xs sm:text-sm font-semibold transition-all text-center cursor-pointer ${
                     billReductionPercent === pct
                       ? 'border-[#16A34A] bg-[#F0FDF4] text-[#16A34A] shadow-xs'
                       : 'border-gray-200 text-gray-600 hover:border-green-200'
                   }`}
                 >
-                  <span className="block text-sm font-black">{pct}%</span>
-                  <span className="text-[10px] font-normal text-gray-500">Bill Offset</span>
+                  <span className="block text-sm sm:text-base font-bold">{pct}%</span>
+                  <span className="text-xs font-normal text-gray-500">Bill Offset</span>
                 </button>
               ))}
             </div>
@@ -139,71 +140,71 @@ export const CalculatorPage: React.FC = () => {
           {/* Battery Backup Option */}
           <div className="pt-2 border-t border-gray-100 flex items-center justify-between">
             <div>
-              <span className="text-xs font-bold text-gray-900 block">Include Lithium Battery Backup</span>
-              <span className="text-[11px] text-gray-500">Powers AC, fans, and WiFi during load shedding</span>
+              <span className="text-xs sm:text-sm font-semibold text-gray-900 block">Include Lithium Battery Backup</span>
+              <span className="text-xs text-gray-500">Powers AC, fans, and WiFi during load shedding</span>
             </div>
             <input
               type="checkbox"
               checked={needBatteryBackup}
               onChange={(e) => setNeedBatteryBackup(e.target.checked)}
-              className="w-5 h-5 text-[#16A34A] rounded focus:ring-green-400 border-gray-300 cursor-pointer"
+              className="w-4 h-4 text-[#16A34A] rounded focus:ring-green-400 border-gray-300 cursor-pointer"
             />
           </div>
         </div>
 
         {/* Right: Results & Recommendations (6 cols) */}
-        <div className="lg:col-span-6 bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-sm space-y-6">
+        <div className="lg:col-span-6 bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-6">
           <div className="border-b border-gray-100 pb-3 flex items-center justify-between">
-            <h3 className="font-extrabold text-base text-gray-900">
+            <h3 className="font-bold text-base text-gray-900">
               Recommended Solar Engineering Configuration
             </h3>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#F0FDF4] text-[#16A34A] text-xs font-bold border border-green-200">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#F0FDF4] text-[#16A34A] text-xs font-semibold border border-green-200">
               High Feasibility
             </span>
           </div>
 
           {/* Key Metric Blocks */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
-            <div className="p-4 bg-[#F0FDF4] rounded-xl border border-green-100">
-              <span className="text-gray-500 block text-[11px]">Recommended Array</span>
-              <span className="text-xl font-black text-gray-900 block mt-1">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs sm:text-sm">
+            <div className="p-3.5 sm:p-4 bg-[#F0FDF4] rounded-lg border border-green-100">
+              <span className="text-gray-500 block text-xs">Recommended Array</span>
+              <span className="text-lg sm:text-xl font-bold text-gray-900 block mt-1">
                 {recommendedSolarKwp} kWp
               </span>
-              <span className="text-[10px] text-[#16A34A] font-semibold block mt-0.5">
+              <span className="text-xs text-[#16A34A] font-medium block mt-0.5">
                 {recommendedPanelCount}x 585W Panels
               </span>
             </div>
 
-            <div className="p-4 bg-[#F0FDF4] rounded-xl border border-green-100">
-              <span className="text-gray-500 block text-[11px]">Inverter Capacity</span>
-              <span className="text-xl font-black text-gray-900 block mt-1">
+            <div className="p-3.5 sm:p-4 bg-[#F0FDF4] rounded-lg border border-green-100">
+              <span className="text-gray-500 block text-xs">Inverter Capacity</span>
+              <span className="text-lg sm:text-xl font-bold text-gray-900 block mt-1">
                 {recommendedInverterKva} kVA
               </span>
-              <span className="text-[10px] text-[#16A34A] font-semibold block mt-0.5">
+              <span className="text-xs text-[#16A34A] font-medium block mt-0.5">
                 Hybrid Pure Sine Wave
               </span>
             </div>
 
-            <div className="p-4 bg-[#F0FDF4] rounded-xl border border-green-100 col-span-2 sm:col-span-1">
-              <span className="text-gray-500 block text-[11px]">Battery Storage</span>
-              <span className="text-xl font-black text-gray-900 block mt-1">
+            <div className="p-3.5 sm:p-4 bg-[#F0FDF4] rounded-lg border border-green-100 col-span-2 sm:col-span-1">
+              <span className="text-gray-500 block text-xs">Battery Storage</span>
+              <span className="text-lg sm:text-xl font-bold text-gray-900 block mt-1">
                 {recommendedBatteryKwh} kWh
               </span>
-              <span className="text-[10px] text-[#16A34A] font-semibold block mt-0.5">
+              <span className="text-xs text-[#16A34A] font-medium block mt-0.5">
                 {needBatteryBackup ? 'LiFePO4 Storage' : 'Grid-Tied Net Metering'}
               </span>
             </div>
           </div>
 
           {/* 25-Year Cumulative Savings Banner */}
-          <div className="p-4 bg-emerald-50/70 rounded-xl border border-emerald-100">
-            <div className="text-xs font-semibold text-emerald-800">
+          <div className="p-4 bg-emerald-50/70 rounded-lg border border-emerald-100">
+            <div className="text-xs sm:text-sm font-semibold text-emerald-800">
               Estimated 25-Year Net Utility Savings:
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-emerald-950 mt-1">
-              ৳{lifetime25YearSavingsBdt.toLocaleString('en-BD')}
+            <div className="text-2xl sm:text-3xl font-bold text-emerald-950 mt-1">
+              {formatBDT(lifetime25YearSavingsBdt)}
             </div>
-            <div className="text-[11px] text-emerald-700 mt-1">
+            <div className="text-xs text-emerald-700 mt-1">
               Based on average Bangladesh electricity tariff with 3% annual inflation.
             </div>
           </div>
@@ -212,7 +213,7 @@ export const CalculatorPage: React.FC = () => {
           <div className="space-y-2 pt-2">
             <Link
               to="/system-builder"
-              className="w-full py-3.5 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm flex items-center justify-center gap-2"
+              className="w-full h-11 bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-xs sm:text-sm rounded-lg transition-all shadow-sm flex items-center justify-center gap-2"
             >
               <Sliders className="w-4 h-4" />
               <span>Customize in System Builder</span>
@@ -220,7 +221,7 @@ export const CalculatorPage: React.FC = () => {
 
             <Link
               to="/solar-packages"
-              className="w-full py-2.5 bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold text-xs rounded-xl transition-colors flex items-center justify-center gap-1.5"
+              className="w-full h-10 bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold text-xs sm:text-sm rounded-lg transition-colors flex items-center justify-center gap-1.5"
             >
               <span>View Turnkey Pre-Packaged Systems</span>
               <ArrowRight className="w-3.5 h-3.5" />

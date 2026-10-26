@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useToast } from '../../context/ToastContext';
+import { formatBDT } from '../../utils/currency';
 
 export const CartDrawer: React.FC = () => {
   const { 
@@ -96,7 +97,7 @@ export const CartDrawer: React.FC = () => {
                 <Truck className="w-4 h-4 text-[#16A34A]" />
                 {remainingForFreeShipping > 0 ? (
                   <span>
-                    Add <strong>৳{remainingForFreeShipping.toLocaleString('en-BD')}</strong> more for Free Delivery
+                    Add <strong>{formatBDT(remainingForFreeShipping)}</strong> more for Free Delivery
                   </span>
                 ) : (
                   <span className="text-emerald-700 flex items-center gap-1">
@@ -179,15 +180,15 @@ export const CartDrawer: React.FC = () => {
 
                       {/* Subtotal & Delete button */}
                       <div className="flex items-center gap-3">
-                        <span className="text-xs font-extrabold text-[#16A34A]">
-                          ৳{(item.product.price * item.quantity).toLocaleString('en-BD')}
+                        <span className="text-xs font-bold text-[#16A34A]">
+                          {formatBDT(item.product.price * item.quantity)}
                         </span>
                         <button
                           onClick={() => removeItem(item.product.id)}
-                          className="text-gray-300 hover:text-rose-600 transition-colors"
+                          className="text-gray-300 hover:text-rose-600 transition-colors p-1"
                           title="Remove item"
                         >
-                          <Trash2 className="w-3.5 h-3.5" />
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
@@ -221,11 +222,11 @@ export const CartDrawer: React.FC = () => {
                     value={inputCoupon}
                     onChange={(e) => setInputCoupon(e.target.value)}
                     placeholder="Enter coupon code"
-                    className="flex-1 px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg uppercase placeholder:normal-case focus:outline-none focus:border-[#16A34A]"
+                    className="flex-1 px-3 py-2 text-xs sm:text-sm bg-white border border-gray-300 rounded-lg uppercase placeholder:normal-case focus:outline-none focus:border-[#16A34A]"
                   />
                   <button
                     type="submit"
-                    className="px-3 py-1.5 bg-gray-800 hover:bg-gray-900 text-white text-xs font-medium rounded-lg transition-colors"
+                    className="px-3.5 py-2 bg-gray-800 hover:bg-gray-900 text-white text-xs font-semibold rounded-lg transition-colors"
                   >
                     Apply
                   </button>
@@ -237,14 +238,14 @@ export const CartDrawer: React.FC = () => {
                 <div className="flex justify-between">
                   <span>Subtotal</span>
                   <span className="font-semibold text-gray-900">
-                    ৳{subtotal.toLocaleString('en-BD')}
+                    {formatBDT(subtotal)}
                   </span>
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between text-emerald-700">
                     <span>Discount</span>
                     <span className="font-semibold">
-                      -৳{discount.toLocaleString('en-BD')}
+                      -{formatBDT(discount)}
                     </span>
                   </div>
                 )}
@@ -254,14 +255,14 @@ export const CartDrawer: React.FC = () => {
                     {shippingFee === 0 ? (
                       <span className="text-emerald-600 font-bold">FREE</span>
                     ) : (
-                      `৳${shippingFee}`
+                      formatBDT(shippingFee)
                     )}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm font-bold text-gray-900 pt-2 border-t border-gray-200">
                   <span>Total Amount</span>
-                  <span className="text-[#16A34A] text-base font-black">
-                    ৳{total.toLocaleString('en-BD')}
+                  <span className="text-[#16A34A] text-base font-bold">
+                    {formatBDT(total)}
                   </span>
                 </div>
               </div>
@@ -270,14 +271,14 @@ export const CartDrawer: React.FC = () => {
               <div className="space-y-2 pt-1">
                 <button
                   onClick={handleCheckoutClick}
-                  className="w-full py-3 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-sm rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 active:scale-98"
+                  className="w-full h-11 bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-sm rounded-lg transition-all shadow-sm flex items-center justify-center gap-2 active:scale-98"
                 >
                   <span>Proceed to Checkout</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
                   onClick={handleViewCartClick}
-                  className="w-full py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 font-semibold text-xs rounded-xl transition-colors"
+                  className="w-full h-10 bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 font-semibold text-xs sm:text-sm rounded-lg transition-colors flex items-center justify-center"
                 >
                   View Full Cart & Edit Items
                 </button>

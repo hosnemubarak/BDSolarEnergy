@@ -18,6 +18,7 @@ import { SolarPackage } from '../types';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { formatBDT } from '../utils/currency';
 
 export const SolarPackagesPage: React.FC = () => {
   const [packages, setPackages] = useState<SolarPackage[]>([]);
@@ -121,23 +122,23 @@ export const SolarPackagesPage: React.FC = () => {
               </div>
 
               {/* Performance Metrics Bar */}
-              <div className="grid grid-cols-3 bg-[#F0FDF4] p-3 border-b border-green-100 text-center divide-x divide-green-200/60 text-xs">
+              <div className="grid grid-cols-3 bg-[#F0FDF4] p-3.5 border-b border-green-100 text-center divide-x divide-green-200/60 text-xs">
                 <div>
-                  <div className="text-gray-500 text-[10px]">Solar Capacity</div>
-                  <div className="font-extrabold text-gray-900 text-sm mt-0.5">
+                  <div className="text-gray-500 text-xs">Solar Capacity</div>
+                  <div className="font-bold text-gray-900 text-sm sm:text-base mt-0.5">
                     {pkg.specifications.totalSolarCapacityWp} Wp
                   </div>
                 </div>
                 <div>
-                  <div className="text-gray-500 text-[10px]">Daily Est. Generation</div>
-                  <div className="font-extrabold text-gray-900 text-sm mt-0.5">
+                  <div className="text-gray-500 text-xs">Daily Est. Generation</div>
+                  <div className="font-bold text-gray-900 text-sm sm:text-base mt-0.5">
                     ~{pkg.dailyGenerationEstimateKwh} kWh / day
                   </div>
                 </div>
                 <div>
-                  <div className="text-gray-500 text-[10px]">Est. Monthly Savings</div>
-                  <div className="font-extrabold text-[#16A34A] text-sm mt-0.5">
-                    ৳{pkg.savingsMonthlyEstimateBdt.toLocaleString('en-BD')} / mo
+                  <div className="text-gray-500 text-xs">Est. Monthly Savings</div>
+                  <div className="font-bold text-[#16A34A] text-sm sm:text-base mt-0.5">
+                    {formatBDT(pkg.savingsMonthlyEstimateBdt)} / mo
                   </div>
                 </div>
               </div>
@@ -150,11 +151,11 @@ export const SolarPackagesPage: React.FC = () => {
                   </h4>
                   <ul className="space-y-2">
                     {pkg.items.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-xs text-gray-700">
+                      <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-gray-700">
                         <CheckCircle2 className="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5" />
                         <div>
                           <strong>{item.quantity}x {item.productName}</strong>
-                          <span className="text-gray-400 text-[11px] block">{item.specsSummary}</span>
+                          <span className="text-gray-500 text-xs block">{item.specsSummary}</span>
                         </div>
                       </li>
                     ))}
@@ -166,7 +167,7 @@ export const SolarPackagesPage: React.FC = () => {
                   <h4 className="text-xs font-bold text-gray-800 uppercase tracking-wider mb-2">
                     Ideal Application:
                   </h4>
-                  <p className="text-xs text-gray-600 bg-gray-50 p-2.5 rounded-xl border border-gray-100">
+                  <p className="text-xs sm:text-sm text-gray-600 bg-gray-50 p-3 rounded-lg border border-gray-100">
                     {pkg.idealFor}
                   </p>
                 </div>
@@ -176,30 +177,30 @@ export const SolarPackagesPage: React.FC = () => {
             {/* Price & Cart Actions Bottom Bar */}
             <div className="p-5 sm:p-6 bg-gray-50/80 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <div className="text-2xl font-black text-[#16A34A]">
-                  ৳{pkg.price.toLocaleString('en-BD')}
+                <div className="text-2xl sm:text-3xl font-bold text-[#16A34A]">
+                  {formatBDT(pkg.price)}
                 </div>
                 {pkg.originalPrice && (
-                  <span className="text-xs text-gray-400 line-through">
-                    ৳{pkg.originalPrice.toLocaleString('en-BD')}
+                  <span className="text-xs sm:text-sm text-gray-400 line-through">
+                    {formatBDT(pkg.originalPrice)}
                   </span>
                 )}
-                <div className="text-[10px] text-gray-500">Installation & Mounting Included</div>
+                <div className="text-xs text-gray-500 mt-0.5">Installation & Mounting Included</div>
               </div>
 
-              <div className="flex items-center gap-2 w-full sm:w-auto">
+              <div className="flex items-center gap-2.5 w-full sm:w-auto">
                 <Link
                   to="/system-builder"
-                  className="px-4 py-2.5 bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 font-semibold text-xs rounded-xl transition-colors text-center"
+                  className="px-4 py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 font-semibold text-xs sm:text-sm rounded-lg transition-colors text-center min-h-[40px] flex items-center justify-center"
                 >
                   Customize
                 </Link>
 
                 <button
                   onClick={() => handleAddPackageToCart(pkg)}
-                  className="flex-1 sm:flex-none px-5 py-2.5 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs rounded-xl transition-all shadow-sm active:scale-98"
+                  className="flex-1 sm:flex-none px-5 py-2 bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-xs sm:text-sm rounded-lg transition-all shadow-xs active:scale-98 min-h-[40px]"
                 >
-                  Order Package
+                  Add Package to Cart
                 </button>
               </div>
             </div>

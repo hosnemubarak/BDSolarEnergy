@@ -19,59 +19,59 @@ export const AboutPage: React.FC = () => {
       <Breadcrumbs items={[{ label: 'About Us' }]} />
 
       {/* Hero */}
-      <div className="bg-[#F8FAFC] border border-gray-200 rounded-2xl p-8 sm:p-12 text-center space-y-4 text-gray-900">
+      <div className="bg-[#F8FAFC] border border-gray-200 rounded-xl p-8 sm:p-12 text-center space-y-4 text-gray-900">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0FDF4] text-[#16A34A] text-xs font-semibold border border-green-200">
           <Sun className="w-3.5 h-3.5" />
           <span>About BD Solar Energy</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-black tracking-tight max-w-3xl mx-auto leading-tight text-gray-900">
-          Pioneering Clean Solar Energy & Reliable Electrical Solutions
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight max-w-3xl mx-auto leading-tight text-gray-900">
+          Clean Solar Energy & Reliable Electrical Solutions
         </h1>
         <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Founded by certified electrical engineers in Dhaka, BD Solar Energy is on a mission to deliver tier-1 solar technology, certified cables, and safe electrical protection to homes, businesses, and industrial factories across Bangladesh.
+          Founded by electrical engineers in Dhaka, BD Solar Energy delivers tier-1 solar technology, certified cables, and safe electrical protection to homes, businesses, and industrial facilities across Bangladesh.
         </p>
       </div>
 
       {/* Pillars Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-xs space-y-3">
-          <div className="w-12 h-12 rounded-xl bg-green-50 text-[#16A34A] flex items-center justify-center">
+        <div className="bg-white p-6 sm:p-8 rounded-xl border border-gray-200 shadow-xs space-y-3">
+          <div className="w-12 h-12 rounded-lg bg-green-50 text-[#16A34A] flex items-center justify-center">
             <Award className="w-6 h-6" />
           </div>
-          <h3 className="font-extrabold text-base text-gray-900">Genuine Tier 1 Hardware</h3>
-          <p className="text-xs text-gray-500 leading-relaxed">
-            We partner directly with world-leading PV manufacturers (Trina, Jinko, Growatt, Deye, Huawei) and Bangladesh’s premier cable makers (BRB, BBS) to guarantee 100% genuine equipment with verified barcode traceability.
+          <h3 className="font-bold text-base text-gray-900">Genuine Tier 1 Hardware</h3>
+          <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+            We partner directly with leading PV manufacturers (Trina, Jinko, Growatt, Deye, Huawei) and Bangladesh’s premier cable makers (BRB, BBS) to guarantee 100% genuine equipment with verified barcode traceability.
           </p>
         </div>
 
-        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-xs space-y-3">
-          <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
+        <div className="bg-white p-6 sm:p-8 rounded-xl border border-gray-200 shadow-xs space-y-3">
+          <div className="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
             <Users className="w-6 h-6" />
           </div>
-          <h3 className="font-extrabold text-base text-gray-900">Certified Solar Engineers</h3>
-          <p className="text-xs text-gray-500 leading-relaxed">
+          <h3 className="font-bold text-base text-gray-900">Certified Solar Engineers</h3>
+          <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
             Our engineering team conducts technical string calculations, shadow azimuth studies, and net-metering approvals under Bangladesh SREDA guidelines to ensure peak generation and electrical safety.
           </p>
         </div>
 
-        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-xs space-y-3">
-          <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
+        <div className="bg-white p-6 sm:p-8 rounded-xl border border-gray-200 shadow-xs space-y-3">
+          <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
             <Truck className="w-6 h-6" />
           </div>
-          <h3 className="font-extrabold text-base text-gray-900">Nationwide Safe Logistics</h3>
-          <p className="text-xs text-gray-500 leading-relaxed">
+          <h3 className="font-bold text-base text-gray-900">Nationwide Safe Logistics</h3>
+          <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
             Solar glass panels and high-capacity lithium batteries require specialized handling. We build reinforced wooden crates and deliver safely to residential rooftops and remote rural locations in all 64 districts.
           </p>
         </div>
       </div>
 
       {/* Showroom & Operations */}
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="bg-white rounded-xl border border-gray-200 p-6 sm:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div className="space-y-4">
-          <span className="text-xs font-bold text-[#16A34A] uppercase tracking-wider">
+          <span className="text-xs font-semibold text-[#16A34A] uppercase tracking-wider">
             Dhaka Experience Showroom
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-gray-900">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
             Visit Our Live Testing & Demonstration Center
           </h2>
           <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">

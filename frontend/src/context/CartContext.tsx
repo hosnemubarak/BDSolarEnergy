@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { CartItem, Product } from '../types';
 import { cartService } from '../services/cartService';
+import { formatBDT } from '../utils/currency';
 
 interface CartContextType {
   items: CartItem[];
@@ -111,7 +112,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setCouponCode(trimmed);
       return {
         success: true,
-        message: `Coupon "${trimmed}" applied! You saved ৳${discountVal.toLocaleString('en-BD')}.`,
+        message: `Coupon "${trimmed}" applied! You saved ${formatBDT(discountVal)}.`,
       };
     }
     return {

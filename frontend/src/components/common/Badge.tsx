@@ -50,7 +50,7 @@ export const Badge: React.FC<BadgeProps> = ({ type, text, className = '' }) => {
 
   return (
     <span
-      className={`inline-flex items-center text-[11px] uppercase tracking-wider px-2 py-0.5 rounded-md border ${badgeStyle} ${className}`}
+      className={`inline-flex items-center text-xs font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-md border ${badgeStyle} ${className}`}
     >
       {defaultText}
     </span>

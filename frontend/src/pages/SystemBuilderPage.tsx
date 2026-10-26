@@ -21,6 +21,7 @@ import { useToast } from '../context/ToastContext';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { productService } from '../services/productService';
 import { Product } from '../types';
+import { formatBDT } from '../utils/currency';
 
 interface PanelChoice {
   product: Product;
@@ -290,15 +291,15 @@ export const SystemBuilderPage: React.FC = () => {
                   }`}
                 >
                   <div>
-                    <span className="text-[10px] font-bold text-[#16A34A] uppercase">
+                    <span className="text-xs font-bold text-[#16A34A] uppercase">
                       {panel.watts}W Module
                     </span>
-                    <h5 className="font-bold text-xs text-gray-900 mt-1 line-clamp-2">
+                    <h5 className="font-semibold text-xs sm:text-sm text-gray-900 mt-1 line-clamp-2">
                       {panel.name}
                     </h5>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
-                    <span className="font-bold text-gray-900">৳{panel.price.toLocaleString('en-BD')}</span>
+                  <div className="mt-3 pt-2 border-t border-gray-100 flex items-center justify-between text-xs sm:text-sm">
+                    <span className="font-bold text-gray-900">{formatBDT(panel.price)}</span>
                     {selectedPanel.id === panel.id && (
                       <CheckCircle2 className="w-4 h-4 text-[#16A34A]" />
                     )}
@@ -376,11 +377,11 @@ export const SystemBuilderPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <div className="text-xs sm:text-sm font-extrabold text-gray-900">
-                      ৳{inv.price.toLocaleString('en-BD')}
+                    <div className="text-xs sm:text-sm font-bold text-gray-900">
+                      {formatBDT(inv.price)}
                     </div>
                     {selectedInverter.id === inv.id && (
-                      <span className="text-[10px] text-[#16A34A] font-bold">Selected</span>
+                      <span className="text-xs text-[#16A34A] font-semibold">Selected</span>
                     )}
                   </div>
                 </div>
@@ -389,7 +390,7 @@ export const SystemBuilderPage: React.FC = () => {
           </div>
 
           {/* STEP 3: BATTERY STORAGE */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
+          <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
               <div className="flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-[#16A34A] text-white text-xs font-bold flex items-center justify-center">
@@ -409,7 +410,7 @@ export const SystemBuilderPage: React.FC = () => {
                 <div
                   key={bat.id}
                   onClick={() => setSelectedBattery(bat)}
-                  className={`p-3.5 rounded-2xl border-2 cursor-pointer transition-all flex items-center justify-between gap-3 ${
+                  className={`p-3.5 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between gap-3 ${
                     selectedBattery.id === bat.id
                       ? 'border-[#16A34A] bg-green-50/50 shadow-xs'
                       : 'border-gray-200 hover:border-green-200'
@@ -420,18 +421,18 @@ export const SystemBuilderPage: React.FC = () => {
                       <BatteryCharging className="w-5 h-5" />
                     </div>
                     <div>
-                      <h5 className="font-bold text-xs sm:text-sm text-gray-900">{bat.name}</h5>
-                      <div className="text-[11px] text-gray-500">
+                      <h5 className="font-semibold text-xs sm:text-sm text-gray-900">{bat.name}</h5>
+                      <div className="text-xs text-gray-500">
                         {bat.kwh > 0 ? `${bat.chemistry} Chemistry` : 'Export directly to grid with net-metering'}
                       </div>
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <div className="text-xs sm:text-sm font-extrabold text-gray-900">
-                      {bat.price > 0 ? `৳${bat.price.toLocaleString('en-BD')}` : '৳0'}
+                    <div className="text-xs sm:text-sm font-bold text-gray-900">
+                      {formatBDT(bat.price)}
                     </div>
                     {selectedBattery.id === bat.id && (
-                      <span className="text-[10px] text-[#16A34A] font-bold">Selected</span>
+                      <span className="text-xs text-[#16A34A] font-semibold">Selected</span>
                     )}
                   </div>
                 </div>
@@ -478,68 +479,68 @@ export const SystemBuilderPage: React.FC = () => {
             </div>
 
             {/* Calculations Grid */}
-            <div className="grid grid-cols-2 gap-3 text-xs">
+            <div className="grid grid-cols-2 gap-3 text-xs sm:text-sm">
               <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
-                <span className="text-gray-500 block text-[11px]">Total Solar Array</span>
-                <span className="text-lg font-black text-gray-900">{totalArrayWatts} Wp</span>
-                <span className="text-[10px] text-gray-400 block mt-0.5">({panelCount}x {selectedPanel.watts}W)</span>
+                <span className="text-gray-500 block text-xs">Total Solar Array</span>
+                <span className="text-base sm:text-lg font-bold text-gray-900">{totalArrayWatts} Wp</span>
+                <span className="text-xs text-gray-400 block mt-0.5">({panelCount}x {selectedPanel.watts}W)</span>
               </div>
 
               <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
-                <span className="text-gray-500 block text-[11px]">Daily Generation</span>
-                <span className="text-lg font-black text-gray-900">~{dailyGenerationKwh} kWh</span>
-                <span className="text-[10px] text-gray-400 block mt-0.5">4.2 Peak Sun Hours</span>
+                <span className="text-gray-500 block text-xs">Daily Generation</span>
+                <span className="text-base sm:text-lg font-bold text-gray-900">~{dailyGenerationKwh} kWh</span>
+                <span className="text-xs text-gray-400 block mt-0.5">4.2 Peak Sun Hours</span>
               </div>
 
               <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
-                <span className="text-emerald-700 block text-[11px]">Est. Monthly Savings</span>
-                <span className="text-lg font-black text-[#16A34A]">৳{monthlySavingsBdt.toLocaleString('en-BD')}</span>
-                <span className="text-[10px] text-emerald-600 block mt-0.5">Off Utility Bill</span>
+                <span className="text-emerald-700 block text-xs">Est. Monthly Savings</span>
+                <span className="text-base sm:text-lg font-bold text-[#16A34A]">{formatBDT(monthlySavingsBdt)}</span>
+                <span className="text-xs text-emerald-600 block mt-0.5">Off Utility Bill</span>
               </div>
 
               <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
-                <span className="text-gray-500 block text-[11px]">Battery Storage</span>
-                <span className="text-lg font-black text-gray-900">{selectedBattery.kwh} kWh</span>
-                <span className="text-[10px] text-gray-400 block mt-0.5">{selectedBattery.chemistry}</span>
+                <span className="text-gray-500 block text-xs">Battery Storage</span>
+                <span className="text-base sm:text-lg font-bold text-gray-900">{selectedBattery.kwh} kWh</span>
+                <span className="text-xs text-gray-400 block mt-0.5">{selectedBattery.chemistry}</span>
               </div>
             </div>
 
             {/* Selected Components Line-Items */}
-            <div className="pt-2 space-y-2 text-xs border-t border-gray-100">
-              <div className="font-bold text-gray-900 uppercase tracking-wider text-[11px]">
+            <div className="pt-2 space-y-2 text-xs sm:text-sm border-t border-gray-100">
+              <div className="font-bold text-gray-900 uppercase tracking-wider text-xs">
                 Configured System Components:
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>{panelCount}x {selectedPanel.name}</span>
-                <span className="font-semibold text-gray-900">৳{(selectedPanel.price * panelCount).toLocaleString('en-BD')}</span>
+                <span className="font-semibold text-gray-900">{formatBDT(selectedPanel.price * panelCount)}</span>
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>1x {selectedInverter.name}</span>
-                <span className="font-semibold text-gray-900">৳{selectedInverter.price.toLocaleString('en-BD')}</span>
+                <span className="font-semibold text-gray-900">{formatBDT(selectedInverter.price)}</span>
               </div>
               {selectedBattery.id !== 'none' && (
                 <div className="flex justify-between text-gray-600">
                   <span>1x {selectedBattery.name}</span>
-                  <span className="font-semibold text-gray-900">৳{selectedBattery.price.toLocaleString('en-BD')}</span>
+                  <span className="font-semibold text-gray-900">{formatBDT(selectedBattery.price)}</span>
                 </div>
               )}
               {includeProtectionKit && (
                 <div className="flex justify-between text-gray-600">
                   <span>Mounting Structure & Protection Kit</span>
-                  <span className="font-semibold text-gray-900">৳{ACCESSORIES_PRICE.toLocaleString('en-BD')}</span>
+                  <span className="font-semibold text-gray-900">{formatBDT(ACCESSORIES_PRICE)}</span>
                 </div>
               )}
             </div>
 
             {/* Compatibility Warning Box (if any) */}
             {compatibilityWarnings.length > 0 && (
-              <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 text-xs space-y-1">
+              <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 text-xs sm:text-sm space-y-1">
                 <div className="font-bold flex items-center gap-1.5 text-amber-800">
                   <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
                   <span>Engineering Notice:</span>
                 </div>
                 {compatibilityWarnings.map((w, idx) => (
-                  <p key={idx} className="text-[11px] leading-tight">• {w}</p>
+                  <p key={idx} className="text-xs leading-normal">• {w}</p>
                 ))}
               </div>
             )}
@@ -549,11 +550,11 @@ export const SystemBuilderPage: React.FC = () => {
               <div className="flex items-baseline justify-between">
                 <div>
                   <span className="text-xs text-gray-500 block">Total Estimated System Price</span>
-                  <span className="text-2xl sm:text-3xl font-black text-[#16A34A]">
-                    ৳{totalPrice.toLocaleString('en-BD')}
+                  <span className="text-2xl sm:text-3xl font-bold text-[#16A34A]">
+                    {formatBDT(totalPrice)}
                   </span>
                 </div>
-                <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md font-semibold">
+                <span className="text-xs text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md font-semibold">
                   Free Shipping Eligible
                 </span>
               </div>
@@ -562,9 +563,9 @@ export const SystemBuilderPage: React.FC = () => {
             {/* CTA Button */}
             <button
               onClick={handleAddBundleToCart}
-              className="w-full py-3.5 bg-[#16A34A] hover:bg-[#15803D] text-white font-extrabold text-sm rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 active:scale-98"
+              className="w-full h-12 bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-sm sm:text-base rounded-lg transition-all shadow-xs flex items-center justify-center gap-2 active:scale-98"
             >
-              <ShoppingCart className="w-4 h-4" />
+              <ShoppingCart className="w-5 h-5" />
               <span>Add Complete System to Cart</span>
             </button>
 

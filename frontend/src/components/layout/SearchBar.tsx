@@ -4,6 +4,7 @@ import { Search, X, Loader2, ArrowRight } from 'lucide-react';
 import { productService } from '../../services/productService';
 import { Product } from '../../types';
 import { useCategories } from '../../context/CategoryContext';
+import { formatBDT } from '../../utils/currency';
 
 interface SearchBarProps {
   className?: string;
@@ -180,12 +181,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <div className="text-xs sm:text-sm font-bold text-green-900">
-                      ৳{item.price.toLocaleString('en-BD')}
+                    <div className="text-xs sm:text-sm font-bold text-gray-900">
+                      {formatBDT(item.price)}
                     </div>
                     {item.originalPrice && (
-                      <div className="text-[10px] text-gray-400 line-through">
-                        ৳{item.originalPrice.toLocaleString('en-BD')}
+                      <div className="text-xs text-gray-400 line-through">
+                        {formatBDT(item.originalPrice)}
                       </div>
                     )}
                   </div>
