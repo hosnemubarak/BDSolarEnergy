@@ -14,9 +14,11 @@ async function runIntegrationTests() {
     }
   }
 
+  const API_BASE = process.env.API_BASE || 'http://127.0.0.1:8001/api/v1';
+
   // 1. Backend root
   await check('Backend API root status is online', async () => {
-    const res = await fetch('http://127.0.0.1:8000/api/v1/');
+    const res = await fetch(`${API_BASE}/`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     if (data.status !== 'online') throw new Error(`Expected online status, got ${data.status}`);
@@ -24,7 +26,7 @@ async function runIntegrationTests() {
 
   // 2. CORS header check
   await check('CORS headers allow frontend origin', async () => {
-    const res = await fetch('http://127.0.0.1:8000/api/v1/products/', {
+    const res = await fetch(`${API_BASE}/products/`, {
       headers: { Origin: 'http://localhost:5173' }
     });
     const allowOrigin = res.headers.get('access-control-allow-origin');
@@ -35,7 +37,7 @@ async function runIntegrationTests() {
 
   // 3. Products endpoint
   await check('Products list endpoint returns seeded catalog', async () => {
-    const res = await fetch('http://127.0.0.1:8000/api/v1/products/');
+    const res = await fetch(`${API_BASE}/products/`);
     const data = await res.json();
     const count = data.count || (Array.isArray(data) ? data.length : 0);
     if (count < 30) throw new Error(`Expected at least 30 products, got ${count}`);
@@ -46,14 +48,14 @@ async function runIntegrationTests() {
 
   // 4. Featured products
   await check('Featured products endpoint returns products', async () => {
-    const res = await fetch('http://127.0.0.1:8000/api/v1/products/featured/');
+    const res = await fetch(`${API_BASE}/products/featured/`);
     const data = await res.json();
     if (!Array.isArray(data) || data.length === 0) throw new Error('Expected non-empty featured list');
   });
 
   // 5. Categories endpoint
   await check('Categories endpoint returns hierarchical categories with subcategories', async () => {
-    const res = await fetch('http://127.0.0.1:8000/api/v1/categories/');
+    const res = await fetch(`${API_BASE}/categories/`);
     const data = await res.json();
     const items = data.results || data;
     if (items.length < 10) throw new Error(`Expected at least 10 categories, got ${items.length}`);
@@ -62,7 +64,7 @@ async function runIntegrationTests() {
 
   // 6. Brands endpoint
   await check('Brands endpoint returns popular brands', async () => {
-    const res = await fetch('http://127.0.0.1:8000/api/v1/brands/');
+    const res = await fetch(`${API_BASE}/brands/`);
     const data = await res.json();
     const items = data.results || data;
     if (items.length < 15) throw new Error(`Expected at least 15 brands, got ${items.length}`);
@@ -70,7 +72,7 @@ async function runIntegrationTests() {
 
   // 7. Solar packages endpoint
   await check('Solar packages endpoint returns pre-engineered packages', async () => {
-    const res = await fetch('http://127.0.0.1:8000/api/v1/solar-packages/');
+    const res = await fetch(`${API_BASE}/solar-packages/`);
     const data = await res.json();
     const items = data.results || data;
     if (items.length < 4) throw new Error(`Expected at least 4 solar packages, got ${items.length}`);
@@ -94,7 +96,7 @@ async function runIntegrationTests() {
       ]
     };
 
-    const res = await fetch('http://127.0.0.1:8000/api/v1/orders/', {
+    const res = await fetch(`${API_BASE}/orders/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -119,7 +121,7 @@ async function runIntegrationTests() {
 
   // 9. Order tracking
   await check('Order tracking endpoint finds newly created order', async () => {
-    const res = await fetch(`http://127.0.0.1:8000/api/v1/orders/track/${encodeURIComponent(createdOrderNumber)}/`);
+    const res = await fetch(`${API_BASE}/orders/track/${encodeURIComponent(createdOrderNumber)}/`);
     if (!res.ok) throw new Error(`Failed to track order: HTTP ${res.status}`);
     const order = await res.json();
     if (order.orderNumber !== createdOrderNumber) throw new Error('Mismatched orderNumber in tracking');

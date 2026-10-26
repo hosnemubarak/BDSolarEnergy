@@ -16,9 +16,10 @@ import { Product, ProductFilterParams, CategoryId } from '../types';
 import { ProductCard } from '../components/product/ProductCard';
 import { ProductFilters } from '../components/product/ProductFilters';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
-import { CATEGORIES } from '../data/categories';
+import { useCategories } from '../context/CategoryContext';
 
 export const ShopPage: React.FC = () => {
+  const { categories } = useCategories();
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Extract params from URL
@@ -101,7 +102,7 @@ export const ShopPage: React.FC = () => {
     }));
   };
 
-  const currentCategory = CATEGORIES.find((c) => c.id === filters.category);
+  const currentCategory = categories.find((c) => c.id === filters.category || c.slug === filters.category);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6 space-y-6">
@@ -110,10 +111,10 @@ export const ShopPage: React.FC = () => {
         items={[
           { label: 'Shop Catalog', url: '/shop' },
           ...(currentCategory
-            ? [{ label: currentCategory.name, url: `/shop?category=${currentCategory.id}` }]
+            ? [{ label: currentCategory.name, url: `/shop?category=${currentCategory.slug || currentCategory.id}` }]
             : []),
           ...(filters.subcategory
-            ? [{ label: currentCategory?.subcategories.find((s) => s.id === filters.subcategory)?.name || filters.subcategory }]
+            ? [{ label: currentCategory?.subcategories.find((s) => s.id === filters.subcategory || s.slug === filters.subcategory)?.name || filters.subcategory }]
             : []),
         ]}
       />
@@ -130,11 +131,11 @@ export const ShopPage: React.FC = () => {
               : 'Browse our complete catalog of certified solar panels, hybrid inverters, lithium batteries, wires, cables, and circuit breakers.'}
           </p>
           {filters.search && (
-            <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-purple-50 text-purple-900 text-xs font-medium border border-purple-200">
+            <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-green-50 text-green-900 text-xs font-medium border border-green-200">
               <span>Matching search: <strong>"{filters.search}"</strong></span>
               <button
                 onClick={() => setFilters((prev) => ({ ...prev, search: undefined }))}
-                className="text-purple-500 hover:text-purple-800"
+                className="text-green-600 hover:text-green-800"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -150,7 +151,7 @@ export const ShopPage: React.FC = () => {
 
           <button
             onClick={() => setIsMobileFilterOpen(true)}
-            className="md:hidden flex items-center gap-2 px-3 py-1.5 bg-[#6D28D9] text-white rounded-lg text-xs font-bold shadow-sm"
+            className="md:hidden flex items-center gap-2 px-3 py-1.5 bg-[#15803D] text-white rounded-lg text-xs font-bold shadow-sm"
           >
             <Filter className="w-3.5 h-3.5" />
             <span>Filters ({activeFilterCount})</span>
@@ -166,7 +167,7 @@ export const ShopPage: React.FC = () => {
           <select
             value={filters.sortBy || 'popularity'}
             onChange={handleSortChange}
-            className="bg-gray-50 border border-gray-200 rounded-lg px-2.5 py-1 text-xs text-gray-800 font-medium focus:outline-none focus:border-purple-600 cursor-pointer"
+            className="bg-gray-50 border border-gray-200 rounded-lg px-2.5 py-1 text-xs text-gray-800 font-medium focus:outline-none focus:border-[#15803D] cursor-pointer"
           >
             <option value="popularity">Most Popular / Best Selling</option>
             <option value="newest">Newest Arrivals</option>
@@ -179,14 +180,14 @@ export const ShopPage: React.FC = () => {
         <div className="hidden sm:flex items-center gap-1 border border-gray-200 rounded-lg p-0.5 bg-gray-50">
           <button
             onClick={() => setViewMode('grid')}
-            className={`p-1.5 rounded ${viewMode === 'grid' ? 'bg-white shadow-xs text-purple-700 font-bold' : 'text-gray-400 hover:text-gray-600'}`}
+            className={`p-1.5 rounded ${viewMode === 'grid' ? 'bg-white shadow-xs text-green-700 font-bold' : 'text-gray-400 hover:text-gray-600'}`}
             title="Grid View"
           >
             <Grid className="w-4 h-4" />
           </button>
           <button
             onClick={() => setViewMode('list')}
-            className={`p-1.5 rounded ${viewMode === 'list' ? 'bg-white shadow-xs text-purple-700 font-bold' : 'text-gray-400 hover:text-gray-600'}`}
+            className={`p-1.5 rounded ${viewMode === 'list' ? 'bg-white shadow-xs text-green-700 font-bold' : 'text-gray-400 hover:text-gray-600'}`}
             title="List View"
           >
             <List className="w-4 h-4" />
@@ -233,7 +234,7 @@ export const ShopPage: React.FC = () => {
 
               <button
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="mt-6 w-full py-3 bg-[#6D28D9] text-white font-bold text-xs rounded-xl shadow-md"
+                className="mt-6 w-full py-3 bg-[#15803D] text-white font-bold text-xs rounded-xl shadow-md"
               >
                 Apply Filters ({products.length} Results)
               </button>
@@ -276,7 +277,7 @@ export const ShopPage: React.FC = () => {
           ) : (
             /* Empty State */
             <div className="bg-white rounded-2xl border border-gray-200 p-10 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-purple-50 text-purple-700 flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 rounded-full bg-green-50 text-green-700 flex items-center justify-center mx-auto">
                 <PackageOpen className="w-8 h-8" />
               </div>
               <h3 className="text-lg font-bold text-gray-900">
@@ -287,7 +288,7 @@ export const ShopPage: React.FC = () => {
               </p>
               <button
                 onClick={handleResetFilters}
-                className="px-5 py-2.5 bg-[#6D28D9] hover:bg-[#5B21B6] text-white text-xs font-bold rounded-xl transition-colors inline-flex items-center gap-1.5"
+                className="px-5 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-xl transition-colors inline-flex items-center gap-1.5"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Reset All Filters</span>

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Filter, X, RotateCcw, Check } from 'lucide-react';
 import { ProductFilterParams, CategoryId } from '../../types';
-import { CATEGORIES } from '../../data/categories';
-import { BRANDS } from '../../data/brands';
+import { useCategories } from '../../context/CategoryContext';
 
 interface ProductFiltersProps {
   filters: ProductFilterParams;
@@ -17,7 +16,8 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
   onReset,
   activeCount,
 }) => {
-  const currentCategoryObj = CATEGORIES.find((c) => c.id === filters.category);
+  const { categories, brands } = useCategories();
+  const currentCategoryObj = categories.find((c) => c.id === filters.category || c.slug === filters.category);
 
   const handleCategorySelect = (catId?: CategoryId) => {
     onChange({
@@ -67,10 +67,10 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
       {/* Filter Header & Reset */}
       <div className="flex items-center justify-between pb-3 border-b border-gray-100">
         <div className="flex items-center gap-2 font-bold text-gray-900 text-sm">
-          <Filter className="w-4 h-4 text-[#6D28D9]" />
+          <Filter className="w-4 h-4 text-[#15803D]" />
           <span>Filters</span>
           {activeCount > 0 && (
-            <span className="w-5 h-5 rounded-full bg-[#6D28D9] text-white text-[10px] flex items-center justify-center font-bold">
+            <span className="w-5 h-5 rounded-full bg-[#15803D] text-white text-[10px] flex items-center justify-center font-bold">
               {activeCount}
             </span>
           )}
@@ -78,7 +78,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
         {activeCount > 0 && (
           <button
             onClick={onReset}
-            className="text-xs text-purple-700 hover:text-purple-900 font-semibold flex items-center gap-1"
+            className="text-xs text-green-700 hover:text-green-900 font-semibold flex items-center gap-1"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Reset</span>
@@ -97,33 +97,37 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
             onClick={() => handleCategorySelect(undefined)}
             className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-colors flex items-center justify-between ${
               !filters.category
-                ? 'bg-purple-100/70 text-[#4C1D95] font-bold'
+                ? 'bg-green-100/70 text-[#166534] font-bold'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
             <span>All Categories</span>
           </button>
 
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat.id}
-              type="button"
-              onClick={() => handleCategorySelect(cat.id)}
-              className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-colors flex items-center justify-between ${
-                filters.category === cat.id
-                  ? 'bg-purple-100/70 text-[#4C1D95] font-bold'
-                  : 'text-gray-600 hover:bg-gray-100'
-              }`}
-            >
-              <span className="truncate">{cat.name}</span>
-              <span className="text-[10px] text-gray-400">({cat.productCount})</span>
-            </button>
-          ))}
+          {categories.map((cat) => {
+            const catIdentifier = (cat.slug || cat.id) as CategoryId;
+            const isSelected = filters.category === cat.id || filters.category === cat.slug;
+            return (
+              <button
+                key={cat.id || cat.slug}
+                type="button"
+                onClick={() => handleCategorySelect(catIdentifier)}
+                className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-colors flex items-center justify-between ${
+                  isSelected
+                    ? 'bg-green-100/70 text-[#166534] font-bold'
+                    : 'text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                <span className="truncate">{cat.name}</span>
+                <span className="text-[10px] text-gray-400">({cat.productCount})</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
       {/* 2. Subcategories (when category is selected) */}
-      {currentCategoryObj && currentCategoryObj.subcategories.length > 0 && (
+      {currentCategoryObj && (currentCategoryObj.subcategories || []).length > 0 && (
         <div className="space-y-2 pt-2 border-t border-gray-100">
           <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
             {currentCategoryObj.name} Types
@@ -134,27 +138,31 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
               onClick={() => handleSubcategorySelect(undefined)}
               className={`w-full text-left px-2 py-1 text-xs rounded transition-colors ${
                 !filters.subcategory
-                  ? 'text-[#6D28D9] font-bold'
+                  ? 'text-[#15803D] font-bold'
                   : 'text-gray-500 hover:text-gray-800'
               }`}
             >
               • All {currentCategoryObj.name}
             </button>
-            {currentCategoryObj.subcategories.map((sub) => (
-              <button
-                key={sub.id}
-                type="button"
-                onClick={() => handleSubcategorySelect(sub.id)}
-                className={`w-full text-left px-2 py-1 text-xs rounded transition-colors flex items-center justify-between ${
-                  filters.subcategory === sub.id
-                    ? 'text-[#6D28D9] font-bold'
-                    : 'text-gray-500 hover:text-gray-800'
-                }`}
-              >
-                <span>• {sub.name}</span>
-                <span className="text-[10px] text-gray-400">({sub.productCount})</span>
-              </button>
-            ))}
+            {(currentCategoryObj.subcategories || []).map((sub) => {
+              const subIdentifier = sub.slug || sub.id;
+              const isSubSelected = filters.subcategory === sub.id || filters.subcategory === sub.slug;
+              return (
+                <button
+                  key={sub.id || sub.slug}
+                  type="button"
+                  onClick={() => handleSubcategorySelect(subIdentifier)}
+                  className={`w-full text-left px-2 py-1 text-xs rounded transition-colors flex items-center justify-between ${
+                    isSubSelected
+                      ? 'text-[#15803D] font-bold'
+                      : 'text-gray-500 hover:text-gray-800'
+                  }`}
+                >
+                  <span>• {sub.name}</span>
+                  <span className="text-[10px] text-gray-400">({sub.productCount})</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       )}
@@ -175,7 +183,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 minPrice: e.target.value ? Number(e.target.value) : undefined,
               })
             }
-            className="w-1/2 px-2.5 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-600 focus:bg-white"
+            className="w-1/2 px-2.5 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#15803D] focus:bg-white"
           />
           <span className="text-gray-400 text-xs">-</span>
           <input
@@ -188,7 +196,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 maxPrice: e.target.value ? Number(e.target.value) : undefined,
               })
             }
-            className="w-1/2 px-2.5 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-600 focus:bg-white"
+            className="w-1/2 px-2.5 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#15803D] focus:bg-white"
           />
         </div>
       </div>
@@ -199,18 +207,18 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
           Brands
         </h4>
         <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1">
-          {BRANDS.map((b) => {
-            const isChecked = filters.brand?.includes(b.name);
+          {brands.map((b) => {
+            const isChecked = filters.brand?.includes(b.name) || filters.brand?.includes(b.slug);
             return (
               <label
-                key={b.id}
-                className="flex items-center gap-2 text-xs text-gray-700 hover:text-purple-950 cursor-pointer select-none"
+                key={b.id || b.slug}
+                className="flex items-center gap-2 text-xs text-gray-700 hover:text-green-950 cursor-pointer select-none"
               >
                 <input
                   type="checkbox"
                   checked={!!isChecked}
                   onChange={() => handleBrandToggle(b.name)}
-                  className="rounded text-[#6D28D9] focus:ring-purple-400 border-gray-300 w-3.5 h-3.5"
+                  className="rounded text-[#15803D] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
                 />
                 <span className="truncate">{b.name}</span>
               </label>
@@ -243,7 +251,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 }
                 className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors border ${
                   filters.solarWattsMin === opt.min
-                    ? 'bg-[#6D28D9] text-white border-[#6D28D9]'
+                    ? 'bg-[#15803D] text-white border-[#15803D]'
                     : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'
                 }`}
               >
@@ -254,7 +262,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
         </div>
       )}
 
-      {/* Inverter Type Filter */}
+      {/* Inverter System Type Filter */}
       {(!filters.category || filters.category === 'solar-inverters') && (
         <div className="space-y-2 pt-2 border-t border-gray-100">
           <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
@@ -270,7 +278,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                   type="checkbox"
                   checked={!!filters.inverterType?.includes(type)}
                   onChange={() => handleInverterTypeToggle(type)}
-                  className="rounded text-[#6D28D9] focus:ring-purple-400 border-gray-300 w-3.5 h-3.5"
+                  className="rounded text-[#15803D] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
                 />
                 <span>{type} Inverters</span>
               </label>
@@ -298,7 +306,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                   type="checkbox"
                   checked={!!filters.batteryChemistry?.includes(chem.id)}
                   onChange={() => handleBatteryChemistryToggle(chem.id)}
-                  className="rounded text-[#6D28D9] focus:ring-purple-400 border-gray-300 w-3.5 h-3.5"
+                  className="rounded text-[#15803D] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
                 />
                 <span>{chem.label}</span>
               </label>
@@ -321,7 +329,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 onClick={() => handlePolesToggle(pole)}
                 className={`px-2.5 py-1 rounded text-xs font-bold border transition-colors ${
                   filters.breakerPoles?.includes(pole)
-                    ? 'bg-[#6D28D9] text-white border-[#6D28D9]'
+                    ? 'bg-[#15803D] text-white border-[#15803D]'
                     : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'
                 }`}
               >
@@ -339,7 +347,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
             type="checkbox"
             checked={!!filters.inStockOnly}
             onChange={(e) => onChange({ ...filters, inStockOnly: e.target.checked || undefined })}
-            className="rounded text-[#6D28D9] focus:ring-purple-400 border-gray-300 w-3.5 h-3.5"
+            className="rounded text-[#15803D] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
           />
           <span>In Stock Items Only</span>
         </label>
@@ -349,7 +357,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
             type="checkbox"
             checked={!!filters.onSaleOnly}
             onChange={(e) => onChange({ ...filters, onSaleOnly: e.target.checked || undefined })}
-            className="rounded text-[#6D28D9] focus:ring-purple-400 border-gray-300 w-3.5 h-3.5"
+            className="rounded text-[#15803D] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
           />
           <span>Special Deals & Offers Only</span>
         </label>

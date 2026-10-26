@@ -136,7 +136,9 @@ export const authService = {
 
       const res = await apiClient<{
         user: any;
-        tokens: { access: string; refresh: string };
+        access?: string;
+        refresh?: string;
+        tokens?: { access: string; refresh: string };
       }>('/auth/register/', {
         method: 'POST',
         body: JSON.stringify({
@@ -148,8 +150,10 @@ export const authService = {
         }),
       });
 
-      if (res.tokens?.access) {
-        setTokens(res.tokens.access, res.tokens.refresh);
+      const accessToken = res.access || res.tokens?.access;
+      const refreshToken = res.refresh || res.tokens?.refresh;
+      if (accessToken) {
+        setTokens(accessToken, refreshToken);
       }
 
       const profile = mapBackendUserToProfile(res.user);
@@ -161,6 +165,66 @@ export const authService = {
           ? err.message
           : err?.message || 'Registration failed. Please try again.';
       return { success: false, error: errorMsg };
+    }
+  },
+
+  async loginWithGoogle(
+    codeOrToken: string,
+    isAccessToken = false
+  ): Promise<{ success: boolean; user?: UserProfile; error?: string }> {
+    try {
+      const payload = isAccessToken
+        ? { access_token: codeOrToken }
+        : { code: codeOrToken };
+
+      const res = await apiClient<{
+        access: string;
+        refresh: string;
+        user: any;
+      }>('/auth/google/', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.access) {
+        return { success: false, error: 'Social authentication failed.' };
+      }
+
+      setTokens(res.access, res.refresh);
+      let profile: UserProfile;
+      if (res.user) {
+        profile = mapBackendUserToProfile(res.user);
+      } else {
+        profile = await this.fetchProfile();
+      }
+
+      localStorage.setItem(AUTH_USER_KEY, JSON.stringify(profile));
+      return { success: true, user: profile };
+    } catch (err: any) {
+      const errorMsg =
+        err instanceof ApiError
+          ? err.message
+          : err?.message || 'Google login failed. Please try again.';
+      return { success: false, error: errorMsg };
+    }
+  },
+
+  async changePassword(oldPassword: string, newPassword: string): Promise<{ success: boolean; error?: string }> {
+    try {
+      await apiClient('/auth/password/change/', {
+        method: 'POST',
+        body: JSON.stringify({
+          old_password: oldPassword,
+          new_password: newPassword,
+          confirm_password: newPassword,
+        }),
+      });
+      return { success: true };
+    } catch (err: any) {
+      return {
+        success: false,
+        error: err instanceof ApiError ? err.message : err?.message || 'Failed to change password.',
+      };
     }
   },
 

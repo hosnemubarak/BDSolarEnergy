@@ -71,7 +71,7 @@ export const AuthModal: React.FC = () => {
 
       {/* Modal Dialog */}
       <div className="min-h-screen px-4 flex items-center justify-center p-4">
-        <div className="relative bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 text-left shadow-2xl z-10 overflow-hidden border border-purple-100">
+        <div className="relative bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 text-left shadow-2xl z-10 overflow-hidden border border-green-100">
           {/* Close button */}
           <button
             onClick={() => setIsAuthModalOpen(false)}
@@ -82,7 +82,7 @@ export const AuthModal: React.FC = () => {
 
           {/* Header Title */}
           <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-purple-100 text-[#6D28D9] mb-3">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-[#15803D] mb-3">
               <User className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-extrabold text-gray-900">
@@ -99,7 +99,7 @@ export const AuthModal: React.FC = () => {
               onClick={() => setMode('login')}
               className={`flex-1 py-2.5 text-xs font-bold text-center border-b-2 transition-colors ${
                 mode === 'login'
-                  ? 'border-[#6D28D9] text-[#6D28D9]'
+                  ? 'border-[#15803D] text-[#15803D]'
                   : 'border-transparent text-gray-400 hover:text-gray-700'
               }`}
             >
@@ -109,7 +109,7 @@ export const AuthModal: React.FC = () => {
               onClick={() => setMode('register')}
               className={`flex-1 py-2.5 text-xs font-bold text-center border-b-2 transition-colors ${
                 mode === 'register'
-                  ? 'border-[#6D28D9] text-[#6D28D9]'
+                  ? 'border-[#15803D] text-[#15803D]'
                   : 'border-transparent text-gray-400 hover:text-gray-700'
               }`}
             >
@@ -132,7 +132,7 @@ export const AuthModal: React.FC = () => {
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
                     placeholder="e.g. 01712345678, user@example.com, or username"
-                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#6D28D9] focus:bg-white"
+                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
               </div>
@@ -149,7 +149,7 @@ export const AuthModal: React.FC = () => {
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-9 pr-10 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#6D28D9] focus:bg-white"
+                    className="w-full pl-9 pr-10 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                   <button
                     type="button"
@@ -164,7 +164,7 @@ export const AuthModal: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-purple-600/20 active:scale-98 disabled:opacity-50"
+                className="w-full py-3 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 active:scale-98 disabled:opacity-50"
               >
                 {isLoading ? 'Signing In...' : 'Sign In with JWT'}
               </button>
@@ -182,7 +182,7 @@ export const AuthModal: React.FC = () => {
                     value={regName}
                     onChange={(e) => setRegName(e.target.value)}
                     placeholder="Md. Rafiqul Islam"
-                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#6D28D9] focus:bg-white"
+                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
               </div>
@@ -199,7 +199,7 @@ export const AuthModal: React.FC = () => {
                     value={regPhone}
                     onChange={(e) => setRegPhone(e.target.value)}
                     placeholder="+880 17XX-XXXXXX"
-                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#6D28D9] focus:bg-white"
+                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
               </div>
@@ -215,7 +215,7 @@ export const AuthModal: React.FC = () => {
                     value={regEmail}
                     onChange={(e) => setRegEmail(e.target.value)}
                     placeholder="rafiq@example.com"
-                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#6D28D9] focus:bg-white"
+                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
               </div>
@@ -230,7 +230,7 @@ export const AuthModal: React.FC = () => {
                     value={regPassword}
                     onChange={(e) => setRegPassword(e.target.value)}
                     placeholder="Create a password (min 8 chars)"
-                    className="w-full pl-9 pr-10 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#6D28D9] focus:bg-white"
+                    className="w-full pl-9 pr-10 py-2.5 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                   <button
                     type="button"
@@ -245,7 +245,7 @@ export const AuthModal: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-purple-600/20 active:scale-98 disabled:opacity-50 mt-2"
+                className="w-full py-3 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 active:scale-98 disabled:opacity-50 mt-2"
               >
                 {isLoading ? 'Creating Account...' : 'Complete Registration'}
               </button>

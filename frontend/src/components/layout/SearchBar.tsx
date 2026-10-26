@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Search, X, Loader2, ArrowRight } from 'lucide-react';
 import { productService } from '../../services/productService';
 import { Product } from '../../types';
-import { CATEGORIES } from '../../data/categories';
+import { useCategories } from '../../context/CategoryContext';
 
 interface SearchBarProps {
   className?: string;
@@ -11,6 +11,7 @@ interface SearchBarProps {
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSubmitted }) => {
+  const { categories } = useCategories();
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [suggestions, setSuggestions] = useState<Product[]>([]);
@@ -80,18 +81,18 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
     <div ref={containerRef} className={`relative w-full ${className}`}>
       <form
         onSubmit={handleFormSubmit}
-        className="flex items-center w-full h-11 bg-white rounded-lg border-2 border-purple-200 hover:border-purple-400 focus-within:border-[#6D28D9] focus-within:ring-2 focus-within:ring-purple-100 transition-all shadow-sm overflow-hidden"
+        className="flex items-center w-full h-11 bg-white rounded-lg border-2 border-green-200 hover:border-green-400 focus-within:border-[#15803D] focus-within:ring-2 focus-within:ring-green-100 transition-all shadow-sm overflow-hidden"
       >
         {/* Category selector dropdown for desktop */}
-        <div className="hidden lg:flex items-center h-full border-r border-gray-200 bg-gray-50 px-3 shrink-0">
+        <div className="hidden lg:flex items-center h-full border-r border-green-200 bg-[#F0FDF4] px-3 shrink-0">
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
             className="text-xs font-medium text-gray-700 bg-transparent border-none outline-none cursor-pointer pr-2"
           >
             <option value="all">All Categories</option>
-            {CATEGORIES.map((c) => (
-              <option key={c.id} value={c.id}>
+            {categories.map((c) => (
+              <option key={c.id || c.slug} value={c.slug || c.id}>
                 {c.name}
               </option>
             ))}
@@ -128,7 +129,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
         {/* Submit Search Button */}
         <button
           type="submit"
-          className="h-full px-4 sm:px-5 bg-[#6D28D9] hover:bg-[#5B21B6] text-white flex items-center justify-center transition-colors shrink-0 font-medium text-xs sm:text-sm gap-1.5"
+          className="h-full px-4 sm:px-5 bg-[#15803D] hover:bg-[#166534] text-white flex items-center justify-center transition-colors shrink-0 font-medium text-xs sm:text-sm gap-1.5"
         >
           {isLoading ? (
             <Loader2 className="w-4 h-4 animate-spin" />
@@ -144,7 +145,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
         <div className="absolute top-full left-0 right-0 mt-1.5 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 z-50 max-h-96 overflow-y-auto">
           {isLoading && suggestions.length === 0 ? (
             <div className="p-4 text-center text-xs text-gray-500 flex items-center justify-center gap-2">
-              <Loader2 className="w-4 h-4 animate-spin text-purple-600" />
+              <Loader2 className="w-4 h-4 animate-spin text-green-600" />
               <span>Searching catalog...</span>
             </div>
           ) : suggestions.length > 0 ? (
@@ -156,7 +157,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
                 <div
                   key={item.id}
                   onClick={() => handleSuggestionClick(item)}
-                  className="flex items-center gap-3 px-3 py-2.5 hover:bg-purple-50/60 cursor-pointer transition-colors border-b border-gray-100 last:border-none"
+                  className="flex items-center gap-3 px-3 py-2.5 hover:bg-green-50/60 cursor-pointer transition-colors border-b border-gray-100 last:border-none"
                 >
                   <img
                     src={item.image}
@@ -173,13 +174,13 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
                       {item.name}
                     </p>
                     <div className="flex items-center gap-2 text-[11px] text-gray-500">
-                      <span className="text-purple-700 font-medium">{item.brand}</span>
+                      <span className="text-green-700 font-medium">{item.brand}</span>
                       <span>•</span>
                       <span className="font-mono text-gray-400 truncate">{item.sku}</span>
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <div className="text-xs sm:text-sm font-bold text-purple-900">
+                    <div className="text-xs sm:text-sm font-bold text-green-900">
                       ৳{item.price.toLocaleString('en-BD')}
                     </div>
                     {item.originalPrice && (
@@ -194,7 +195,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
                 <button
                   type="button"
                   onClick={handleFormSubmit}
-                  className="w-full py-1.5 text-xs font-semibold text-purple-700 hover:text-purple-900 flex items-center justify-center gap-1.5"
+                  className="w-full py-1.5 text-xs font-semibold text-green-700 hover:text-green-900 flex items-center justify-center gap-1.5"
                 >
                   <span>View all results for "{query}"</span>
                   <ArrowRight className="w-3.5 h-3.5" />

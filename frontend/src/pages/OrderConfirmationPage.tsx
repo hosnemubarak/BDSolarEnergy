@@ -36,7 +36,7 @@ export const OrderConfirmationPage: React.FC = () => {
         <p className="text-xs text-gray-500">We couldn't retrieve order number {orderNumber}.</p>
         <Link
           to="/"
-          className="px-6 py-2.5 bg-[#6D28D9] text-white text-xs font-bold rounded-xl inline-block"
+          className="px-6 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-xl inline-block transition-colors shadow-md shadow-green-700/20"
         >
           Return to Home
         </Link>
@@ -72,7 +72,7 @@ export const OrderConfirmationPage: React.FC = () => {
         </div>
 
         {/* Demo Notification Note */}
-        <div className="p-3 bg-purple-50 rounded-xl border border-purple-200 text-xs text-purple-900 max-w-md mx-auto">
+        <div className="p-3 bg-green-50 rounded-xl border border-green-200 text-xs text-green-950 max-w-md mx-auto">
           ⚠️ <strong>Demo Order Notice:</strong> This is a simulation. No physical payment was collected and no real courier pickup is booked.
         </div>
 
@@ -80,7 +80,7 @@ export const OrderConfirmationPage: React.FC = () => {
         <div className="pt-6 border-t border-gray-100 max-w-2xl mx-auto">
           <div className="grid grid-cols-4 gap-2 text-center text-xs">
             <div className="space-y-1.5">
-              <div className="w-8 h-8 rounded-full bg-[#6D28D9] text-white flex items-center justify-center mx-auto font-bold text-xs shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-[#15803D] text-white flex items-center justify-center mx-auto font-bold text-xs shadow-sm">
                 ✓
               </div>
               <span className="font-bold text-gray-900 block text-[11px]">Placed</span>
@@ -88,7 +88,7 @@ export const OrderConfirmationPage: React.FC = () => {
             </div>
 
             <div className="space-y-1.5">
-              <div className="w-8 h-8 rounded-full bg-purple-200 text-purple-800 flex items-center justify-center mx-auto font-bold text-xs">
+              <div className="w-8 h-8 rounded-full bg-green-100 text-green-800 flex items-center justify-center mx-auto font-bold text-xs">
                 2
               </div>
               <span className="font-bold text-gray-700 block text-[11px]">Processing</span>
@@ -141,7 +141,7 @@ export const OrderConfirmationPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
           <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100 space-y-1">
             <span className="font-bold text-gray-900 block text-xs flex items-center gap-1.5 mb-1">
-              <MapPin className="w-4 h-4 text-[#6D28D9]" />
+              <MapPin className="w-4 h-4 text-[#15803D]" />
               <span>Delivery Information</span>
             </span>
             <div className="font-semibold text-gray-800">{order.shippingAddress.fullName}</div>
@@ -154,7 +154,7 @@ export const OrderConfirmationPage: React.FC = () => {
 
           <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100 space-y-1">
             <span className="font-bold text-gray-900 block text-xs flex items-center gap-1.5 mb-1">
-              <CreditCard className="w-4 h-4 text-[#6D28D9]" />
+              <CreditCard className="w-4 h-4 text-[#15803D]" />
               <span>Payment & Courier</span>
             </span>
             <div className="text-gray-700">
@@ -210,7 +210,7 @@ export const OrderConfirmationPage: React.FC = () => {
                   <td className="p-3 text-center font-bold text-gray-900">
                     {item.quantity}
                   </td>
-                  <td className="p-3 text-right font-bold text-purple-900">
+                  <td className="p-3 text-right font-bold text-[#166534]">
                     ৳{item.subtotal.toLocaleString('en-BD')}
                   </td>
                 </tr>
@@ -240,7 +240,7 @@ export const OrderConfirmationPage: React.FC = () => {
             </div>
             <div className="flex justify-between text-base font-black text-gray-900 pt-2 border-t border-gray-200">
               <span>Total Paid:</span>
-              <span className="text-[#4C1D95]">৳{order.total.toLocaleString('en-BD')}</span>
+              <span className="text-[#166534]">৳{order.total.toLocaleString('en-BD')}</span>
             </div>
           </div>
         </div>
@@ -249,14 +249,14 @@ export const OrderConfirmationPage: React.FC = () => {
         <div className="pt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
           <Link
             to="/account"
-            className="text-xs font-bold text-purple-700 hover:text-purple-900 flex items-center gap-1.5"
+            className="text-xs font-bold text-[#15803D] hover:text-[#166534] flex items-center gap-1.5"
           >
             <span>View All Your Orders in Account Portal &rarr;</span>
           </Link>
 
           <Link
             to="/shop"
-            className="px-6 py-2.5 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs rounded-xl shadow-md transition-colors"
+            className="px-6 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs rounded-xl shadow-md shadow-green-700/20 transition-colors"
           >
             Continue Shopping
           </Link>

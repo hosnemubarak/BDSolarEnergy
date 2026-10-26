@@ -38,7 +38,7 @@ export const ContactPage: React.FC = () => {
       <Breadcrumbs items={[{ label: 'Contact Us' }]} />
 
       <div className="text-center max-w-2xl mx-auto space-y-2">
-        <span className="text-xs font-bold text-[#6D28D9] uppercase tracking-wider">
+        <span className="text-xs font-bold text-[#15803D] uppercase tracking-wider">
           Get in Touch
         </span>
         <h1 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight">
@@ -59,7 +59,7 @@ export const ContactPage: React.FC = () => {
 
             <div className="space-y-4 text-xs">
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-purple-100 text-[#6D28D9] flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-green-100 text-[#15803D] flex items-center justify-center shrink-0 mt-0.5">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -71,7 +71,7 @@ export const ContactPage: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-purple-100 text-[#6D28D9] flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-green-100 text-[#15803D] flex items-center justify-center shrink-0 mt-0.5">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
@@ -86,7 +86,7 @@ export const ContactPage: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-purple-100 text-[#6D28D9] flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-green-100 text-[#15803D] flex items-center justify-center shrink-0 mt-0.5">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
@@ -100,9 +100,9 @@ export const ContactPage: React.FC = () => {
           </div>
 
           {/* Regional Warehouses */}
-          <div className="bg-purple-50 rounded-3xl border border-purple-200 p-6 space-y-2 text-xs text-purple-950">
+          <div className="bg-green-50 rounded-3xl border border-green-200 p-6 space-y-2 text-xs text-green-950">
             <h4 className="font-extrabold text-sm flex items-center gap-2">
-              <Building2 className="w-4 h-4 text-[#6D28D9]" />
+              <Building2 className="w-4 h-4 text-[#15803D]" />
               <span>Chittagong Distribution Hub</span>
             </h4>
             <p className="text-gray-600">
@@ -150,7 +150,7 @@ export const ContactPage: React.FC = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Engr. Tanvir Ahmed"
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
 
@@ -162,7 +162,7 @@ export const ContactPage: React.FC = () => {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+880 17XX-XXXXXX"
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
               </div>
@@ -174,7 +174,7 @@ export const ContactPage: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your.email@example.com"
-                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                 />
               </div>
 
@@ -183,7 +183,7 @@ export const ContactPage: React.FC = () => {
                 <select
                   value={inquiryType}
                   onChange={(e) => setInquiryType(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white cursor-pointer"
+                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white cursor-pointer"
                 >
                   <option value="residential">Residential Rooftop Solar System (1.5kW – 5kW)</option>
                   <option value="commercial">Commercial / Factory Net-Metering Package (10kW+)</option>
@@ -200,13 +200,13 @@ export const ContactPage: React.FC = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tell us about your rooftop area, current electricity bill, or equipment specifications required..."
-                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-purple-600/20 flex items-center justify-center gap-2 active:scale-98"
+                className="w-full py-3.5 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 flex items-center justify-center gap-2 active:scale-98"
               >
                 <Send className="w-4 h-4" />
                 <span>Submit Technical Inquiry</span>

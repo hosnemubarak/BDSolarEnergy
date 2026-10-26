@@ -3,6 +3,16 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from django.db.models import Q
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+from dj_rest_auth.serializers import (
+    LoginSerializer as BaseLoginSerializer,
+    JWTSerializer as BaseJWTSerializer,
+    PasswordChangeSerializer as BasePasswordChangeSerializer,
+)
+from dj_rest_auth.registration.serializers import (
+    RegisterSerializer as BaseRegisterSerializer,
+)
+
 from .models import CustomerAddress
 
 User = get_user_model()
@@ -52,77 +62,157 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'role', 'is_verified', 'created_at']
 
 
-class RegisterSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(required=False)
-    name = serializers.CharField(write_only=True, required=False)
-    password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
-    confirmPassword = serializers.CharField(write_only=True, required=False)
+class CustomRegisterSerializer(BaseRegisterSerializer):
+    """
+    Package-integrated registration serializer for dj-rest-auth & django-allauth.
+    Supports BD Solar Energy customer profile attributes:
+    - Full name (auto-splits into first_name and last_name)
+    - Phone number
+    - Password & confirm password flexibility
+    - Automatic username generation from email or phone when omitted
+    """
+    name = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    phone = serializers.CharField(required=False, allow_blank=True)
+    first_name = serializers.CharField(required=False, allow_blank=True)
+    last_name = serializers.CharField(required=False, allow_blank=True)
+    password = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    confirmPassword = serializers.CharField(required=False, allow_blank=True, write_only=True)
 
-    class Meta:
-        model = User
-        fields = [
-            'id',
-            'username',
-            'name',
-            'email',
-            'first_name',
-            'last_name',
-            'phone',
-            'password',
-            'confirmPassword',
-        ]
-        read_only_fields = ['id']
+    def to_internal_value(self, data):
+        data = data.copy() if hasattr(data, 'copy') else dict(data)
+        if 'password' in data and not data.get('password1'):
+            data['password1'] = data['password']
+        if 'confirmPassword' in data and not data.get('password2'):
+            data['password2'] = data['confirmPassword']
+        elif not data.get('password2') and data.get('password1'):
+            data['password2'] = data['password1']
+        return super().to_internal_value(data)
 
-    def validate(self, attrs):
-        confirm = attrs.pop('confirmPassword', None)
-        if confirm and attrs['password'] != confirm:
-            raise serializers.ValidationError({"password": "Passwords do not match."})
-
-        # Split full name if provided
-        name = attrs.pop('name', '').strip()
-        if name and not attrs.get('first_name'):
+    def validate(self, data):
+        # Parse full name if provided
+        name = data.get('name', '').strip()
+        if name and not data.get('first_name'):
             parts = name.split(' ', 1)
-            attrs['first_name'] = parts[0]
+            data['first_name'] = parts[0]
             if len(parts) > 1:
-                attrs['last_name'] = parts[1]
+                data['last_name'] = parts[1]
 
         # Auto-generate unique username if omitted
-        if not attrs.get('username'):
-            email = attrs.get('email', '').strip()
-            phone = attrs.get('phone', '').strip()
+        if not data.get('username'):
+            email = data.get('email', '').strip()
+            phone = data.get('phone', '').strip()
             base = ''
             if email and '@' in email:
                 base = email.split('@')[0]
             elif phone:
                 base = phone.replace('+', '').replace(' ', '').replace('-', '')
-            elif attrs.get('first_name'):
-                base = attrs['first_name'].lower()
+            elif data.get('first_name'):
+                base = data['first_name'].lower()
             else:
                 base = 'customer'
 
-            # Clean alphanumeric
             clean_base = ''.join(c for c in base if c.isalnum() or c in '_-')[:30] or 'customer'
             candidate = clean_base
             counter = 1
             while User.objects.filter(username=candidate).exists():
                 candidate = f"{clean_base}_{counter}"
                 counter += 1
-            attrs['username'] = candidate
+            data['username'] = candidate
 
-        return attrs
+        return super().validate(data)
 
-    def create(self, validated_data):
-        password = validated_data.pop('password')
-        user = User.objects.create_user(password=password, **validated_data)
+    def custom_signup(self, request, user):
+        user.phone = self.validated_data.get('phone') or None
+        if self.validated_data.get('first_name'):
+            user.first_name = self.validated_data['first_name']
+        if self.validated_data.get('last_name'):
+            user.last_name = self.validated_data['last_name']
+        # Enforce non-privileged customer role
+        user.role = 'customer'
+        user.is_staff = False
+        user.is_superuser = False
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
+        user.save()
+
+
+# Backward-compatible alias
+RegisterSerializer = CustomRegisterSerializer
+
+
+class CustomLoginSerializer(BaseLoginSerializer):
+    """
+    Custom Login Serializer supporting login via username, email, OR phone.
+    """
+    username = serializers.CharField(required=False, allow_blank=True)
+    email = serializers.EmailField(required=False, allow_blank=True)
+
+    def get_auth_user(self, username, email, password):
+        login_input = (username or email or '').strip()
+        if login_input and password:
+            # Query by username, email, or phone
+            user = User.objects.filter(
+                Q(username__iexact=login_input) |
+                Q(email__iexact=login_input) |
+                Q(phone=login_input)
+            ).first()
+
+            if user and user.check_password(password):
+                user.backend = 'django.contrib.auth.backends.ModelBackend'
+                return user
+
+        user = super().get_auth_user(username, email, password)
+        if user and not getattr(user, 'backend', None):
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
         return user
 
 
+class CustomJWTSerializer(BaseJWTSerializer):
+    """
+    Custom JWT Serializer for dj-rest-auth.
+    Produces:
+    - access: JWT access token
+    - refresh: JWT refresh token
+    - user: serialized user profile
+    - tokens: {access, refresh} for legacy frontend clients
+    """
+    user = UserSerializer(read_only=True)
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data['tokens'] = {
+            'access': data.get('access'),
+            'refresh': data.get('refresh'),
+        }
+        return data
+
+
+class CustomPasswordChangeSerializer(BasePasswordChangeSerializer):
+    """
+    Password change serializer supporting both dj-rest-auth standard fields
+    (new_password1, new_password2) and frontend fields (new_password, confirm_password).
+    """
+    new_password = serializers.CharField(required=False, write_only=True)
+    confirm_password = serializers.CharField(required=False, write_only=True)
+
+    def to_internal_value(self, data):
+        data = data.copy() if hasattr(data, 'copy') else dict(data)
+        if 'new_password' in data and not data.get('new_password1'):
+            data['new_password1'] = data['new_password']
+        if 'confirm_password' in data and not data.get('new_password2'):
+            data['new_password2'] = data['confirm_password']
+        elif not data.get('new_password2') and data.get('new_password1'):
+            data['new_password2'] = data['new_password1']
+        return super().to_internal_value(data)
+
+
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    """
+    SimpleJWT TokenObtainPairSerializer fallback with username/email/phone support.
+    """
     def validate(self, attrs):
         login_input = (attrs.get('username') or '').strip()
         password = attrs.get('password')
 
-        # Allow logging in with username, email, or phone
         if login_input and password:
             user = User.objects.filter(
                 Q(username__iexact=login_input) |
@@ -141,3 +231,4 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True, validators=[validate_password])
+    confirm_password = serializers.CharField(required=False, write_only=True)

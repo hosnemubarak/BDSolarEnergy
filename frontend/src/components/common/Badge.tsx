@@ -21,7 +21,7 @@ export const Badge: React.FC<BadgeProps> = ({ type, text, className = '' }) => {
       defaultText = defaultText || 'HOT';
       break;
     case 'BESTSELLER':
-      badgeStyle = 'bg-purple-50 text-purple-800 border-purple-200 font-semibold';
+      badgeStyle = 'bg-green-50 text-green-800 border-green-200 font-semibold';
       defaultText = defaultText || 'BESTSELLER';
       break;
     case 'NEW':
@@ -44,7 +44,7 @@ export const Badge: React.FC<BadgeProps> = ({ type, text, className = '' }) => {
       badgeStyle = 'bg-rose-600 text-white font-bold border-rose-600 shadow-sm';
       break;
     case 'CATEGORY':
-      badgeStyle = 'bg-purple-50 text-purple-700 border-purple-100';
+      badgeStyle = 'bg-green-50 text-green-700 border-green-100';
       break;
   }
 

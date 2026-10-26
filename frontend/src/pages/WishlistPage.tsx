@@ -1,25 +1,62 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShoppingBag, ArrowRight, Trash2 } from 'lucide-react';
+import { Heart, ShoppingBag, ArrowRight, Loader2 } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
-import { PRODUCTS } from '../data/products';
+import { productService } from '../services/productService';
+import { Product } from '../types';
 import { ProductCard } from '../components/product/ProductCard';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 
 export const WishlistPage: React.FC = () => {
-  const { wishlistIds, toggleWishlist } = useWishlist();
+  const { wishlistIds } = useWishlist();
   const { addItem, openCart } = useCart();
   const { showToast } = useToast();
+  const [wishlistedProducts, setWishlistedProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const wishlistedProducts = PRODUCTS.filter((p) => wishlistIds.includes(p.id));
+  useEffect(() => {
+    let isMounted = true;
+    if (wishlistIds.length === 0) {
+      setWishlistedProducts([]);
+      setIsLoading(false);
+      return;
+    }
+
+    setIsLoading(true);
+    productService
+      .getProductsByIds(wishlistIds)
+      .then((prods) => {
+        if (isMounted) {
+          setWishlistedProducts(prods);
+          setIsLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.error('Error fetching wishlisted products', err);
+        if (isMounted) setIsLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [wishlistIds]);
 
   const handleAddAllToCart = () => {
     wishlistedProducts.forEach((p) => addItem(p, 1));
     showToast(`Added ${wishlistedProducts.length} saved products to cart.`, 'success');
     openCart();
   };
+
+  if (isLoading) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-16 text-center space-y-4">
+        <Loader2 className="w-8 h-8 text-[#15803D] animate-spin mx-auto" />
+        <p className="text-xs text-gray-500">Loading your saved products...</p>
+      </div>
+    );
+  }
 
   if (wishlistedProducts.length === 0) {
     return (
@@ -33,7 +70,7 @@ export const WishlistPage: React.FC = () => {
         </p>
         <Link
           to="/shop"
-          className="px-6 py-2.5 bg-[#6D28D9] text-white text-xs font-bold rounded-xl inline-flex items-center gap-2"
+          className="px-6 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-xl inline-flex items-center gap-2 shadow-md shadow-green-700/20 transition-colors"
         >
           <span>Explore Catalog</span>
           <ArrowRight className="w-4 h-4" />
@@ -58,7 +95,7 @@ export const WishlistPage: React.FC = () => {
 
         <button
           onClick={handleAddAllToCart}
-          className="px-5 py-2.5 bg-[#6D28D9] hover:bg-[#5B21B6] text-white text-xs font-bold rounded-xl transition-all shadow-md shadow-purple-600/20 flex items-center gap-2 self-start sm:self-auto"
+          className="px-5 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-xl transition-all shadow-md shadow-green-700/20 flex items-center gap-2 self-start sm:self-auto"
         >
           <ShoppingBag className="w-4 h-4" />
           <span>Move All to Cart</span>

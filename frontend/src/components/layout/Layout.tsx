@@ -14,7 +14,7 @@ export const Layout: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF9FC] text-[#1F2937]">
+    <div className="min-h-screen flex flex-col bg-[#F0FDF4] text-[#1F2937]">
       {/* Top Banner */}
       <TopAnnouncementBar />
 

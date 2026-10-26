@@ -26,6 +26,8 @@ class ProductFilter(django_filters.FilterSet):
     
     is_on_sale = django_filters.BooleanFilter(field_name='is_on_sale')
     onSaleOnly = django_filters.BooleanFilter(field_name='is_on_sale')
+    
+    ids = django_filters.CharFilter(method='filter_ids')
 
     class Meta:
         model = Product
@@ -46,6 +48,7 @@ class ProductFilter(django_filters.FilterSet):
             'featuredOnly',
             'is_on_sale',
             'onSaleOnly',
+            'ids',
         ]
 
     def filter_category(self, queryset, name, value):
@@ -63,3 +66,23 @@ class ProductFilter(django_filters.FilterSet):
         if not brands:
             return queryset
         return queryset.filter(brand__name__in=brands) | queryset.filter(brand__slug__in=brands)
+
+    def filter_ids(self, queryset, name, value):
+        if not value:
+            return queryset
+        import uuid
+        from django.db.models import Q
+        raw_ids = [v.strip() for v in value.split(',') if v.strip()]
+        uuid_list = []
+        legacy_list = []
+        for item in raw_ids:
+            try:
+                uuid_list.append(uuid.UUID(item))
+            except (ValueError, AttributeError):
+                legacy_list.append(item)
+        q = Q()
+        if uuid_list:
+            q |= Q(id__in=uuid_list)
+        if legacy_list:
+            q |= Q(legacy_id__in=legacy_list) | Q(slug__in=legacy_list)
+        return queryset.filter(q)

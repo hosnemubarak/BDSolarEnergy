@@ -53,7 +53,7 @@ export const FaqPage: React.FC = () => {
       <Breadcrumbs items={[{ label: 'Frequently Asked Questions' }]} />
 
       <div className="text-center space-y-2">
-        <span className="text-xs font-bold text-[#6D28D9] uppercase tracking-wider">
+        <span className="text-xs font-bold text-[#15803D] uppercase tracking-wider">
           Solar Knowledge Base
         </span>
         <h1 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight">
@@ -74,11 +74,11 @@ export const FaqPage: React.FC = () => {
             >
               <button
                 onClick={() => toggle(idx)}
-                className="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-gray-900 hover:text-purple-700 bg-gray-50/50 hover:bg-purple-50/30 flex items-center justify-between gap-4 transition-colors"
+                className="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-gray-900 hover:text-[#15803D] bg-gray-50/50 hover:bg-green-50/40 flex items-center justify-between gap-4 transition-colors"
               >
                 <span>{faq.question}</span>
                 {isOpen ? (
-                  <ChevronUp className="w-4 h-4 text-purple-700 shrink-0" />
+                  <ChevronUp className="w-4 h-4 text-[#15803D] shrink-0" />
                 ) : (
                   <ChevronDown className="w-4 h-4 text-gray-400 shrink-0" />
                 )}

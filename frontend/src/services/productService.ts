@@ -36,6 +36,12 @@ export const productService = {
     return Array.isArray(res) ? res : res.results || [];
   },
 
+  async getProductsByIds(ids: string[]): Promise<Product[]> {
+    if (!ids || ids.length === 0) return [];
+    const res: any = await apiClient(`/products/?ids=${encodeURIComponent(ids.join(','))}&page_size=100`);
+    return Array.isArray(res) ? res : res.results || [];
+  },
+
   async getFeaturedProducts(): Promise<Product[]> {
     const res: any = await apiClient('/products/featured/');
     return Array.isArray(res) ? res : res.results || [];

@@ -71,7 +71,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
 
   return (
     <div
-      className={`group relative bg-white rounded-xl border border-gray-200/90 hover:border-purple-300 hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden ${className}`}
+      className={`group relative bg-white rounded-xl border border-gray-200/90 hover:border-green-300 hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden ${className}`}
     >
       {/* Top Badges & Wishlist Action */}
       <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 pointer-events-none">
@@ -119,7 +119,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
         {/* Quick View Hover Button */}
         <button
           onClick={handleQuickView}
-          className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white/95 hover:bg-white text-gray-800 text-xs font-semibold rounded-lg shadow-md border border-gray-200/60 opacity-0 group-hover:opacity-100 transition-all duration-200 flex items-center gap-1.5 backdrop-blur-xs hover:text-purple-700"
+          className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white/95 hover:bg-white text-gray-800 text-xs font-semibold rounded-lg shadow-md border border-gray-200/60 opacity-0 group-hover:opacity-100 transition-all duration-200 flex items-center gap-1.5 backdrop-blur-xs hover:text-green-700"
         >
           <Eye className="w-3.5 h-3.5" />
           <span>Quick View</span>
@@ -131,7 +131,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
         <div>
           {/* Brand & Technical Spec Badge */}
           <div className="flex items-center justify-between gap-1 mb-1.5">
-            <span className="text-[11px] font-semibold text-purple-700 uppercase tracking-wider truncate">
+            <span className="text-[11px] font-semibold text-green-700 uppercase tracking-wider truncate">
               {product.brand}
             </span>
             {specBadge && (
@@ -144,7 +144,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
           {/* Product Title */}
           <Link
             to={`/product/${product.slug}`}
-            className="block text-xs sm:text-sm font-semibold text-gray-900 group-hover:text-[#6D28D9] transition-colors line-clamp-2 min-h-[2.5rem]"
+            className="block text-xs sm:text-sm font-semibold text-gray-900 group-hover:text-[#15803D] transition-colors line-clamp-2 min-h-[2.5rem]"
             title={product.name}
           >
             {product.name}
@@ -164,7 +164,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
         <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between gap-2">
           <div>
             <div className="flex items-baseline gap-1.5 flex-wrap">
-              <span className="text-sm sm:text-base font-extrabold text-purple-950">
+              <span className="text-sm sm:text-base font-extrabold text-green-950">
                 ৳{product.price.toLocaleString('en-BD')}
               </span>
               {product.originalPrice && (
@@ -178,7 +178,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
 
           <button
             onClick={handleAddToCart}
-            className="p-2 sm:px-3 sm:py-2 rounded-lg bg-[#6D28D9] hover:bg-[#5B21B6] text-white transition-all shadow-sm hover:shadow-purple-500/20 active:scale-95 flex items-center gap-1.5 shrink-0"
+            className="p-2 sm:px-3 sm:py-2 rounded-lg bg-[#15803D] hover:bg-[#166534] text-white transition-all shadow-sm hover:shadow-green-600/20 active:scale-95 flex items-center gap-1.5 shrink-0"
             title="Add to Cart"
           >
             <ShoppingCart className="w-4 h-4" />

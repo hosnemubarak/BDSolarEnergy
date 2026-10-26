@@ -8,6 +8,8 @@ interface AuthContextType {
   isLoading: boolean;
   login: (emailOrPhoneOrUsername: string, password?: string) => Promise<{ success: boolean; error?: string }>;
   register: (name: string, email: string, phone: string, password?: string) => Promise<{ success: boolean; error?: string }>;
+  loginWithGoogle: (codeOrToken: string, isAccessToken?: boolean) => Promise<{ success: boolean; error?: string }>;
+  changePassword: (oldPassword: string, newPassword: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => void;
   updateProfile: (updated: Partial<UserProfile>) => Promise<void>;
   saveAddress: (address: CustomerAddress) => Promise<void>;
@@ -79,6 +81,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return { success: false, error: res.error || 'Registration failed.' };
   };
 
+  const loginWithGoogle = async (codeOrToken: string, isAccessToken = false) => {
+    const res = await authService.loginWithGoogle(codeOrToken, isAccessToken);
+    if (res.success && res.user) {
+      setUser(res.user);
+      setIsAuthModalOpen(false);
+      return { success: true };
+    }
+    return { success: false, error: res.error || 'Google login failed.' };
+  };
+
+  const changePassword = async (oldPassword: string, newPassword: string) => {
+    return await authService.changePassword(oldPassword, newPassword);
+  };
+
   const logout = () => {
     authService.logout();
     setUser(null);
@@ -113,6 +129,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isLoading,
         login,
         register,
+        loginWithGoogle,
+        changePassword,
         logout,
         updateProfile,
         saveAddress,

@@ -75,24 +75,24 @@ export const CartDrawer: React.FC = () => {
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
         <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col">
           {/* Header */}
-          <div className="p-4 bg-[#4C1D95] text-white flex items-center justify-between">
+          <div className="p-4 bg-[#166534] text-white flex items-center justify-between">
             <div className="flex items-center gap-2">
               <ShoppingBag className="w-5 h-5 text-amber-300" />
               <h3 className="font-bold text-base">Your Shopping Cart ({items.length})</h3>
             </div>
             <button
               onClick={closeCart}
-              className="p-1 rounded-lg hover:bg-purple-800 text-purple-200 hover:text-white transition-colors"
+              className="p-1 rounded-lg hover:bg-green-800 text-green-200 hover:text-white transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
           {/* Free Shipping Progress Meter */}
-          <div className="bg-purple-50 p-3.5 border-b border-purple-100">
-            <div className="flex items-center justify-between text-xs font-semibold text-purple-950 mb-1.5">
+          <div className="bg-green-50 p-3.5 border-b border-green-100">
+            <div className="flex items-center justify-between text-xs font-semibold text-green-950 mb-1.5">
               <span className="flex items-center gap-1.5">
-                <Truck className="w-4 h-4 text-[#6D28D9]" />
+                <Truck className="w-4 h-4 text-[#15803D]" />
                 {remainingForFreeShipping > 0 ? (
                   <span>
                     Add <strong>৳{remainingForFreeShipping.toLocaleString('en-BD')}</strong> more for Free Delivery
@@ -104,11 +104,11 @@ export const CartDrawer: React.FC = () => {
                   </span>
                 )}
               </span>
-              <span className="text-purple-700">{progressPercent}%</span>
+              <span className="text-green-700">{progressPercent}%</span>
             </div>
-            <div className="w-full h-2 bg-purple-200/80 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-green-200/80 rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#6D28D9] transition-all duration-500 rounded-full"
+                className="h-full bg-[#15803D] transition-all duration-500 rounded-full"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -118,7 +118,7 @@ export const CartDrawer: React.FC = () => {
           <div className="flex-1 overflow-y-auto p-4 divide-y divide-gray-100">
             {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center p-6 text-gray-500">
-                <div className="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 mb-3">
+                <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center text-green-700 mb-3">
                   <ShoppingBag className="w-8 h-8" />
                 </div>
                 <h4 className="font-bold text-gray-800 text-base">Your cart is empty</h4>
@@ -130,7 +130,7 @@ export const CartDrawer: React.FC = () => {
                     closeCart();
                     navigate('/shop');
                   }}
-                  className="mt-4 px-5 py-2 rounded-lg bg-[#6D28D9] text-white text-xs font-semibold hover:bg-[#5B21B6] transition-colors"
+                  className="mt-4 px-5 py-2 rounded-lg bg-[#15803D] text-white text-xs font-semibold hover:bg-[#166534] transition-colors"
                 >
                   Start Shopping
                 </button>
@@ -178,7 +178,7 @@ export const CartDrawer: React.FC = () => {
 
                       {/* Subtotal & Delete button */}
                       <div className="flex items-center gap-3">
-                        <span className="text-xs font-extrabold text-[#4C1D95]">
+                        <span className="text-xs font-extrabold text-[#166534]">
                           ৳{(item.product.price * item.quantity).toLocaleString('en-BD')}
                         </span>
                         <button
@@ -220,7 +220,7 @@ export const CartDrawer: React.FC = () => {
                     value={inputCoupon}
                     onChange={(e) => setInputCoupon(e.target.value)}
                     placeholder="Coupon code (e.g. BDSOLAR5)"
-                    className="flex-1 px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg uppercase placeholder:normal-case focus:outline-none focus:border-purple-600"
+                    className="flex-1 px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg uppercase placeholder:normal-case focus:outline-none focus:border-[#15803D]"
                   />
                   <button
                     type="submit"
@@ -259,7 +259,7 @@ export const CartDrawer: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-sm font-bold text-gray-900 pt-2 border-t border-gray-200">
                   <span>Total Amount</span>
-                  <span className="text-[#4C1D95] text-base font-black">
+                  <span className="text-[#166534] text-base font-black">
                     ৳{total.toLocaleString('en-BD')}
                   </span>
                 </div>
@@ -269,7 +269,7 @@ export const CartDrawer: React.FC = () => {
               <div className="space-y-2 pt-1">
                 <button
                   onClick={handleCheckoutClick}
-                  className="w-full py-3 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-purple-600/20 flex items-center justify-center gap-2 active:scale-98"
+                  className="w-full py-3 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-green-700/20 flex items-center justify-center gap-2 active:scale-98"
                 >
                   <span>Proceed to Checkout</span>
                   <ArrowRight className="w-4 h-4" />

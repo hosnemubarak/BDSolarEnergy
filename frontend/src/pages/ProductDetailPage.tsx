@@ -66,7 +66,7 @@ export const ProductDetailPage: React.FC = () => {
   if (isLoading) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-12 flex justify-center items-center">
-        <div className="w-8 h-8 border-4 border-purple-600 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-[#15803D] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -78,7 +78,7 @@ export const ProductDetailPage: React.FC = () => {
         <p className="text-xs text-gray-500">The product you are looking for may have been retired or moved.</p>
         <Link
           to="/shop"
-          className="px-6 py-2.5 bg-[#6D28D9] text-white text-xs font-bold rounded-xl inline-block"
+          className="px-6 py-2.5 bg-[#15803D] text-white text-xs font-bold rounded-xl inline-block"
         >
           Return to Shop Catalog
         </Link>
@@ -155,7 +155,7 @@ export const ProductDetailPage: React.FC = () => {
                   onClick={() => setSelectedImage(img)}
                   className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl border-2 overflow-hidden shrink-0 transition-all ${
                     selectedImage === img
-                      ? 'border-[#6D28D9] scale-105 shadow-sm'
+                      ? 'border-[#15803D] scale-105 shadow-sm'
                       : 'border-gray-200 hover:border-gray-400 opacity-70'
                   }`}
                 >
@@ -181,7 +181,7 @@ export const ProductDetailPage: React.FC = () => {
             {/* Brand, SKU and Wishlist */}
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-purple-700 uppercase tracking-wider bg-purple-50 px-2 py-0.5 rounded">
+                <span className="text-xs font-bold text-green-700 uppercase tracking-wider bg-green-50 px-2 py-0.5 rounded">
                   {product.brand}
                 </span>
                 <span className="text-xs text-gray-400 font-mono">SKU: {product.sku}</span>
@@ -226,9 +226,9 @@ export const ProductDetailPage: React.FC = () => {
             </div>
 
             {/* Price Box */}
-            <div className="mt-4 p-4 bg-purple-50/70 rounded-2xl border border-purple-100 flex items-baseline justify-between flex-wrap gap-3">
+            <div className="mt-4 p-4 bg-green-50/70 rounded-2xl border border-green-100 flex items-baseline justify-between flex-wrap gap-3">
               <div>
-                <span className="text-3xl font-black text-[#4C1D95]">
+                <span className="text-3xl font-black text-[#166534]">
                   ৳{product.price.toLocaleString('en-BD')}
                 </span>
                 {product.originalPrice && (
@@ -243,8 +243,8 @@ export const ProductDetailPage: React.FC = () => {
 
               {specs.warrantyYears && (
                 <div className="text-right">
-                  <span className="px-3 py-1 bg-white text-purple-900 text-xs font-bold rounded-lg border border-purple-200 shadow-xs inline-flex items-center gap-1">
-                    <ShieldCheck className="w-4 h-4 text-[#6D28D9]" />
+                  <span className="px-3 py-1 bg-white text-green-900 text-xs font-bold rounded-lg border border-green-200 shadow-xs inline-flex items-center gap-1">
+                    <ShieldCheck className="w-4 h-4 text-[#15803D]" />
                     <span>{specs.warrantyYears} Years Warranty</span>
                   </span>
                 </div>
@@ -260,7 +260,7 @@ export const ProductDetailPage: React.FC = () => {
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-gray-600">
                   {product.highlights.map((h, i) => (
                     <li key={i} className="flex items-start gap-1.5">
-                      <Zap className="w-3.5 h-3.5 text-[#6D28D9] shrink-0 mt-0.5" />
+                      <Zap className="w-3.5 h-3.5 text-[#15803D] shrink-0 mt-0.5" />
                       <span>{h}</span>
                     </li>
                   ))}
@@ -292,7 +292,7 @@ export const ProductDetailPage: React.FC = () => {
               {/* Add to Cart */}
               <button
                 onClick={handleAddToCart}
-                className="flex-1 py-3 px-6 bg-purple-100 hover:bg-purple-200 text-[#4C1D95] font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 border border-purple-200 active:scale-98"
+                className="flex-1 py-3 px-6 bg-green-100 hover:bg-green-200 text-[#166534] font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 border border-green-200 active:scale-98"
               >
                 <ShoppingCart className="w-4 h-4" />
                 <span>Add to Cart</span>
@@ -301,7 +301,7 @@ export const ProductDetailPage: React.FC = () => {
               {/* Buy Now */}
               <button
                 onClick={handleBuyNow}
-                className="flex-1 py-3 px-6 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-purple-600/20 flex items-center justify-center gap-2 active:scale-98"
+                className="flex-1 py-3 px-6 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 flex items-center justify-center gap-2 active:scale-98"
               >
                 <span>Buy Now</span>
                 <ArrowRight className="w-4 h-4" />
@@ -311,11 +311,11 @@ export const ProductDetailPage: React.FC = () => {
             {/* Delivery & Assurance Strip */}
             <div className="grid grid-cols-2 gap-3 text-xs text-gray-500 pt-2">
               <div className="flex items-center gap-2">
-                <Truck className="w-4 h-4 text-purple-700" />
+                <Truck className="w-4 h-4 text-green-700" />
                 <span>Fast delivery across Bangladesh</span>
               </div>
               <div className="flex items-center gap-2">
-                <RotateCcw className="w-4 h-4 text-purple-700" />
+                <RotateCcw className="w-4 h-4 text-green-700" />
                 <span>7-day return policy for defects</span>
               </div>
             </div>
@@ -337,7 +337,7 @@ export const ProductDetailPage: React.FC = () => {
               onClick={() => setActiveTab(tab.id as any)}
               className={`pb-3 text-xs sm:text-sm font-bold transition-colors whitespace-nowrap border-b-2 ${
                 activeTab === tab.id
-                  ? 'border-[#6D28D9] text-[#6D28D9]'
+                  ? 'border-[#15803D] text-[#15803D]'
                   : 'border-transparent text-gray-400 hover:text-gray-700'
               }`}
             >
@@ -369,7 +369,7 @@ export const ProductDetailPage: React.FC = () => {
                   {specs.ratedPowerW && (
                     <tr>
                       <td className="p-3 bg-gray-50/50 font-semibold text-gray-700">Rated Output (Pmax)</td>
-                      <td className="p-3 font-bold text-purple-900">{specs.ratedPowerW} Watts</td>
+                      <td className="p-3 font-bold text-green-900">{specs.ratedPowerW} Watts</td>
                     </tr>
                   )}
                   {specs.cellType && (
@@ -413,7 +413,7 @@ export const ProductDetailPage: React.FC = () => {
                   {specs.ratedOutputKva && (
                     <tr>
                       <td className="p-3 bg-gray-50/50 font-semibold text-gray-700">Inverter Rated Output Power</td>
-                      <td className="p-3 font-bold text-purple-900">{specs.ratedOutputKva} kVA</td>
+                      <td className="p-3 font-bold text-green-900">{specs.ratedOutputKva} kVA</td>
                     </tr>
                   )}
                   {specs.inverterType && (
@@ -445,7 +445,7 @@ export const ProductDetailPage: React.FC = () => {
                   {specs.capacityAh && (
                     <tr>
                       <td className="p-3 bg-gray-50/50 font-semibold text-gray-700">Storage Capacity (Ah)</td>
-                      <td className="p-3 font-bold text-purple-900">{specs.capacityAh} Ah</td>
+                      <td className="p-3 font-bold text-green-900">{specs.capacityAh} Ah</td>
                     </tr>
                   )}
                   {specs.usableEnergyKwh && (
@@ -465,7 +465,7 @@ export const ProductDetailPage: React.FC = () => {
                   {specs.crossSectionMm2 && (
                     <tr>
                       <td className="p-3 bg-gray-50/50 font-semibold text-gray-700">Cable Conductor Size</td>
-                      <td className="p-3 font-bold text-purple-900">{specs.crossSectionMm2}</td>
+                      <td className="p-3 font-bold text-green-900">{specs.crossSectionMm2}</td>
                     </tr>
                   )}
                   {specs.conductorMaterial && (
@@ -485,7 +485,7 @@ export const ProductDetailPage: React.FC = () => {
                   {specs.ratedCurrentA && (
                     <tr>
                       <td className="p-3 bg-gray-50/50 font-semibold text-gray-700">Rated Current (In)</td>
-                      <td className="p-3 font-bold text-purple-900">{specs.ratedCurrentA} Amps ({specs.poles})</td>
+                      <td className="p-3 font-bold text-green-900">{specs.ratedCurrentA} Amps ({specs.poles})</td>
                     </tr>
                   )}
                   {specs.breakingCapacityKa && (
@@ -518,7 +518,7 @@ export const ProductDetailPage: React.FC = () => {
         {activeTab === 'description' && (
           <div className="space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
             <p>{product.description}</p>
-            <div className="p-4 bg-purple-50 rounded-xl border border-purple-100 text-purple-900 font-medium">
+            <div className="p-4 bg-green-50 rounded-xl border border-green-100 text-green-900 font-medium">
               💡 Need technical advice? Our solar engineering team is available on WhatsApp and Phone for single-line diagram review.
             </div>
           </div>
@@ -579,7 +579,7 @@ export const ProductDetailPage: React.FC = () => {
             </h3>
             <Link
               to={`/shop?category=${product.categoryId}`}
-              className="text-xs font-bold text-[#6D28D9] hover:underline"
+              className="text-xs font-bold text-[#15803D] hover:underline"
             >
               Browse Category &rarr;
             </Link>

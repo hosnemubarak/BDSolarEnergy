@@ -39,7 +39,7 @@ export const AccountPage: React.FC = () => {
   if (!user) {
     return (
       <div className="max-w-md mx-auto px-4 py-16 text-center space-y-4">
-        <div className="w-16 h-16 rounded-full bg-purple-100 text-[#6D28D9] flex items-center justify-center mx-auto">
+        <div className="w-16 h-16 rounded-full bg-green-100 text-[#15803D] flex items-center justify-center mx-auto">
           <User className="w-8 h-8" />
         </div>
         <h2 className="text-2xl font-black text-gray-900">Sign In to Your Account</h2>
@@ -48,7 +48,7 @@ export const AccountPage: React.FC = () => {
         </p>
         <button
           onClick={() => setIsAuthModalOpen(true)}
-          className="w-full py-3 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs rounded-xl shadow-md shadow-purple-600/20"
+          className="w-full py-3 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs rounded-xl shadow-md shadow-green-700/20 transition-all"
         >
           Sign In / Register Demo Account
         </button>
@@ -82,13 +82,13 @@ export const AccountPage: React.FC = () => {
       {/* Account Overview Header */}
       <div className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-8 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#4C1D95] to-[#6D28D9] text-white font-black text-2xl flex items-center justify-center shadow-md">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#166534] to-[#15803D] text-white font-black text-2xl flex items-center justify-center shadow-md">
             {user.name.charAt(0)}
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-xl sm:text-2xl font-black text-gray-900">{user.name}</h1>
-              <span className="px-2 py-0.5 rounded-full bg-purple-100 text-purple-900 text-[10px] font-bold uppercase">
+              <span className="px-2 py-0.5 rounded-full bg-green-100 text-green-900 text-[10px] font-bold uppercase">
                 Customer
               </span>
             </div>
@@ -123,15 +123,15 @@ export const AccountPage: React.FC = () => {
             onClick={() => setActiveTab('orders')}
             className={`w-full text-left px-4 py-3 rounded-2xl text-xs font-bold transition-colors flex items-center justify-between ${
               activeTab === 'orders'
-                ? 'bg-purple-100/70 text-[#4C1D95]'
+                ? 'bg-green-100/70 text-[#166534]'
                 : 'text-gray-700 hover:bg-gray-50'
             }`}
           >
             <div className="flex items-center gap-3">
-              <Package className="w-4 h-4 text-[#6D28D9]" />
+              <Package className="w-4 h-4 text-[#15803D]" />
               <span>Orders & Tracking</span>
             </div>
-            <span className="text-[10px] bg-purple-200 text-purple-900 px-2 py-0.5 rounded-full font-bold">
+            <span className="text-[10px] bg-green-100 text-green-900 px-2 py-0.5 rounded-full font-bold">
               {orders.length}
             </span>
           </button>
@@ -140,11 +140,11 @@ export const AccountPage: React.FC = () => {
             onClick={() => setActiveTab('addresses')}
             className={`w-full text-left px-4 py-3 rounded-2xl text-xs font-bold transition-colors flex items-center gap-3 ${
               activeTab === 'addresses'
-                ? 'bg-purple-100/70 text-[#4C1D95]'
+                ? 'bg-green-100/70 text-[#166534]'
                 : 'text-gray-700 hover:bg-gray-50'
             }`}
           >
-            <MapPin className="w-4 h-4 text-[#6D28D9]" />
+            <MapPin className="w-4 h-4 text-[#15803D]" />
             <span>Saved Addresses</span>
           </button>
 
@@ -152,7 +152,7 @@ export const AccountPage: React.FC = () => {
             to="/wishlist"
             className="w-full text-left px-4 py-3 rounded-2xl text-xs font-bold text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-3"
           >
-            <Heart className="w-4 h-4 text-[#6D28D9]" />
+            <Heart className="w-4 h-4 text-[#15803D]" />
             <span>Saved Wishlist</span>
           </Link>
 
@@ -160,11 +160,11 @@ export const AccountPage: React.FC = () => {
             onClick={() => setActiveTab('profile')}
             className={`w-full text-left px-4 py-3 rounded-2xl text-xs font-bold transition-colors flex items-center gap-3 ${
               activeTab === 'profile'
-                ? 'bg-purple-100/70 text-[#4C1D95]'
+                ? 'bg-green-100/70 text-[#166534]'
                 : 'text-gray-700 hover:bg-gray-50'
             }`}
           >
-            <User className="w-4 h-4 text-[#6D28D9]" />
+            <User className="w-4 h-4 text-[#15803D]" />
             <span>Profile Settings</span>
           </button>
         </div>
@@ -188,7 +188,7 @@ export const AccountPage: React.FC = () => {
                   {orders.map((ord) => (
                     <div
                       key={ord.id}
-                      className="p-5 rounded-2xl border border-gray-200 hover:border-purple-200 transition-colors space-y-3"
+                      className="p-5 rounded-2xl border border-gray-200 hover:border-green-200 transition-colors space-y-3"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 pb-3 text-xs">
                         <div>
@@ -205,14 +205,14 @@ export const AccountPage: React.FC = () => {
                                 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                                 : ord.status === 'SHIPPED'
                                 ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                                : 'bg-purple-50 text-purple-700 border border-purple-200'
+                                : 'bg-green-50 text-green-700 border border-green-200'
                             }`}
                           >
                             {ord.status}
                           </span>
                           <Link
                             to={`/order-confirmation/${ord.orderNumber}`}
-                            className="text-purple-700 hover:text-purple-900 font-bold text-xs"
+                            className="text-[#15803D] hover:text-[#166534] font-bold text-xs"
                           >
                             View Invoice &rarr;
                           </Link>
@@ -229,15 +229,15 @@ export const AccountPage: React.FC = () => {
                                 alt={it.name}
                                 className="w-8 h-8 rounded object-cover border border-gray-200"
                                 onError={(e) => {
-                                  const target = e.target as HTMLImageElement;
-                                  target.onerror = null;
-                                  target.src = '/images/solar-panel.svg';
+                                   const target = e.target as HTMLImageElement;
+                                   target.onerror = null;
+                                   target.src = '/images/solar-panel.svg';
                                 }}
                               />
                               <span className="text-gray-800 line-clamp-1">{it.name}</span>
                               <span className="text-gray-400">x{it.quantity}</span>
                             </div>
-                            <span className="font-bold text-[#4C1D95]">
+                            <span className="font-bold text-[#166534]">
                               ৳{it.subtotal.toLocaleString('en-BD')}
                             </span>
                           </div>
@@ -247,11 +247,11 @@ export const AccountPage: React.FC = () => {
                       {/* Footer Total & Courier Tracking */}
                       <div className="pt-2 border-t border-gray-100 flex flex-wrap items-center justify-between gap-2 text-xs">
                         <div className="text-gray-500 flex items-center gap-1.5">
-                          <Truck className="w-3.5 h-3.5 text-purple-700" />
+                          <Truck className="w-3.5 h-3.5 text-[#15803D]" />
                           <span>Courier: {ord.courierName} ({ord.trackingNumber})</span>
                         </div>
                         <div className="font-black text-sm text-gray-900">
-                          Total: <span className="text-[#4C1D95]">৳{ord.total.toLocaleString('en-BD')}</span>
+                          Total: <span className="text-[#166534]">৳{ord.total.toLocaleString('en-BD')}</span>
                         </div>
                       </div>
                     </div>
@@ -268,7 +268,7 @@ export const AccountPage: React.FC = () => {
                 <h3 className="font-extrabold text-base text-gray-900">Saved Addresses</h3>
                 <button
                   onClick={() => setShowAddressModal(true)}
-                  className="px-3 py-1.5 bg-[#6D28D9] text-white text-xs font-bold rounded-xl flex items-center gap-1"
+                  className="px-3 py-1.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-xl transition-colors shadow-xs flex items-center gap-1"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Add New Address</span>
@@ -282,7 +282,7 @@ export const AccountPage: React.FC = () => {
                     className="p-4 rounded-2xl border border-gray-200 relative space-y-1.5 text-xs bg-gray-50/50"
                   >
                     {addr.isDefault && (
-                      <span className="px-2 py-0.5 rounded bg-purple-100 text-[#4C1D95] text-[10px] font-bold uppercase inline-block mb-1">
+                      <span className="px-2 py-0.5 rounded bg-green-100 text-[#166534] text-[10px] font-bold uppercase inline-block mb-1">
                         Default Delivery Address
                       </span>
                     )}
@@ -298,8 +298,8 @@ export const AccountPage: React.FC = () => {
 
               {/* Add Address Modal */}
               {showAddressModal && (
-                <div className="p-4 bg-purple-50 rounded-2xl border border-purple-200 space-y-3">
-                  <h4 className="font-bold text-xs text-purple-950">Add Delivery Location</h4>
+                <div className="p-4 bg-green-50 rounded-2xl border border-green-200 space-y-3">
+                  <h4 className="font-bold text-xs text-green-950">Add Delivery Location</h4>
                   <form onSubmit={handleSaveNewAddress} className="space-y-3">
                     <div className="grid grid-cols-2 gap-3 text-xs">
                       <div>
@@ -350,7 +350,7 @@ export const AccountPage: React.FC = () => {
                     <div className="flex gap-2">
                       <button
                         type="submit"
-                        className="px-4 py-1.5 bg-[#6D28D9] text-white text-xs font-bold rounded-lg"
+                        className="px-4 py-1.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-lg transition-colors shadow-xs"
                       >
                         Save Address
                       </button>

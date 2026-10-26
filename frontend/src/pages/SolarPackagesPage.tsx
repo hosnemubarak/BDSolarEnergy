@@ -60,7 +60,7 @@ export const SolarPackagesPage: React.FC = () => {
       />
 
       {/* Banner */}
-      <div className="bg-gradient-to-r from-[#4C1D95] via-[#6D28D9] to-indigo-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-r from-[#166534] via-[#15803D] to-emerald-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
         <div className="max-w-2xl space-y-3 relative z-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-xs font-semibold backdrop-blur-xs border border-white/20">
             <Sparkles className="w-3.5 h-3.5" />
@@ -69,7 +69,7 @@ export const SolarPackagesPage: React.FC = () => {
           <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
             Complete Solar Power Packages for Homes & Businesses
           </h1>
-          <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed">
+          <p className="text-xs sm:text-sm text-green-100/90 leading-relaxed">
             Eliminate guesswork. Our matched packages include tier-1 solar panels, pure sine-wave hybrid inverters, LiFePO4 batteries, mounting structures, and official warranty support across Bangladesh.
           </p>
           <div className="pt-2">
@@ -89,11 +89,11 @@ export const SolarPackagesPage: React.FC = () => {
         {packages.map((pkg) => (
           <div
             key={pkg.id}
-            className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-xs hover:border-purple-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+            className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-xs hover:border-green-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
           >
             <div>
               {/* Image banner & Specs Badge */}
-              <div className="relative aspect-[16/9] bg-purple-950 overflow-hidden">
+              <div className="relative aspect-[16/9] bg-green-950 overflow-hidden">
                 <img
                   src={pkg.image}
                   alt={pkg.title}
@@ -116,21 +116,21 @@ export const SolarPackagesPage: React.FC = () => {
                     )}
                   </div>
                   <h3 className="text-lg sm:text-xl font-black text-white">{pkg.title}</h3>
-                  <p className="text-xs text-purple-200 mt-0.5">{pkg.tagline}</p>
+                  <p className="text-xs text-green-200 mt-0.5">{pkg.tagline}</p>
                 </div>
               </div>
 
               {/* Performance Metrics Bar */}
-              <div className="grid grid-cols-3 bg-purple-50/70 p-4 border-b border-purple-100 text-center divide-x divide-purple-200/60 text-xs">
+              <div className="grid grid-cols-3 bg-green-50/70 p-4 border-b border-green-100 text-center divide-x divide-green-200/60 text-xs">
                 <div>
                   <div className="text-gray-500 text-[10px]">Solar Capacity</div>
-                  <div className="font-extrabold text-purple-950 text-sm mt-0.5">
+                  <div className="font-extrabold text-green-950 text-sm mt-0.5">
                     {pkg.specifications.totalSolarCapacityWp} Wp
                   </div>
                 </div>
                 <div>
                   <div className="text-gray-500 text-[10px]">Daily Est. Generation</div>
-                  <div className="font-extrabold text-purple-950 text-sm mt-0.5">
+                  <div className="font-extrabold text-green-950 text-sm mt-0.5">
                     ~{pkg.dailyGenerationEstimateKwh} kWh / day
                   </div>
                 </div>
@@ -151,7 +151,7 @@ export const SolarPackagesPage: React.FC = () => {
                   <ul className="space-y-2">
                     {pkg.items.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2 text-xs text-gray-700">
-                        <CheckCircle2 className="w-4 h-4 text-[#6D28D9] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-[#15803D] shrink-0 mt-0.5" />
                         <div>
                           <strong>{item.quantity}x {item.productName}</strong>
                           <span className="text-gray-400 text-[11px] block">{item.specsSummary}</span>
@@ -176,7 +176,7 @@ export const SolarPackagesPage: React.FC = () => {
             {/* Price & Cart Actions Bottom Bar */}
             <div className="p-5 sm:p-6 bg-gray-50/80 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <div className="text-2xl font-black text-[#4C1D95]">
+                <div className="text-2xl font-black text-[#166534]">
                   ৳{pkg.price.toLocaleString('en-BD')}
                 </div>
                 {pkg.originalPrice && (
@@ -197,7 +197,7 @@ export const SolarPackagesPage: React.FC = () => {
 
                 <button
                   onClick={() => handleAddPackageToCart(pkg)}
-                  className="flex-1 sm:flex-none px-5 py-2.5 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-purple-600/20 active:scale-98"
+                  className="flex-1 sm:flex-none px-5 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-green-700/20 active:scale-98"
                 >
                   Order Package
                 </button>
@@ -208,8 +208,8 @@ export const SolarPackagesPage: React.FC = () => {
       </div>
 
       {/* Engineering Consultation Callout */}
-      <div className="bg-purple-50 rounded-2xl p-6 border border-purple-200 text-center max-w-2xl mx-auto space-y-2">
-        <h4 className="font-extrabold text-purple-950 text-base">
+      <div className="bg-green-50 rounded-2xl p-6 border border-green-200 text-center max-w-2xl mx-auto space-y-2">
+        <h4 className="font-extrabold text-green-950 text-base">
           Need a Custom Sized Solar System for your Factory or Building?
         </h4>
         <p className="text-xs text-gray-600">
@@ -218,7 +218,7 @@ export const SolarPackagesPage: React.FC = () => {
         <div className="pt-2">
           <Link
             to="/contact"
-            className="px-5 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl inline-block"
+            className="px-5 py-2 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs rounded-xl inline-block"
           >
             Request Engineering Consultation
           </Link>

@@ -60,7 +60,7 @@ export const CheckoutPage: React.FC = () => {
         <p className="text-xs text-gray-500">Please add products to your cart before proceeding to checkout.</p>
         <Link
           to="/shop"
-          className="px-6 py-2.5 bg-[#6D28D9] text-white text-xs font-bold rounded-xl inline-block"
+          className="px-6 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-xl inline-block transition-colors shadow-md shadow-green-700/20"
         >
           Return to Shop
         </Link>
@@ -123,9 +123,9 @@ export const CheckoutPage: React.FC = () => {
       />
 
       {/* Demo Notice Banner */}
-      <div className="p-3.5 bg-purple-50 rounded-2xl border border-purple-200 flex items-center justify-between text-xs text-purple-900">
+      <div className="p-3.5 bg-green-50 rounded-2xl border border-green-200 flex items-center justify-between text-xs text-green-950">
         <div className="flex items-center gap-2">
-          <Info className="w-4 h-4 text-[#6D28D9] shrink-0" />
+          <Info className="w-4 h-4 text-[#15803D] shrink-0" />
           <span>
             <strong>Demo Checkout Simulation:</strong> No real bank charges or payments will occur. You can test bKash, Nagad, or Cash on Delivery freely.
           </span>
@@ -141,7 +141,7 @@ export const CheckoutPage: React.FC = () => {
             {/* Step 1: Customer Contact Information */}
             <div className="bg-white rounded-3xl border border-gray-200 p-6 shadow-xs space-y-4">
               <h3 className="font-extrabold text-base text-gray-900 flex items-center gap-2">
-                <User className="w-4 h-4 text-[#6D28D9]" />
+                <User className="w-4 h-4 text-[#15803D]" />
                 <span>Customer Contact Information</span>
               </h3>
 
@@ -155,7 +155,7 @@ export const CheckoutPage: React.FC = () => {
                     required
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
 
@@ -168,7 +168,7 @@ export const CheckoutPage: React.FC = () => {
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
 
@@ -180,7 +180,7 @@ export const CheckoutPage: React.FC = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
               </div>
@@ -189,7 +189,7 @@ export const CheckoutPage: React.FC = () => {
             {/* Step 2: Delivery Address (Bangladesh) */}
             <div className="bg-white rounded-3xl border border-gray-200 p-6 shadow-xs space-y-4">
               <h3 className="font-extrabold text-base text-gray-900 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#6D28D9]" />
+                <MapPin className="w-4 h-4 text-[#15803D]" />
                 <span>Delivery Address in Bangladesh</span>
               </h3>
 
@@ -201,7 +201,7 @@ export const CheckoutPage: React.FC = () => {
                   <select
                     value={division}
                     onChange={(e) => setDivision(e.target.value)}
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white cursor-pointer"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white cursor-pointer"
                   >
                     {BD_DIVISIONS.map((d) => (
                       <option key={d} value={d}>
@@ -220,7 +220,7 @@ export const CheckoutPage: React.FC = () => {
                     required
                     value={district}
                     onChange={(e) => setDistrict(e.target.value)}
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
 
@@ -232,7 +232,7 @@ export const CheckoutPage: React.FC = () => {
                     type="text"
                     value={postalCode}
                     onChange={(e) => setPostalCode(e.target.value)}
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
 
@@ -245,7 +245,7 @@ export const CheckoutPage: React.FC = () => {
                     required
                     value={thanaArea}
                     onChange={(e) => setThanaArea(e.target.value)}
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
 
@@ -258,7 +258,7 @@ export const CheckoutPage: React.FC = () => {
                     required
                     value={fullAddress}
                     onChange={(e) => setFullAddress(e.target.value)}
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
                   />
                 </div>
               </div>
@@ -267,7 +267,7 @@ export const CheckoutPage: React.FC = () => {
             {/* Step 3: Payment Method Selection */}
             <div className="bg-white rounded-3xl border border-gray-200 p-6 shadow-xs space-y-4">
               <h3 className="font-extrabold text-base text-gray-900 flex items-center gap-2">
-                <CreditCard className="w-4 h-4 text-[#6D28D9]" />
+                <CreditCard className="w-4 h-4 text-[#15803D]" />
                 <span>Select Payment Method</span>
               </h3>
 
@@ -276,8 +276,8 @@ export const CheckoutPage: React.FC = () => {
                 <label
                   className={`p-4 rounded-2xl border-2 flex items-start justify-between cursor-pointer transition-all ${
                     paymentMethod === 'COD'
-                      ? 'border-[#6D28D9] bg-purple-50/50 shadow-sm'
-                      : 'border-gray-200 hover:border-purple-200'
+                      ? 'border-[#15803D] bg-green-50/50 shadow-sm'
+                      : 'border-gray-200 hover:border-green-200'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -286,7 +286,7 @@ export const CheckoutPage: React.FC = () => {
                       name="paymentMethod"
                       checked={paymentMethod === 'COD'}
                       onChange={() => setPaymentMethod('COD')}
-                      className="text-[#6D28D9] focus:ring-purple-400"
+                      className="text-[#15803D] focus:ring-green-400"
                     />
                     <div>
                       <div className="font-bold text-xs sm:text-sm text-gray-900">
@@ -306,8 +306,8 @@ export const CheckoutPage: React.FC = () => {
                 <label
                   className={`p-4 rounded-2xl border-2 flex flex-col cursor-pointer transition-all ${
                     paymentMethod === 'BKASH'
-                      ? 'border-[#6D28D9] bg-purple-50/50 shadow-sm'
-                      : 'border-gray-200 hover:border-purple-200'
+                      ? 'border-[#15803D] bg-green-50/50 shadow-sm'
+                      : 'border-gray-200 hover:border-green-200'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -317,7 +317,7 @@ export const CheckoutPage: React.FC = () => {
                         name="paymentMethod"
                         checked={paymentMethod === 'BKASH'}
                         onChange={() => setPaymentMethod('BKASH')}
-                        className="text-[#6D28D9] focus:ring-purple-400"
+                        className="text-[#15803D] focus:ring-green-400"
                       />
                       <div>
                         <div className="font-bold text-xs sm:text-sm text-pink-600">
@@ -334,7 +334,7 @@ export const CheckoutPage: React.FC = () => {
                   </div>
 
                   {paymentMethod === 'BKASH' && (
-                    <div className="mt-3 pt-3 border-t border-purple-200 text-xs space-y-2">
+                    <div className="mt-3 pt-3 border-t border-green-200 text-xs space-y-2">
                       <div className="text-gray-600">
                         Demo Merchant Number: <strong className="text-gray-900">+880 1700-765270</strong>
                       </div>
@@ -358,8 +358,8 @@ export const CheckoutPage: React.FC = () => {
                 <label
                   className={`p-4 rounded-2xl border-2 flex items-center justify-between cursor-pointer transition-all ${
                     paymentMethod === 'NAGAD'
-                      ? 'border-[#6D28D9] bg-purple-50/50 shadow-sm'
-                      : 'border-gray-200 hover:border-purple-200'
+                      ? 'border-[#15803D] bg-green-50/50 shadow-sm'
+                      : 'border-gray-200 hover:border-green-200'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -368,7 +368,7 @@ export const CheckoutPage: React.FC = () => {
                       name="paymentMethod"
                       checked={paymentMethod === 'NAGAD'}
                       onChange={() => setPaymentMethod('NAGAD')}
-                      className="text-[#6D28D9] focus:ring-purple-400"
+                      className="text-[#15803D] focus:ring-green-400"
                     />
                     <div>
                       <div className="font-bold text-xs sm:text-sm text-orange-600">
@@ -396,14 +396,14 @@ export const CheckoutPage: React.FC = () => {
                 value={orderNotes}
                 onChange={(e) => setOrderNotes(e.target.value)}
                 placeholder="e.g. Call before arrival, deliver to 5th floor rooftop, elevator available..."
-                className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:bg-white"
+                className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
               />
             </div>
           </div>
 
           {/* Right: Order Summary Sidebar (5 cols) */}
           <div className="lg:col-span-5 sticky top-24 space-y-5">
-            <div className="bg-white rounded-3xl border-2 border-purple-200 p-6 shadow-xl space-y-5">
+            <div className="bg-white rounded-3xl border-2 border-green-200 p-6 shadow-xl space-y-5">
               <h3 className="font-black text-gray-900 text-base border-b border-gray-100 pb-3">
                 Order Review ({items.length} Items)
               </h3>
@@ -428,7 +428,7 @@ export const CheckoutPage: React.FC = () => {
                       </h5>
                       <span className="text-[11px] text-gray-400">Qty: {item.quantity}</span>
                     </div>
-                    <div className="text-xs font-bold text-[#4C1D95]">
+                    <div className="text-xs font-bold text-[#166534]">
                       ৳{(item.product.price * item.quantity).toLocaleString('en-BD')}
                     </div>
                   </div>
@@ -455,7 +455,7 @@ export const CheckoutPage: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-base font-black text-gray-900 pt-3 border-t border-gray-200">
                   <span>Total Amount</span>
-                  <span className="text-[#4C1D95] text-xl font-black">
+                  <span className="text-[#166534] text-xl font-black">
                     ৳{total.toLocaleString('en-BD')}
                   </span>
                 </div>
@@ -465,7 +465,7 @@ export const CheckoutPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-black text-sm rounded-xl transition-all shadow-lg shadow-purple-600/25 flex items-center justify-center gap-2 active:scale-98 disabled:opacity-50"
+                className="w-full py-4 bg-[#15803D] hover:bg-[#166534] text-white font-black text-sm rounded-xl transition-all shadow-lg shadow-green-700/20 flex items-center justify-center gap-2 active:scale-98 disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>

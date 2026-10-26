@@ -19,6 +19,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-bdsolar-energy-dev-key-!#2
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',') if host.strip()]
+if 'testserver' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('testserver')
+
 
 # Custom User Model
 AUTH_USER_MODEL = 'accounts.User'
@@ -31,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # Third-party packages
     'rest_framework',
@@ -39,6 +43,14 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'drf_spectacular',
+
+    # Authentication & Social Auth Packages
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
 
     # Local apps
     'apps.accounts',
@@ -52,6 +64,13 @@ INSTALLED_APPS = [
     'apps.reviews',
 ]
 
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Must be first
     'django.middleware.security.SecurityMiddleware',
@@ -60,8 +79,10 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # allauth account middleware
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'config.urls'
 
@@ -158,6 +179,7 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
@@ -180,6 +202,52 @@ SIMPLE_JWT = {
     'SIGNING_KEY': SECRET_KEY,
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+}
+
+# dj-rest-auth Package Configuration
+REST_AUTH = {
+    'USE_JWT': True,
+    'TOKEN_MODEL': None,
+    'JWT_AUTH_COOKIE': 'bdsolar_access_token',
+    'JWT_AUTH_REFRESH_COOKIE': 'bdsolar_refresh_token',
+    'JWT_AUTH_REFRESH_COOKIE_PATH': '/api/v1/auth/token/refresh/',
+    'JWT_AUTH_SECURE': not DEBUG,
+    'JWT_AUTH_HTTPONLY': True,
+    'JWT_AUTH_SAMESITE': 'Lax',
+    'USER_DETAILS_SERIALIZER': 'apps.accounts.serializers.UserSerializer',
+    'REGISTER_SERIALIZER': 'apps.accounts.serializers.CustomRegisterSerializer',
+    'LOGIN_SERIALIZER': 'apps.accounts.serializers.CustomLoginSerializer',
+    'JWT_SERIALIZER': 'apps.accounts.serializers.CustomJWTSerializer',
+    'PASSWORD_CHANGE_SERIALIZER': 'apps.accounts.serializers.CustomPasswordChangeSerializer',
+    'OLD_PASSWORD_FIELD_ENABLED': True,
+    'LOGOUT_ON_PASSWORD_CHANGE': False,
+}
+
+# django-allauth Configuration
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username', 'password1*', 'password2*']
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False
+ACCOUNT_ADAPTER = 'apps.accounts.adapters.CustomAccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'apps.accounts.adapters.CustomSocialAccountAdapter'
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': os.getenv('GOOGLE_CLIENT_ID', ''),
+            'secret': os.getenv('GOOGLE_CLIENT_SECRET', ''),
+            'key': '',
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'VERIFIED_EMAIL': True,
+    }
 }
 
 # DRF Spectacular OpenAPI Settings

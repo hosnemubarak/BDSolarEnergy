@@ -19,7 +19,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ onOpenCategories }) => {
           to="/"
           className={({ isActive }) =>
             `flex flex-col items-center py-1 px-2 text-[10px] font-medium transition-colors ${
-              isActive ? 'text-[#6D28D9] font-bold' : 'text-gray-500 hover:text-gray-900'
+              isActive ? 'text-[#15803D] font-bold' : 'text-gray-500 hover:text-gray-900'
             }`
           }
         >
@@ -39,12 +39,12 @@ export const MobileNav: React.FC<MobileNavProps> = ({ onOpenCategories }) => {
           to="/system-builder"
           className={({ isActive }) =>
             `flex flex-col items-center py-1 px-2 text-[10px] font-medium transition-colors ${
-              isActive ? 'text-[#6D28D9] font-bold' : 'text-gray-500 hover:text-gray-900'
+              isActive ? 'text-[#15803D] font-bold' : 'text-gray-500 hover:text-gray-900'
             }`
           }
         >
           <div className="relative">
-            <Wrench className="w-5 h-5 mb-0.5 text-purple-700" />
+            <Wrench className="w-5 h-5 mb-0.5 text-green-700" />
             <span className="absolute -top-1 -right-2 w-2 h-2 rounded-full bg-amber-400" />
           </div>
           <span>Builder</span>
@@ -54,13 +54,13 @@ export const MobileNav: React.FC<MobileNavProps> = ({ onOpenCategories }) => {
           to="/wishlist"
           className={({ isActive }) =>
             `flex flex-col items-center py-1 px-2 text-[10px] font-medium transition-colors relative ${
-              isActive ? 'text-[#6D28D9] font-bold' : 'text-gray-500 hover:text-gray-900'
+              isActive ? 'text-[#15803D] font-bold' : 'text-gray-500 hover:text-gray-900'
             }`
           }
         >
           <Heart className="w-5 h-5 mb-0.5" />
           {wishlistCount > 0 && (
-            <span className="absolute top-0 right-1 w-3.5 h-3.5 rounded-full bg-[#6D28D9] text-white text-[9px] font-bold flex items-center justify-center">
+            <span className="absolute top-0 right-1 w-3.5 h-3.5 rounded-full bg-[#15803D] text-white text-[9px] font-bold flex items-center justify-center">
               {wishlistCount}
             </span>
           )}
@@ -71,7 +71,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ onOpenCategories }) => {
           onClick={openCart}
           className="flex flex-col items-center py-1 px-2 text-[10px] font-medium text-gray-500 hover:text-gray-900 transition-colors relative"
         >
-          <ShoppingBag className="w-5 h-5 mb-0.5 text-[#6D28D9]" />
+          <ShoppingBag className="w-5 h-5 mb-0.5 text-[#15803D]" />
           {totalCount > 0 && (
             <span className="absolute top-0 right-1 w-4 h-4 rounded-full bg-amber-400 text-gray-950 text-[9px] font-extrabold flex items-center justify-center">
               {totalCount}

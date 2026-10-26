@@ -54,7 +54,7 @@ export const CartPage: React.FC = () => {
   if (items.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-16 text-center space-y-4">
-        <div className="w-20 h-20 rounded-full bg-purple-50 text-[#6D28D9] flex items-center justify-center mx-auto">
+        <div className="w-20 h-20 rounded-full bg-green-50 text-[#15803D] flex items-center justify-center mx-auto">
           <ShoppingBag className="w-10 h-10" />
         </div>
         <h2 className="text-2xl font-black text-gray-900">Your Cart is Currently Empty</h2>
@@ -63,7 +63,7 @@ export const CartPage: React.FC = () => {
         </p>
         <Link
           to="/shop"
-          className="px-6 py-3 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-purple-600/20 inline-flex items-center gap-2"
+          className="px-6 py-3 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 inline-flex items-center gap-2"
         >
           <span>Explore Product Catalog</span>
           <ArrowRight className="w-4 h-4" />
@@ -90,10 +90,10 @@ export const CartPage: React.FC = () => {
       </div>
 
       {/* Free Shipping Alert Banner */}
-      <div className="bg-purple-50 p-4 rounded-2xl border border-purple-200">
-        <div className="flex items-center justify-between text-xs font-semibold text-purple-950 mb-2">
+      <div className="bg-green-50 p-4 rounded-2xl border border-green-200">
+        <div className="flex items-center justify-between text-xs font-semibold text-green-950 mb-2">
           <span className="flex items-center gap-2">
-            <Truck className="w-4 h-4 text-[#6D28D9]" />
+            <Truck className="w-4 h-4 text-[#15803D]" />
             {remainingForFreeShipping > 0 ? (
               <span>
                 Add <strong>৳{remainingForFreeShipping.toLocaleString('en-BD')}</strong> more to unlock <strong>Free Nationwide Delivery</strong>!
@@ -105,11 +105,11 @@ export const CartPage: React.FC = () => {
               </span>
             )}
           </span>
-          <span className="text-purple-700 font-bold">{progressPercent}%</span>
+          <span className="text-green-700 font-bold">{progressPercent}%</span>
         </div>
-        <div className="w-full h-2.5 bg-purple-200 rounded-full overflow-hidden">
+        <div className="w-full h-2.5 bg-green-200 rounded-full overflow-hidden">
           <div
-            className="h-full bg-[#6D28D9] rounded-full transition-all duration-500"
+            className="h-full bg-[#15803D] rounded-full transition-all duration-500"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -135,12 +135,12 @@ export const CartPage: React.FC = () => {
                     }}
                   />
                   <div>
-                    <span className="text-[10px] font-bold text-purple-700 uppercase tracking-wider">
+                    <span className="text-[10px] font-bold text-green-700 uppercase tracking-wider">
                       {item.product.brand}
                     </span>
                     <Link
                       to={`/product/${item.product.slug}`}
-                      className="text-xs sm:text-sm font-bold text-gray-900 hover:text-purple-700 transition-colors block line-clamp-1"
+                      className="text-xs sm:text-sm font-bold text-gray-900 hover:text-green-700 transition-colors block line-clamp-1"
                     >
                       {item.product.name}
                     </Link>
@@ -170,7 +170,7 @@ export const CartPage: React.FC = () => {
 
                   {/* Item Subtotal */}
                   <div className="text-right">
-                    <div className="text-sm sm:text-base font-extrabold text-[#4C1D95]">
+                    <div className="text-sm sm:text-base font-extrabold text-[#166534]">
                       ৳{(item.product.price * item.quantity).toLocaleString('en-BD')}
                     </div>
                   </div>
@@ -191,7 +191,7 @@ export const CartPage: React.FC = () => {
           <div className="p-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between text-xs">
             <Link
               to="/shop"
-              className="font-bold text-purple-700 hover:text-purple-900 flex items-center gap-1.5"
+              className="font-bold text-green-700 hover:text-green-900 flex items-center gap-1.5"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Continue Shopping</span>
@@ -226,7 +226,7 @@ export const CartPage: React.FC = () => {
                 value={inputCoupon}
                 onChange={(e) => setInputCoupon(e.target.value)}
                 placeholder="Coupon code (BDSOLAR5)"
-                className="flex-1 px-3 py-2 text-xs bg-gray-50 border border-gray-200 rounded-xl uppercase placeholder:normal-case focus:outline-none focus:border-purple-600"
+                className="flex-1 px-3 py-2 text-xs bg-gray-50 border border-gray-200 rounded-xl uppercase placeholder:normal-case focus:outline-none focus:border-[#15803D]"
               />
               <button
                 type="submit"
@@ -257,13 +257,13 @@ export const CartPage: React.FC = () => {
             </div>
             <div className="flex justify-between text-base font-black text-gray-900 pt-3 border-t border-gray-200">
               <span>Estimated Total</span>
-              <span className="text-[#4C1D95] text-lg">৳{total.toLocaleString('en-BD')}</span>
+              <span className="text-[#166534] text-lg">৳{total.toLocaleString('en-BD')}</span>
             </div>
           </div>
 
           <button
             onClick={() => navigate('/checkout')}
-            className="w-full py-3.5 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-black text-sm rounded-xl transition-all shadow-md shadow-purple-600/20 flex items-center justify-center gap-2 active:scale-98"
+            className="w-full py-3.5 bg-[#15803D] hover:bg-[#166534] text-white font-black text-sm rounded-xl transition-all shadow-md shadow-green-700/20 flex items-center justify-center gap-2 active:scale-98"
           >
             <span>Proceed to Checkout</span>
             <ArrowRight className="w-4 h-4" />

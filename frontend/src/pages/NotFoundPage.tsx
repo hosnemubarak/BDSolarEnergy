@@ -5,12 +5,12 @@ import { Sun, ArrowLeft, Search } from 'lucide-react';
 export const NotFoundPage: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto px-4 py-20 text-center space-y-6">
-      <div className="w-20 h-20 rounded-full bg-purple-100 text-[#6D28D9] flex items-center justify-center mx-auto">
+      <div className="w-20 h-20 rounded-full bg-green-100 text-[#15803D] flex items-center justify-center mx-auto">
         <Sun className="w-10 h-10 animate-spin" />
       </div>
 
       <div className="space-y-2">
-        <span className="text-sm font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full uppercase">
+        <span className="text-sm font-bold text-[#15803D] bg-green-50 px-3 py-1 rounded-full uppercase">
           Error 404
         </span>
         <h1 className="text-3xl sm:text-4xl font-black text-gray-900">Page Not Found</h1>
@@ -22,7 +22,7 @@ export const NotFoundPage: React.FC = () => {
       <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
         <Link
           to="/"
-          className="px-6 py-3 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs rounded-xl shadow-md transition-colors flex items-center gap-2"
+          className="px-6 py-3 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs rounded-xl shadow-md shadow-green-700/20 transition-colors flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Return to Homepage</span>

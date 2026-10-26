@@ -67,7 +67,7 @@ export const QuickViewModal: React.FC = () => {
 
       {/* Modal Dialog */}
       <div className="min-h-screen px-4 text-center flex items-center justify-center p-4">
-        <div className="relative bg-white rounded-2xl max-w-3xl w-full p-5 sm:p-7 text-left shadow-2xl z-10 overflow-hidden transform transition-all border border-purple-100">
+        <div className="relative bg-white rounded-2xl max-w-3xl w-full p-5 sm:p-7 text-left shadow-2xl z-10 overflow-hidden transform transition-all border border-green-100">
           {/* Close button */}
           <button
             onClick={closeQuickView}
@@ -106,7 +106,7 @@ export const QuickViewModal: React.FC = () => {
                       onClick={() => setSelectedImage(img)}
                       className={`w-14 h-14 rounded-lg border-2 overflow-hidden shrink-0 transition-all ${
                         selectedImage === img
-                          ? 'border-[#6D28D9] scale-105'
+                          ? 'border-[#15803D] scale-105'
                           : 'border-gray-200 hover:border-gray-400 opacity-70'
                       }`}
                     >
@@ -129,7 +129,7 @@ export const QuickViewModal: React.FC = () => {
             {/* Right: Details & Specs */}
             <div className="flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-purple-700 uppercase tracking-wider mb-1">
+                <div className="flex items-center gap-2 text-xs font-semibold text-green-700 uppercase tracking-wider mb-1">
                   <span>{activeProduct.brand}</span>
                   <span>•</span>
                   <span className="text-gray-400 font-mono text-[11px]">{activeProduct.sku}</span>
@@ -148,8 +148,8 @@ export const QuickViewModal: React.FC = () => {
                 </div>
 
                 {/* Price */}
-                <div className="mt-4 p-3 bg-purple-50/60 rounded-xl border border-purple-100 flex items-baseline gap-3">
-                  <span className="text-2xl font-black text-[#4C1D95]">
+                <div className="mt-4 p-3 bg-green-50/60 rounded-xl border border-green-100 flex items-baseline gap-3">
+                  <span className="text-2xl font-black text-[#166534]">
                     ৳{activeProduct.price.toLocaleString('en-BD')}
                   </span>
                   {activeProduct.originalPrice && (
@@ -193,7 +193,7 @@ export const QuickViewModal: React.FC = () => {
                     </div>
                   )}
                   {specs.warrantyYears && (
-                    <div className="flex justify-between text-purple-900 font-medium">
+                    <div className="flex justify-between text-green-900 font-medium">
                       <span>Warranty:</span>
                       <span>{specs.warrantyYears} Years Manufacturer Warranty</span>
                     </div>
@@ -222,7 +222,7 @@ export const QuickViewModal: React.FC = () => {
 
                   <button
                     onClick={handleAddToCart}
-                    className="flex-1 py-2.5 px-4 bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-purple-600/20 flex items-center justify-center gap-2 active:scale-98"
+                    className="flex-1 py-2.5 px-4 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 flex items-center justify-center gap-2 active:scale-98"
                   >
                     <ShoppingCart className="w-4 h-4" />
                     <span>Add to Cart</span>
@@ -244,7 +244,7 @@ export const QuickViewModal: React.FC = () => {
                 <Link
                   to={`/product/${activeProduct.slug}`}
                   onClick={closeQuickView}
-                  className="w-full py-2 text-center text-xs font-semibold text-purple-700 hover:text-purple-900 flex items-center justify-center gap-1.5"
+                  className="w-full py-2 text-center text-xs font-semibold text-green-700 hover:text-green-900 flex items-center justify-center gap-1.5"
                 >
                   <span>View Full Product Details & Compatibility</span>
                   <ExternalLink className="w-3.5 h-3.5" />
