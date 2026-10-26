@@ -36,7 +36,7 @@ export const OrderConfirmationPage: React.FC = () => {
         <p className="text-xs text-gray-500">We couldn't retrieve order number {orderNumber}.</p>
         <Link
           to="/"
-          className="px-6 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-xl inline-block transition-colors shadow-md shadow-green-700/20"
+          className="px-6 py-2.5 bg-[#16A34A] hover:bg-[#15803D] text-white text-xs font-bold rounded-xl inline-block transition-colors shadow-sm"
         >
           Return to Home
         </Link>
@@ -71,10 +71,7 @@ export const OrderConfirmationPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Demo Notification Note */}
-        <div className="p-3 bg-green-50 rounded-xl border border-green-200 text-xs text-green-950 max-w-md mx-auto">
-          ⚠️ <strong>Demo Order Notice:</strong> This is a simulation. No physical payment was collected and no real courier pickup is booked.
-        </div>
+
 
         {/* Interactive Order Timeline */}
         <div className="pt-6 border-t border-gray-100 max-w-2xl mx-auto">
@@ -210,7 +207,7 @@ export const OrderConfirmationPage: React.FC = () => {
                   <td className="p-3 text-center font-bold text-gray-900">
                     {item.quantity}
                   </td>
-                  <td className="p-3 text-right font-bold text-[#166534]">
+                  <td className="p-3 text-right font-bold text-[#16A34A]">
                     ৳{item.subtotal.toLocaleString('en-BD')}
                   </td>
                 </tr>
@@ -240,7 +237,7 @@ export const OrderConfirmationPage: React.FC = () => {
             </div>
             <div className="flex justify-between text-base font-black text-gray-900 pt-2 border-t border-gray-200">
               <span>Total Paid:</span>
-              <span className="text-[#166534]">৳{order.total.toLocaleString('en-BD')}</span>
+              <span className="text-[#16A34A]">৳{order.total.toLocaleString('en-BD')}</span>
             </div>
           </div>
         </div>
@@ -249,14 +246,14 @@ export const OrderConfirmationPage: React.FC = () => {
         <div className="pt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
           <Link
             to="/account"
-            className="text-xs font-bold text-[#15803D] hover:text-[#166534] flex items-center gap-1.5"
+            className="text-xs font-bold text-[#16A34A] hover:text-[#15803D] flex items-center gap-1.5"
           >
             <span>View All Your Orders in Account Portal &rarr;</span>
           </Link>
 
           <Link
             to="/shop"
-            className="px-6 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs rounded-xl shadow-md shadow-green-700/20 transition-colors"
+            className="px-6 py-2.5 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs rounded-xl shadow-sm transition-colors"
           >
             Continue Shopping
           </Link>

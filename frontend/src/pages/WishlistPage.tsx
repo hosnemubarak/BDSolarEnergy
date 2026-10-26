@@ -70,7 +70,7 @@ export const WishlistPage: React.FC = () => {
         </p>
         <Link
           to="/shop"
-          className="px-6 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-xl inline-flex items-center gap-2 shadow-md shadow-green-700/20 transition-colors"
+          className="px-6 py-2.5 bg-[#16A34A] hover:bg-[#15803D] text-white text-xs font-bold rounded-xl inline-flex items-center gap-2 shadow-sm transition-colors"
         >
           <span>Explore Catalog</span>
           <ArrowRight className="w-4 h-4" />
@@ -95,7 +95,7 @@ export const WishlistPage: React.FC = () => {
 
         <button
           onClick={handleAddAllToCart}
-          className="px-5 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-xl transition-all shadow-md shadow-green-700/20 flex items-center gap-2 self-start sm:self-auto"
+          className="px-5 py-2.5 bg-[#16A34A] hover:bg-[#15803D] text-white text-xs font-bold rounded-xl transition-all shadow-sm flex items-center gap-2 self-start sm:self-auto"
         >
           <ShoppingBag className="w-4 h-4" />
           <span>Move All to Cart</span>

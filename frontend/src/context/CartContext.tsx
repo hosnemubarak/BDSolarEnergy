@@ -116,7 +116,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
     return {
       success: false,
-      message: 'Invalid or expired coupon code. Try BDSOLAR5 or GREENBD.',
+      message: 'Coupon validation service is currently unavailable. No active promotion found for this code.',
     };
   };
 

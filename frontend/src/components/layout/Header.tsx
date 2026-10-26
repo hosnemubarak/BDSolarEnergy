@@ -32,23 +32,23 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           <button
             onClick={onOpenMobileMenu}
-            className="p-1.5 rounded-lg text-gray-700 hover:text-green-700 hover:bg-green-50 md:hidden transition-colors"
+            className="p-1.5 rounded-lg text-gray-700 hover:text-[#16A34A] hover:bg-green-50 md:hidden transition-colors"
             aria-label="Open mobile menu"
           >
             <Menu className="w-6 h-6" />
           </button>
 
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#166534] to-[#15803D] flex items-center justify-center text-white shadow-md shadow-green-600/20 group-hover:scale-105 transition-transform">
-              <Sun className="w-6 h-6 text-amber-300 animate-[spin_12s_linear_infinite]" />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#16A34A] flex items-center justify-center text-white shadow-xs group-hover:bg-[#15803D] transition-colors">
+              <Sun className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-1 font-extrabold text-lg sm:text-xl tracking-tight text-gray-900 leading-none">
                 <span>BD</span>
-                <span className="text-[#15803D]">SOLAR</span>
-                <Zap className="w-4 h-4 text-amber-500 fill-amber-500 -ml-0.5" />
+                <span className="text-[#16A34A]">SOLAR</span>
+                <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500 -ml-0.5" />
               </div>
-              <p className="text-[10px] tracking-widest uppercase font-semibold text-gray-500 mt-0.5">
+              <p className="text-[10px] tracking-wider uppercase font-semibold text-gray-500 mt-0.5">
                 Energy & Electrical
               </p>
             </div>
@@ -66,24 +66,24 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
           {/* Quick Support Phone - Hidden on small mobile */}
           <a
             href="tel:+880170076527"
-            className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-50 hover:bg-green-100/80 text-green-900 border border-green-100 transition-colors"
+            className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-green-50 text-gray-700 hover:text-[#16A34A] border border-gray-200 transition-colors"
           >
-            <PhoneCall className="w-4 h-4 text-[#15803D]" />
+            <PhoneCall className="w-4 h-4 text-[#16A34A]" />
             <div className="text-left leading-tight">
-              <div className="text-[10px] text-gray-500 font-medium">Expert Consultation</div>
-              <div className="text-xs font-bold text-green-950">+880 1700-SOLAR</div>
+              <div className="text-[10px] text-gray-500 font-medium">Customer Support</div>
+              <div className="text-xs font-bold text-gray-900">+880 1700-SOLAR</div>
             </div>
           </a>
 
           {/* Wishlist Link */}
           <Link
             to="/wishlist"
-            className="relative p-2 rounded-lg text-gray-700 hover:text-green-700 hover:bg-green-50 transition-colors"
+            className="relative p-2 rounded-lg text-gray-700 hover:text-[#16A34A] hover:bg-green-50 transition-colors"
             title="Wishlist"
           >
             <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
             {wishlistCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#15803D] text-white text-[10px] font-bold flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#16A34A] text-white text-[10px] font-bold flex items-center justify-center">
                 {wishlistCount}
               </span>
             )}
@@ -95,11 +95,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
               to="/account"
               className="flex items-center gap-2 p-1.5 sm:px-3 sm:py-1.5 rounded-lg text-gray-700 hover:bg-green-50 hover:text-green-900 transition-colors border border-transparent hover:border-green-200"
             >
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-green-100 text-[#166534] font-bold text-xs flex items-center justify-center">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-green-100 text-[#16A34A] font-bold text-xs flex items-center justify-center">
                 {user.name.charAt(0)}
               </div>
               <div className="hidden lg:block text-left leading-tight">
-                <div className="text-[10px] text-gray-400">Welcome</div>
+                <div className="text-[10px] text-gray-400">Account</div>
                 <div className="text-xs font-bold text-gray-900 truncate max-w-[100px]">
                   {user.name.split(' ')[0]}
                 </div>
@@ -108,10 +108,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
           ) : (
             <button
               onClick={() => setIsAuthModalOpen(true)}
-              className="flex items-center gap-1.5 p-2 sm:px-3 sm:py-2 rounded-lg text-gray-700 hover:text-green-900 hover:bg-green-50 transition-colors"
+              className="flex items-center gap-1.5 p-2 sm:px-3 sm:py-2 rounded-lg text-gray-700 hover:text-[#16A34A] hover:bg-green-50 transition-colors"
               title="Sign In or Register"
             >
-              <User className="w-5 h-5 sm:w-5 sm:h-5 text-gray-700" />
+              <User className="w-5 h-5 text-gray-700" />
               <span className="hidden lg:inline text-xs font-semibold">Sign In</span>
             </button>
           )}
@@ -119,19 +119,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
           {/* Shopping Cart Button */}
           <button
             onClick={openCart}
-            className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 rounded-xl bg-[#15803D] hover:bg-[#166534] text-white font-semibold text-xs sm:text-sm transition-all shadow-md shadow-green-700/20 active:scale-95"
+            className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-95"
             aria-label="View shopping cart"
           >
             <div className="relative">
               <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               {totalCount > 0 && (
-                <span className="absolute -top-2 -right-2 min-w-4 h-4 px-1 rounded-full bg-amber-400 text-gray-950 text-[10px] font-extrabold flex items-center justify-center border border-green-900">
+                <span className="absolute -top-2 -right-2 min-w-4 h-4 px-1 rounded-full bg-amber-400 text-gray-950 text-[10px] font-extrabold flex items-center justify-center">
                   {totalCount}
                 </span>
               )}
             </div>
             <div className="hidden sm:flex flex-col text-left leading-none">
-              <span className="text-[10px] text-green-200 font-normal">Cart</span>
+              <span className="text-[10px] text-green-100 font-normal">Cart</span>
               <span className="font-bold text-white text-xs mt-0.5">
                 ৳{subtotal > 0 ? subtotal.toLocaleString('en-BD') : '0'}
               </span>

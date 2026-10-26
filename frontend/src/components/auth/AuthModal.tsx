@@ -82,7 +82,7 @@ export const AuthModal: React.FC = () => {
 
           {/* Header Title */}
           <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-[#15803D] mb-3">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#F0FDF4] text-[#16A34A] mb-3 border border-green-200">
               <User className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-extrabold text-gray-900">
@@ -99,7 +99,7 @@ export const AuthModal: React.FC = () => {
               onClick={() => setMode('login')}
               className={`flex-1 py-2.5 text-xs font-bold text-center border-b-2 transition-colors ${
                 mode === 'login'
-                  ? 'border-[#15803D] text-[#15803D]'
+                  ? 'border-[#16A34A] text-[#16A34A]'
                   : 'border-transparent text-gray-400 hover:text-gray-700'
               }`}
             >
@@ -109,7 +109,7 @@ export const AuthModal: React.FC = () => {
               onClick={() => setMode('register')}
               className={`flex-1 py-2.5 text-xs font-bold text-center border-b-2 transition-colors ${
                 mode === 'register'
-                  ? 'border-[#15803D] text-[#15803D]'
+                  ? 'border-[#16A34A] text-[#16A34A]'
                   : 'border-transparent text-gray-400 hover:text-gray-700'
               }`}
             >
@@ -164,7 +164,7 @@ export const AuthModal: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 active:scale-98 disabled:opacity-50"
+                className="w-full py-3 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm active:scale-98 disabled:opacity-50"
               >
                 {isLoading ? 'Signing In...' : 'Sign In with JWT'}
               </button>
@@ -245,7 +245,7 @@ export const AuthModal: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 active:scale-98 disabled:opacity-50 mt-2"
+                className="w-full py-3 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm active:scale-98 disabled:opacity-50 mt-2"
               >
                 {isLoading ? 'Creating Account...' : 'Complete Registration'}
               </button>

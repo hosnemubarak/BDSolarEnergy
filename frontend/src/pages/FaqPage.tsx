@@ -53,7 +53,7 @@ export const FaqPage: React.FC = () => {
       <Breadcrumbs items={[{ label: 'Frequently Asked Questions' }]} />
 
       <div className="text-center space-y-2">
-        <span className="text-xs font-bold text-[#15803D] uppercase tracking-wider">
+        <span className="text-xs font-bold text-[#16A34A] uppercase tracking-wider">
           Solar Knowledge Base
         </span>
         <h1 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight">
@@ -64,21 +64,21 @@ export const FaqPage: React.FC = () => {
         </p>
       </div>
 
-      <div className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-4">
+      <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-4">
         {FAQ_DATA.map((faq, idx) => {
           const isOpen = openIndex === idx;
           return (
             <div
               key={idx}
-              className="border border-gray-200 rounded-2xl overflow-hidden transition-colors"
+              className="border border-gray-200 rounded-xl overflow-hidden transition-colors"
             >
               <button
                 onClick={() => toggle(idx)}
-                className="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-gray-900 hover:text-[#15803D] bg-gray-50/50 hover:bg-green-50/40 flex items-center justify-between gap-4 transition-colors"
+                className="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-gray-900 hover:text-[#16A34A] bg-gray-50/50 hover:bg-green-50/40 flex items-center justify-between gap-4 transition-colors"
               >
                 <span>{faq.question}</span>
                 {isOpen ? (
-                  <ChevronUp className="w-4 h-4 text-[#15803D] shrink-0" />
+                  <ChevronUp className="w-4 h-4 text-[#16A34A] shrink-0" />
                 ) : (
                   <ChevronDown className="w-4 h-4 text-gray-400 shrink-0" />
                 )}

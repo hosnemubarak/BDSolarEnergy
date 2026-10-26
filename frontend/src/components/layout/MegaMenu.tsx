@@ -46,7 +46,7 @@ export const MegaMenu: React.FC = () => {
             onMouseLeave={() => setIsCategoryDropdownOpen(false)}
           >
             <button
-              className="flex items-center gap-2.5 px-4 py-3 bg-[#15803D] text-white font-semibold text-xs uppercase tracking-wider rounded-t-md hover:bg-[#166534] transition-colors"
+              className="flex items-center gap-2.5 px-4 py-3 bg-[#16A34A] text-white font-semibold text-xs uppercase tracking-wider rounded-t-md hover:bg-[#15803D] transition-colors"
             >
               <Menu className="w-4 h-4" />
               <span>All Categories</span>
@@ -64,7 +64,7 @@ export const MegaMenu: React.FC = () => {
                       onMouseEnter={() => setActiveHoverCategory(cat)}
                       className={`flex items-center justify-between px-4 py-2.5 text-xs cursor-pointer transition-colors ${
                         currentHoverCategory?.id === cat.id
-                          ? 'bg-green-100/70 text-[#166534] font-bold border-l-4 border-[#15803D]'
+                          ? 'bg-[#F0FDF4] text-[#16A34A] font-bold border-l-4 border-[#16A34A]'
                           : 'text-gray-700 hover:bg-gray-100 font-medium'
                       }`}
                     >
@@ -122,20 +122,20 @@ export const MegaMenu: React.FC = () => {
                   )}
 
                   {/* Featured Banner at bottom of mega menu */}
-                  <div className="mt-4 p-3 bg-gradient-to-r from-[#166534] via-[#15803D] to-emerald-700 text-white rounded-lg flex items-center justify-between">
+                  <div className="mt-4 p-3 bg-[#F0FDF4] border border-green-200 text-gray-900 rounded-lg flex items-center justify-between">
                     <div>
-                      <div className="text-xs font-bold flex items-center gap-1.5 text-amber-300">
+                      <div className="text-xs font-bold flex items-center gap-1.5 text-[#16A34A]">
                         <Sparkles className="w-3.5 h-3.5" />
                         <span>Pre-engineered Solar Packages</span>
                       </div>
-                      <div className="text-[11px] text-green-200">
+                      <div className="text-[11px] text-gray-600">
                         Residential hybrid & commercial packages with 25-year warranty
                       </div>
                     </div>
                     <Link
                       to="/solar-packages"
                       onClick={() => setIsCategoryDropdownOpen(false)}
-                      className="px-3 py-1 bg-amber-400 hover:bg-amber-300 text-gray-950 font-bold text-xs rounded shadow-xs"
+                      className="px-3 py-1 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs rounded shadow-xs transition-colors"
                     >
                       View Packages
                     </Link>
@@ -185,7 +185,7 @@ export const MegaMenu: React.FC = () => {
           </Link>
           <Link
             to="/system-builder"
-            className="px-3 py-2 text-xs font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-md my-1 transition-colors flex items-center gap-1 shadow-xs"
+            className="px-3 py-1.5 text-xs font-bold text-white bg-[#16A34A] hover:bg-[#15803D] rounded-md my-1 transition-colors flex items-center gap-1 shadow-xs"
           >
             <Wrench className="w-3.5 h-3.5" />
             <span>System Builder</span>

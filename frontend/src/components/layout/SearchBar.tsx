@@ -81,7 +81,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
     <div ref={containerRef} className={`relative w-full ${className}`}>
       <form
         onSubmit={handleFormSubmit}
-        className="flex items-center w-full h-11 bg-white rounded-lg border-2 border-green-200 hover:border-green-400 focus-within:border-[#15803D] focus-within:ring-2 focus-within:ring-green-100 transition-all shadow-sm overflow-hidden"
+        className="flex items-center w-full h-11 bg-white rounded-lg border-2 border-green-200 hover:border-green-400 focus-within:border-[#16A34A] focus-within:ring-2 focus-within:ring-green-100 transition-all shadow-sm overflow-hidden"
       >
         {/* Category selector dropdown for desktop */}
         <div className="hidden lg:flex items-center h-full border-r border-green-200 bg-[#F0FDF4] px-3 shrink-0">
@@ -129,7 +129,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
         {/* Submit Search Button */}
         <button
           type="submit"
-          className="h-full px-4 sm:px-5 bg-[#15803D] hover:bg-[#166534] text-white flex items-center justify-center transition-colors shrink-0 font-medium text-xs sm:text-sm gap-1.5"
+          className="h-full px-4 sm:px-5 bg-[#16A34A] hover:bg-[#15803D] text-white flex items-center justify-center transition-colors shrink-0 font-medium text-xs sm:text-sm gap-1.5"
         >
           {isLoading ? (
             <Loader2 className="w-4 h-4 animate-spin" />

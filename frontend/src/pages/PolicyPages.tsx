@@ -5,7 +5,7 @@ export const ShippingPolicyPage: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-4 sm:py-6 space-y-6">
       <Breadcrumbs items={[{ label: 'Shipping & Delivery Policy' }]} />
-      <div className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-10 shadow-xs space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
+      <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-10 shadow-xs space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
         <h1 className="text-2xl font-black text-gray-900 border-b border-gray-100 pb-3">
           Shipping & Delivery Policy
         </h1>
@@ -40,7 +40,7 @@ export const WarrantyPolicyPage: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-4 sm:py-6 space-y-6">
       <Breadcrumbs items={[{ label: 'Warranty & Returns' }]} />
-      <div className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-10 shadow-xs space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
+      <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-10 shadow-xs space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
         <h1 className="text-2xl font-black text-gray-900 border-b border-gray-100 pb-3">
           Warranty & Return Policy
         </h1>

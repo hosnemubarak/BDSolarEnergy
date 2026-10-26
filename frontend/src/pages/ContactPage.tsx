@@ -38,7 +38,7 @@ export const ContactPage: React.FC = () => {
       <Breadcrumbs items={[{ label: 'Contact Us' }]} />
 
       <div className="text-center max-w-2xl mx-auto space-y-2">
-        <span className="text-xs font-bold text-[#15803D] uppercase tracking-wider">
+        <span className="text-xs font-bold text-[#16A34A] uppercase tracking-wider">
           Get in Touch
         </span>
         <h1 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight">
@@ -52,14 +52,14 @@ export const ContactPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left: Contact Info Cards (5 cols) */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-white rounded-3xl border border-gray-200 p-6 shadow-xs space-y-4">
+          <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-xs space-y-4">
             <h3 className="font-extrabold text-base text-gray-900 border-b border-gray-100 pb-3">
               Corporate Headquarters & Showroom
             </h3>
 
             <div className="space-y-4 text-xs">
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-green-100 text-[#15803D] flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-[#F0FDF4] text-[#16A34A] flex items-center justify-center shrink-0 mt-0.5 border border-green-200">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -71,7 +71,7 @@ export const ContactPage: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-green-100 text-[#15803D] flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-[#F0FDF4] text-[#16A34A] flex items-center justify-center shrink-0 mt-0.5 border border-green-200">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
@@ -86,7 +86,7 @@ export const ContactPage: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-green-100 text-[#15803D] flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-[#F0FDF4] text-[#16A34A] flex items-center justify-center shrink-0 mt-0.5 border border-green-200">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
@@ -100,9 +100,9 @@ export const ContactPage: React.FC = () => {
           </div>
 
           {/* Regional Warehouses */}
-          <div className="bg-green-50 rounded-3xl border border-green-200 p-6 space-y-2 text-xs text-green-950">
+          <div className="bg-[#F8FAFC] rounded-2xl border border-gray-200 p-6 space-y-2 text-xs text-gray-900">
             <h4 className="font-extrabold text-sm flex items-center gap-2">
-              <Building2 className="w-4 h-4 text-[#15803D]" />
+              <Building2 className="w-4 h-4 text-[#16A34A]" />
               <span>Chittagong Distribution Hub</span>
             </h4>
             <p className="text-gray-600">
@@ -112,7 +112,7 @@ export const ContactPage: React.FC = () => {
         </div>
 
         {/* Right: Technical Inquiry Form (7 cols) */}
-        <div className="lg:col-span-7 bg-white rounded-3xl border border-gray-200 p-6 sm:p-8 shadow-xs">
+        <div className="lg:col-span-7 bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-xs">
           <h3 className="font-extrabold text-lg text-gray-900 mb-1">
             Send an Engineering Inquiry / Request a Quote
           </h3>
@@ -150,7 +150,7 @@ export const ContactPage: React.FC = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Engr. Tanvir Ahmed"
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#16A34A] focus:bg-white"
                   />
                 </div>
 
@@ -162,7 +162,7 @@ export const ContactPage: React.FC = () => {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+880 17XX-XXXXXX"
-                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
+                    className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#16A34A] focus:bg-white"
                   />
                 </div>
               </div>
@@ -174,7 +174,7 @@ export const ContactPage: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your.email@example.com"
-                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
+                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#16A34A] focus:bg-white"
                 />
               </div>
 
@@ -183,7 +183,7 @@ export const ContactPage: React.FC = () => {
                 <select
                   value={inquiryType}
                   onChange={(e) => setInquiryType(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white cursor-pointer"
+                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#16A34A] focus:bg-white cursor-pointer"
                 >
                   <option value="residential">Residential Rooftop Solar System (1.5kW – 5kW)</option>
                   <option value="commercial">Commercial / Factory Net-Metering Package (10kW+)</option>
@@ -200,13 +200,13 @@ export const ContactPage: React.FC = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tell us about your rooftop area, current electricity bill, or equipment specifications required..."
-                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#15803D] focus:bg-white"
+                  className="w-full px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-[#16A34A] focus:bg-white"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 flex items-center justify-center gap-2 active:scale-98"
+                className="w-full py-3.5 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 active:scale-98"
               >
                 <Send className="w-4 h-4" />
                 <span>Submit Technical Inquiry</span>

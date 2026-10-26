@@ -224,7 +224,7 @@ export const SystemBuilderPage: React.FC = () => {
   if (isLoading || !selectedPanel || !selectedInverter || !selectedBattery) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center space-y-4">
-        <Loader2 className="w-8 h-8 text-[#15803D] animate-spin mx-auto" />
+        <Loader2 className="w-8 h-8 text-[#16A34A] animate-spin mx-auto" />
         <p className="text-xs text-gray-500">Loading solar system builder components from catalog...</p>
       </div>
     );
@@ -240,16 +240,16 @@ export const SystemBuilderPage: React.FC = () => {
       />
 
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-[#166534] via-[#15803D] to-emerald-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
-        <div className="max-w-2xl space-y-2 relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-xs font-semibold backdrop-blur-xs border border-white/20">
+      <div className="bg-[#F8FAFC] border border-gray-200 rounded-2xl p-6 sm:p-8 text-gray-900">
+        <div className="max-w-3xl space-y-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0FDF4] text-[#16A34A] text-xs font-semibold border border-green-200">
             <Sliders className="w-3.5 h-3.5" />
             <span>Interactive Solar System Configurator</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-gray-900">
             Design Your Custom Solar & Battery Solution
           </h1>
-          <p className="text-xs sm:text-sm text-green-100/90 leading-relaxed">
+          <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
             Select solar panels, inverter capacity, lithium energy storage, and safety accessories. Instant wattage, daily kWh, and pricing calculations.
           </p>
         </div>
@@ -262,17 +262,17 @@ export const SystemBuilderPage: React.FC = () => {
         <div className="lg:col-span-7 space-y-6">
           
           {/* STEP 1: SOLAR PANELS */}
-          <div className="bg-white rounded-3xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
+          <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-[#15803D] text-white text-xs font-bold flex items-center justify-center">
+                <span className="w-6 h-6 rounded-full bg-[#16A34A] text-white text-xs font-bold flex items-center justify-center">
                   1
                 </span>
                 <h3 className="font-bold text-sm sm:text-base text-gray-900">
                   Select Solar Panels & Quantity
                 </h3>
               </div>
-              <span className="text-xs font-bold text-green-700 bg-green-50 px-2.5 py-1 rounded-md">
+              <span className="text-xs font-bold text-[#16A34A] bg-[#F0FDF4] px-2.5 py-1 rounded-md">
                 Array: {totalArrayWatts} Wp ({ (totalArrayWatts / 1000).toFixed(2) } kWp)
               </span>
             </div>
@@ -285,12 +285,12 @@ export const SystemBuilderPage: React.FC = () => {
                   onClick={() => setSelectedPanel(panel)}
                   className={`p-3 rounded-2xl border-2 cursor-pointer transition-all flex flex-col justify-between ${
                     selectedPanel.id === panel.id
-                      ? 'border-[#15803D] bg-green-50/50 shadow-sm'
+                      ? 'border-[#16A34A] bg-green-50/50 shadow-xs'
                       : 'border-gray-200 hover:border-green-200'
                   }`}
                 >
                   <div>
-                    <span className="text-[10px] font-bold text-green-700 uppercase">
+                    <span className="text-[10px] font-bold text-[#16A34A] uppercase">
                       {panel.watts}W Module
                     </span>
                     <h5 className="font-bold text-xs text-gray-900 mt-1 line-clamp-2">
@@ -298,9 +298,9 @@ export const SystemBuilderPage: React.FC = () => {
                     </h5>
                   </div>
                   <div className="mt-3 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
-                    <span className="font-bold text-green-900">৳{panel.price.toLocaleString('en-BD')}</span>
+                    <span className="font-bold text-gray-900">৳{panel.price.toLocaleString('en-BD')}</span>
                     {selectedPanel.id === panel.id && (
-                      <CheckCircle2 className="w-4 h-4 text-[#15803D]" />
+                      <CheckCircle2 className="w-4 h-4 text-[#16A34A]" />
                     )}
                   </div>
                 </div>
@@ -317,17 +317,17 @@ export const SystemBuilderPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setPanelCount((c) => Math.max(2, c - 2))}
-                  className="w-8 h-8 rounded-lg bg-white border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-100 font-bold"
+                  className="w-8 h-8 rounded-lg bg-white border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-100 font-bold transition-colors"
                 >
                   <Minus className="w-3.5 h-3.5" />
                 </button>
-                <span className="text-base font-black text-green-950 w-8 text-center">
+                <span className="text-base font-black text-gray-900 w-8 text-center">
                   {panelCount}
                 </span>
                 <button
                   type="button"
                   onClick={() => setPanelCount((c) => Math.min(24, c + 2))}
-                  className="w-8 h-8 rounded-lg bg-white border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-100 font-bold"
+                  className="w-8 h-8 rounded-lg bg-white border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-100 font-bold transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" />
                 </button>
@@ -336,10 +336,10 @@ export const SystemBuilderPage: React.FC = () => {
           </div>
 
           {/* STEP 2: SOLAR INVERTER */}
-          <div className="bg-white rounded-3xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
+          <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-[#15803D] text-white text-xs font-bold flex items-center justify-center">
+                <span className="w-6 h-6 rounded-full bg-[#16A34A] text-white text-xs font-bold flex items-center justify-center">
                   2
                 </span>
                 <h3 className="font-bold text-sm sm:text-base text-gray-900">
@@ -358,29 +358,29 @@ export const SystemBuilderPage: React.FC = () => {
                   onClick={() => setSelectedInverter(inv)}
                   className={`p-3.5 rounded-2xl border-2 cursor-pointer transition-all flex items-center justify-between gap-3 ${
                     selectedInverter.id === inv.id
-                      ? 'border-[#15803D] bg-green-50/50 shadow-sm'
+                      ? 'border-[#16A34A] bg-green-50/50 shadow-xs'
                       : 'border-gray-200 hover:border-green-200'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-green-100 text-[#15803D] flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-green-50 text-[#16A34A] flex items-center justify-center shrink-0">
                       <Zap className="w-5 h-5" />
                     </div>
                     <div>
                       <h5 className="font-bold text-xs sm:text-sm text-gray-900">{inv.name}</h5>
                       <div className="text-[11px] text-gray-500 flex items-center gap-2">
-                        <span className="text-green-700 font-semibold">{inv.type} Topology</span>
+                        <span className="text-[#16A34A] font-semibold">{inv.type} Topology</span>
                         <span>•</span>
                         <span>Max PV: {inv.maxArrayWatts}W</span>
                       </div>
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <div className="text-xs sm:text-sm font-extrabold text-green-950">
+                    <div className="text-xs sm:text-sm font-extrabold text-gray-900">
                       ৳{inv.price.toLocaleString('en-BD')}
                     </div>
                     {selectedInverter.id === inv.id && (
-                      <span className="text-[10px] text-[#15803D] font-bold">Selected</span>
+                      <span className="text-[10px] text-[#16A34A] font-bold">Selected</span>
                     )}
                   </div>
                 </div>
@@ -389,10 +389,10 @@ export const SystemBuilderPage: React.FC = () => {
           </div>
 
           {/* STEP 3: BATTERY STORAGE */}
-          <div className="bg-white rounded-3xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
+          <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-[#15803D] text-white text-xs font-bold flex items-center justify-center">
+                <span className="w-6 h-6 rounded-full bg-[#16A34A] text-white text-xs font-bold flex items-center justify-center">
                   3
                 </span>
                 <h3 className="font-bold text-sm sm:text-base text-gray-900">
@@ -411,12 +411,12 @@ export const SystemBuilderPage: React.FC = () => {
                   onClick={() => setSelectedBattery(bat)}
                   className={`p-3.5 rounded-2xl border-2 cursor-pointer transition-all flex items-center justify-between gap-3 ${
                     selectedBattery.id === bat.id
-                      ? 'border-[#15803D] bg-green-50/50 shadow-sm'
+                      ? 'border-[#16A34A] bg-green-50/50 shadow-xs'
                       : 'border-gray-200 hover:border-green-200'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#16A34A] flex items-center justify-center shrink-0">
                       <BatteryCharging className="w-5 h-5" />
                     </div>
                     <div>
@@ -427,11 +427,11 @@ export const SystemBuilderPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <div className="text-xs sm:text-sm font-extrabold text-green-950">
+                    <div className="text-xs sm:text-sm font-extrabold text-gray-900">
                       {bat.price > 0 ? `৳${bat.price.toLocaleString('en-BD')}` : '৳0'}
                     </div>
                     {selectedBattery.id === bat.id && (
-                      <span className="text-[10px] text-[#15803D] font-bold">Selected</span>
+                      <span className="text-[10px] text-[#16A34A] font-bold">Selected</span>
                     )}
                   </div>
                 </div>
@@ -440,10 +440,10 @@ export const SystemBuilderPage: React.FC = () => {
           </div>
 
           {/* STEP 4: ACCESSORIES & DC PROTECTION */}
-          <div className="bg-white rounded-3xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-3">
+          <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-[#15803D] text-white text-xs font-bold flex items-center justify-center">
+                <span className="w-6 h-6 rounded-full bg-[#16A34A] text-white text-xs font-bold flex items-center justify-center">
                   4
                 </span>
                 <div>
@@ -459,7 +459,7 @@ export const SystemBuilderPage: React.FC = () => {
                 type="checkbox"
                 checked={includeProtectionKit}
                 onChange={(e) => setIncludeProtectionKit(e.target.checked)}
-                className="w-5 h-5 text-[#15803D] rounded focus:ring-green-400 border-gray-300"
+                className="w-5 h-5 text-[#16A34A] rounded focus:ring-green-400 border-gray-300"
               />
             </div>
           </div>
@@ -467,39 +467,39 @@ export const SystemBuilderPage: React.FC = () => {
 
         {/* Right: Real-time System Metrics & Summary Card */}
         <div className="lg:col-span-5 sticky top-24 space-y-5">
-          <div className="bg-white rounded-3xl border-2 border-green-200 p-6 shadow-xl space-y-5">
+          <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm space-y-5">
             <div className="flex items-center justify-between border-b border-gray-100 pb-3">
               <h3 className="font-black text-gray-900 text-base">
                 System Performance Estimate
               </h3>
-              <span className="px-2 py-0.5 rounded-full bg-green-100 text-green-900 font-bold text-[10px] uppercase">
-                Demo Simulation
+              <span className="px-2 py-0.5 rounded-full bg-[#F0FDF4] text-[#16A34A] font-bold text-[10px] uppercase border border-green-200">
+                Calculated Estimate
               </span>
             </div>
 
             {/* Calculations Grid */}
             <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="p-3 bg-green-50/70 rounded-2xl border border-green-100">
+              <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
                 <span className="text-gray-500 block text-[11px]">Total Solar Array</span>
-                <span className="text-lg font-black text-green-950">{totalArrayWatts} Wp</span>
+                <span className="text-lg font-black text-gray-900">{totalArrayWatts} Wp</span>
                 <span className="text-[10px] text-gray-400 block mt-0.5">({panelCount}x {selectedPanel.watts}W)</span>
               </div>
 
-              <div className="p-3 bg-green-50/70 rounded-2xl border border-green-100">
+              <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
                 <span className="text-gray-500 block text-[11px]">Daily Generation</span>
-                <span className="text-lg font-black text-green-950">~{dailyGenerationKwh} kWh</span>
+                <span className="text-lg font-black text-gray-900">~{dailyGenerationKwh} kWh</span>
                 <span className="text-[10px] text-gray-400 block mt-0.5">4.2 Peak Sun Hours</span>
               </div>
 
-              <div className="p-3 bg-emerald-50 rounded-2xl border border-emerald-100">
+              <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
                 <span className="text-emerald-700 block text-[11px]">Est. Monthly Savings</span>
-                <span className="text-lg font-black text-emerald-900">৳{monthlySavingsBdt.toLocaleString('en-BD')}</span>
+                <span className="text-lg font-black text-[#16A34A]">৳{monthlySavingsBdt.toLocaleString('en-BD')}</span>
                 <span className="text-[10px] text-emerald-600 block mt-0.5">Off Utility Bill</span>
               </div>
 
-              <div className="p-3 bg-green-50/70 rounded-2xl border border-green-100">
+              <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
                 <span className="text-gray-500 block text-[11px]">Battery Storage</span>
-                <span className="text-lg font-black text-green-950">{selectedBattery.kwh} kWh</span>
+                <span className="text-lg font-black text-gray-900">{selectedBattery.kwh} kWh</span>
                 <span className="text-[10px] text-gray-400 block mt-0.5">{selectedBattery.chemistry}</span>
               </div>
             </div>
@@ -533,7 +533,7 @@ export const SystemBuilderPage: React.FC = () => {
 
             {/* Compatibility Warning Box (if any) */}
             {compatibilityWarnings.length > 0 && (
-              <div className="p-3 bg-amber-50 rounded-2xl border border-amber-200 text-amber-900 text-xs space-y-1">
+              <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 text-xs space-y-1">
                 <div className="font-bold flex items-center gap-1.5 text-amber-800">
                   <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
                   <span>Engineering Notice:</span>
@@ -548,8 +548,8 @@ export const SystemBuilderPage: React.FC = () => {
             <div className="pt-3 border-t border-gray-200">
               <div className="flex items-baseline justify-between">
                 <div>
-                  <span className="text-xs text-gray-500 block">Total System Demo Price</span>
-                  <span className="text-2xl sm:text-3xl font-black text-[#166534]">
+                  <span className="text-xs text-gray-500 block">Total Estimated System Price</span>
+                  <span className="text-2xl sm:text-3xl font-black text-[#16A34A]">
                     ৳{totalPrice.toLocaleString('en-BD')}
                   </span>
                 </div>
@@ -562,7 +562,7 @@ export const SystemBuilderPage: React.FC = () => {
             {/* CTA Button */}
             <button
               onClick={handleAddBundleToCart}
-              className="w-full py-3.5 bg-[#15803D] hover:bg-[#166534] text-white font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-green-700/25 flex items-center justify-center gap-2 active:scale-98"
+              className="w-full py-3.5 bg-[#16A34A] hover:bg-[#15803D] text-white font-extrabold text-sm rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 active:scale-98"
             >
               <ShoppingCart className="w-4 h-4" />
               <span>Add Complete System to Cart</span>

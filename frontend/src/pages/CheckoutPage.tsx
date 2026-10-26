@@ -60,7 +60,7 @@ export const CheckoutPage: React.FC = () => {
         <p className="text-xs text-gray-500">Please add products to your cart before proceeding to checkout.</p>
         <Link
           to="/shop"
-          className="px-6 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold rounded-xl inline-block transition-colors shadow-md shadow-green-700/20"
+          className="px-6 py-2.5 bg-[#16A34A] hover:bg-[#15803D] text-white text-xs font-bold rounded-xl inline-block transition-colors shadow-sm"
         >
           Return to Shop
         </Link>
@@ -103,7 +103,7 @@ export const CheckoutPage: React.FC = () => {
       });
 
       clearCart();
-      showToast('Demo order placed successfully!', 'success');
+      showToast('Order placed successfully!', 'success');
       navigate(`/order-confirmation/${createdOrder.orderNumber}`);
     } catch (err) {
       console.error('Order creation error', err);
@@ -122,15 +122,7 @@ export const CheckoutPage: React.FC = () => {
         ]}
       />
 
-      {/* Demo Notice Banner */}
-      <div className="p-3.5 bg-green-50 rounded-2xl border border-green-200 flex items-center justify-between text-xs text-green-950">
-        <div className="flex items-center gap-2">
-          <Info className="w-4 h-4 text-[#15803D] shrink-0" />
-          <span>
-            <strong>Demo Checkout Simulation:</strong> No real bank charges or payments will occur. You can test bKash, Nagad, or Cash on Delivery freely.
-          </span>
-        </div>
-      </div>
+
 
       <form onSubmit={handlePlaceOrder}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -324,7 +316,7 @@ export const CheckoutPage: React.FC = () => {
                           bKash Online Payment
                         </div>
                         <div className="text-[11px] text-gray-500">
-                          Simulate instant payment with bKash Merchant Gateway.
+                          Send payment to bKash Merchant Gateway and enter Transaction ID.
                         </div>
                       </div>
                     </div>
@@ -336,7 +328,7 @@ export const CheckoutPage: React.FC = () => {
                   {paymentMethod === 'BKASH' && (
                     <div className="mt-3 pt-3 border-t border-green-200 text-xs space-y-2">
                       <div className="text-gray-600">
-                        Demo Merchant Number: <strong className="text-gray-900">+880 1700-765270</strong>
+                        Merchant Number: <strong className="text-gray-900">+880 1700-765270</strong>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-gray-500">TrxID:</span>
@@ -346,9 +338,7 @@ export const CheckoutPage: React.FC = () => {
                           onChange={(e) => setBkashTrxId(e.target.value)}
                           className="px-2.5 py-1 font-mono text-xs bg-white border border-gray-300 rounded-lg uppercase"
                         />
-                        <span className="text-[10px] text-emerald-700 font-semibold">
-                          ✓ Auto-Verified Demo Trx
-                        </span>
+
                       </div>
                     </div>
                   )}
@@ -375,7 +365,7 @@ export const CheckoutPage: React.FC = () => {
                         Nagad Digital Payment
                       </div>
                       <div className="text-[11px] text-gray-500">
-                        Fast checkout simulation using Nagad Wallet.
+                        Fast payment using Nagad Wallet.
                       </div>
                     </div>
                   </div>
@@ -428,7 +418,7 @@ export const CheckoutPage: React.FC = () => {
                       </h5>
                       <span className="text-[11px] text-gray-400">Qty: {item.quantity}</span>
                     </div>
-                    <div className="text-xs font-bold text-[#166534]">
+                    <div className="text-xs font-bold text-[#16A34A]">
                       ৳{(item.product.price * item.quantity).toLocaleString('en-BD')}
                     </div>
                   </div>
@@ -455,7 +445,7 @@ export const CheckoutPage: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-base font-black text-gray-900 pt-3 border-t border-gray-200">
                   <span>Total Amount</span>
-                  <span className="text-[#166534] text-xl font-black">
+                  <span className="text-[#16A34A] text-xl font-black">
                     ৳{total.toLocaleString('en-BD')}
                   </span>
                 </div>
@@ -465,12 +455,12 @@ export const CheckoutPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 bg-[#15803D] hover:bg-[#166534] text-white font-black text-sm rounded-xl transition-all shadow-lg shadow-green-700/20 flex items-center justify-center gap-2 active:scale-98 disabled:opacity-50"
+                className="w-full py-4 bg-[#16A34A] hover:bg-[#15803D] text-white font-black text-sm rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 active:scale-98 disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    <span>Processing Demo Order...</span>
+                    <span>Processing Order...</span>
                   </>
                 ) : (
                   <>

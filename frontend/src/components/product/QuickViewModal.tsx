@@ -148,8 +148,8 @@ export const QuickViewModal: React.FC = () => {
                 </div>
 
                 {/* Price */}
-                <div className="mt-4 p-3 bg-green-50/60 rounded-xl border border-green-100 flex items-baseline gap-3">
-                  <span className="text-2xl font-black text-[#166534]">
+                <div className="mt-4 p-3 bg-[#F0FDF4] rounded-xl border border-green-100 flex items-baseline gap-3">
+                  <span className="text-2xl font-black text-[#16A34A]">
                     ৳{activeProduct.price.toLocaleString('en-BD')}
                   </span>
                   {activeProduct.originalPrice && (
@@ -157,7 +157,6 @@ export const QuickViewModal: React.FC = () => {
                       ৳{activeProduct.originalPrice.toLocaleString('en-BD')}
                     </span>
                   )}
-                  <span className="text-[11px] text-gray-500 ml-auto">Verified Demo Pricing</span>
                 </div>
 
                 {/* Short specs list */}
@@ -222,7 +221,7 @@ export const QuickViewModal: React.FC = () => {
 
                   <button
                     onClick={handleAddToCart}
-                    className="flex-1 py-2.5 px-4 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 flex items-center justify-center gap-2 active:scale-98"
+                    className="flex-1 py-2.5 px-4 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 active:scale-98"
                   >
                     <ShoppingCart className="w-4 h-4" />
                     <span>Add to Cart</span>

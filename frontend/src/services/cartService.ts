@@ -10,11 +10,7 @@ export interface CouponDiscount {
   description: string;
 }
 
-export const VALID_COUPONS: Record<string, CouponDiscount> = {
-  BDSOLAR5: { code: 'BDSOLAR5', discountPercentage: 5, maxDiscountBdt: 15000, description: '5% Welcome Solar Discount' },
-  GREENBD: { code: 'GREENBD', discountPercentage: 7, maxDiscountBdt: 20000, description: '7% Green Energy Promotion' },
-  ELECTRIC10: { code: 'ELECTRIC10', discountPercentage: 10, maxDiscountBdt: 10000, description: '10% Electrical Protection Discount' },
-};
+export const VALID_COUPONS: Record<string, CouponDiscount> = {};
 
 export const cartService = {
   getStoredItems(): CartItem[] {

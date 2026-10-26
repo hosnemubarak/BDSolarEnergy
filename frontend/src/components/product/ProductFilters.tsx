@@ -97,7 +97,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
             onClick={() => handleCategorySelect(undefined)}
             className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-colors flex items-center justify-between ${
               !filters.category
-                ? 'bg-green-100/70 text-[#166534] font-bold'
+                ? 'bg-[#F0FDF4] text-[#16A34A] font-bold border border-green-200'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
@@ -114,7 +114,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 onClick={() => handleCategorySelect(catIdentifier)}
                 className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-colors flex items-center justify-between ${
                   isSelected
-                    ? 'bg-green-100/70 text-[#166534] font-bold'
+                    ? 'bg-[#F0FDF4] text-[#16A34A] font-bold border border-green-200'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
@@ -138,7 +138,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
               onClick={() => handleSubcategorySelect(undefined)}
               className={`w-full text-left px-2 py-1 text-xs rounded transition-colors ${
                 !filters.subcategory
-                  ? 'text-[#15803D] font-bold'
+                  ? 'text-[#16A34A] font-bold'
                   : 'text-gray-500 hover:text-gray-800'
               }`}
             >
@@ -154,7 +154,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                   onClick={() => handleSubcategorySelect(subIdentifier)}
                   className={`w-full text-left px-2 py-1 text-xs rounded transition-colors flex items-center justify-between ${
                     isSubSelected
-                      ? 'text-[#15803D] font-bold'
+                      ? 'text-[#16A34A] font-bold'
                       : 'text-gray-500 hover:text-gray-800'
                   }`}
                 >
@@ -183,7 +183,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 minPrice: e.target.value ? Number(e.target.value) : undefined,
               })
             }
-            className="w-1/2 px-2.5 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#15803D] focus:bg-white"
+            className="w-1/2 px-2.5 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#16A34A] focus:bg-white"
           />
           <span className="text-gray-400 text-xs">-</span>
           <input
@@ -196,7 +196,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 maxPrice: e.target.value ? Number(e.target.value) : undefined,
               })
             }
-            className="w-1/2 px-2.5 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#15803D] focus:bg-white"
+            className="w-1/2 px-2.5 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#16A34A] focus:bg-white"
           />
         </div>
       </div>
@@ -218,7 +218,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                   type="checkbox"
                   checked={!!isChecked}
                   onChange={() => handleBrandToggle(b.name)}
-                  className="rounded text-[#15803D] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
+                  className="rounded text-[#16A34A] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
                 />
                 <span className="truncate">{b.name}</span>
               </label>
@@ -251,7 +251,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 }
                 className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors border ${
                   filters.solarWattsMin === opt.min
-                    ? 'bg-[#15803D] text-white border-[#15803D]'
+                    ? 'bg-[#16A34A] text-white border-[#16A34A]'
                     : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'
                 }`}
               >
@@ -278,7 +278,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                   type="checkbox"
                   checked={!!filters.inverterType?.includes(type)}
                   onChange={() => handleInverterTypeToggle(type)}
-                  className="rounded text-[#15803D] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
+                  className="rounded text-[#16A34A] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
                 />
                 <span>{type} Inverters</span>
               </label>
@@ -306,7 +306,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                   type="checkbox"
                   checked={!!filters.batteryChemistry?.includes(chem.id)}
                   onChange={() => handleBatteryChemistryToggle(chem.id)}
-                  className="rounded text-[#15803D] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
+                  className="rounded text-[#16A34A] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
                 />
                 <span>{chem.label}</span>
               </label>
@@ -329,7 +329,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 onClick={() => handlePolesToggle(pole)}
                 className={`px-2.5 py-1 rounded text-xs font-bold border transition-colors ${
                   filters.breakerPoles?.includes(pole)
-                    ? 'bg-[#15803D] text-white border-[#15803D]'
+                    ? 'bg-[#16A34A] text-white border-[#16A34A]'
                     : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'
                 }`}
               >
@@ -347,7 +347,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
             type="checkbox"
             checked={!!filters.inStockOnly}
             onChange={(e) => onChange({ ...filters, inStockOnly: e.target.checked || undefined })}
-            className="rounded text-[#15803D] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
+            className="rounded text-[#16A34A] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
           />
           <span>In Stock Items Only</span>
         </label>
@@ -357,7 +357,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
             type="checkbox"
             checked={!!filters.onSaleOnly}
             onChange={(e) => onChange({ ...filters, onSaleOnly: e.target.checked || undefined })}
-            className="rounded text-[#15803D] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
+            className="rounded text-[#16A34A] focus:ring-green-400 border-gray-300 w-3.5 h-3.5"
           />
           <span>Special Deals & Offers Only</span>
         </label>

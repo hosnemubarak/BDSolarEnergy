@@ -62,16 +62,16 @@ export const CalculatorPage: React.FC = () => {
       <Breadcrumbs items={[{ label: 'Solar Sizing Calculator' }]} />
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#0B1E13] via-[#166534] to-[#15803D] rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
-        <div className="max-w-2xl space-y-3 relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-xs font-semibold backdrop-blur-xs border border-white/20">
+      <div className="bg-[#F8FAFC] border border-gray-200 rounded-2xl p-6 sm:p-8 text-gray-900">
+        <div className="max-w-3xl space-y-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0FDF4] text-[#16A34A] text-xs font-semibold border border-green-200">
             <Calculator className="w-3.5 h-3.5" />
             <span>Smart Rooftop Solar Sizing Tool</span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-gray-900">
             Calculate Your Solar System Size & Bill Savings
           </h1>
-          <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+          <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
             Estimate your required solar panel capacity, inverter rating, and lithium battery storage based on your average monthly electricity bill in Bangladesh.
           </p>
         </div>
@@ -81,7 +81,7 @@ export const CalculatorPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         {/* Left: Input Controls (6 cols) */}
-        <div className="lg:col-span-6 bg-white rounded-3xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-6">
+        <div className="lg:col-span-6 bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-6">
           <h3 className="font-extrabold text-base text-gray-900 border-b border-gray-100 pb-3">
             Enter Your Household or Facility Usage
           </h3>
@@ -92,7 +92,7 @@ export const CalculatorPage: React.FC = () => {
               <label className="font-bold text-gray-800">
                 Average Monthly Electricity Bill (BDT)
               </label>
-              <span className="text-base font-black text-[#166534]">
+              <span className="text-base font-black text-[#16A34A]">
                 ৳{monthlyBillBdt.toLocaleString('en-BD')}
               </span>
             </div>
@@ -103,7 +103,7 @@ export const CalculatorPage: React.FC = () => {
               step="500"
               value={monthlyBillBdt}
               onChange={(e) => setMonthlyBillBdt(Number(e.target.value))}
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#15803D]"
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#16A34A]"
             />
             <div className="flex justify-between text-[11px] text-gray-400">
               <span>৳2,000 / mo</span>
@@ -125,7 +125,7 @@ export const CalculatorPage: React.FC = () => {
                   onClick={() => setBillReductionPercent(pct)}
                   className={`py-3 rounded-2xl border-2 text-xs font-bold transition-all text-center ${
                     billReductionPercent === pct
-                      ? 'border-[#15803D] bg-green-50 text-[#166534] shadow-xs'
+                      ? 'border-[#16A34A] bg-[#F0FDF4] text-[#16A34A] shadow-xs'
                       : 'border-gray-200 text-gray-600 hover:border-green-200'
                   }`}
                 >
@@ -146,57 +146,57 @@ export const CalculatorPage: React.FC = () => {
               type="checkbox"
               checked={needBatteryBackup}
               onChange={(e) => setNeedBatteryBackup(e.target.checked)}
-              className="w-5 h-5 text-[#15803D] rounded focus:ring-green-400 border-gray-300 cursor-pointer"
+              className="w-5 h-5 text-[#16A34A] rounded focus:ring-green-400 border-gray-300 cursor-pointer"
             />
           </div>
         </div>
 
         {/* Right: Results & Recommendations (6 cols) */}
-        <div className="lg:col-span-6 bg-white rounded-3xl border-2 border-green-200 p-6 sm:p-8 shadow-xl space-y-6">
+        <div className="lg:col-span-6 bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-sm space-y-6">
           <div className="border-b border-gray-100 pb-3 flex items-center justify-between">
             <h3 className="font-extrabold text-base text-gray-900">
               Recommended Solar Engineering Configuration
             </h3>
-            <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#F0FDF4] text-[#16A34A] text-xs font-bold border border-green-200">
               High Feasibility
             </span>
           </div>
 
           {/* Key Metric Blocks */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
-            <div className="p-4 bg-green-50/70 rounded-2xl border border-green-100">
+            <div className="p-4 bg-[#F0FDF4] rounded-xl border border-green-100">
               <span className="text-gray-500 block text-[11px]">Recommended Array</span>
-              <span className="text-xl font-black text-green-950 block mt-1">
+              <span className="text-xl font-black text-gray-900 block mt-1">
                 {recommendedSolarKwp} kWp
               </span>
-              <span className="text-[10px] text-[#15803D] font-semibold block mt-0.5">
+              <span className="text-[10px] text-[#16A34A] font-semibold block mt-0.5">
                 {recommendedPanelCount}x 585W Panels
               </span>
             </div>
 
-            <div className="p-4 bg-green-50/70 rounded-2xl border border-green-100">
+            <div className="p-4 bg-[#F0FDF4] rounded-xl border border-green-100">
               <span className="text-gray-500 block text-[11px]">Inverter Capacity</span>
-              <span className="text-xl font-black text-green-950 block mt-1">
+              <span className="text-xl font-black text-gray-900 block mt-1">
                 {recommendedInverterKva} kVA
               </span>
-              <span className="text-[10px] text-[#15803D] font-semibold block mt-0.5">
+              <span className="text-[10px] text-[#16A34A] font-semibold block mt-0.5">
                 Hybrid Pure Sine Wave
               </span>
             </div>
 
-            <div className="p-4 bg-green-50/70 rounded-2xl border border-green-100 col-span-2 sm:col-span-1">
+            <div className="p-4 bg-[#F0FDF4] rounded-xl border border-green-100 col-span-2 sm:col-span-1">
               <span className="text-gray-500 block text-[11px]">Battery Storage</span>
-              <span className="text-xl font-black text-green-950 block mt-1">
+              <span className="text-xl font-black text-gray-900 block mt-1">
                 {recommendedBatteryKwh} kWh
               </span>
-              <span className="text-[10px] text-[#15803D] font-semibold block mt-0.5">
+              <span className="text-[10px] text-[#16A34A] font-semibold block mt-0.5">
                 {needBatteryBackup ? 'LiFePO4 Storage' : 'Grid-Tied Net Metering'}
               </span>
             </div>
           </div>
 
           {/* 25-Year Cumulative Savings Banner */}
-          <div className="p-4 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border border-emerald-200">
+          <div className="p-4 bg-emerald-50/70 rounded-xl border border-emerald-100">
             <div className="text-xs font-semibold text-emerald-800">
               Estimated 25-Year Net Utility Savings:
             </div>
@@ -212,7 +212,7 @@ export const CalculatorPage: React.FC = () => {
           <div className="space-y-2 pt-2">
             <Link
               to="/system-builder"
-              className="w-full py-3.5 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-green-700/20 flex items-center justify-center gap-2"
+              className="w-full py-3.5 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm flex items-center justify-center gap-2"
             >
               <Sliders className="w-4 h-4" />
               <span>Customize in System Builder</span>

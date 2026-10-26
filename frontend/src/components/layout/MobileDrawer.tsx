@@ -44,19 +44,19 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
       {/* Drawer */}
       <div className="fixed top-0 bottom-0 left-0 w-5/6 max-w-sm bg-white shadow-2xl flex flex-col z-50 overflow-hidden">
         {/* Drawer Header */}
-        <div className="p-4 bg-[#166534] text-white flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#15803D] flex items-center justify-center">
-              <Sun className="w-5 h-5 text-amber-300" />
+        <div className="p-4 bg-white border-b border-gray-200 text-gray-900 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#16A34A] flex items-center justify-center text-white">
+              <Sun className="w-5 h-5 text-white" />
             </div>
             <div>
-              <div className="font-extrabold text-sm tracking-wide">BD SOLAR ENERGY</div>
-              <div className="text-[10px] text-green-200">Power & Electrical Systems</div>
+              <div className="font-extrabold text-sm tracking-tight text-gray-900">BD SOLAR ENERGY</div>
+              <div className="text-[10px] text-gray-500 font-medium">Solar & Electrical Store</div>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg hover:bg-green-800 text-green-200 hover:text-white transition-colors"
+            className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -229,7 +229,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
           <div className="text-[11px] text-gray-500">Need Immediate Help?</div>
           <a
             href="tel:+880170076527"
-            className="text-xs font-bold text-[#166534] hover:underline"
+            className="text-xs font-bold text-[#16A34A] hover:underline"
           >
             +880 1700-SOLAR (76527)
           </a>
