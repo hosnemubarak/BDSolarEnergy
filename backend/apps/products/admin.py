@@ -36,6 +36,7 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('name', 'sku', 'slug', 'description', 'short_description')
     prepopulated_fields = {'slug': ('name',)}
     list_editable = ('price', 'stock', 'is_featured', 'is_bestseller', 'is_active')
+    readonly_fields = ('id', 'created_at', 'updated_at')
     inlines = [ProductImageInline]
 
     fieldsets = (
@@ -70,8 +71,8 @@ class ProductAdmin(admin.ModelAdmin):
                 'compatibility_notes',
             )
         }),
-        ('Status', {
-            'fields': ('is_active',)
+        ('Status & Audit', {
+            'fields': ('is_active', 'created_at', 'updated_at')
         }),
     )
 
