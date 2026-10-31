@@ -12,7 +12,8 @@ import {
   Info, 
   ArrowLeft,
   Lock,
-  Loader2
+  Loader2,
+  AlertCircle
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -20,6 +21,7 @@ import { useToast } from '../context/ToastContext';
 import { orderService } from '../services/orderService';
 import { CustomerAddress } from '../types';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { Price } from '../components/common/Price';
 import { formatBDT } from '../utils/currency';
 
 const BD_DIVISIONS = [
@@ -53,6 +55,7 @@ export const CheckoutPage: React.FC = () => {
   const [bkashTrxId, setBkashTrxId] = useState('');
   const [orderNotes, setOrderNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   if (items.length === 0) {
     return (
@@ -71,9 +74,13 @@ export const CheckoutPage: React.FC = () => {
 
   const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage(null);
+    setErrorMessage(null);
 
     if (!fullName.trim() || !phone.trim() || !fullAddress.trim()) {
-      showToast('Please fill in your name, contact phone, and delivery address.', 'error');
+      const msg = 'Please fill in your name, contact phone, and delivery address.';
+      setErrorMessage(msg);
+      showToast(msg, 'error');
       return;
     }
 
@@ -106,9 +113,11 @@ export const CheckoutPage: React.FC = () => {
       clearCart();
       showToast('Order placed successfully!', 'success');
       navigate(`/order-confirmation/${createdOrder.orderNumber}`);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Order creation error', err);
-      showToast('Failed to place order. Please try again.', 'error');
+      const msg = err?.message || 'Failed to place order. Please try again.';
+      setErrorMessage(msg);
+      showToast(msg, 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -417,40 +426,55 @@ export const CheckoutPage: React.FC = () => {
                       <h5 className="text-xs sm:text-sm font-semibold text-gray-900 truncate">
                         {item.product.name}
                       </h5>
-                      <span className="text-xs text-gray-500">Qty: {item.quantity}</span>
+                      <span className="text-xs sm:text-sm text-gray-500">Qty: {item.quantity}</span>
                     </div>
-                    <div className="text-xs sm:text-sm font-bold text-[#16A34A]">
-                      {formatBDT(item.product.price * item.quantity)}
-                    </div>
+                    <Price
+                      amount={item.product.price * item.quantity}
+                      className="text-xs sm:text-sm font-bold text-[#16A34A]"
+                      symbolClassName="text-[#16A34A]"
+                    />
                   </div>
                 ))}
               </div>
 
               {/* Price Breakdown */}
-              <div className="space-y-2.5 text-xs sm:text-sm text-gray-600 pt-3 border-t border-gray-100">
+              <div className="space-y-2.5 text-sm text-gray-600 pt-3 border-t border-gray-100">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span className="font-semibold text-gray-900">{formatBDT(subtotal)}</span>
+                  <Price amount={subtotal} className="font-semibold text-gray-900" />
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between text-emerald-700">
                     <span>Discount ({couponCode})</span>
-                    <span className="font-semibold">-{formatBDT(discount)}</span>
+                    <span className="font-semibold text-emerald-700 inline-flex items-baseline gap-0.5">
+                      <span>-</span>
+                      <Price amount={discount} className="font-semibold text-emerald-700" />
+                    </span>
                   </div>
                 )}
                 <div className="flex justify-between">
                   <span>Shipping Fee</span>
                   <span className="font-semibold text-gray-900">
-                    {shippingFee === 0 ? <span className="text-emerald-600 font-bold">FREE</span> : formatBDT(shippingFee)}
+                    {shippingFee === 0 ? <span className="text-emerald-600 font-bold">FREE</span> : <Price amount={shippingFee} className="font-semibold text-gray-900" />}
                   </span>
                 </div>
                 <div className="flex justify-between text-base font-bold text-gray-900 pt-3 border-t border-gray-200">
                   <span>Total Amount</span>
-                  <span className="text-[#16A34A] text-xl font-bold">
-                    {formatBDT(total)}
-                  </span>
+                  <Price
+                    amount={total}
+                    className="text-[#16A34A] text-xl font-bold"
+                    symbolClassName="text-2xl text-[#16A34A]"
+                  />
                 </div>
               </div>
+
+              {/* Error Message Alert */}
+              {errorMessage && (
+                <div className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm flex items-start gap-2.5 animate-fadeIn">
+                  <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                  <div className="flex-1 font-medium leading-relaxed">{errorMessage}</div>
+                </div>
+              )}
 
               {/* Submit Button */}
               <button

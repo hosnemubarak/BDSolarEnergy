@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useToast } from '../../context/ToastContext';
+import { Price } from '../common/Price';
 import { formatBDT } from '../../utils/currency';
 
 export const CartDrawer: React.FC = () => {
@@ -151,10 +152,10 @@ export const CartDrawer: React.FC = () => {
                     }}
                   />
                   <div className="flex-1 min-w-0">
-                    <h5 className="text-xs font-semibold text-gray-900 line-clamp-2 leading-tight">
+                    <h5 className="text-sm font-semibold text-gray-900 line-clamp-2 leading-tight">
                       {item.product.name}
                     </h5>
-                    <div className="text-[11px] text-gray-400 mt-0.5">{item.product.brand}</div>
+                    <div className="text-xs text-gray-500 mt-0.5">{item.product.brand}</div>
                     
                     <div className="mt-2 flex items-center justify-between">
                       {/* Quantity stepper */}
@@ -164,9 +165,9 @@ export const CartDrawer: React.FC = () => {
                           className="p-1 hover:bg-gray-200 text-gray-600 transition-colors"
                           aria-label="Decrease quantity"
                         >
-                          <Minus className="w-3 h-3" />
+                          <Minus className="w-3.5 h-3.5" />
                         </button>
-                        <span className="px-2.5 text-xs font-bold text-gray-800">
+                        <span className="px-2.5 text-sm font-bold text-gray-800">
                           {item.quantity}
                         </span>
                         <button
@@ -174,15 +175,17 @@ export const CartDrawer: React.FC = () => {
                           className="p-1 hover:bg-gray-200 text-gray-600 transition-colors"
                           aria-label="Increase quantity"
                         >
-                          <Plus className="w-3 h-3" />
+                          <Plus className="w-3.5 h-3.5" />
                         </button>
                       </div>
 
                       {/* Subtotal & Delete button */}
                       <div className="flex items-center gap-3">
-                        <span className="text-xs font-bold text-[#16A34A]">
-                          {formatBDT(item.product.price * item.quantity)}
-                        </span>
+                        <Price
+                          amount={item.product.price * item.quantity}
+                          className="text-sm font-bold text-[#16A34A]"
+                          symbolClassName="text-[#16A34A]"
+                        />
                         <button
                           onClick={() => removeItem(item.product.id)}
                           className="text-gray-300 hover:text-rose-600 transition-colors p-1"
@@ -203,14 +206,14 @@ export const CartDrawer: React.FC = () => {
             <div className="p-4 bg-gray-50 border-t border-gray-200 space-y-3">
               {/* Coupon Form */}
               {couponCode ? (
-                <div className="flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-xs text-emerald-800">
+                <div className="flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-xs sm:text-sm text-emerald-800">
                   <div className="flex items-center gap-1.5 font-medium">
-                    <Tag className="w-3.5 h-3.5 text-emerald-600" />
+                    <Tag className="w-4 h-4 text-emerald-600" />
                     <span>Coupon "{couponCode}" applied</span>
                   </div>
                   <button
                     onClick={removeCoupon}
-                    className="text-xs text-rose-600 hover:underline font-semibold"
+                    className="text-xs sm:text-sm text-rose-600 hover:underline font-semibold"
                   >
                     Remove
                   </button>
@@ -226,7 +229,7 @@ export const CartDrawer: React.FC = () => {
                   />
                   <button
                     type="submit"
-                    className="px-3.5 py-2 bg-gray-800 hover:bg-gray-900 text-white text-xs font-semibold rounded-lg transition-colors"
+                    className="px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors"
                   >
                     Apply
                   </button>
@@ -234,18 +237,17 @@ export const CartDrawer: React.FC = () => {
               )}
 
               {/* Price Breakdown */}
-              <div className="space-y-1.5 text-xs text-gray-600">
+              <div className="space-y-1.5 text-xs sm:text-sm text-gray-600">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span className="font-semibold text-gray-900">
-                    {formatBDT(subtotal)}
-                  </span>
+                  <Price amount={subtotal} className="font-semibold text-gray-900" />
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between text-emerald-700">
                     <span>Discount</span>
-                    <span className="font-semibold">
-                      -{formatBDT(discount)}
+                    <span className="font-semibold text-emerald-700 inline-flex items-baseline gap-0.5">
+                      <span>-</span>
+                      <Price amount={discount} className="font-semibold text-emerald-700" />
                     </span>
                   </div>
                 )}
@@ -255,15 +257,17 @@ export const CartDrawer: React.FC = () => {
                     {shippingFee === 0 ? (
                       <span className="text-emerald-600 font-bold">FREE</span>
                     ) : (
-                      formatBDT(shippingFee)
+                      <Price amount={shippingFee} className="font-semibold text-gray-900" />
                     )}
                   </span>
                 </div>
-                <div className="flex justify-between text-sm font-bold text-gray-900 pt-2 border-t border-gray-200">
+                <div className="flex justify-between text-base font-bold text-gray-900 pt-2 border-t border-gray-200">
                   <span>Total Amount</span>
-                  <span className="text-[#16A34A] text-base font-bold">
-                    {formatBDT(total)}
-                  </span>
+                  <Price
+                    amount={total}
+                    className="text-[#16A34A] text-lg font-bold"
+                    symbolClassName="text-xl text-[#16A34A]"
+                  />
                 </div>
               </div>
 

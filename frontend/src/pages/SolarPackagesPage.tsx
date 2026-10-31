@@ -18,6 +18,7 @@ import { SolarPackage } from '../types';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { Price } from '../components/common/Price';
 import { formatBDT } from '../utils/currency';
 
 export const SolarPackagesPage: React.FC = () => {
@@ -107,36 +108,36 @@ export const SolarPackagesPage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-5">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="px-2.5 py-0.5 rounded-full bg-amber-400 text-gray-950 text-[10px] font-black uppercase tracking-wider">
+                    <span className="px-2.5 py-0.5 rounded-full bg-amber-400 text-gray-950 text-xs font-black uppercase tracking-wider">
                       {pkg.systemType}
                     </span>
                     {pkg.netMeteringEligible && (
-                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-bold">
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-xs font-bold">
                         Net-Metering Approved
                       </span>
                     )}
                   </div>
                   <h3 className="text-lg sm:text-xl font-black text-white">{pkg.title}</h3>
-                  <p className="text-xs text-green-200 mt-0.5">{pkg.tagline}</p>
+                  <p className="text-sm text-green-200 mt-0.5">{pkg.tagline}</p>
                 </div>
               </div>
 
               {/* Performance Metrics Bar */}
-              <div className="grid grid-cols-3 bg-[#F0FDF4] p-3.5 border-b border-green-100 text-center divide-x divide-green-200/60 text-xs">
+              <div className="grid grid-cols-3 bg-[#F0FDF4] p-3.5 border-b border-green-100 text-center divide-x divide-green-200/60 text-sm">
                 <div>
-                  <div className="text-gray-500 text-xs">Solar Capacity</div>
+                  <div className="text-gray-500 text-sm">Solar Capacity</div>
                   <div className="font-bold text-gray-900 text-sm sm:text-base mt-0.5">
                     {pkg.specifications.totalSolarCapacityWp} Wp
                   </div>
                 </div>
                 <div>
-                  <div className="text-gray-500 text-xs">Daily Est. Generation</div>
+                  <div className="text-gray-500 text-sm">Daily Est. Generation</div>
                   <div className="font-bold text-gray-900 text-sm sm:text-base mt-0.5">
                     ~{pkg.dailyGenerationEstimateKwh} kWh / day
                   </div>
                 </div>
                 <div>
-                  <div className="text-gray-500 text-xs">Est. Monthly Savings</div>
+                  <div className="text-gray-500 text-sm">Est. Monthly Savings</div>
                   <div className="font-bold text-[#16A34A] text-sm sm:text-base mt-0.5">
                     {formatBDT(pkg.savingsMonthlyEstimateBdt)} / mo
                   </div>
@@ -177,13 +178,17 @@ export const SolarPackagesPage: React.FC = () => {
             {/* Price & Cart Actions Bottom Bar */}
             <div className="p-5 sm:p-6 bg-gray-50/80 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <div className="text-2xl sm:text-3xl font-bold text-[#16A34A]">
-                  {formatBDT(pkg.price)}
-                </div>
+                <Price
+                  amount={pkg.price}
+                  className="text-2xl sm:text-3xl font-bold text-[#16A34A]"
+                  symbolClassName="text-3xl sm:text-4xl text-[#16A34A]"
+                />
                 {pkg.originalPrice && (
-                  <span className="text-xs sm:text-sm text-gray-400 line-through">
-                    {formatBDT(pkg.originalPrice)}
-                  </span>
+                  <Price
+                    amount={pkg.originalPrice}
+                    className="text-xs sm:text-sm text-gray-400 line-through block mt-0.5"
+                    symbolClassName="text-gray-400"
+                  />
                 )}
                 <div className="text-xs text-gray-500 mt-0.5">Installation & Mounting Included</div>
               </div>

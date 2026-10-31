@@ -62,7 +62,7 @@ export const MegaMenu: React.FC = () => {
                     <div
                       key={cat.id || cat.slug}
                       onMouseEnter={() => setActiveHoverCategory(cat)}
-                      className={`flex items-center justify-between px-4 py-2.5 text-xs cursor-pointer transition-colors ${
+                      className={`flex items-center justify-between px-4 py-2.5 text-sm cursor-pointer transition-colors ${
                         currentHoverCategory?.id === cat.id
                           ? 'bg-[#F0FDF4] text-[#16A34A] font-bold border-l-4 border-[#16A34A]'
                           : 'text-gray-700 hover:bg-gray-100 font-medium'
@@ -72,7 +72,7 @@ export const MegaMenu: React.FC = () => {
                         {getCategoryIcon(cat.iconName)}
                         <span className="truncate">{cat.name}</span>
                       </div>
-                      <span className="text-[10px] text-gray-400 font-normal">
+                      <span className="text-xs text-gray-500 font-normal">
                         ({cat.productCount})
                       </span>
                     </div>
@@ -85,17 +85,17 @@ export const MegaMenu: React.FC = () => {
                     <div>
                       <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
                         <div>
-                          <h4 className="font-bold text-gray-900 text-sm">
+                          <h4 className="font-bold text-gray-900 text-base">
                             {currentHoverCategory.name}
                           </h4>
-                          <p className="text-xs text-gray-500 mt-0.5">
+                          <p className="text-sm text-gray-500 mt-0.5">
                             {currentHoverCategory.description}
                           </p>
                         </div>
                         <Link
                           to={`/shop?category=${currentHoverCategory.slug || currentHoverCategory.id}`}
                           onClick={() => setIsCategoryDropdownOpen(false)}
-                          className="text-xs font-semibold text-green-700 hover:text-green-900"
+                          className="text-sm font-semibold text-green-700 hover:text-green-900"
                         >
                           Browse all &rarr;
                         </Link>
@@ -109,10 +109,10 @@ export const MegaMenu: React.FC = () => {
                             onClick={() => setIsCategoryDropdownOpen(false)}
                             className="p-2.5 rounded-lg border border-gray-100 hover:border-green-200 hover:bg-green-50/40 transition-colors group"
                           >
-                            <div className="text-xs font-semibold text-gray-800 group-hover:text-green-700">
+                            <div className="text-sm font-semibold text-gray-800 group-hover:text-green-700">
                               {sub.name}
                             </div>
-                            <div className="text-[10px] text-gray-400 mt-0.5">
+                            <div className="text-xs text-gray-500 mt-0.5">
                               {sub.productCount} products listed
                             </div>
                           </Link>
@@ -124,18 +124,18 @@ export const MegaMenu: React.FC = () => {
                   {/* Featured Banner at bottom of mega menu */}
                   <div className="mt-4 p-3 bg-[#F0FDF4] border border-green-200 text-gray-900 rounded-lg flex items-center justify-between">
                     <div>
-                      <div className="text-xs font-bold flex items-center gap-1.5 text-[#16A34A]">
-                        <Sparkles className="w-3.5 h-3.5" />
+                      <div className="text-sm font-bold flex items-center gap-1.5 text-[#16A34A]">
+                        <Sparkles className="w-4 h-4 text-amber-500" />
                         <span>Pre-engineered Solar Packages</span>
                       </div>
-                      <div className="text-[11px] text-gray-600">
+                      <div className="text-xs text-gray-600 mt-0.5">
                         Residential hybrid & commercial packages with 25-year warranty
                       </div>
                     </div>
                     <Link
                       to="/solar-packages"
                       onClick={() => setIsCategoryDropdownOpen(false)}
-                      className="px-3 py-1 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs rounded shadow-xs transition-colors"
+                      className="px-3.5 py-1.5 bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-xs sm:text-sm rounded shadow-xs transition-colors"
                     >
                       View Packages
                     </Link>

@@ -15,7 +15,7 @@ export const RatingStars: React.FC<RatingStarsProps> = ({
   showText = true,
 }) => {
   return (
-    <div className="flex items-center gap-1.5 text-xs text-gray-500">
+    <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-500">
       <div className="flex items-center text-amber-400">
         {[1, 2, 3, 4, 5].map((star) => (
           <Star

@@ -7,6 +7,7 @@ import { useWishlist } from '../../context/WishlistContext';
 import { useQuickView } from '../../context/QuickViewContext';
 import { useToast } from '../../context/ToastContext';
 import { RatingStars } from '../common/RatingStars';
+import { Price } from '../common/Price';
 import { formatBDT } from '../../utils/currency';
 
 interface ProductCardProps {
@@ -77,7 +78,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
       <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 pointer-events-none">
         <div className="flex flex-col gap-1 items-start">
           {discountPercent && (
-            <span className="px-2 py-0.5 rounded bg-rose-600 text-white font-bold text-xs shadow-xs">
+            <span className="px-2.5 py-0.5 rounded bg-rose-600 text-white font-bold text-xs sm:text-sm shadow-xs">
               -{discountPercent}%
             </span>
           )}
@@ -117,10 +118,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
         {/* Quick View Hover Button */}
         <button
           onClick={handleQuickView}
-          className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white/95 hover:bg-white text-gray-800 text-xs font-semibold rounded-md shadow-xs border border-gray-200 opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center gap-1.5 hover:text-[#16A34A]"
+          className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white/95 hover:bg-white text-gray-800 text-xs sm:text-sm font-semibold rounded-md shadow-xs border border-gray-200 opacity-0 group-hover:opacity-100 transition-all duration-150 flex items-center gap-1.5 hover:text-[#16A34A]"
           aria-label={`Quick view ${product.name}`}
         >
-          <Eye className="w-3.5 h-3.5" />
+          <Eye className="w-4 h-4" />
           <span>Quick View</span>
         </button>
       </Link>
@@ -130,11 +131,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
         <div>
           {/* Brand & Technical Spec Badge */}
           <div className="flex items-center justify-between gap-1 mb-1.5">
-            <span className="text-xs font-bold text-[#16A34A] uppercase tracking-wider truncate">
+            <span className="text-xs sm:text-sm font-bold text-[#16A34A] uppercase tracking-wider truncate">
               {product.brand}
             </span>
             {specBadge && (
-              <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded shrink-0">
+              <span className="text-xs sm:text-sm font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded shrink-0">
                 {specBadge}
               </span>
             )}
@@ -143,7 +144,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
           {/* Product Title */}
           <Link
             to={`/product/${product.slug}`}
-            className="block text-sm sm:text-base font-semibold text-gray-900 group-hover:text-[#16A34A] transition-colors line-clamp-2 min-h-[2.5rem] leading-snug"
+            className="block text-base sm:text-lg font-bold text-gray-900 group-hover:text-[#16A34A] transition-colors line-clamp-2 min-h-[2.8rem] leading-snug"
             title={product.name}
           >
             {product.name}
@@ -151,8 +152,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
 
           {/* Ratings & Stock Status */}
           <div className="flex items-center justify-between mt-2">
-            <RatingStars rating={product.rating} reviewCount={product.reviewCount} size={13} />
-            <span className="text-xs text-emerald-700 font-medium flex items-center gap-1">
+            <RatingStars rating={product.rating} reviewCount={product.reviewCount} size={14} />
+            <span className="text-xs sm:text-sm text-emerald-700 font-semibold flex items-center gap-1">
               <Check className="w-3.5 h-3.5 text-emerald-600" />
               <span>In Stock</span>
             </span>
@@ -162,21 +163,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
         {/* Price & Add to Cart Action */}
         <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between gap-2">
           <div>
-            <div className="flex items-baseline gap-1.5 flex-wrap">
-              <span className="text-base sm:text-lg font-bold text-gray-900">
-                {formatBDT(product.price)}
-              </span>
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <Price
+                amount={product.price}
+                className="text-lg sm:text-xl font-bold text-gray-900"
+                symbolClassName="text-[#16A34A] text-xl"
+              />
               {product.originalPrice && (
-                <span className="text-xs sm:text-sm text-gray-400 line-through">
-                  {formatBDT(product.originalPrice)}
-                </span>
+                <Price
+                  amount={product.originalPrice}
+                  className="text-xs sm:text-sm text-gray-400 line-through"
+                  symbolClassName="text-gray-400"
+                />
               )}
             </div>
           </div>
 
           <button
             onClick={handleAddToCart}
-            className="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white transition-colors shadow-xs active:scale-95 flex items-center gap-1.5 shrink-0 min-h-[38px]"
+            className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white transition-colors shadow-xs active:scale-95 flex items-center gap-1.5 shrink-0 min-h-[38px]"
             title="Add to Cart"
             aria-label={`Add ${product.name} to Cart`}
           >

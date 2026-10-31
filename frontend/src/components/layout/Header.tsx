@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
                 <span className="text-[#16A34A]">SOLAR</span>
                 <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500 -ml-0.5" />
               </div>
-              <p className="text-[10px] tracking-wider uppercase font-semibold text-gray-500 mt-0.5">
+              <p className="text-xs tracking-wider uppercase font-semibold text-gray-500 mt-0.5">
                 Energy & Electrical
               </p>
             </div>
@@ -71,8 +71,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
           >
             <PhoneCall className="w-4 h-4 text-[#16A34A]" />
             <div className="text-left leading-tight">
-              <div className="text-[10px] text-gray-500 font-medium">Customer Support</div>
-              <div className="text-xs font-bold text-gray-900">+880 1700-SOLAR</div>
+              <div className="text-xs text-gray-500 font-medium">Customer Support</div>
+              <div className="text-sm font-bold text-gray-900">+880 1700-SOLAR</div>
             </div>
           </a>
 
@@ -84,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
           >
             <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
             {wishlistCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#16A34A] text-white text-[10px] font-bold flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 min-w-4 h-4 px-1 rounded-full bg-[#16A34A] text-white text-xs font-bold flex items-center justify-center">
                 {wishlistCount}
               </span>
             )}
@@ -96,12 +96,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
               to="/account"
               className="flex items-center gap-2 p-1.5 sm:px-3 sm:py-1.5 rounded-lg text-gray-700 hover:bg-green-50 hover:text-green-900 transition-colors border border-transparent hover:border-green-200"
             >
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-green-100 text-[#16A34A] font-bold text-xs flex items-center justify-center">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-green-100 text-[#16A34A] font-bold text-sm flex items-center justify-center">
                 {user.name.charAt(0)}
               </div>
               <div className="hidden lg:block text-left leading-tight">
-                <div className="text-[10px] text-gray-400">Account</div>
-                <div className="text-xs font-bold text-gray-900 truncate max-w-[100px]">
+                <div className="text-xs text-gray-500">Account</div>
+                <div className="text-sm font-bold text-gray-900 truncate max-w-[100px]">
                   {user.name.split(' ')[0]}
                 </div>
               </div>
@@ -113,28 +113,29 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
               title="Sign In or Register"
             >
               <User className="w-5 h-5 text-gray-700" />
-              <span className="hidden lg:inline text-xs font-semibold">Sign In</span>
+              <span className="hidden lg:inline text-sm font-semibold">Sign In</span>
             </button>
           )}
 
           {/* Shopping Cart Button */}
           <button
             onClick={openCart}
-            className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-95 min-h-[40px]"
+            className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white font-semibold text-sm transition-all shadow-xs active:scale-95 min-h-[40px]"
             aria-label="View shopping cart"
           >
             <div className="relative">
               <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               {totalCount > 0 && (
-                <span className="absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-amber-400 text-gray-950 text-[11px] font-bold flex items-center justify-center leading-none">
+                <span className="absolute -top-2 -right-2 min-w-[20px] h-[20px] px-1 rounded-full bg-amber-400 text-gray-950 text-xs font-bold flex items-center justify-center leading-none">
                   {totalCount}
                 </span>
               )}
             </div>
             <div className="hidden sm:flex flex-col text-left leading-tight">
-              <span className="text-[11px] text-green-100 font-normal">Cart</span>
-              <span className="font-bold text-white text-xs sm:text-sm">
-                {formatBDT(subtotal)}
+              <span className="text-xs text-green-100 font-normal">Cart</span>
+              <span className="font-extrabold text-white text-sm sm:text-base flex items-baseline gap-1">
+                <span className="font-black text-sm sm:text-base text-amber-300">৳</span>
+                <span>{formatBDT(subtotal, { includeSymbol: false })}</span>
               </span>
             </div>
           </button>

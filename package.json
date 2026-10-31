@@ -1,0 +1,11 @@
+{
+  "name": "bdsolarenergy-root",
+  "private": true,
+  "description": "Root orchestrator for BD Solar Energy full-stack platform",
+  "scripts": {
+    "start": "node run.js",
+    "dev": "node run.js",
+    "test:integration": "node frontend/scripts/test_integration.js"
+  }
+}
+

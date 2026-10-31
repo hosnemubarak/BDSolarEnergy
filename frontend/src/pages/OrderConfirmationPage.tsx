@@ -15,6 +15,7 @@ import {
 import { orderService } from '../services/orderService';
 import { Order } from '../types';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { Price } from '../components/common/Price';
 import { formatBDT } from '../utils/currency';
 
 export const OrderConfirmationPage: React.FC = () => {
@@ -74,37 +75,37 @@ export const OrderConfirmationPage: React.FC = () => {
 
         {/* Interactive Order Timeline */}
         <div className="pt-6 border-t border-gray-100 max-w-2xl mx-auto">
-          <div className="grid grid-cols-4 gap-2 text-center text-xs">
+          <div className="grid grid-cols-4 gap-2 text-center text-xs sm:text-sm">
             <div className="space-y-1.5">
               <div className="w-8 h-8 rounded-full bg-[#16A34A] text-white flex items-center justify-center mx-auto font-bold text-xs shadow-sm">
                 ✓
               </div>
-              <span className="font-semibold text-gray-900 block text-xs">Placed</span>
-              <span className="text-[11px] text-gray-400">Just Now</span>
+              <span className="font-semibold text-gray-900 block text-sm">Placed</span>
+              <span className="text-xs text-gray-500">Just Now</span>
             </div>
 
             <div className="space-y-1.5">
               <div className="w-8 h-8 rounded-full bg-green-100 text-green-800 flex items-center justify-center mx-auto font-bold text-xs">
                 2
               </div>
-              <span className="font-semibold text-gray-700 block text-xs">Processing</span>
-              <span className="text-[11px] text-gray-400">Warehouse check</span>
+              <span className="font-semibold text-gray-700 block text-sm">Processing</span>
+              <span className="text-xs text-gray-500">Warehouse check</span>
             </div>
 
             <div className="space-y-1.5">
               <div className="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center mx-auto font-bold text-xs">
                 3
               </div>
-              <span className="font-medium text-gray-400 block text-xs">Shipped</span>
-              <span className="text-[11px] text-gray-400">{order.courierName}</span>
+              <span className="font-medium text-gray-500 block text-sm">Shipped</span>
+              <span className="text-xs text-gray-500">{order.courierName}</span>
             </div>
 
             <div className="space-y-1.5">
               <div className="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center mx-auto font-bold text-xs">
                 4
               </div>
-              <span className="font-medium text-gray-400 block text-xs">Delivered</span>
-              <span className="text-[11px] text-gray-400">{order.estimatedDeliveryDate}</span>
+              <span className="font-medium text-gray-500 block text-sm">Delivered</span>
+              <span className="text-xs text-gray-500">{order.estimatedDeliveryDate}</span>
             </div>
           </div>
         </div>
@@ -201,13 +202,13 @@ export const OrderConfirmationPage: React.FC = () => {
                     </div>
                   </td>
                   <td className="p-3 text-center text-gray-700">
-                    {formatBDT(item.price)}
+                    <Price amount={item.price} className="text-gray-700" />
                   </td>
                   <td className="p-3 text-center font-bold text-gray-900">
                     {item.quantity}
                   </td>
                   <td className="p-3 text-right font-bold text-[#16A34A]">
-                    {formatBDT(item.subtotal)}
+                    <Price amount={item.subtotal} className="font-bold text-[#16A34A]" symbolClassName="text-[#16A34A]" />
                   </td>
                 </tr>
               ))}
@@ -220,23 +221,30 @@ export const OrderConfirmationPage: React.FC = () => {
           <div className="w-full sm:w-64 space-y-1.5 text-xs sm:text-sm text-gray-600">
             <div className="flex justify-between">
               <span>Subtotal:</span>
-              <span className="font-semibold text-gray-900">{formatBDT(order.subtotal)}</span>
+              <Price amount={order.subtotal} className="font-semibold text-gray-900" />
             </div>
             {order.discount > 0 && (
               <div className="flex justify-between text-emerald-700">
                 <span>Discount ({order.couponCode}):</span>
-                <span className="font-semibold">-{formatBDT(order.discount)}</span>
+                <span className="font-semibold text-emerald-700 inline-flex items-baseline gap-0.5">
+                  <span>-</span>
+                  <Price amount={order.discount} className="font-semibold text-emerald-700" />
+                </span>
               </div>
             )}
             <div className="flex justify-between">
               <span>Shipping Fee:</span>
               <span className="font-semibold text-gray-900">
-                {order.shippingFee === 0 ? <span className="text-emerald-600 font-bold">FREE</span> : formatBDT(order.shippingFee)}
+                {order.shippingFee === 0 ? <span className="text-emerald-600 font-bold">FREE</span> : <Price amount={order.shippingFee} className="font-semibold text-gray-900" />}
               </span>
             </div>
             <div className="flex justify-between text-base font-bold text-gray-900 pt-2 border-t border-gray-200">
               <span>Total Paid:</span>
-              <span className="text-[#16A34A]">{formatBDT(order.total)}</span>
+              <Price
+                amount={order.total}
+                className="text-[#16A34A] text-lg font-bold"
+                symbolClassName="text-xl text-[#16A34A]"
+              />
             </div>
           </div>
         </div>

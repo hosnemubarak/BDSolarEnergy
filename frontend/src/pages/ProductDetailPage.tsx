@@ -25,6 +25,7 @@ import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { RatingStars } from '../components/common/RatingStars';
 import { Badge } from '../components/common/Badge';
 import { ProductCard } from '../components/product/ProductCard';
+import { Price } from '../components/common/Price';
 import { formatBDT } from '../utils/currency';
 
 export const ProductDetailPage: React.FC = () => {
@@ -182,10 +183,10 @@ export const ProductDetailPage: React.FC = () => {
             {/* Brand, SKU and Wishlist */}
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-green-700 uppercase tracking-wider bg-green-50 px-2 py-0.5 rounded">
+                <span className="text-xs sm:text-sm font-bold text-green-700 uppercase tracking-wider bg-green-50 px-2.5 py-0.5 rounded">
                   {product.brand}
                 </span>
-                <span className="text-xs text-gray-400 font-mono">SKU: {product.sku}</span>
+                <span className="text-xs sm:text-sm text-gray-500 font-mono">SKU: {product.sku}</span>
               </div>
 
               <div className="flex items-center gap-2">
@@ -218,7 +219,7 @@ export const ProductDetailPage: React.FC = () => {
             {/* Rating & Stock */}
             <div className="mt-3 flex items-center justify-between flex-wrap gap-2 border-b border-gray-100 pb-3">
               <RatingStars rating={product.rating} reviewCount={product.reviewCount} size={15} />
-              <div className="flex items-center gap-2 text-xs">
+              <div className="flex items-center gap-2 text-xs sm:text-sm">
                 <span className="text-emerald-700 font-semibold flex items-center gap-1 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   <span>In Stock ({product.stock} units)</span>
@@ -229,22 +230,26 @@ export const ProductDetailPage: React.FC = () => {
             {/* Price Box */}
             <div className="mt-4 p-4 bg-[#F0FDF4] rounded-xl border border-green-100 flex items-baseline justify-between flex-wrap gap-3">
               <div>
-                <span className="text-2xl sm:text-3xl font-bold text-[#16A34A]">
-                  {formatBDT(product.price)}
-                </span>
+                <Price
+                  amount={product.price}
+                  className="text-2xl sm:text-3xl font-bold text-[#16A34A]"
+                  symbolClassName="text-3xl sm:text-4xl text-[#16A34A]"
+                />
                 {product.originalPrice && (
-                  <span className="ml-3 text-sm sm:text-base text-gray-400 line-through">
-                    {formatBDT(product.originalPrice)}
-                  </span>
+                  <Price
+                    amount={product.originalPrice}
+                    className="ml-3 text-sm sm:text-base text-gray-400 line-through"
+                    symbolClassName="text-gray-400"
+                  />
                 )}
-                <div className="text-xs text-gray-500 mt-1">
+                <div className="text-xs sm:text-sm text-gray-600 mt-1">
                   VAT & Import duty included. Free delivery for orders above {formatBDT(50000)}.
                 </div>
               </div>
 
               {specs.warrantyYears && (
                 <div className="text-right">
-                  <span className="px-3 py-1 bg-white text-green-900 text-xs font-semibold rounded-lg border border-green-200 shadow-xs inline-flex items-center gap-1.5">
+                  <span className="px-3 py-1 bg-white text-green-900 text-xs sm:text-sm font-semibold rounded-lg border border-green-200 shadow-xs inline-flex items-center gap-1.5">
                     <ShieldCheck className="w-4 h-4 text-[#16A34A]" />
                     <span>{specs.warrantyYears} Years Warranty</span>
                   </span>
@@ -255,10 +260,10 @@ export const ProductDetailPage: React.FC = () => {
             {/* Highlights bullets */}
             {product.highlights && product.highlights.length > 0 && (
               <div className="mt-4 space-y-1.5">
-                <div className="text-xs font-bold text-gray-700 uppercase tracking-wider">
+                <div className="text-sm font-bold text-gray-700 uppercase tracking-wider">
                   Key Technical Features:
                 </div>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-gray-600">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs sm:text-sm text-gray-600">
                   {product.highlights.map((h, i) => (
                     <li key={i} className="flex items-start gap-1.5">
                       <Zap className="w-3.5 h-3.5 text-[#15803D] shrink-0 mt-0.5" />
@@ -600,9 +605,11 @@ export const ProductDetailPage: React.FC = () => {
       <div className="fixed bottom-14 left-0 right-0 z-30 sm:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 py-2.5 flex items-center justify-between gap-3 shadow-lg">
         <div>
           <span className="text-xs text-gray-500 block">Total Price</span>
-          <span className="text-base sm:text-lg font-bold text-gray-900">
-            {formatBDT(product.price * quantity)}
-          </span>
+          <Price
+            amount={product.price * quantity}
+            className="text-base sm:text-lg font-bold text-gray-900"
+            symbolClassName="text-base sm:text-lg text-[#16A34A]"
+          />
         </div>
 
         <div className="flex items-center gap-2">

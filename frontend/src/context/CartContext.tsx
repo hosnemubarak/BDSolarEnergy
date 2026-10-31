@@ -117,7 +117,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
     return {
       success: false,
-      message: 'Coupon validation service is currently unavailable. No active promotion found for this code.',
+      message: 'Invalid or expired coupon code.',
     };
   };
 

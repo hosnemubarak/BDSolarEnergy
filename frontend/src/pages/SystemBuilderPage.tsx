@@ -21,6 +21,7 @@ import { useToast } from '../context/ToastContext';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { productService } from '../services/productService';
 import { Product } from '../types';
+import { Price } from '../components/common/Price';
 import { formatBDT } from '../utils/currency';
 
 interface PanelChoice {
@@ -311,8 +312,8 @@ export const SystemBuilderPage: React.FC = () => {
             {/* Quantity Stepper */}
             <div className="pt-2 flex items-center justify-between bg-gray-50 p-3.5 rounded-2xl border border-gray-200">
               <div>
-                <span className="text-xs font-bold text-gray-800 block">Number of Panels</span>
-                <span className="text-[11px] text-gray-500">Each panel generates ~{selectedPanel.watts}W peak</span>
+                <span className="text-sm font-bold text-gray-800 block">Number of Panels</span>
+                <span className="text-xs text-gray-500">Each panel generates ~{selectedPanel.watts}W peak</span>
               </div>
               <div className="flex items-center gap-3">
                 <button
@@ -369,7 +370,7 @@ export const SystemBuilderPage: React.FC = () => {
                     </div>
                     <div>
                       <h5 className="font-bold text-xs sm:text-sm text-gray-900">{inv.name}</h5>
-                      <div className="text-[11px] text-gray-500 flex items-center gap-2">
+                      <div className="text-xs text-gray-500 flex items-center gap-2">
                         <span className="text-[#16A34A] font-semibold">{inv.type} Topology</span>
                         <span>•</span>
                         <span>Max PV: {inv.maxArrayWatts}W</span>
@@ -473,7 +474,7 @@ export const SystemBuilderPage: React.FC = () => {
               <h3 className="font-black text-gray-900 text-base">
                 System Performance Estimate
               </h3>
-              <span className="px-2 py-0.5 rounded-full bg-[#F0FDF4] text-[#16A34A] font-bold text-[10px] uppercase border border-green-200">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#F0FDF4] text-[#16A34A] font-bold text-xs uppercase border border-green-200">
                 Calculated Estimate
               </span>
             </div>
@@ -494,7 +495,11 @@ export const SystemBuilderPage: React.FC = () => {
 
               <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
                 <span className="text-emerald-700 block text-xs">Est. Monthly Savings</span>
-                <span className="text-base sm:text-lg font-bold text-[#16A34A]">{formatBDT(monthlySavingsBdt)}</span>
+                <Price
+                  amount={monthlySavingsBdt}
+                  className="text-base sm:text-lg font-bold text-[#16A34A]"
+                  symbolClassName="text-[#16A34A]"
+                />
                 <span className="text-xs text-emerald-600 block mt-0.5">Off Utility Bill</span>
               </div>
 
@@ -550,9 +555,11 @@ export const SystemBuilderPage: React.FC = () => {
               <div className="flex items-baseline justify-between">
                 <div>
                   <span className="text-xs text-gray-500 block">Total Estimated System Price</span>
-                  <span className="text-2xl sm:text-3xl font-bold text-[#16A34A]">
-                    {formatBDT(totalPrice)}
-                  </span>
+                  <Price
+                    amount={totalPrice}
+                    className="text-2xl sm:text-3xl font-bold text-[#16A34A]"
+                    symbolClassName="text-3xl sm:text-4xl text-[#16A34A]"
+                  />
                 </div>
                 <span className="text-xs text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md font-semibold">
                   Free Shipping Eligible
@@ -570,7 +577,7 @@ export const SystemBuilderPage: React.FC = () => {
             </button>
 
             {/* Notice */}
-            <p className="text-[11px] text-gray-400 text-center leading-tight">
+            <p className="text-xs text-gray-500 text-center leading-relaxed">
               *All solar configurations are engineering estimates until verified by an on-site rooftop azimuth and tilt survey.
             </p>
           </div>

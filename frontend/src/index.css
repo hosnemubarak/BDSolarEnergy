@@ -22,8 +22,30 @@
   --color-border-hover: #D1D5DB;
 }
 
+/* 
+ * Normalize Bangladeshi Taka glyph (৳ U+09F3) across platforms.
+ * Automatically scales the symbol up by 22-25% and ensures bold weights
+ * match the heavy geometric numerals of Plus Jakarta Sans.
+ */
+@font-face {
+  font-family: 'TakaGlyph';
+  src: local('Nirmala UI Bold'), local('Segoe UI Bold'), local('Arial Bold'), local('Nirmala UI'), local('Segoe UI');
+  unicode-range: U+09F3;
+  font-weight: 600 900;
+  size-adjust: 124%;
+}
+
+@font-face {
+  font-family: 'TakaGlyph';
+  src: local('Nirmala UI'), local('Segoe UI'), local('Arial');
+  unicode-range: U+09F3;
+  font-weight: 100 500;
+  size-adjust: 120%;
+}
+
 :root {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'TakaGlyph', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 16.5px;
   color: #1F2937;
   background-color: #FFFFFF;
   text-rendering: optimizeLegibility;

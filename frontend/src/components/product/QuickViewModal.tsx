@@ -16,6 +16,7 @@ import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useToast } from '../../context/ToastContext';
 import { RatingStars } from '../common/RatingStars';
+import { Price } from '../common/Price';
 import { formatBDT } from '../../utils/currency';
 
 export const QuickViewModal: React.FC = () => {
@@ -151,13 +152,17 @@ export const QuickViewModal: React.FC = () => {
 
                 {/* Price */}
                 <div className="mt-4 p-3 bg-[#F0FDF4] rounded-lg border border-green-100 flex items-baseline gap-3">
-                  <span className="text-2xl font-bold text-[#16A34A]">
-                    {formatBDT(activeProduct.price)}
-                  </span>
+                  <Price
+                    amount={activeProduct.price}
+                    className="text-2xl font-bold text-[#16A34A]"
+                    symbolClassName="text-3xl text-[#16A34A]"
+                  />
                   {activeProduct.originalPrice && (
-                    <span className="text-sm text-gray-400 line-through">
-                      {formatBDT(activeProduct.originalPrice)}
-                    </span>
+                    <Price
+                      amount={activeProduct.originalPrice}
+                      className="text-sm text-gray-400 line-through"
+                      symbolClassName="text-gray-400"
+                    />
                   )}
                 </div>
 

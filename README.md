@@ -58,7 +58,38 @@ bdsolarenergy/
 
 ## 3. Quick Start (Running Both Frontend & Backend)
 
-### Step 1: Backend Setup
+### One-Command Runner (Root Directory)
+
+You can launch both the backend and frontend concurrently with a single command from the project root:
+
+```bash
+# Option 1 (Windows Batch - terminal or double-click in File Explorer):
+.\run.bat
+
+# Option 2 (PowerShell):
+.\run.ps1
+
+# Option 3 (Node.js / npm):
+node run.js
+# or
+npm start
+
+# Option 4 (Separate desktop windows):
+.\run-windows.bat
+```
+
+- **Frontend Storefront**: `http://localhost:5173/`
+- **Django REST API**: `http://127.0.0.1:8001/api/v1/`
+- **Django Admin Panel**: `http://127.0.0.1:8001/admin/`
+- **Swagger Documentation**: `http://127.0.0.1:8001/api/docs/`
+
+Press `Ctrl+C` in the terminal to cleanly terminate both servers.
+
+---
+
+### Manual Step-by-Step Setup
+
+#### Step 1: Backend Setup
 
 ```bash
 # Navigate to backend directory

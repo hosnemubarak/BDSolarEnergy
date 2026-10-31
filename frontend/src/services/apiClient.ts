@@ -65,6 +65,92 @@ export const getOrCreateSessionId = (): string => {
   }
 };
 
+export function formatApiErrorMessage(errorBody: any, status?: number): string {
+  const fallback = status
+    ? `Request failed with status ${status}. Please try again.`
+    : 'An unexpected error occurred. Please try again.';
+
+  if (!errorBody) return fallback;
+
+  if (typeof errorBody === 'string') {
+    const trimmed = errorBody.trim();
+    if (trimmed.startsWith('<') || trimmed.startsWith('<!DOCTYPE')) {
+      return status ? `Server error (${status}). Please try again later.` : fallback;
+    }
+    return trimmed;
+  }
+
+  if (typeof errorBody !== 'object') return String(errorBody);
+
+  // 1. Direct detail / message / error string
+  if (typeof errorBody.detail === 'string') return errorBody.detail;
+  if (typeof errorBody.message === 'string') return errorBody.message;
+  if (typeof errorBody.error === 'string') return errorBody.error;
+
+  // 2. Non-field errors or general errors from Django REST framework
+  if (Array.isArray(errorBody.non_field_errors) && errorBody.non_field_errors.length > 0) {
+    return errorBody.non_field_errors.join(' ');
+  }
+  if (typeof errorBody.non_field_errors === 'string') {
+    return errorBody.non_field_errors;
+  }
+  if (Array.isArray(errorBody.__all__) && errorBody.__all__.length > 0) {
+    return errorBody.__all__.join(' ');
+  }
+
+  // 3. Field validation errors mapping
+  const fieldNames: Record<string, string> = {
+    password1: 'Password',
+    password2: 'Confirm password',
+    confirmPassword: 'Confirm password',
+    new_password1: 'New password',
+    new_password2: 'Confirm password',
+    old_password: 'Current password',
+    username: 'Username / Email',
+    email: 'Email address',
+    phone: 'Phone number',
+    first_name: 'First name',
+    last_name: 'Last name',
+    fullName: 'Full name',
+    fullAddress: 'Address',
+    thanaArea: 'Area / Thana',
+    district: 'District',
+    division: 'Division',
+    postalCode: 'Postal code',
+    paymentMethod: 'Payment method',
+    items: 'Cart items',
+  };
+
+  const collected: string[] = [];
+  for (const [key, val] of Object.entries(errorBody)) {
+    if (key === 'detail' || key === 'message' || key === 'error') continue;
+
+    const label = fieldNames[key] || (key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' '));
+    let text = '';
+    if (Array.isArray(val)) {
+      text = val.map((v) => (typeof v === 'object' ? JSON.stringify(v) : String(v))).join(' ');
+    } else if (typeof val === 'object' && val !== null) {
+      text = JSON.stringify(val);
+    } else if (val !== undefined && val !== null) {
+      text = String(val);
+    }
+
+    if (text) {
+      if (text.toLowerCase().startsWith(label.toLowerCase())) {
+        collected.push(text);
+      } else {
+        collected.push(`${label}: ${text}`);
+      }
+    }
+  }
+
+  if (collected.length > 0) {
+    return collected.join(' • ');
+  }
+
+  return fallback;
+}
+
 export class ApiError extends Error {
   status: number;
   data: any;
@@ -206,22 +292,7 @@ export async function apiClient<T>(
         errorBody = await response.text();
       }
 
-      let message = `HTTP Error ${response.status}: ${response.statusText}`;
-      if (errorBody && typeof errorBody === 'object') {
-        if (errorBody.detail) {
-          message = errorBody.detail;
-        } else if (errorBody.message) {
-          message = errorBody.message;
-        } else {
-          // Format validation errors (e.g. {"password": ["..."]})
-          const firstKey = Object.keys(errorBody)[0];
-          if (firstKey) {
-            const val = errorBody[firstKey];
-            message = Array.isArray(val) ? `${firstKey}: ${val.join(' ')}` : `${firstKey}: ${val}`;
-          }
-        }
-      }
-
+      const message = formatApiErrorMessage(errorBody, response.status);
       throw new ApiError(message, response.status, errorBody);
     }
 
@@ -233,7 +304,10 @@ export async function apiClient<T>(
   } catch (err: any) {
     clearTimeout(timeoutId);
     if (err.name === 'AbortError') {
-      throw new ApiError('Request timed out. Please check if the Django backend server is running.', 408);
+      throw new ApiError('Request timed out. Please check your network connection and try again.', 408);
+    }
+    if (err instanceof TypeError && err.message?.toLowerCase().includes('fetch')) {
+      throw new ApiError('Unable to connect to the server. Please check your internet connection or try again shortly.', 0);
     }
     throw err;
   }

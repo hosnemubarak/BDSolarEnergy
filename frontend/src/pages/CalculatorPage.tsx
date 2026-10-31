@@ -12,6 +12,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { Price } from '../components/common/Price';
 import { formatBDT } from '../utils/currency';
 
 export const CalculatorPage: React.FC = () => {
@@ -93,9 +94,11 @@ export const CalculatorPage: React.FC = () => {
               <label className="font-semibold text-gray-800">
                 Average Monthly Electricity Bill (BDT)
               </label>
-              <span className="text-base sm:text-lg font-bold text-[#16A34A]">
-                {formatBDT(monthlyBillBdt)}
-              </span>
+              <Price
+                amount={monthlyBillBdt}
+                className="text-base sm:text-lg font-bold text-[#16A34A]"
+                symbolClassName="text-[#16A34A]"
+              />
             </div>
             <input
               type="range"
@@ -107,9 +110,9 @@ export const CalculatorPage: React.FC = () => {
               className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#16A34A]"
             />
             <div className="flex justify-between text-xs text-gray-500">
-              <span>{formatBDT(2000)} / mo</span>
+              <span><Price amount={2000} /> / mo</span>
               <span>Approx. {monthlyKwhConsumed} kWh units / mo</span>
-              <span>{formatBDT(50000)} / mo</span>
+              <span><Price amount={50000} /> / mo</span>
             </div>
           </div>
 
@@ -201,9 +204,11 @@ export const CalculatorPage: React.FC = () => {
             <div className="text-xs sm:text-sm font-semibold text-emerald-800">
               Estimated 25-Year Net Utility Savings:
             </div>
-            <div className="text-2xl sm:text-3xl font-bold text-emerald-950 mt-1">
-              {formatBDT(lifetime25YearSavingsBdt)}
-            </div>
+            <Price
+              amount={lifetime25YearSavingsBdt}
+              className="text-2xl sm:text-3xl font-bold text-emerald-950 mt-1"
+              symbolClassName="text-3xl sm:text-4xl text-emerald-800"
+            />
             <div className="text-xs text-emerald-700 mt-1">
               Based on average Bangladesh electricity tariff with 3% annual inflation.
             </div>

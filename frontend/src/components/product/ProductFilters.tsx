@@ -152,14 +152,14 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                   key={sub.id || sub.slug}
                   type="button"
                   onClick={() => handleSubcategorySelect(subIdentifier)}
-                  className={`w-full text-left px-2 py-1 text-xs rounded transition-colors flex items-center justify-between ${
+                  className={`w-full text-left px-2 py-1 text-xs sm:text-sm rounded transition-colors flex items-center justify-between ${
                     isSubSelected
                       ? 'text-[#16A34A] font-bold'
                       : 'text-gray-500 hover:text-gray-800'
                   }`}
                 >
                   <span>• {sub.name}</span>
-                  <span className="text-[10px] text-gray-400">({sub.productCount})</span>
+                  <span className="text-xs text-gray-400">({sub.productCount})</span>
                 </button>
               );
             })}
@@ -169,13 +169,14 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
 
       {/* 3. Price Range Filter */}
       <div className="space-y-2.5 pt-2 border-t border-gray-100">
-        <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
-          Price Range (BDT ৳)
+        <h4 className="text-xs sm:text-sm font-bold text-gray-900 uppercase tracking-wider flex items-center gap-1.5">
+          <span>Price Range</span>
+          <span className="text-[#16A34A] font-black text-sm sm:text-base">(৳)</span>
         </h4>
         <div className="flex items-center gap-2">
           <input
             type="number"
-            placeholder="Min ৳"
+            placeholder="Min (৳)"
             value={filters.minPrice !== undefined ? filters.minPrice : ''}
             onChange={(e) =>
               onChange({
@@ -188,7 +189,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
           <span className="text-gray-400 text-xs sm:text-sm">-</span>
           <input
             type="number"
-            placeholder="Max ৳"
+            placeholder="Max (৳)"
             value={filters.maxPrice !== undefined ? filters.maxPrice : ''}
             onChange={(e) =>
               onChange({
@@ -249,7 +250,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                     solarWattsMin: filters.solarWattsMin === opt.min ? undefined : opt.min,
                   })
                 }
-                className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors border ${
+                className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-colors border ${
                   filters.solarWattsMin === opt.min
                     ? 'bg-[#16A34A] text-white border-[#16A34A]'
                     : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'
@@ -265,14 +266,14 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
       {/* Inverter System Type Filter */}
       {(!filters.category || filters.category === 'solar-inverters') && (
         <div className="space-y-2 pt-2 border-t border-gray-100">
-          <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
+          <h4 className="text-xs sm:text-sm font-bold text-gray-900 uppercase tracking-wider">
             Inverter System Type
           </h4>
           <div className="space-y-1.5">
             {['Hybrid', 'On-Grid', 'Off-Grid'].map((type) => (
               <label
                 key={type}
-                className="flex items-center gap-2 text-xs text-gray-700 cursor-pointer"
+                className="flex items-center gap-2 text-xs sm:text-sm text-gray-700 cursor-pointer"
               >
                 <input
                   type="checkbox"

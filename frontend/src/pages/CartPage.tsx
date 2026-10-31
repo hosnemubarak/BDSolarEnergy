@@ -15,6 +15,7 @@ import {
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { Price } from '../components/common/Price';
 import { formatBDT } from '../utils/currency';
 
 export const CartPage: React.FC = () => {
@@ -136,17 +137,18 @@ export const CartPage: React.FC = () => {
                     }}
                   />
                   <div>
-                    <span className="text-xs font-semibold text-green-700 uppercase tracking-wider">
+                    <span className="text-xs sm:text-sm font-bold text-green-700 uppercase tracking-wider">
                       {item.product.brand}
                     </span>
                     <Link
                       to={`/product/${item.product.slug}`}
-                      className="text-xs sm:text-sm font-semibold text-gray-900 hover:text-green-700 transition-colors block line-clamp-1"
+                      className="text-sm sm:text-base font-semibold text-gray-900 hover:text-green-700 transition-colors block line-clamp-1"
                     >
                       {item.product.name}
                     </Link>
-                    <div className="text-xs text-gray-500 mt-0.5">
-                      Unit Price: {formatBDT(item.product.price)}
+                    <div className="text-sm text-gray-600 mt-0.5 flex items-baseline gap-1">
+                      <span>Unit Price:</span>
+                      <Price amount={item.product.price} className="text-sm text-gray-600" />
                     </div>
                   </div>
                 </div>
@@ -160,7 +162,7 @@ export const CartPage: React.FC = () => {
                     >
                       <Minus className="w-3.5 h-3.5" />
                     </button>
-                    <span className="px-3 text-xs font-bold text-gray-800">{item.quantity}</span>
+                    <span className="px-3 text-sm font-bold text-gray-800">{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                       className="p-1.5 hover:bg-gray-200 text-gray-600 rounded-r-lg transition-colors"
@@ -171,9 +173,11 @@ export const CartPage: React.FC = () => {
 
                   {/* Item Subtotal */}
                   <div className="text-right">
-                    <div className="text-sm sm:text-base font-bold text-[#16A34A]">
-                      {formatBDT(item.product.price * item.quantity)}
-                    </div>
+                    <Price
+                      amount={item.product.price * item.quantity}
+                      className="text-base sm:text-lg font-bold text-[#16A34A]"
+                      symbolClassName="text-[#16A34A]"
+                    />
                   </div>
 
                   {/* Remove Button */}
@@ -189,7 +193,7 @@ export const CartPage: React.FC = () => {
             ))}
           </div>
 
-          <div className="p-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between text-xs">
+          <div className="p-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between text-sm">
             <Link
               to="/shop"
               className="font-semibold text-[#16A34A] hover:text-[#15803D] flex items-center gap-1.5 transition-colors"
@@ -208,14 +212,14 @@ export const CartPage: React.FC = () => {
 
           {/* Coupon Code Section */}
           {couponCode ? (
-            <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-200 text-xs text-emerald-800 flex items-center justify-between">
+            <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-200 text-xs sm:text-sm text-emerald-800 flex items-center justify-between">
               <div className="flex items-center gap-1.5 font-medium">
-                <Tag className="w-3.5 h-3.5 text-emerald-600" />
+                <Tag className="w-4 h-4 text-emerald-600" />
                 <span>Coupon "{couponCode}" applied</span>
               </div>
               <button
                 onClick={removeCoupon}
-                className="text-xs text-rose-600 hover:underline font-bold"
+                className="text-xs sm:text-sm text-rose-600 hover:underline font-bold"
               >
                 Remove
               </button>
@@ -231,7 +235,7 @@ export const CartPage: React.FC = () => {
               />
               <button
                 type="submit"
-                className="px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white text-xs font-semibold rounded-lg transition-colors"
+                className="px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors"
               >
                 Apply
               </button>
@@ -242,23 +246,30 @@ export const CartPage: React.FC = () => {
           <div className="space-y-2.5 text-xs sm:text-sm text-gray-600 pt-2 border-t border-gray-100">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span className="font-semibold text-gray-900">{formatBDT(subtotal)}</span>
+              <Price amount={subtotal} className="font-semibold text-gray-900" />
             </div>
             {discount > 0 && (
               <div className="flex justify-between text-emerald-700">
-                <span>Promotional Discount</span>
-                <span className="font-semibold">-{formatBDT(discount)}</span>
+                <span>Discount</span>
+                <span className="font-semibold text-emerald-700 inline-flex items-baseline gap-0.5">
+                  <span>-</span>
+                  <Price amount={discount} className="font-semibold text-emerald-700" />
+                </span>
               </div>
             )}
             <div className="flex justify-between">
               <span>Estimated Shipping</span>
               <span className="font-semibold text-gray-900">
-                {shippingFee === 0 ? <span className="text-emerald-600 font-bold">FREE</span> : formatBDT(shippingFee)}
+                {shippingFee === 0 ? <span className="text-emerald-600 font-bold">FREE</span> : <Price amount={shippingFee} className="font-semibold text-gray-900" />}
               </span>
             </div>
             <div className="flex justify-between text-base font-bold text-gray-900 pt-3 border-t border-gray-200">
               <span>Estimated Total</span>
-              <span className="text-[#16A34A] text-lg font-bold">{formatBDT(total)}</span>
+              <Price
+                amount={total}
+                className="text-[#16A34A] text-lg font-bold"
+                symbolClassName="text-xl text-[#16A34A]"
+              />
             </div>
           </div>
 

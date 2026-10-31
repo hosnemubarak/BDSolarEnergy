@@ -37,8 +37,8 @@ export const Footer: React.FC = () => {
               <Sun className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-bold text-gray-900 text-xs sm:text-sm">Tier 1 Solar Brands</h5>
-              <p className="text-xs text-gray-500">Trina, Jinko, Growatt & Deye</p>
+              <h5 className="font-bold text-gray-900 text-sm sm:text-base">Tier 1 Solar Brands</h5>
+              <p className="text-xs sm:text-sm text-gray-500">Trina, Jinko, Growatt & Deye</p>
             </div>
           </div>
 
@@ -47,8 +47,8 @@ export const Footer: React.FC = () => {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-bold text-gray-900 text-xs sm:text-sm">BSTI & IEC Certified</h5>
-              <p className="text-xs text-gray-500">100% genuine equipment</p>
+              <h5 className="font-bold text-gray-900 text-sm sm:text-base">BSTI & IEC Certified</h5>
+              <p className="text-xs sm:text-sm text-gray-500">100% genuine equipment</p>
             </div>
           </div>
 
@@ -57,8 +57,8 @@ export const Footer: React.FC = () => {
               <Zap className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-bold text-gray-900 text-xs sm:text-sm">Expert Sizing Support</h5>
-              <p className="text-xs text-gray-500">Engineered rooftop calculations</p>
+              <h5 className="font-bold text-gray-900 text-sm sm:text-base">Expert Sizing Support</h5>
+              <p className="text-xs sm:text-sm text-gray-500">Engineered rooftop calculations</p>
             </div>
           </div>
 
@@ -67,8 +67,8 @@ export const Footer: React.FC = () => {
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-bold text-gray-900 text-xs sm:text-sm">Nationwide Delivery</h5>
-              <p className="text-xs text-gray-500">Fast courier across 64 districts</p>
+              <h5 className="font-bold text-gray-900 text-sm sm:text-base">Nationwide Delivery</h5>
+              <p className="text-xs sm:text-sm text-gray-500">Fast courier across 64 districts</p>
             </div>
           </div>
         </div>
@@ -86,11 +86,11 @@ export const Footer: React.FC = () => {
               </div>
             </Link>
 
-            <p className="text-xs text-gray-500 leading-relaxed max-w-sm">
+            <p className="text-sm text-gray-600 leading-relaxed max-w-sm">
               BD Solar Energy is Bangladesh's dedicated online store for solar panels, inverters, lithium batteries, cables, and electrical protection equipment.
             </p>
 
-            <div className="space-y-1.5 text-xs text-gray-600 pt-1">
+            <div className="space-y-1.5 text-sm text-gray-600 pt-1">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5" />
                 <span>Level 7, Solar Bhaban, Motijheel, Dhaka</span>
@@ -108,10 +108,10 @@ export const Footer: React.FC = () => {
 
           {/* Column 2: Solar Energy Systems */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
+            <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
               Solar Equipment
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/shop?category=solar-panels" className="hover:text-[#16A34A] transition-colors">
                   Solar Photovoltaic Panels
@@ -142,10 +142,10 @@ export const Footer: React.FC = () => {
 
           {/* Column 3: Electrical Equipment */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
+            <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
               Electrical Products
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/shop?category=wires-cables" className="hover:text-[#16A34A] transition-colors">
                   Solar DC PV Cables (4/6mm²)
@@ -176,10 +176,10 @@ export const Footer: React.FC = () => {
 
           {/* Column 4: Customer Care & Order Tracking */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
+            <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
               Customer Support
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/account" className="hover:text-[#16A34A] transition-colors">
                   Track Your Order
@@ -208,14 +208,14 @@ export const Footer: React.FC = () => {
             </ul>
 
             <form onSubmit={handleSubscribe} className="pt-2 space-y-1.5">
-              <span className="text-xs font-semibold text-gray-700 block">Newsletter:</span>
+              <span className="text-sm font-semibold text-gray-700 block">Newsletter:</span>
               <div className="flex">
                 <input
                   type="email"
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Your email address"
-                  className="w-full px-3 py-2 bg-white border border-gray-200 rounded-l-lg text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#16A34A]"
+                  className="w-full px-3 py-2 bg-white border border-gray-200 rounded-l-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#16A34A]"
                 />
                 <button
                   type="submit"
@@ -230,13 +230,13 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar: Payment Logos & Legal */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-500">
           <div>
             &copy; {new Date().getFullYear()} BD Solar Energy Ltd. All rights reserved.
           </div>
 
           {/* Accepted Payment Methods */}
-          <div className="flex items-center gap-1.5 flex-wrap justify-center text-xs">
+          <div className="flex items-center gap-1.5 flex-wrap justify-center text-xs sm:text-sm">
             <span className="text-gray-400 mr-1">Payments:</span>
             <span className="px-2 py-0.5 bg-white border border-gray-200 rounded font-semibold text-pink-600">
               bKash

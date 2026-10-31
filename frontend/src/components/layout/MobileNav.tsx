@@ -53,7 +53,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ onOpenCategories }) => {
         <NavLink
           to="/wishlist"
           className={({ isActive }) =>
-            `flex flex-col items-center justify-center min-h-[48px] px-2 py-1 text-xs font-medium transition-colors relative ${
+            `flex flex-col items-center justify-center min-h-[48px] px-2 py-1 text-xs sm:text-sm font-medium transition-colors relative ${
               isActive ? 'text-[#16A34A] font-bold' : 'text-gray-500 hover:text-gray-900'
             }`
           }
@@ -61,7 +61,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ onOpenCategories }) => {
           <div className="relative">
             <Heart className="w-5 h-5 mb-0.5" />
             {wishlistCount > 0 && (
-              <span className="absolute -top-1 -right-2.5 min-w-[17px] h-[17px] px-1 rounded-full bg-[#16A34A] text-white text-[10px] font-bold flex items-center justify-center leading-none">
+              <span className="absolute -top-1 -right-2.5 min-w-[19px] h-[19px] px-1 rounded-full bg-[#16A34A] text-white text-xs font-bold flex items-center justify-center leading-none">
                 {wishlistCount}
               </span>
             )}
@@ -71,12 +71,12 @@ export const MobileNav: React.FC<MobileNavProps> = ({ onOpenCategories }) => {
 
         <button
           onClick={openCart}
-          className="flex flex-col items-center justify-center min-h-[48px] px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-900 transition-colors relative"
+          className="flex flex-col items-center justify-center min-h-[48px] px-2 py-1 text-xs sm:text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors relative"
         >
           <div className="relative">
             <ShoppingBag className="w-5 h-5 mb-0.5 text-[#16A34A]" />
             {totalCount > 0 && (
-              <span className="absolute -top-1 -right-2.5 min-w-[17px] h-[17px] px-1 rounded-full bg-amber-400 text-gray-950 text-[10px] font-extrabold flex items-center justify-center leading-none">
+              <span className="absolute -top-1 -right-2.5 min-w-[19px] h-[19px] px-1 rounded-full bg-amber-400 text-gray-950 text-xs font-extrabold flex items-center justify-center leading-none">
                 {totalCount}
               </span>
             )}

@@ -4,6 +4,7 @@ import { Search, X, Loader2, ArrowRight } from 'lucide-react';
 import { productService } from '../../services/productService';
 import { Product } from '../../types';
 import { useCategories } from '../../context/CategoryContext';
+import { Price } from '../common/Price';
 import { formatBDT } from '../../utils/currency';
 
 interface SearchBarProps {
@@ -110,7 +111,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
           }}
           onFocus={() => setIsOpen(true)}
           placeholder="Search solar panels, inverters, LiFePO4 batteries, cables, breakers..."
-          className="flex-1 h-full px-3 text-xs sm:text-sm text-gray-800 placeholder-gray-400 outline-none bg-transparent"
+          className="flex-1 h-full px-3 text-sm text-gray-800 placeholder-gray-400 outline-none bg-transparent"
         />
 
         {/* Clear query button */}
@@ -130,7 +131,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
         {/* Submit Search Button */}
         <button
           type="submit"
-          className="h-full px-4 sm:px-5 bg-[#16A34A] hover:bg-[#15803D] text-white flex items-center justify-center transition-colors shrink-0 font-medium text-xs sm:text-sm gap-1.5"
+          className="h-full px-4 sm:px-5 bg-[#16A34A] hover:bg-[#15803D] text-white flex items-center justify-center transition-colors shrink-0 font-semibold text-sm gap-1.5"
         >
           {isLoading ? (
             <Loader2 className="w-4 h-4 animate-spin" />
@@ -145,13 +146,13 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
       {isOpen && query.trim().length > 0 && (
         <div className="absolute top-full left-0 right-0 mt-1.5 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 z-50 max-h-96 overflow-y-auto">
           {isLoading && suggestions.length === 0 ? (
-            <div className="p-4 text-center text-xs text-gray-500 flex items-center justify-center gap-2">
+            <div className="p-4 text-center text-sm text-gray-500 flex items-center justify-center gap-2">
               <Loader2 className="w-4 h-4 animate-spin text-green-600" />
               <span>Searching catalog...</span>
             </div>
           ) : suggestions.length > 0 ? (
             <div>
-              <div className="px-3 py-1.5 text-[11px] font-bold text-gray-400 uppercase tracking-wider">
+              <div className="px-3 py-1.5 text-xs font-bold text-gray-500 uppercase tracking-wider">
                 Product Suggestions ({suggestions.length})
               </div>
               {suggestions.map((item) => (
@@ -171,23 +172,27 @@ export const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearchSu
                     }}
                   />
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs sm:text-sm font-semibold text-gray-900 truncate">
+                    <p className="text-sm font-semibold text-gray-900 truncate">
                       {item.name}
                     </p>
-                    <div className="flex items-center gap-2 text-[11px] text-gray-500">
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
                       <span className="text-green-700 font-medium">{item.brand}</span>
                       <span>•</span>
                       <span className="font-mono text-gray-400 truncate">{item.sku}</span>
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <div className="text-xs sm:text-sm font-bold text-gray-900">
-                      {formatBDT(item.price)}
-                    </div>
+                    <Price
+                      amount={item.price}
+                      className="text-sm font-bold text-gray-900"
+                      symbolClassName="text-sm text-[#16A34A]"
+                    />
                     {item.originalPrice && (
-                      <div className="text-xs text-gray-400 line-through">
-                        {formatBDT(item.originalPrice)}
-                      </div>
+                      <Price
+                        amount={item.originalPrice}
+                        className="text-xs text-gray-400 line-through block"
+                        symbolClassName="text-gray-400"
+                      />
                     )}
                   </div>
                 </div>

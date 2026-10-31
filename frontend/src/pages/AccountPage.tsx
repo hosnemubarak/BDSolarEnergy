@@ -18,6 +18,7 @@ import { useAuth } from '../context/AuthContext';
 import { orderService } from '../services/orderService';
 import { Order, CustomerAddress } from '../types';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { Price } from '../components/common/Price';
 import { formatBDT } from '../utils/currency';
 
 export const AccountPage: React.FC = () => {
@@ -95,18 +96,18 @@ export const AccountPage: React.FC = () => {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-xl sm:text-2xl font-black text-gray-900">{user.name}</h1>
-              <span className="px-2 py-0.5 rounded-full bg-[#F0FDF4] text-[#16A34A] text-[10px] font-bold uppercase border border-green-200">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#F0FDF4] text-[#16A34A] text-xs font-bold uppercase border border-green-200">
                 Customer
               </span>
             </div>
-            <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mt-1">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 mt-1">
               <span className="flex items-center gap-1">
-                <Phone className="w-3.5 h-3.5 text-gray-400" />
+                <Phone className="w-4 h-4 text-gray-400" />
                 <span>{user.phone}</span>
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
-                <Mail className="w-3.5 h-3.5 text-gray-400" />
+                <Mail className="w-4 h-4 text-gray-400" />
                 <span>{user.email}</span>
               </span>
             </div>
@@ -115,7 +116,7 @@ export const AccountPage: React.FC = () => {
 
         <button
           onClick={logout}
-          className="px-4 py-2 bg-gray-100 hover:bg-rose-50 hover:text-rose-600 text-gray-700 text-xs font-semibold rounded-xl transition-colors flex items-center gap-1.5 self-start md:self-center"
+          className="px-4 py-2 bg-gray-100 hover:bg-rose-50 hover:text-rose-600 text-gray-700 text-sm font-semibold rounded-xl transition-colors flex items-center gap-1.5 self-start md:self-center"
         >
           <LogOut className="w-4 h-4" />
           <span>Sign Out</span>
@@ -128,7 +129,7 @@ export const AccountPage: React.FC = () => {
         <div className="lg:col-span-4 bg-white rounded-2xl border border-gray-200 p-4 shadow-xs space-y-1">
           <button
             onClick={() => setActiveTab('orders')}
-            className={`w-full text-left px-4 py-3 rounded-xl text-xs font-bold transition-colors flex items-center justify-between ${
+            className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-colors flex items-center justify-between ${
               activeTab === 'orders'
                 ? 'bg-[#F0FDF4] text-[#16A34A] border border-green-200'
                 : 'text-gray-700 hover:bg-gray-50'
@@ -138,7 +139,7 @@ export const AccountPage: React.FC = () => {
               <Package className="w-4 h-4 text-[#16A34A]" />
               <span>Orders & Tracking</span>
             </div>
-            <span className="text-[10px] bg-green-100 text-green-900 px-2 py-0.5 rounded-full font-bold">
+            <span className="text-xs bg-green-100 text-green-900 px-2 py-0.5 rounded-full font-bold">
               {orders.length}
             </span>
           </button>
@@ -244,9 +245,11 @@ export const AccountPage: React.FC = () => {
                               <span className="text-gray-800 line-clamp-1">{it.name}</span>
                               <span className="text-gray-400">x{it.quantity}</span>
                             </div>
-                            <span className="font-semibold text-[#16A34A]">
-                              {formatBDT(it.subtotal)}
-                            </span>
+                            <Price
+                              amount={it.subtotal}
+                              className="font-semibold text-[#16A34A]"
+                              symbolClassName="text-[#16A34A]"
+                            />
                           </div>
                         ))}
                       </div>
@@ -257,8 +260,13 @@ export const AccountPage: React.FC = () => {
                           <Truck className="w-4 h-4 text-[#16A34A]" />
                           <span>Courier: {ord.courierName} ({ord.trackingNumber})</span>
                         </div>
-                        <div className="font-bold text-sm sm:text-base text-gray-900">
-                          Total: <span className="text-[#16A34A]">{formatBDT(ord.total)}</span>
+                        <div className="font-bold text-sm sm:text-base text-gray-900 flex items-baseline gap-1">
+                          <span>Total:</span>
+                          <Price
+                            amount={ord.total}
+                            className="text-[#16A34A] font-bold"
+                            symbolClassName="text-[#16A34A]"
+                          />
                         </div>
                       </div>
                     </div>
@@ -286,10 +294,10 @@ export const AccountPage: React.FC = () => {
                 {(user.savedAddresses || []).map((addr, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-2xl border border-gray-200 relative space-y-1.5 text-xs bg-gray-50/50"
+                    className="p-4 rounded-2xl border border-gray-200 relative space-y-1.5 text-sm bg-gray-50/50"
                   >
                     {addr.isDefault && (
-                      <span className="px-2 py-0.5 rounded bg-[#F0FDF4] text-[#16A34A] border border-green-200 text-[10px] font-bold uppercase inline-block mb-1">
+                      <span className="px-2 py-0.5 rounded bg-[#F0FDF4] text-[#16A34A] border border-green-200 text-xs font-bold uppercase inline-block mb-1">
                         Default Delivery Address
                       </span>
                     )}
@@ -406,9 +414,6 @@ export const AccountPage: React.FC = () => {
                     value={user.email}
                     className="w-full px-3 py-2 bg-gray-100 border border-gray-200 rounded-xl text-gray-800"
                   />
-                </div>
-                <div className="pt-2 text-[11px] text-gray-400">
-                  Customer session secured via JWT authentication.
                 </div>
               </div>
             </div>

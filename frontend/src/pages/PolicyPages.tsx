@@ -22,9 +22,9 @@ export const ShippingPolicyPage: React.FC = () => {
 
         <h3 className="text-base font-bold text-gray-900 pt-2">2. Delivery Charges</h3>
         <ul className="list-disc list-inside space-y-1">
-          <li><strong>Orders ৳50,000 and above:</strong> 100% Free Nationwide Delivery.</li>
-          <li><strong>Orders below ৳50,000 inside Dhaka:</strong> Flat ৳300 delivery fee.</li>
-          <li><strong>Orders below ৳50,000 outside Dhaka:</strong> Flat ৳800 delivery fee.</li>
+          <li><strong>Orders ৳ 50,000 and above:</strong> 100% Free Nationwide Delivery.</li>
+          <li><strong>Orders below ৳ 50,000 inside Dhaka:</strong> Flat ৳ 300 delivery fee.</li>
+          <li><strong>Orders below ৳ 50,000 outside Dhaka:</strong> Flat ৳ 800 delivery fee.</li>
         </ul>
 
         <h3 className="text-base font-bold text-gray-900 pt-2">3. Wooden Crating & Transit Insurance</h3>
