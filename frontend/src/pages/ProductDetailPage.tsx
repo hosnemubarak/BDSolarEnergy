@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { 
-  ShoppingCart, 
-  Heart, 
-  ShieldCheck, 
-  Truck, 
-  CheckCircle2, 
-  AlertTriangle, 
-  Plus, 
-  Minus, 
-  Share2, 
+import {
+  ShoppingCart,
+  Heart,
+  ShieldCheck,
+  Truck,
+  CheckCircle2,
+  AlertTriangle,
+  Plus,
+  Minus,
+  Share2,
   RotateCcw,
   Zap,
-  Info,
-  Layers,
   ArrowRight
 } from 'lucide-react';
 import { productService } from '../services/productService';
@@ -23,7 +21,6 @@ import { useWishlist } from '../context/WishlistContext';
 import { useToast } from '../context/ToastContext';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { RatingStars } from '../components/common/RatingStars';
-import { Badge } from '../components/common/Badge';
 import { ProductCard } from '../components/product/ProductCard';
 import { Price } from '../components/common/Price';
 import { formatBDT } from '../utils/currency';
@@ -37,7 +34,7 @@ export const ProductDetailPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'specs' | 'description' | 'compatibility' | 'warranty'>('specs');
   const [isLoading, setIsLoading] = useState(true);
 
-  const { addItem, openCart } = useCart();
+  const { addItem } = useCart();
   const { isWishlisted, toggleWishlist } = useWishlist();
   const { showToast } = useToast();
   const navigate = useNavigate();
@@ -127,7 +124,7 @@ export const ProductDetailPage: React.FC = () => {
 
       {/* Main Product Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white p-5 sm:p-8 rounded-xl border border-gray-200 shadow-xs">
-        
+
         {/* Left Column: Image Gallery (5 cols) */}
         <div className="lg:col-span-5 space-y-4">
           <div className="aspect-square bg-gray-50 rounded-xl overflow-hidden border border-gray-200 relative group">
@@ -155,11 +152,10 @@ export const ProductDetailPage: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => setSelectedImage(img)}
-                  className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl border-2 overflow-hidden shrink-0 transition-all ${
-                    selectedImage === img
-                      ? 'border-[#15803D] scale-105 shadow-sm'
-                      : 'border-gray-200 hover:border-gray-400 opacity-70'
-                  }`}
+                  className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl border-2 overflow-hidden shrink-0 transition-all ${selectedImage === img
+                    ? 'border-[#15803D] scale-105 shadow-sm'
+                    : 'border-gray-200 hover:border-gray-400 opacity-70'
+                    }`}
                 >
                   <img
                     src={img}
@@ -199,11 +195,10 @@ export const ProductDetailPage: React.FC = () => {
                 </button>
                 <button
                   onClick={() => toggleWishlist(product.id)}
-                  className={`p-2 rounded-lg border transition-colors ${
-                    wishlisted
-                      ? 'bg-rose-50 border-rose-200 text-rose-600'
-                      : 'border-gray-200 text-gray-400 hover:text-rose-500 hover:bg-rose-50/50'
-                  }`}
+                  className={`p-2 rounded-lg border transition-colors ${wishlisted
+                    ? 'bg-rose-50 border-rose-200 text-rose-600'
+                    : 'border-gray-200 text-gray-400 hover:text-rose-500 hover:bg-rose-50/50'
+                    }`}
                   title={wishlisted ? 'Remove from wishlist' : 'Save to wishlist'}
                 >
                   <Heart className={`w-4 h-4 ${wishlisted ? 'fill-rose-600' : ''}`} />
@@ -343,11 +338,10 @@ export const ProductDetailPage: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`pb-3 text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap border-b-2 ${
-                activeTab === tab.id
-                  ? 'border-[#16A34A] text-[#16A34A]'
-                  : 'border-transparent text-gray-500 hover:text-gray-900'
-              }`}
+              className={`pb-3 text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap border-b-2 ${activeTab === tab.id
+                ? 'border-[#16A34A] text-[#16A34A]'
+                : 'border-transparent text-gray-500 hover:text-gray-900'
+                }`}
             >
               {tab.label}
             </button>

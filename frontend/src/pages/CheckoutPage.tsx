@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { 
-  ShieldCheck, 
-  Truck, 
   CreditCard, 
-  CheckCircle2, 
   MapPin, 
-  Phone, 
   User, 
-  Mail, 
-  Info, 
-  ArrowLeft,
   Lock,
   Loader2,
   AlertCircle
@@ -22,7 +15,6 @@ import { orderService } from '../services/orderService';
 import { CustomerAddress } from '../types';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Price } from '../components/common/Price';
-import { formatBDT } from '../utils/currency';
 
 const BD_DIVISIONS = [
   'Dhaka',

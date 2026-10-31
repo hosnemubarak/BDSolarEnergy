@@ -1,20 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Sliders, 
-  Sun, 
   Zap, 
   BatteryCharging, 
-  ShieldCheck, 
   CheckCircle2, 
   AlertTriangle, 
-  Info, 
   ShoppingCart, 
-  ArrowRight,
-  Sparkles,
-  Layers,
-  Plus,
-  Minus,
-  Loader2
+  Plus, 
+  Minus, 
+  Loader2 
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';

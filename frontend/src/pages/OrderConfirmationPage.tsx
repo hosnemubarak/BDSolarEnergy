@@ -2,21 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   CheckCircle2, 
-  Package, 
-  Truck, 
   MapPin, 
   Printer, 
-  ArrowRight, 
-  Phone, 
-  ShieldCheck,
-  Calendar,
   CreditCard
 } from 'lucide-react';
 import { orderService } from '../services/orderService';
 import { Order } from '../types';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Price } from '../components/common/Price';
-import { formatBDT } from '../utils/currency';
 
 export const OrderConfirmationPage: React.FC = () => {
   const { orderNumber } = useParams<{ orderNumber: string }>();

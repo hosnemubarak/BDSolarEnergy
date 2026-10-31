@@ -2,18 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Calculator, 
-  Sun, 
-  Zap, 
-  BatteryCharging, 
-  TrendingUp, 
   Sliders, 
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2
+  ArrowRight
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Price } from '../components/common/Price';
-import { formatBDT } from '../utils/currency';
 
 export const CalculatorPage: React.FC = () => {
   const [monthlyBillBdt, setMonthlyBillBdt] = useState<number>(6500);

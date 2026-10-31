@@ -6,7 +6,6 @@ import {
   Heart, 
   User, 
   Menu, 
-  Search,
   Zap,
   PhoneCall
 } from 'lucide-react';

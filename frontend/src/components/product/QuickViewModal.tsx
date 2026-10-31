@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  X, 
-  ShoppingCart, 
-  Heart, 
-  Check, 
-  ShieldCheck, 
-  Plus, 
-  Minus, 
-  ExternalLink,
-  Zap
+import {
+  X,
+  ShoppingCart,
+  Heart,
+  Check,
+  Plus,
+  Minus,
+  ExternalLink
 } from 'lucide-react';
 import { useQuickView } from '../../context/QuickViewContext';
 import { useCart } from '../../context/CartContext';
@@ -17,25 +15,23 @@ import { useWishlist } from '../../context/WishlistContext';
 import { useToast } from '../../context/ToastContext';
 import { RatingStars } from '../common/RatingStars';
 import { Price } from '../common/Price';
-import { formatBDT } from '../../utils/currency';
+import { Product } from '../../types';
 
-export const QuickViewModal: React.FC = () => {
-  const { activeProduct, closeQuickView } = useQuickView();
+interface QuickViewModalContentProps {
+  activeProduct: Product;
+  closeQuickView: () => void;
+}
+
+const QuickViewModalContent: React.FC<QuickViewModalContentProps> = ({
+  activeProduct,
+  closeQuickView,
+}) => {
   const { addItem } = useCart();
   const { isWishlisted, toggleWishlist } = useWishlist();
   const { showToast } = useToast();
 
-  const [selectedImage, setSelectedImage] = useState<string>('');
+  const [selectedImage, setSelectedImage] = useState<string>(activeProduct.image);
   const [quantity, setQuantity] = useState(1);
-
-  useEffect(() => {
-    if (activeProduct) {
-      setSelectedImage(activeProduct.image);
-      setQuantity(1);
-    }
-  }, [activeProduct]);
-
-  if (!activeProduct) return null;
 
   const wishlisted = isWishlisted(activeProduct.id);
 
@@ -107,11 +103,10 @@ export const QuickViewModal: React.FC = () => {
                     <button
                       key={idx}
                       onClick={() => setSelectedImage(img)}
-                      className={`w-14 h-14 rounded-lg border-2 overflow-hidden shrink-0 transition-all ${
-                        selectedImage === img
-                          ? 'border-[#15803D] scale-105'
-                          : 'border-gray-200 hover:border-gray-400 opacity-70'
-                      }`}
+                      className={`w-14 h-14 rounded-lg border-2 overflow-hidden shrink-0 transition-all ${selectedImage === img
+                        ? 'border-[#15803D] scale-105'
+                        : 'border-gray-200 hover:border-gray-400 opacity-70'
+                        }`}
                     >
                       <img
                         src={img}
@@ -236,11 +231,10 @@ export const QuickViewModal: React.FC = () => {
 
                   <button
                     onClick={handleToggleWishlist}
-                    className={`p-2.5 rounded-xl border transition-colors ${
-                      wishlisted
-                        ? 'bg-rose-50 border-rose-200 text-rose-600'
-                        : 'border-gray-200 text-gray-500 hover:text-rose-600 hover:bg-rose-50/50'
-                    }`}
+                    className={`p-2.5 rounded-xl border transition-colors ${wishlisted
+                      ? 'bg-rose-50 border-rose-200 text-rose-600'
+                      : 'border-gray-200 text-gray-500 hover:text-rose-600 hover:bg-rose-50/50'
+                      }`}
                     title={wishlisted ? 'Remove from wishlist' : 'Save to wishlist'}
                   >
                     <Heart className={`w-4 h-4 ${wishlisted ? 'fill-rose-600' : ''}`} />
@@ -261,5 +255,19 @@ export const QuickViewModal: React.FC = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+export const QuickViewModal: React.FC = () => {
+  const { activeProduct, closeQuickView } = useQuickView();
+
+  if (!activeProduct) return null;
+
+  return (
+    <QuickViewModalContent
+      key={activeProduct.id}
+      activeProduct={activeProduct}
+      closeQuickView={closeQuickView}
+    />
   );
 };

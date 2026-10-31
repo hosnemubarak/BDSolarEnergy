@@ -5,7 +5,6 @@ import { productService } from '../../services/productService';
 import { Product } from '../../types';
 import { useCategories } from '../../context/CategoryContext';
 import { Price } from '../common/Price';
-import { formatBDT } from '../../utils/currency';
 
 interface SearchBarProps {
   className?: string;

@@ -8,7 +8,6 @@ import { useQuickView } from '../../context/QuickViewContext';
 import { useToast } from '../../context/ToastContext';
 import { RatingStars } from '../common/RatingStars';
 import { Price } from '../common/Price';
-import { formatBDT } from '../../utils/currency';
 
 interface ProductCardProps {
   product: Product;

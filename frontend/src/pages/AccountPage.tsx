@@ -16,10 +16,9 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { orderService } from '../services/orderService';
-import { Order, CustomerAddress } from '../types';
+import { Order } from '../types';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Price } from '../components/common/Price';
-import { formatBDT } from '../utils/currency';
 
 export const AccountPage: React.FC = () => {
   const { user, logout, setIsAuthModalOpen, saveAddress } = useAuth();
@@ -339,6 +338,17 @@ export const AccountPage: React.FC = () => {
                           className="w-full px-2.5 py-1.5 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-[#16A34A]"
                         />
                       </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold mb-1">Contact Phone</label>
+                      <input
+                        type="tel"
+                        required
+                        value={newPhone}
+                        onChange={(e) => setNewPhone(e.target.value)}
+                        placeholder="01XXXXXXXXX"
+                        className="w-full px-2.5 py-1.5 bg-white border border-gray-300 rounded-lg text-xs focus:outline-none focus:border-[#16A34A]"
+                      />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold mb-1">Thana / Area</label>

@@ -2,15 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Sparkles, 
-  Sun, 
-  Zap, 
-  BatteryCharging, 
-  ShieldCheck, 
   CheckCircle2, 
-  Sliders, 
-  ArrowRight,
-  TrendingUp,
-  Truck
+  Sliders
 } from 'lucide-react';
 import { solarPackageService } from '../services/solarPackageService';
 import { productService } from '../services/productService';
@@ -23,7 +16,6 @@ import { formatBDT } from '../utils/currency';
 
 export const SolarPackagesPage: React.FC = () => {
   const [packages, setPackages] = useState<SolarPackage[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   const { addItem, openCart } = useCart();
   const { showToast } = useToast();
@@ -31,7 +23,6 @@ export const SolarPackagesPage: React.FC = () => {
   useEffect(() => {
     solarPackageService.getAllPackages().then((data) => {
       setPackages(data);
-      setIsLoading(false);
     });
   }, []);
 

@@ -8,7 +8,6 @@ import {
   Mail, 
   ShieldCheck, 
   CheckCircle2, 
-  CreditCard,
   Send
 } from 'lucide-react';
 import { useToast } from '../../context/ToastContext';

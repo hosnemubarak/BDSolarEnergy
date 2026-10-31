@@ -9,8 +9,7 @@ import {
   ArrowRight, 
   Truck, 
   Tag, 
-  CheckCircle2, 
-  Sparkles 
+  CheckCircle2 
 } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useToast } from '../../context/ToastContext';

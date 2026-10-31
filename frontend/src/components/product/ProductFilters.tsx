@@ -1,5 +1,5 @@
 import React from 'react';
-import { Filter, X, RotateCcw, Check } from 'lucide-react';
+import { Filter, RotateCcw } from 'lucide-react';
 import { ProductFilterParams, CategoryId } from '../../types';
 import { useCategories } from '../../context/CategoryContext';
 

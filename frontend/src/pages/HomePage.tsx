@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Sun, 
-  Zap, 
-  BatteryCharging, 
-  Cable, 
-  ShieldCheck, 
+import {
+  Sun,
+  Zap,
+  BatteryCharging,
+  Cable,
+  ShieldCheck,
   ChevronRight,
   Layers,
   Sparkles,
@@ -19,7 +19,6 @@ import { Product, SolarPackage } from '../types';
 import { ProductCard } from '../components/product/ProductCard';
 import { useCategories } from '../context/CategoryContext';
 import { Price } from '../components/common/Price';
-import { formatBDT } from '../utils/currency';
 
 export const HomePage: React.FC = () => {
   const { categories, brands } = useCategories();
@@ -28,7 +27,6 @@ export const HomePage: React.FC = () => {
   const [invertersAndBatteries, setInvertersAndBatteries] = useState<Product[]>([]);
   const [electricalEquipment, setElectricalEquipment] = useState<Product[]>([]);
   const [solarPackages, setSolarPackages] = useState<SolarPackage[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadHomeData = async () => {
@@ -50,8 +48,6 @@ export const HomePage: React.FC = () => {
         setSolarPackages(packages.slice(0, 4));
       } catch (err) {
         console.error('Error loading homepage catalog data', err);
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -60,7 +56,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6 space-y-8 sm:space-y-10">
-      
+
       {/* 1. COMPACT HERO & PROMOTIONAL SHOWCASE */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 items-stretch">
         {/* Main Showcase Banner (8 cols) */}
