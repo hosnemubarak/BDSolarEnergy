@@ -114,21 +114,21 @@ export const SolarPackagesPage: React.FC = () => {
               </div>
 
               {/* Performance Metrics Bar */}
-              <div className="grid grid-cols-3 bg-[#F0FDF4] p-3.5 border-b border-green-100 text-center divide-x divide-green-200/60 text-sm">
+              <div className="grid grid-cols-3 bg-[#F0FDF4] p-2.5 sm:p-3.5 border-b border-green-100 text-center divide-x divide-green-200/60 text-xs sm:text-sm">
                 <div>
-                  <div className="text-gray-500 text-sm">Solar Capacity</div>
+                  <div className="text-gray-500 text-[11px] sm:text-xs">Solar Capacity</div>
                   <div className="font-bold text-gray-900 text-sm sm:text-base mt-0.5">
                     {pkg.specifications.totalSolarCapacityWp} Wp
                   </div>
                 </div>
                 <div>
-                  <div className="text-gray-500 text-sm">Daily Est. Generation</div>
+                  <div className="text-gray-500 text-[11px] sm:text-xs">Daily Generation</div>
                   <div className="font-bold text-gray-900 text-sm sm:text-base mt-0.5">
                     ~{pkg.dailyGenerationEstimateKwh} kWh / day
                   </div>
                 </div>
                 <div>
-                  <div className="text-gray-500 text-sm">Est. Monthly Savings</div>
+                  <div className="text-gray-500 text-[11px] sm:text-xs">Monthly Savings</div>
                   <div className="font-bold text-[#16A34A] text-sm sm:text-base mt-0.5">
                     {formatBDT(pkg.savingsMonthlyEstimateBdt)} / mo
                   </div>

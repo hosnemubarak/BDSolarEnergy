@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-40 transition-all shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 py-3 sm:py-3.5 flex items-center justify-between gap-3 sm:gap-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-6">
         
         {/* Left: Mobile Menu Button + Brand Logo */}
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
                 <span className="text-[#16A34A]">SOLAR</span>
                 <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500 -ml-0.5" />
               </div>
-              <p className="text-xs tracking-wider uppercase font-semibold text-gray-500 mt-0.5">
+              <p className="hidden min-[360px]:block text-[11px] sm:text-xs tracking-wider uppercase font-semibold text-gray-500 mt-0.5">
                 Energy & Electrical
               </p>
             </div>

@@ -124,7 +124,7 @@ export const CartPage: React.FC = () => {
         <div className="lg:col-span-8 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
           <div className="p-4 sm:p-6 divide-y divide-gray-100">
             {items.map((item) => (
-              <div key={item.product.id} className="py-4 first:pt-0 last:pb-0 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div key={item.product.id} className="py-4 first:pt-0 last:pb-0 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
                 <div className="flex items-center gap-4">
                   <img
                     src={item.product.image}
@@ -142,7 +142,7 @@ export const CartPage: React.FC = () => {
                     </span>
                     <Link
                       to={`/product/${item.product.slug}`}
-                      className="text-sm sm:text-base font-semibold text-gray-900 hover:text-green-700 transition-colors block line-clamp-1"
+                      className="text-xs sm:text-base font-semibold text-gray-900 hover:text-green-700 transition-colors block line-clamp-2 leading-snug"
                     >
                       {item.product.name}
                     </Link>
@@ -205,7 +205,7 @@ export const CartPage: React.FC = () => {
         </div>
 
         {/* Right: Order Summary */}
-        <div className="lg:col-span-4 bg-white rounded-xl border border-gray-200 p-6 shadow-xs space-y-5">
+        <div className="lg:col-span-4 bg-white rounded-xl border border-gray-200 p-4 sm:p-6 shadow-xs space-y-5">
           <h3 className="font-bold text-gray-900 text-base border-b border-gray-100 pb-3">
             Order Summary
           </h3>

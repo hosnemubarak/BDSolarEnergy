@@ -13,7 +13,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ onOpenCategories }) => {
   const { wishlistCount } = useWishlist();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-1 py-1 md:hidden shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-1 pt-1 pb-[max(0.25rem,env(safe-area-inset-bottom))] md:hidden shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
       <div className="flex items-center justify-around">
         <NavLink
           to="/"

@@ -163,7 +163,7 @@ export const ShopPage: React.FC = () => {
       <div className="flex items-center justify-between gap-4 bg-white p-3 rounded-xl border border-gray-200 text-xs sm:text-sm text-gray-700 shadow-xs">
         <div className="flex items-center gap-2">
           <ArrowUpDown className="w-4 h-4 text-gray-400" />
-          <span className="font-semibold text-gray-700">Sort by:</span>
+          <span className="hidden min-[380px]:inline font-semibold text-gray-700">Sort by:</span>
           <select
             value={filters.sortBy || 'popularity'}
             onChange={handleSortChange}
@@ -232,12 +232,14 @@ export const ShopPage: React.FC = () => {
                 activeCount={activeFilterCount}
               />
 
-              <button
-                onClick={() => setIsMobileFilterOpen(false)}
-                className="mt-6 w-full py-3 bg-[#15803D] text-white font-bold text-xs rounded-xl shadow-md"
-              >
-                Apply Filters ({products.length} Results)
-              </button>
+              <div className="sticky bottom-0 bg-white pt-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] mt-auto border-t border-gray-100">
+                <button
+                  onClick={() => setIsMobileFilterOpen(false)}
+                  className="w-full py-3 bg-[#15803D] hover:bg-[#16A34A] text-white font-bold text-xs sm:text-sm rounded-xl shadow-md min-h-[44px] transition-colors"
+                >
+                  Apply Filters ({products.length} Results)
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -245,7 +247,7 @@ export const ShopPage: React.FC = () => {
         {/* Products Grid / Results Area */}
         <div className="md:col-span-3">
           {isLoading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2.5 sm:gap-4 lg:gap-6">
               {[1, 2, 3, 4, 5, 6].map((n) => (
                 <div
                   key={n}
@@ -262,7 +264,7 @@ export const ShopPage: React.FC = () => {
             <div
               className={
                 viewMode === 'grid'
-                  ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'
+                  ? 'grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2.5 sm:gap-4 lg:gap-6'
                   : 'space-y-4'
               }
             >

@@ -38,7 +38,7 @@ export const MegaMenu: React.FC = () => {
   return (
     <nav className="bg-white border-b border-gray-200 shadow-xs relative z-40 hidden md:block">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5">
           {/* All Categories Dropdown Trigger */}
           <div
             className="relative"
@@ -55,7 +55,7 @@ export const MegaMenu: React.FC = () => {
 
             {/* Mega Menu Dropdown flyout */}
             {isCategoryDropdownOpen && (
-              <div className="absolute top-full left-0 w-[780px] bg-white border border-gray-200 rounded-b-xl shadow-2xl flex z-50 overflow-hidden">
+              <div className="absolute top-full left-0 w-[calc(100vw-2rem)] max-w-[780px] bg-white border border-gray-200 rounded-b-xl shadow-2xl flex z-50 overflow-hidden">
                 {/* Left column: Categories list */}
                 <div className="w-64 bg-gray-50 border-r border-gray-200 py-2 max-h-[460px] overflow-y-auto">
                   {categories.map((cat) => (
@@ -148,44 +148,44 @@ export const MegaMenu: React.FC = () => {
           {/* Quick links along the navigation bar */}
           <Link
             to="/shop?category=solar-panels"
-            className="px-3 py-2 text-xs font-semibold text-gray-700 hover:text-green-700 transition-colors"
+            className="px-3 py-2 text-xs font-semibold text-gray-700 hover:text-green-700 transition-colors shrink-0"
           >
             Solar Panels
           </Link>
           <Link
             to="/shop?category=solar-inverters"
-            className="px-3 py-2 text-xs font-semibold text-gray-700 hover:text-green-700 transition-colors"
+            className="px-3 py-2 text-xs font-semibold text-gray-700 hover:text-green-700 transition-colors shrink-0"
           >
             Inverters
           </Link>
           <Link
             to="/shop?category=solar-batteries"
-            className="px-3 py-2 text-xs font-semibold text-gray-700 hover:text-green-700 transition-colors"
+            className="px-3 py-2 text-xs font-semibold text-gray-700 hover:text-green-700 transition-colors shrink-0"
           >
             Lithium Batteries
           </Link>
           <Link
             to="/shop?category=wires-cables"
-            className="px-3 py-2 text-xs font-semibold text-gray-700 hover:text-green-700 transition-colors"
+            className="hidden xl:inline-block px-3 py-2 text-xs font-semibold text-gray-700 hover:text-green-700 transition-colors shrink-0"
           >
             Wires & Cables
           </Link>
           <Link
             to="/shop?category=electrical-protection"
-            className="px-3 py-2 text-xs font-semibold text-gray-700 hover:text-green-700 transition-colors"
+            className="hidden xl:inline-block px-3 py-2 text-xs font-semibold text-gray-700 hover:text-green-700 transition-colors shrink-0"
           >
             Circuit Breakers
           </Link>
           <Link
             to="/solar-packages"
-            className="px-3 py-2 text-xs font-semibold text-green-700 hover:text-green-900 transition-colors flex items-center gap-1"
+            className="px-3 py-2 text-xs font-semibold text-green-700 hover:text-green-900 transition-colors flex items-center gap-1 shrink-0"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>Solar Packages</span>
           </Link>
           <Link
             to="/system-builder"
-            className="px-3 py-1.5 text-xs font-bold text-white bg-[#16A34A] hover:bg-[#15803D] rounded-md my-1 transition-colors flex items-center gap-1 shadow-xs"
+            className="px-3 py-1.5 text-xs font-bold text-white bg-[#16A34A] hover:bg-[#15803D] rounded-md my-1 transition-colors flex items-center gap-1 shadow-xs shrink-0"
           >
             <Wrench className="w-3.5 h-3.5" />
             <span>System Builder</span>

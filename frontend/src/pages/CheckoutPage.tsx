@@ -133,7 +133,7 @@ export const CheckoutPage: React.FC = () => {
           <div className="lg:col-span-7 space-y-6">
             
             {/* Step 1: Customer Contact Information */}
-            <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
+            <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-gray-900 flex items-center gap-2">
                 <User className="w-4 h-4 text-[#16A34A]" />
                 <span>Customer Contact Information</span>
@@ -181,7 +181,7 @@ export const CheckoutPage: React.FC = () => {
             </div>
 
             {/* Step 2: Delivery Address (Bangladesh) */}
-            <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
+            <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-gray-900 flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#16A34A]" />
                 <span>Delivery Address in Bangladesh</span>
@@ -259,7 +259,7 @@ export const CheckoutPage: React.FC = () => {
             </div>
 
             {/* Step 3: Payment Method Selection */}
-            <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
+            <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-gray-900 flex items-center gap-2">
                 <CreditCard className="w-4 h-4 text-[#16A34A]" />
                 <span>Select Payment Method</span>
@@ -332,8 +332,8 @@ export const CheckoutPage: React.FC = () => {
                       <div className="text-gray-600">
                         Merchant Number: <strong className="text-gray-900 font-semibold">+880 1833-994455</strong>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-gray-500 text-xs">TrxID:</span>
+                      <div className="flex flex-col min-[380px]:flex-row min-[380px]:items-center gap-2">
+                        <span className="text-gray-500 text-xs shrink-0">TrxID:</span>
                         <input
                           type="text"
                           value={bkashTrxId}
@@ -395,7 +395,7 @@ export const CheckoutPage: React.FC = () => {
 
           {/* Right: Order Summary Sidebar (5 cols) */}
           <div className="lg:col-span-5 sticky top-24 space-y-5">
-            <div className="bg-white rounded-xl border-2 border-green-200 p-5 sm:p-6 shadow-sm space-y-5">
+            <div className="bg-white rounded-xl border-2 border-green-200 p-4 sm:p-6 shadow-sm space-y-5">
               <h3 className="font-bold text-gray-900 text-base border-b border-gray-100 pb-3">
                 Order Review ({items.length} Items)
               </h3>

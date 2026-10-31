@@ -49,7 +49,7 @@ export const OrderConfirmationPage: React.FC = () => {
       />
 
       {/* Hero Success Badge */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 sm:p-10 text-center space-y-4 shadow-xs">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-8 text-center space-y-4 shadow-xs">
         <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-sm">
           <CheckCircle2 className="w-10 h-10 sm:w-12 sm:h-12" />
         </div>
@@ -105,7 +105,7 @@ export const OrderConfirmationPage: React.FC = () => {
       </div>
 
       {/* Order Details & Summary Card */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-8 shadow-xs space-y-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-8 shadow-xs space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-gray-100 pb-4">
           <div>
             <h3 className="font-bold text-lg text-gray-900">

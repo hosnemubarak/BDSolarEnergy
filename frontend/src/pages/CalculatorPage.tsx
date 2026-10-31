@@ -76,7 +76,7 @@ export const CalculatorPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         {/* Left: Input Controls (6 cols) */}
-        <div className="lg:col-span-6 bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-6">
+        <div className="lg:col-span-6 bg-white rounded-xl border border-gray-200 p-4 sm:p-6 lg:p-8 shadow-xs space-y-6">
           <h3 className="font-bold text-base text-gray-900 border-b border-gray-100 pb-3">
             Enter Your Household or Facility Usage
           </h3>
@@ -149,7 +149,7 @@ export const CalculatorPage: React.FC = () => {
         </div>
 
         {/* Right: Results & Recommendations (6 cols) */}
-        <div className="lg:col-span-6 bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-6">
+        <div className="lg:col-span-6 bg-white rounded-xl border border-gray-200 p-4 sm:p-6 lg:p-8 shadow-xs space-y-6">
           <div className="border-b border-gray-100 pb-3 flex items-center justify-between">
             <h3 className="font-bold text-base text-gray-900">
               Recommended Solar Engineering Configuration
@@ -160,7 +160,7 @@ export const CalculatorPage: React.FC = () => {
           </div>
 
           {/* Key Metric Blocks */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs sm:text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 text-xs sm:text-sm">
             <div className="p-3.5 sm:p-4 bg-[#F0FDF4] rounded-lg border border-green-100">
               <span className="text-gray-500 block text-xs">Recommended Array</span>
               <span className="text-lg sm:text-xl font-bold text-gray-900 block mt-1">

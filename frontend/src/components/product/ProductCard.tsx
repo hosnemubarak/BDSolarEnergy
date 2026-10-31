@@ -71,7 +71,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
 
   return (
     <div
-      className={`group relative bg-white rounded-xl border border-gray-200 hover:border-green-400 hover:shadow-card-hover transition-smooth flex flex-col overflow-hidden ${className}`}
+      className={`group relative bg-white rounded-xl border border-gray-200 hover:border-green-400 hover:shadow-card-hover transition-smooth flex flex-col overflow-hidden h-full ${className}`}
     >
       {/* Top Badges & Wishlist Action */}
       <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 pointer-events-none">
@@ -126,15 +126,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
       </Link>
 
       {/* Product Details Area */}
-      <div className="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+      <div className="p-2.5 sm:p-3.5 md:p-4 flex-1 flex flex-col justify-between">
         <div>
           {/* Brand & Technical Spec Badge */}
-          <div className="flex items-center justify-between gap-1 mb-1.5">
-            <span className="text-xs sm:text-sm font-bold text-[#16A34A] uppercase tracking-wider truncate">
+          <div className="flex items-center justify-between gap-1 mb-1.5 min-w-0">
+            <span className="text-[11px] sm:text-xs md:text-sm font-bold text-[#16A34A] uppercase tracking-wider truncate">
               {product.brand}
             </span>
             {specBadge && (
-              <span className="text-xs sm:text-sm font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded shrink-0">
+              <span className="text-[10px] sm:text-xs md:text-sm font-medium text-gray-600 bg-gray-100 px-1.5 sm:px-2 py-0.5 rounded shrink-0 max-w-[85px] sm:max-w-none truncate">
                 {specBadge}
               </span>
             )}
@@ -143,36 +143,36 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
           {/* Product Title */}
           <Link
             to={`/product/${product.slug}`}
-            className="block text-base sm:text-lg font-bold text-gray-900 group-hover:text-[#16A34A] transition-colors line-clamp-2 min-h-[2.8rem] leading-snug"
+            className="block text-xs sm:text-sm md:text-base font-bold text-gray-900 group-hover:text-[#16A34A] transition-colors line-clamp-2 min-h-[2.2rem] sm:min-h-[2.6rem] leading-snug"
             title={product.name}
           >
             {product.name}
           </Link>
 
           {/* Ratings & Stock Status */}
-          <div className="flex items-center justify-between mt-2">
-            <RatingStars rating={product.rating} reviewCount={product.reviewCount} size={14} />
-            <span className="text-xs sm:text-sm text-emerald-700 font-semibold flex items-center gap-1">
+          <div className="flex items-center justify-between gap-1 flex-wrap mt-1.5 sm:mt-2">
+            <RatingStars rating={product.rating} reviewCount={product.reviewCount} size={13} />
+            <span className="text-[11px] sm:text-xs text-emerald-700 font-semibold flex items-center gap-1">
               <Check className="w-3.5 h-3.5 text-emerald-600" />
-              <span>In Stock</span>
+              <span className="hidden min-[360px]:inline">In Stock</span>
             </span>
           </div>
         </div>
 
         {/* Price & Add to Cart Action */}
-        <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between gap-2">
-          <div>
-            <div className="flex items-baseline gap-2 flex-wrap">
+        <div className="mt-2.5 sm:mt-3 pt-2.5 sm:pt-3 border-t border-gray-100 flex flex-col min-[380px]:flex-row min-[380px]:items-center justify-between gap-2">
+          <div className="min-w-0">
+            <div className="flex items-baseline gap-1.5 flex-wrap">
               <Price
                 amount={product.price}
-                className="text-lg sm:text-xl font-bold text-gray-900"
-                symbolClassName="text-[#16A34A] text-xl"
+                className="text-base sm:text-lg md:text-xl font-bold text-gray-900"
+                symbolClassName="text-[#16A34A] text-base sm:text-lg md:text-xl"
               />
               {product.originalPrice && (
                 <Price
                   amount={product.originalPrice}
-                  className="text-xs sm:text-sm text-gray-400 line-through"
-                  symbolClassName="text-gray-400"
+                  className="text-[11px] sm:text-xs text-gray-400 line-through"
+                  symbolClassName="text-gray-400 text-xs"
                 />
               )}
             </div>
@@ -180,11 +180,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className = '
 
           <button
             onClick={handleAddToCart}
-            className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white transition-colors shadow-xs active:scale-95 flex items-center gap-1.5 shrink-0 min-h-[38px]"
+            className="w-full min-[380px]:w-auto px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white transition-colors shadow-xs active:scale-95 flex items-center justify-center gap-1.5 shrink-0 min-h-[36px] sm:min-h-[38px]"
             title="Add to Cart"
             aria-label={`Add ${product.name} to Cart`}
           >
-            <ShoppingCart className="w-4 h-4" />
+            <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span className="text-xs sm:text-sm font-semibold">Add</span>
           </button>
         </div>

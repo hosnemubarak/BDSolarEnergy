@@ -52,7 +52,7 @@ export const ContactPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left: Contact Info Cards (5 cols) */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-xs space-y-4">
+          <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 shadow-xs space-y-4">
             <h3 className="font-bold text-base text-gray-900 border-b border-gray-100 pb-3">
               Corporate Headquarters & Showroom
             </h3>
@@ -112,7 +112,7 @@ export const ContactPage: React.FC = () => {
         </div>
 
         {/* Right: Technical Inquiry Form (7 cols) */}
-        <div className="lg:col-span-7 bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-xs">
+        <div className="lg:col-span-7 bg-white rounded-xl border border-gray-200 p-4 sm:p-6 lg:p-8 shadow-xs">
           <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-1">
             Send an Engineering Inquiry / Request a Quote
           </h3>

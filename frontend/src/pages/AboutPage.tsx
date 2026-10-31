@@ -19,7 +19,7 @@ export const AboutPage: React.FC = () => {
       <Breadcrumbs items={[{ label: 'About Us' }]} />
 
       {/* Hero */}
-      <div className="bg-[#F8FAFC] border border-gray-200 rounded-xl p-8 sm:p-12 text-center space-y-4 text-gray-900">
+      <div className="bg-[#F8FAFC] border border-gray-200 rounded-xl p-5 sm:p-10 text-center space-y-4 text-gray-900">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0FDF4] text-[#16A34A] text-xs font-semibold border border-green-200">
           <Sun className="w-3.5 h-3.5" />
           <span>About BD Solar Energy</span>
@@ -34,7 +34,7 @@ export const AboutPage: React.FC = () => {
 
       {/* Pillars Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 sm:p-8 rounded-xl border border-gray-200 shadow-xs space-y-3">
+        <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-xl border border-gray-200 shadow-xs space-y-3">
           <div className="w-12 h-12 rounded-lg bg-green-50 text-[#16A34A] flex items-center justify-center">
             <Award className="w-6 h-6" />
           </div>
@@ -44,7 +44,7 @@ export const AboutPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-white p-6 sm:p-8 rounded-xl border border-gray-200 shadow-xs space-y-3">
+        <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-xl border border-gray-200 shadow-xs space-y-3">
           <div className="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
             <Users className="w-6 h-6" />
           </div>
@@ -54,7 +54,7 @@ export const AboutPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-white p-6 sm:p-8 rounded-xl border border-gray-200 shadow-xs space-y-3">
+        <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-xl border border-gray-200 shadow-xs space-y-3">
           <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
             <Truck className="w-6 h-6" />
           </div>
@@ -66,10 +66,10 @@ export const AboutPage: React.FC = () => {
       </div>
 
       {/* Showroom & Operations */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 sm:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-8 shadow-xs grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
         <div className="space-y-4">
           <span className="text-xs font-semibold text-[#16A34A] uppercase tracking-wider">
-            Dhaka Experience Showroom
+            Chittagong Experience Showroom
           </span>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
             Visit Our Live Testing & Demonstration Center

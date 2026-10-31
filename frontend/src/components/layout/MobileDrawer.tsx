@@ -225,7 +225,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
         </div>
 
         {/* Drawer Bottom Support Hotline */}
-        <div className="p-3 bg-gray-50 border-t border-gray-200 text-center">
+        <div className="p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] bg-gray-50 border-t border-gray-200 text-center">
           <div className="text-xs text-gray-500">Need Immediate Help?</div>
           <a
             href="tel:+8801833994455"

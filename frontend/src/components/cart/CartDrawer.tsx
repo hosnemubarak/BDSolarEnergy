@@ -73,7 +73,7 @@ export const CartDrawer: React.FC = () => {
       />
 
       {/* Slide-out Drawer Panel */}
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-4 sm:pl-10">
         <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col">
           {/* Header */}
           <div className="p-4 bg-white border-b border-gray-200 text-gray-900 flex items-center justify-between">
@@ -202,7 +202,7 @@ export const CartDrawer: React.FC = () => {
 
           {/* Footer Calculations & Action Buttons */}
           {items.length > 0 && (
-            <div className="p-4 bg-gray-50 border-t border-gray-200 space-y-3">
+            <div className="p-4 pb-[max(1rem,env(safe-area-inset-bottom))] bg-gray-50 border-t border-gray-200 space-y-3">
               {/* Coupon Form */}
               {couponCode ? (
                 <div className="flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-xs sm:text-sm text-emerald-800">

@@ -258,7 +258,7 @@ export const SystemBuilderPage: React.FC = () => {
         <div className="lg:col-span-7 space-y-6">
           
           {/* STEP 1: SOLAR PANELS */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
+          <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
               <div className="flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-[#16A34A] text-white text-xs font-bold flex items-center justify-center">
@@ -332,7 +332,7 @@ export const SystemBuilderPage: React.FC = () => {
           </div>
 
           {/* STEP 2: SOLAR INVERTER */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 shadow-xs space-y-4">
+          <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
               <div className="flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-[#16A34A] text-white text-xs font-bold flex items-center justify-center">
@@ -463,7 +463,7 @@ export const SystemBuilderPage: React.FC = () => {
 
         {/* Right: Real-time System Metrics & Summary Card */}
         <div className="lg:col-span-5 sticky top-24 space-y-5">
-          <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm space-y-5">
+          <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 shadow-sm space-y-5">
             <div className="flex items-center justify-between border-b border-gray-100 pb-3">
               <h3 className="font-black text-gray-900 text-base">
                 System Performance Estimate
@@ -474,20 +474,20 @@ export const SystemBuilderPage: React.FC = () => {
             </div>
 
             {/* Calculations Grid */}
-            <div className="grid grid-cols-2 gap-3 text-xs sm:text-sm">
-              <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm">
+              <div className="p-2.5 sm:p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
                 <span className="text-gray-500 block text-xs">Total Solar Array</span>
                 <span className="text-base sm:text-lg font-bold text-gray-900">{totalArrayWatts} Wp</span>
                 <span className="text-xs text-gray-400 block mt-0.5">({panelCount}x {selectedPanel.watts}W)</span>
               </div>
 
-              <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
+              <div className="p-2.5 sm:p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
                 <span className="text-gray-500 block text-xs">Daily Generation</span>
                 <span className="text-base sm:text-lg font-bold text-gray-900">~{dailyGenerationKwh} kWh</span>
                 <span className="text-xs text-gray-400 block mt-0.5">4.2 Peak Sun Hours</span>
               </div>
 
-              <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
+              <div className="p-2.5 sm:p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
                 <span className="text-emerald-700 block text-xs">Est. Monthly Savings</span>
                 <Price
                   amount={monthlySavingsBdt}
@@ -497,7 +497,7 @@ export const SystemBuilderPage: React.FC = () => {
                 <span className="text-xs text-emerald-600 block mt-0.5">Off Utility Bill</span>
               </div>
 
-              <div className="p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
+              <div className="p-2.5 sm:p-3 bg-[#F0FDF4] rounded-xl border border-green-100">
                 <span className="text-gray-500 block text-xs">Battery Storage</span>
                 <span className="text-base sm:text-lg font-bold text-gray-900">{selectedBattery.kwh} kWh</span>
                 <span className="text-xs text-gray-400 block mt-0.5">{selectedBattery.chemistry}</span>

@@ -87,7 +87,7 @@ export const AccountPage: React.FC = () => {
       <Breadcrumbs items={[{ label: 'My Account' }]} />
 
       {/* Account Overview Header */}
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-8 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
         <div className="flex items-center gap-4">
           <div className="w-16 h-16 rounded-2xl bg-[#F0FDF4] text-[#16A34A] border border-green-200 font-black text-2xl flex items-center justify-center">
             {user.name.charAt(0)}
@@ -177,7 +177,7 @@ export const AccountPage: React.FC = () => {
         </div>
 
         {/* Right Content Area (8 cols) */}
-        <div className="lg:col-span-8 bg-white rounded-xl border border-gray-200 p-5 sm:p-8 shadow-xs">
+        <div className="lg:col-span-8 bg-white rounded-xl border border-gray-200 p-4 sm:p-8 shadow-xs">
           
           {/* TAB 1: ORDERS */}
           {activeTab === 'orders' && (

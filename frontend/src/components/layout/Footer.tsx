@@ -27,10 +27,10 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#F8FAFC] text-gray-600 pt-10 pb-20 md:pb-10 border-t border-gray-200">
+    <footer className="bg-[#F8FAFC] text-gray-600 pt-10 pb-[calc(5rem+env(safe-area-inset-bottom,0px))] md:pb-10 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4">
         {/* Top Feature Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pb-8 border-b border-gray-200">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pb-8 border-b border-gray-200">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center text-[#16A34A] shrink-0">
               <Sun className="w-5 h-5" />

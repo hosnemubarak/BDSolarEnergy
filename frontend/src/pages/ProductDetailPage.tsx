@@ -123,7 +123,7 @@ export const ProductDetailPage: React.FC = () => {
       />
 
       {/* Main Product Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white p-5 sm:p-8 rounded-xl border border-gray-200 shadow-xs">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 bg-white p-4 sm:p-6 lg:p-8 rounded-xl border border-gray-200 shadow-xs">
 
         {/* Left Column: Image Gallery (5 cols) */}
         <div className="lg:col-span-5 space-y-4">
@@ -327,8 +327,8 @@ export const ProductDetailPage: React.FC = () => {
       </div>
 
       {/* Tabs Section: Specifications, Description, Compatibility, Warranty */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-xs space-y-6">
-        <div className="flex border-b border-gray-200 gap-4 sm:gap-8 overflow-x-auto">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 lg:p-8 shadow-xs space-y-6">
+        <div className="flex border-b border-gray-200 gap-3 sm:gap-8 overflow-x-auto no-scrollbar">
           {[
             { id: 'specs', label: 'Technical Specifications' },
             { id: 'description', label: 'Product Overview' },
@@ -587,7 +587,7 @@ export const ProductDetailPage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-6">
             {relatedProducts.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
@@ -596,7 +596,7 @@ export const ProductDetailPage: React.FC = () => {
       )}
 
       {/* Mobile Sticky Purchase Bar */}
-      <div className="fixed bottom-14 left-0 right-0 z-30 sm:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 py-2.5 flex items-center justify-between gap-3 shadow-lg">
+      <div className="fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] left-0 right-0 z-30 sm:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 px-3 py-2 flex items-center justify-between gap-2 shadow-lg">
         <div>
           <span className="text-xs text-gray-500 block">Total Price</span>
           <Price

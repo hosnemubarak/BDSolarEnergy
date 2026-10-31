@@ -64,8 +64,8 @@ const QuickViewModalContent: React.FC<QuickViewModalContentProps> = ({
       />
 
       {/* Modal Dialog */}
-      <div className="min-h-screen px-4 text-center flex items-center justify-center p-4">
-        <div className="relative bg-white rounded-xl max-w-3xl w-full p-5 sm:p-7 text-left shadow-2xl z-10 overflow-hidden transform transition-all border border-gray-200">
+      <div className="min-h-screen px-3 sm:px-4 text-center flex items-center justify-center p-3 sm:p-4">
+        <div className="relative bg-white rounded-xl max-w-3xl w-full p-4 sm:p-7 text-left shadow-2xl z-10 overflow-hidden transform transition-all border border-gray-200">
           {/* Close button */}
           <button
             onClick={closeQuickView}
@@ -204,7 +204,7 @@ const QuickViewModalContent: React.FC<QuickViewModalContentProps> = ({
 
               {/* Quantity Stepper & Add to Cart */}
               <div className="mt-5 space-y-3">
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3">
                   <div className="flex items-center border border-gray-300 rounded-lg bg-gray-50">
                     <button
                       onClick={() => setQuantity((q) => Math.max(1, q - 1))}

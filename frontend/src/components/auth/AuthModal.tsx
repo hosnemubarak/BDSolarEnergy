@@ -100,7 +100,7 @@ export const AuthModal: React.FC = () => {
 
       {/* Modal Dialog */}
       <div className="min-h-screen px-4 flex items-center justify-center p-4">
-        <div className="relative bg-white rounded-xl max-w-md w-full p-6 sm:p-8 text-left shadow-2xl z-10 overflow-hidden border border-gray-200">
+        <div className="relative bg-white rounded-xl max-w-md w-full p-4 sm:p-8 text-left shadow-2xl z-10 overflow-hidden border border-gray-200">
           {/* Close button */}
           <button
             onClick={handleClose}

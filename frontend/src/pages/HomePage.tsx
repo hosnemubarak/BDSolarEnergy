@@ -81,7 +81,7 @@ export const HomePage: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
               <Link
                 to="/shop"
-                className="px-4 py-2 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-sm sm:text-base rounded-lg transition-all shadow-xs flex items-center gap-1.5 active:scale-98"
+                className="w-full min-[420px]:w-auto justify-center px-4 py-2 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-sm sm:text-base rounded-lg transition-all shadow-xs flex items-center gap-1.5 active:scale-98"
               >
                 <span>Shop All Equipment</span>
                 <ChevronRight className="w-4 h-4" />
@@ -89,7 +89,7 @@ export const HomePage: React.FC = () => {
 
               <Link
                 to="/solar-calculator"
-                className="px-3.5 py-2 bg-white hover:bg-green-50 text-gray-800 hover:text-[#16A34A] font-semibold text-sm sm:text-base rounded-lg border border-green-200 transition-all flex items-center gap-1.5 shadow-xs"
+                className="w-full min-[420px]:w-auto justify-center px-3.5 py-2 bg-white hover:bg-green-50 text-gray-800 hover:text-[#16A34A] font-semibold text-sm sm:text-base rounded-lg border border-green-200 transition-all flex items-center gap-1.5 shadow-xs"
               >
                 <Calculator className="w-4 h-4 text-amber-500" />
                 <span>Load Sizing Calculator</span>
@@ -196,14 +196,14 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-4">
           {categories.slice(0, 6).map((cat) => {
             const catId = cat.slug || cat.id;
             return (
               <Link
                 key={cat.id || cat.slug}
                 to={`/shop?category=${catId}`}
-                className="group p-3.5 sm:p-4 bg-white rounded-xl border border-gray-200 hover:border-green-400 hover:shadow-card-hover transition-smooth flex flex-col items-center text-center"
+                className="group p-2.5 sm:p-4 bg-white rounded-xl border border-gray-200 hover:border-green-400 hover:shadow-card-hover transition-smooth flex flex-col items-center text-center"
               >
                 <div className="w-12 h-12 rounded-xl bg-slate-50 group-hover:bg-[#F0FDF4] border border-gray-100 group-hover:border-green-200 flex items-center justify-center text-[#16A34A] mb-2.5 transition-colors">
                   {(catId === 'solar-panels' || cat.name.toLowerCase().includes('panel')) && <Sun className="w-6 h-6 text-amber-500" />}
@@ -245,7 +245,7 @@ export const HomePage: React.FC = () => {
               <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4">
             {featuredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -277,7 +277,7 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4">
             {solarPanels.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -309,7 +309,7 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4">
             {invertersAndBatteries.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -341,7 +341,7 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4">
             {electricalEquipment.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -373,7 +373,7 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
             {solarPackages.map((pkg) => (
               <div
                 key={pkg.id}
@@ -434,7 +434,7 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2.5">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-2.5">
           {brands.slice(0, 8).map((brand) => (
             <Link
               key={brand.id || brand.slug}
