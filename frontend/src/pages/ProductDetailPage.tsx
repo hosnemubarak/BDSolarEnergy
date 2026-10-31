@@ -561,7 +561,7 @@ export const ProductDetailPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div className="p-3 bg-gray-50 rounded-xl border border-gray-200">
                 <span className="font-bold text-gray-900 block">Warranty Claim Process</span>
-                <span className="text-gray-500">Bring the equipment with original invoice to our Motijheel service center or dispatch via registered courier.</span>
+                <span className="text-gray-500">Bring the equipment with original invoice to our Jubilee Road, Chittagong service center or dispatch via registered courier.</span>
               </div>
               <div className="p-3 bg-gray-50 rounded-xl border border-gray-200">
                 <span className="font-bold text-gray-900 block">Shipping & Wooden Crating</span>

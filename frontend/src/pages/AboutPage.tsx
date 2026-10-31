@@ -80,7 +80,7 @@ export const AboutPage: React.FC = () => {
           <div className="space-y-2 text-xs text-gray-700 pt-2">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-[#16A34A]" />
-              <span>Level 7, Solar Bhaban, 42 Motijheel C/A, Dhaka-1000, Bangladesh</span>
+              <span>Shop No. 11-12 (3rd Floor), CDA Market, Jubilee Road, Chittagong, Bangladesh</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />

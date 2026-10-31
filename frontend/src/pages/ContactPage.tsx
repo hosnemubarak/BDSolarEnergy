@@ -65,7 +65,7 @@ export const ContactPage: React.FC = () => {
                 <div>
                   <div className="font-semibold text-gray-900">Head Office & Live Showroom</div>
                   <div className="text-gray-600 mt-0.5">
-                    Level 7, Solar Bhaban, 42 Motijheel Commercial Area, Dhaka-1000, Bangladesh
+                    Shop No. 11-12 (3rd Floor), CDA Market, Jubilee Road, Chittagong, Bangladesh
                   </div>
                 </div>
               </div>
@@ -77,7 +77,7 @@ export const ContactPage: React.FC = () => {
                 <div>
                   <div className="font-semibold text-gray-900">Hotline & WhatsApp Support</div>
                   <div className="text-gray-600 mt-0.5">
-                    +880 1700-SOLAR (76527) / +880 2-9568900
+                    +880 1833-994455
                   </div>
                   <div className="text-xs text-emerald-700 font-medium mt-0.5">
                     Available 9:00 AM – 10:00 PM Daily

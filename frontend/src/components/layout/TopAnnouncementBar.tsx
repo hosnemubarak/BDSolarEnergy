@@ -31,11 +31,11 @@ export const TopAnnouncementBar: React.FC = () => {
           </div>
 
           <a
-            href="tel:+880170076527"
+            href="tel:+8801833994455"
             className="flex items-center gap-1.5 font-bold text-[#16A34A] hover:text-[#15803D] transition-colors"
           >
             <Phone className="w-3.5 h-3.5 text-[#16A34A]" />
-            <span>+880 1700-SOLAR</span>
+            <span>+880 1833-994455</span>
           </a>
         </div>
       </div>

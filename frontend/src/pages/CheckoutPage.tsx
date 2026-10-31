@@ -330,7 +330,7 @@ export const CheckoutPage: React.FC = () => {
                   {paymentMethod === 'BKASH' && (
                     <div className="mt-3 pt-3 border-t border-green-200 text-xs sm:text-sm space-y-2">
                       <div className="text-gray-600">
-                        Merchant Number: <strong className="text-gray-900 font-semibold">+880 1700-765270</strong>
+                        Merchant Number: <strong className="text-gray-900 font-semibold">+880 1833-994455</strong>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-gray-500 text-xs">TrxID:</span>

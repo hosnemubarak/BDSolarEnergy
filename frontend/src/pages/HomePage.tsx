@@ -61,10 +61,6 @@ export const HomePage: React.FC = () => {
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 items-stretch">
         {/* Main Showcase Banner (8 cols) */}
         <div className="lg:col-span-8 bg-[#F0FDF4] border border-green-200/90 rounded-2xl p-5 sm:p-6 flex flex-col justify-between shadow-xs relative overflow-hidden group">
-          {/* Subtle Ambient Background Watermark */}
-          <div className="absolute right-6 bottom-0 opacity-15 pointer-events-none hidden sm:block text-[#16A34A]">
-            <Sun className="w-52 h-52 stroke-1" />
-          </div>
 
           <div className="relative z-10 space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-green-200 text-[#16A34A] text-xs sm:text-sm font-semibold tracking-wide shadow-xs">
@@ -418,10 +414,24 @@ export const HomePage: React.FC = () => {
       {/* 8. BRAND PARTNERS */}
       <section className="space-y-4 pt-2">
         <div className="flex items-center justify-between">
-          <h2 className="text-xs sm:text-sm font-bold text-gray-700 uppercase tracking-wider">
-            Official Brand Partners & Suppliers
-          </h2>
-          <span className="text-xs sm:text-sm text-gray-500">100% Genuine Authorized Sourcing</span>
+          <div>
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-[#16A34A]" />
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
+                Official Brand Partners & Suppliers
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
+              100% Genuine Authorized Sourcing with Direct Manufacturer Warranty
+            </p>
+          </div>
+          <Link
+            to="/shop"
+            className="text-xs sm:text-sm font-semibold text-[#16A34A] hover:text-[#15803D] flex items-center gap-1 shrink-0"
+          >
+            <span>Explore All Brands</span>
+            <ChevronRight className="w-4 h-4" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2.5">

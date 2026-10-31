@@ -65,13 +65,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
           
           {/* Quick Support Phone - Hidden on small mobile */}
           <a
-            href="tel:+880170076527"
+            href="tel:+8801833994455"
             className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-green-50 text-gray-700 hover:text-[#16A34A] border border-gray-200 transition-colors"
           >
             <PhoneCall className="w-4 h-4 text-[#16A34A]" />
             <div className="text-left leading-tight">
               <div className="text-xs text-gray-500 font-medium">Customer Support</div>
-              <div className="text-sm font-bold text-gray-900">+880 1700-SOLAR</div>
+              <div className="text-sm font-bold text-gray-900">+880 1833-994455</div>
             </div>
           </a>
 

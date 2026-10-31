@@ -29,7 +29,7 @@ export const ShippingPolicyPage: React.FC = () => {
 
         <h3 className="text-base font-bold text-gray-900 pt-2">3. Wooden Crating & Transit Insurance</h3>
         <p>
-          All solar panel consignments containing 2 or more panels are packed in custom wooden pallets. In the rare event of transit damage, customers must document photos upon delivery and our customer support hotline (+880 1700-SOLAR) will dispatch instant replacements.
+          All solar panel consignments containing 2 or more panels are packed in custom wooden pallets. In the rare event of transit damage, customers must document photos upon delivery and our customer support hotline (+880 1833-994455) will dispatch instant replacements.
         </p>
       </div>
     </div>
