@@ -13,6 +13,8 @@ interface AuthContextType {
   logout: () => void;
   updateProfile: (updated: Partial<UserProfile>) => Promise<void>;
   saveAddress: (address: CustomerAddress) => Promise<void>;
+  deleteAddress: (addressId: string) => Promise<void>;
+  setDefaultAddress: (addressId: string) => Promise<void>;
   isAuthModalOpen: boolean;
   setIsAuthModalOpen: (open: boolean) => void;
 }
@@ -111,6 +113,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const saveAddress = async (address: CustomerAddress) => {
+    if (!address.id && (user?.savedAddresses || []).length >= 2) {
+      throw new Error('You can only save up to 2 delivery addresses. Please edit or delete an existing address.');
+    }
     try {
       await authService.saveAddress(address);
       const fresh = await authService.fetchProfile();
@@ -119,6 +124,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Failed to save address', err);
       throw err;
     }
+  };
+
+  const deleteAddress = async (addressId: string) => {
+    try {
+      await authService.deleteAddress(addressId);
+      const fresh = await authService.fetchProfile();
+      setUser(fresh);
+    } catch (err) {
+      console.error('Failed to delete address', err);
+      throw err;
+    }
+  };
+
+  const setDefaultAddress = async (addressId: string) => {
+    const target = user?.savedAddresses?.find((a) => a.id === addressId);
+    if (!target) return;
+    await saveAddress({ ...target, isDefault: true });
   };
 
   return (
@@ -134,6 +156,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         logout,
         updateProfile,
         saveAddress,
+        deleteAddress,
+        setDefaultAddress,
         isAuthModalOpen,
         setIsAuthModalOpen,
       }}

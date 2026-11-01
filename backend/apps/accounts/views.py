@@ -184,4 +184,6 @@ class CustomerAddressViewSet(viewsets.ModelViewSet):
         return CustomerAddress.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
+        if CustomerAddress.objects.filter(user=self.request.user).count() >= 2:
+            raise serializers.ValidationError({"detail": "You can only save up to 2 delivery addresses."})
         serializer.save(user=self.request.user)

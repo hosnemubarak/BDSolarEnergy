@@ -207,3 +207,44 @@ class AccountsPackageAuthTestCase(TestCase):
         # Empty payload should return 400 Bad Request rather than 404 Not Found
         res = self.client.post('/api/v1/auth/google/', {}, format='json')
         self.assertIn(res.status_code, [status.HTTP_400_BAD_REQUEST])
+
+    def test_max_two_addresses_limit(self):
+        self.client.force_authenticate(user=self.user)
+        base_payload = {
+            'full_name': 'Tanvir Hossain',
+            'phone': '+8801712345678',
+            'division': 'Dhaka',
+            'district': 'Dhaka',
+            'thana_area': 'Dhanmondi',
+            'full_address': 'Road 27, House 42',
+            'postal_code': '1209',
+            'is_default': True
+        }
+
+        # Address 1 (Home)
+        res1 = self.client.post('/api/v1/auth/addresses/', {**base_payload, 'full_address': 'Home Address 1'}, format='json')
+        self.assertEqual(res1.status_code, status.HTTP_201_CREATED)
+        addr1_id = res1.data['id']
+
+        # Address 2 (Office)
+        res2 = self.client.post('/api/v1/auth/addresses/', {**base_payload, 'full_address': 'Office Address 2', 'is_default': False}, format='json')
+        self.assertEqual(res2.status_code, status.HTTP_201_CREATED)
+
+        # Attempt Address 3 (Should be blocked)
+        res3 = self.client.post('/api/v1/auth/addresses/', {**base_payload, 'full_address': 'Extra Address 3'}, format='json')
+        self.assertEqual(res3.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(CustomerAddress.objects.filter(user=self.user).count(), 2)
+
+        # Updating existing address 1 should succeed
+        patch_res = self.client.patch(f'/api/v1/auth/addresses/{addr1_id}/', {'thana_area': 'Gulshan-2'}, format='json')
+        self.assertEqual(patch_res.status_code, status.HTTP_200_OK)
+
+        # Deleting address 1 allows adding a new address
+        del_res = self.client.delete(f'/api/v1/auth/addresses/{addr1_id}/')
+        self.assertEqual(del_res.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(CustomerAddress.objects.filter(user=self.user).count(), 1)
+
+        # Now Address 3 can be added as slot 2
+        res4 = self.client.post('/api/v1/auth/addresses/', {**base_payload, 'full_address': 'New Replacement Address'}, format='json')
+        self.assertEqual(res4.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(CustomerAddress.objects.filter(user=self.user).count(), 2)

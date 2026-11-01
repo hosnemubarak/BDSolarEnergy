@@ -51,7 +51,16 @@ class CustomerAddress(models.Model):
     def __str__(self):
         return f"{self.full_name} - {self.thana_area}, {self.district}"
 
+    def clean(self):
+        super().clean()
+        if not self.pk and CustomerAddress.objects.filter(user=self.user).count() >= 2:
+            from django.core.exceptions import ValidationError
+            raise ValidationError("A customer can only save up to 2 delivery addresses.")
+
     def save(self, *args, **kwargs):
+        if not self.pk and CustomerAddress.objects.filter(user=self.user).count() >= 2:
+            from django.core.exceptions import ValidationError
+            raise ValidationError("A customer can only save up to 2 delivery addresses.")
         if self.is_default:
             CustomerAddress.objects.filter(user=self.user, is_default=True).exclude(pk=self.pk).update(is_default=False)
         super().save(*args, **kwargs)

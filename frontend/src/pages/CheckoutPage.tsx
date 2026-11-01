@@ -6,7 +6,9 @@ import {
   User, 
   Lock,
   Loader2,
-  AlertCircle
+  AlertCircle,
+  CheckCircle2,
+  Plus
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -29,7 +31,7 @@ const BD_DIVISIONS = [
 
 export const CheckoutPage: React.FC = () => {
   const { items, subtotal, discount, couponCode, shippingFee, total, clearCart } = useCart();
-  const { user } = useAuth();
+  const { user, saveAddress } = useAuth();
   const { showToast } = useToast();
   const navigate = useNavigate();
 
@@ -43,6 +45,17 @@ export const CheckoutPage: React.FC = () => {
   const [fullAddress, setFullAddress] = useState(user?.defaultAddress?.fullAddress || '');
   const [postalCode, setPostalCode] = useState(user?.defaultAddress?.postalCode || '');
   
+  // Saved addresses (up to 2) and selection state
+  const savedAddresses = (user?.savedAddresses || []).slice(0, 2);
+  const [selectedAddressMode, setSelectedAddressMode] = useState<'saved' | 'new'>(() =>
+    savedAddresses.length > 0 ? 'saved' : 'new'
+  );
+  const [selectedAddressIndex, setSelectedAddressIndex] = useState<number>(() => {
+    const defaultIdx = savedAddresses.findIndex((a) => a.isDefault);
+    return defaultIdx >= 0 ? defaultIdx : 0;
+  });
+  const [saveNewAddressToAccount, setSaveNewAddressToAccount] = useState<boolean>(false);
+
   const [paymentMethod, setPaymentMethod] = useState<'COD' | 'BKASH' | 'NAGAD' | 'BANK_TRANSFER'>('COD');
   const [bkashTrxId, setBkashTrxId] = useState('');
   const [orderNotes, setOrderNotes] = useState('');
@@ -69,27 +82,50 @@ export const CheckoutPage: React.FC = () => {
     setErrorMessage(null);
     setErrorMessage(null);
 
-    if (!fullName.trim() || !phone.trim() || !fullAddress.trim()) {
-      const msg = 'Please fill in your name, contact phone, and delivery address.';
-      setErrorMessage(msg);
-      showToast(msg, 'error');
-      return;
+    let shippingAddress: CustomerAddress;
+
+    if (selectedAddressMode === 'saved' && savedAddresses[selectedAddressIndex]) {
+      const chosen = savedAddresses[selectedAddressIndex];
+      shippingAddress = {
+        fullName: chosen.fullName || fullName.trim() || user?.name || 'Customer',
+        phone: chosen.phone || phone.trim() || user?.phone || '',
+        division: chosen.division,
+        district: chosen.district,
+        thanaArea: chosen.thanaArea,
+        fullAddress: chosen.fullAddress,
+        postalCode: chosen.postalCode || '',
+        isDefault: !!chosen.isDefault,
+      };
+    } else {
+      if (!fullName.trim() || !phone.trim() || !fullAddress.trim() || !district.trim() || !thanaArea.trim()) {
+        const msg = 'Please fill in your name, contact phone, and complete delivery address.';
+        setErrorMessage(msg);
+        showToast(msg, 'error');
+        return;
+      }
+
+      shippingAddress = {
+        fullName: fullName.trim(),
+        phone: phone.trim(),
+        division,
+        district: district.trim(),
+        thanaArea: thanaArea.trim(),
+        fullAddress: fullAddress.trim(),
+        postalCode: postalCode.trim(),
+        isDefault: savedAddresses.length === 0,
+      };
+
+      // If user opted to save this address to account and has fewer than 2 saved addresses
+      if (user && saveNewAddressToAccount && savedAddresses.length < 2) {
+        saveAddress(shippingAddress).catch((err) =>
+          console.warn('Could not auto-save address to account', err)
+        );
+      }
     }
 
     setIsSubmitting(true);
 
     try {
-      const shippingAddress: CustomerAddress = {
-        fullName: fullName.trim(),
-        phone: phone.trim(),
-        division,
-        district,
-        thanaArea,
-        fullAddress: fullAddress.trim(),
-        postalCode: postalCode.trim(),
-        isDefault: true,
-      };
-
       const createdOrder = await orderService.createOrder({
         items,
         subtotal,
@@ -180,82 +216,222 @@ export const CheckoutPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Step 2: Delivery Address (Bangladesh) */}
+            {/* Step 2: Delivery Address (Bangladesh) with Address Selection */}
             <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 shadow-xs space-y-4">
-              <h3 className="font-bold text-base text-gray-900 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#16A34A]" />
-                <span>Delivery Address in Bangladesh</span>
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
-                    Division *
-                  </label>
-                  <select
-                    value={division}
-                    onChange={(e) => setDivision(e.target.value)}
-                    className="w-full h-11 px-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A] cursor-pointer"
-                  >
-                    {BD_DIVISIONS.map((d) => (
-                      <option key={d} value={d}>
-                        {d} Division
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
-                    District / City *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={district}
-                    onChange={(e) => setDistrict(e.target.value)}
-                    className="w-full h-11 px-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
-                    Postal Code
-                  </label>
-                  <input
-                    type="text"
-                    value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
-                    className="w-full h-11 px-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
-                  />
-                </div>
-
-                <div className="sm:col-span-3">
-                  <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
-                    Thana / Upazila / Area *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={thanaArea}
-                    onChange={(e) => setThanaArea(e.target.value)}
-                    className="w-full h-11 px-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
-                  />
-                </div>
-
-                <div className="sm:col-span-3">
-                  <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
-                    Complete Street Address (Building, Road, Flat No) *
-                  </label>
-                  <textarea
-                    rows={2}
-                    required
-                    value={fullAddress}
-                    onChange={(e) => setFullAddress(e.target.value)}
-                    className="w-full p-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
-                  />
-                </div>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-gray-100">
+                <h3 className="font-bold text-base text-gray-900 flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-[#16A34A]" />
+                  <span>Delivery Address in Bangladesh</span>
+                </h3>
+                {savedAddresses.length > 0 && (
+                  <span className="text-xs text-[#16A34A] font-semibold">
+                    {savedAddresses.length} Saved {savedAddresses.length === 1 ? 'Address' : 'Addresses'} Available (Max 2)
+                  </span>
+                )}
               </div>
+
+              {/* SAVED ADDRESSES SELECTION (UP TO 2 ADDRESSES) */}
+              {savedAddresses.length > 0 && (
+                <div className="space-y-3">
+                  <div className="text-xs font-semibold text-gray-600">
+                    Choose delivery location for this order:
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {savedAddresses.map((addr, idx) => {
+                      const isSelected = selectedAddressMode === 'saved' && selectedAddressIndex === idx;
+                      return (
+                        <div
+                          key={addr.id || idx}
+                          onClick={() => {
+                            setSelectedAddressMode('saved');
+                            setSelectedAddressIndex(idx);
+                          }}
+                          className={`p-3.5 rounded-xl border-2 cursor-pointer transition-all flex flex-col justify-between relative ${
+                            isSelected
+                              ? 'border-[#16A34A] bg-[#F0FDF4] shadow-xs'
+                              : 'border-gray-200 hover:border-gray-300 bg-white'
+                          }`}
+                        >
+                          <div>
+                            <div className="flex items-center justify-between mb-1.5">
+                              <div className="flex items-center gap-2">
+                                <div
+                                  className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                                    isSelected
+                                      ? 'border-[#16A34A] bg-[#16A34A]'
+                                      : 'border-gray-300 bg-white'
+                                  }`}
+                                >
+                                  {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                                </div>
+                                <span className="font-bold text-xs text-gray-900">
+                                  Address {idx + 1}
+                                </span>
+                              </div>
+
+                              {addr.isDefault && (
+                                <span className="px-2 py-0.5 rounded-full bg-white border border-green-200 text-[#16A34A] text-[10px] font-bold uppercase tracking-wider">
+                                  Default
+                                </span>
+                              )}
+                            </div>
+
+                            <div className="text-xs space-y-0.5 text-gray-700 pl-6">
+                              <div className="font-bold text-gray-900">{addr.fullName}</div>
+                              <div className="text-gray-600 line-clamp-2">{addr.fullAddress}</div>
+                              <div className="text-gray-500">
+                                {addr.thanaArea}, {addr.district}, {addr.division}
+                                {addr.postalCode ? ` - ${addr.postalCode}` : ''}
+                              </div>
+                              <div className="text-gray-500 font-mono text-[11px] pt-0.5">
+                                Phone: {addr.phone}
+                              </div>
+                            </div>
+                          </div>
+
+                          {isSelected && (
+                            <div className="mt-2.5 pt-2 border-t border-green-200/80 text-[11px] font-bold text-[#16A34A] flex items-center gap-1 pl-6">
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              <span>Delivering to this address</span>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Option to toggle between saved address and a new delivery address */}
+                  <div className="pt-1 flex items-center justify-between text-xs">
+                    {selectedAddressMode === 'saved' ? (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedAddressMode('new')}
+                        className="text-[#16A34A] hover:text-[#15803D] font-semibold flex items-center gap-1 hover:underline"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Deliver to a different address for this order</span>
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedAddressMode('saved')}
+                        className="text-[#16A34A] hover:text-[#15803D] font-semibold flex items-center gap-1 hover:underline"
+                      >
+                        <span>← Return to saved addresses ({savedAddresses.length})</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* MANUAL ADDRESS INPUT FIELDS (WHEN 'new' OR GUEST / NO SAVED ADDRESSES) */}
+              {(selectedAddressMode === 'new' || savedAddresses.length === 0) && (
+                <div className="space-y-4 pt-2">
+                  {savedAddresses.length > 0 && (
+                    <div className="text-xs font-semibold text-gray-700 pb-1 border-b border-gray-100 flex items-center justify-between">
+                      <span>Enter delivery address details:</span>
+                      <span className="text-gray-400 font-normal">One-time shipping address</span>
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                      <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
+                        Division *
+                      </label>
+                      <select
+                        value={division}
+                        onChange={(e) => setDivision(e.target.value)}
+                        className="w-full h-11 px-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A] cursor-pointer"
+                      >
+                        {BD_DIVISIONS.map((d) => (
+                          <option key={d} value={d}>
+                            {d} Division
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
+                        District / City *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={district}
+                        onChange={(e) => setDistrict(e.target.value)}
+                        placeholder="e.g. Chittagong, Dhaka"
+                        className="w-full h-11 px-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
+                        Postal Code
+                      </label>
+                      <input
+                        type="text"
+                        value={postalCode}
+                        onChange={(e) => setPostalCode(e.target.value)}
+                        placeholder="e.g. 4000"
+                        className="w-full h-11 px-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
+                      />
+                    </div>
+
+                    <div className="sm:col-span-3">
+                      <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
+                        Thana / Upazila / Area *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={thanaArea}
+                        onChange={(e) => setThanaArea(e.target.value)}
+                        placeholder="e.g. Jubilee Road, Kotwali, Dhanmondi"
+                        className="w-full h-11 px-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
+                      />
+                    </div>
+
+                    <div className="sm:col-span-3">
+                      <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
+                        Complete Street Address (Building, Road, Flat No) *
+                      </label>
+                      <textarea
+                        rows={2}
+                        required
+                        value={fullAddress}
+                        onChange={(e) => setFullAddress(e.target.value)}
+                        placeholder="Shop No. 11-12, Floor, Road, Landmark..."
+                        className="w-full p-3.5 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A]"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Option to save new address if user has slot remaining (< 2) */}
+                  {user && savedAddresses.length < 2 && (
+                    <div className="flex items-center gap-2 pt-1 bg-green-50/60 p-3 rounded-lg border border-green-100">
+                      <input
+                        type="checkbox"
+                        id="saveNewAddressToAccount"
+                        checked={saveNewAddressToAccount}
+                        onChange={(e) => setSaveNewAddressToAccount(e.target.checked)}
+                        className="w-4 h-4 text-[#16A34A] rounded focus:ring-green-400 border-gray-300"
+                      />
+                      <label htmlFor="saveNewAddressToAccount" className="text-xs text-gray-700 font-medium cursor-pointer">
+                        Save this address to my account for future orders (Slot {savedAddresses.length + 1} of 2)
+                      </label>
+                    </div>
+                  )}
+
+                  {user && savedAddresses.length >= 2 && (
+                    <div className="text-xs text-gray-500 bg-gray-50 p-2.5 rounded-lg border border-gray-200">
+                      ℹ️ You currently have 2 saved addresses (the maximum allowed). This address will be used exclusively for this order without altering your saved addresses.
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Step 3: Payment Method Selection */}

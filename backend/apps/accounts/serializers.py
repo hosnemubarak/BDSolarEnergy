@@ -37,6 +37,13 @@ class CustomerAddressSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['id', 'created_at', 'updated_at']
 
+    def validate(self, attrs):
+        request = self.context.get('request')
+        if not self.instance and request and getattr(request, 'user', None) and request.user.is_authenticated:
+            if CustomerAddress.objects.filter(user=request.user).count() >= 2:
+                raise serializers.ValidationError("You can only save up to 2 delivery addresses.")
+        return attrs
+
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
